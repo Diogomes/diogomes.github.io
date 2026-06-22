@@ -207,6 +207,10 @@
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
   })
+  // Ativação por teclado (Enter/Espaço) — acessibilidade
+  on('keydown', '.mobile-nav-toggle', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click() }
+  })
 
   /**
    * Scrool with ofset on links with a class name .scrollto
