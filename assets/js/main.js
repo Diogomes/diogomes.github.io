@@ -24,6 +24,41 @@
   }
 
   /**
+   * Eventos GoatCounter — o que as pessoas clicam
+   * (cliques em "Assistir ao vídeo" e envios de comentário)
+   */
+  function gcSlug(s) {
+    return (s || '').toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'sem-titulo';
+  }
+  function gcEvent(path, title) {
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      window.goatcounter.count({ path: path, title: title || path, event: true });
+    }
+  }
+
+  // Cliques em vídeos (links do YouTube e botões de play do portfólio)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var isVideo = /youtu\.?be|youtube\.com/.test(href) || a.classList.contains('portfolio-lightbox');
+    if (isVideo) {
+      var label = (a.getAttribute('title') || a.textContent || 'vídeo').trim();
+      gcEvent('evento/assistir-video/' + gcSlug(label), 'Assistir vídeo: ' + label);
+    }
+  });
+
+  // Envio do formulário de comentário
+  var commentForm = document.querySelector('.comment-form');
+  if (commentForm) {
+    commentForm.addEventListener('submit', function () {
+      gcEvent('evento/comentario-enviado', 'Comentário enviado');
+    });
+  }
+
+  /**
    * Easy selector helper function
    */
   const select = (el, all = false) => {
