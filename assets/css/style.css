@@ -1765,3 +1765,79 @@ section {
 .project-page .card-icon-top.grad-2 { background: linear-gradient(135deg, #14532d, #22c55e); }
 .project-page .card-icon-top.grad-3 { background: linear-gradient(135deg, #4c1d95, #a855f7); }
 .project-page .card:hover .card-icon-top { filter: brightness(1.08); }
+
+
+/*--------------------------------------------------------------
+# Featured Course — variante "terminal" (verde) de .featured-game
+--------------------------------------------------------------*/
+.featured-game.course-theme {
+  background: linear-gradient(160deg, #07120b 0%, #0c2418 52%, #0a2230 100%);
+}
+.featured-game.course-theme::before {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.3) 0%, rgba(34, 197, 94, 0) 70%);
+}
+.featured-game.course-theme .game-badge {
+  background: rgba(34, 197, 94, 0.14);
+  border-color: rgba(74, 222, 128, 0.45);
+  color: #6ee7a8;
+}
+.featured-game.course-theme .game-badge .pulse { background: #22c55e; }
+.featured-game.course-theme .game-subtitle strong,
+.featured-game.course-theme .game-stats .stat .num,
+.featured-game.course-theme .tech-stack .tech-chip i,
+.featured-game.course-theme .feature-card .feature-icon {
+  color: #6ee7a8;
+}
+.featured-game.course-theme .feature-card .feature-icon {
+  background: rgba(34, 197, 94, 0.16);
+}
+.featured-game.course-theme .feature-card:hover {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(74, 222, 128, 0.4);
+}
+.featured-game.course-theme .tech-stack .tech-chip:hover {
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(74, 222, 128, 0.5);
+}
+.featured-game.course-theme .video-frame {
+  border-color: rgba(74, 222, 128, 0.28);
+}
+.featured-game.course-theme .video-frame:hover {
+  box-shadow: 0 30px 70px rgba(34, 197, 94, 0.32);
+}
+.featured-game.course-theme .btn-game {
+  background: #16a34a;
+}
+.featured-game.course-theme .btn-game:hover {
+  background: #22c55e;
+  box-shadow: 0 12px 28px rgba(34, 197, 94, 0.4);
+}
+.featured-game.course-theme .btn-game.outline {
+  background: transparent;
+  border-color: rgba(74, 222, 128, 0.5);
+  color: #b7f0cd;
+}
+.featured-game.course-theme .btn-game.outline:hover {
+  background: rgba(34, 197, 94, 0.15);
+  color: #fff;
+}
+
+/* Cards de curso (learnCode) dentro de .featured-game */
+.featured-game .course-card-info { margin-top: 18px; }
+.featured-game .course-card-info h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+.featured-game .course-card-info h4 i { color: #6ee7a8; }
+.featured-game .course-card-info p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #cfe7d8;
+  margin-bottom: 16px;
+}
+.featured-game.course-theme .game-lead strong { color: #6ee7a8; }
