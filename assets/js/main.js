@@ -38,15 +38,22 @@
     }
   }
 
+  // Extrai o ID do vídeo do YouTube de uma URL
+  function gcYtId(href) {
+    var m = href.match(/(?:youtu\.be\/|[?&]v=|embed\/)([\w-]{11})/);
+    return m ? m[1] : null;
+  }
   // Cliques em vídeos (links do YouTube e botões de play do portfólio)
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    var isVideo = /youtu\.?be|youtube\.com/.test(href) || a.classList.contains('portfolio-lightbox');
-    if (isVideo) {
+    var id = gcYtId(href);
+    if (id) {
       var label = (a.getAttribute('title') || a.textContent || 'vídeo').trim();
-      gcEvent('evento/assistir-video/' + gcSlug(label), 'Assistir vídeo: ' + label);
+      gcEvent('evento/video/' + id, 'Vídeo: ' + (label || id));
+    } else if (/youtube\.com\/@/.test(href)) {
+      gcEvent('evento/canal-youtube', 'Canal no YouTube');
     }
   });
 
