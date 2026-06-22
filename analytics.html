@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Analytics · privado</title>
+  <link href="assets/img/icon.jpg" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:400,600,700,800" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .an-frame {
+      width: 100%;
+      height: 78vh;
+      min-height: 560px;
+      border: 1px solid #e7eef7;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .an-setup { background: #eef5fc; border: 1px dashed #9cc4e6; border-radius: 12px; padding: 22px; color: #1f5297; }
+    .an-setup code { background: #0a1f3c; color: #d4e6f5; padding: 2px 7px; border-radius: 6px; }
+    .an-links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  </style>
+</head>
+
+<body class="mod-page">
+  <div class="mod-wrap">
+
+    <h1><i class="bx bx-line-chart"></i> Analytics</h1>
+    <p class="sub">Página privada (não aparece no menu nem nos buscadores). Tráfego do site e de onde as pessoas vieram, via GoatCounter.</p>
+
+    <div class="an-links">
+      <a class="mod-btn" id="open-dash" href="#" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Abrir painel completo</a>
+      <a class="mod-btn ghost" href="moderacao.html"><i class="bx bx-shield-quarter"></i> Ir para moderação</a>
+    </div>
+
+    <!-- Mostrado se o código ainda não foi configurado -->
+    <div class="mod-card an-setup" id="setup-box" style="display:none;">
+      <h2 style="color:#173b6c;">Falta 1 passo para ativar</h2>
+      <ol class="mod-steps" style="margin-top:10px;">
+        <li>Crie uma conta gratuita em <strong>goatcounter.com</strong> e escolha um código para o site (ex.: <code>diogomes</code>).</li>
+        <li>No arquivo <code>assets/js/main.js</code>, troque <code>SEU-CODIGO</code> pelo seu código. Isso ativa a contagem em todas as páginas.</li>
+        <li>Aqui no <code>analytics.html</code>, troque também <code>SEU-CODIGO</code> (no script no fim do arquivo) para embutir o painel.</li>
+        <li>Commit/push. Pronto — o painel aparece abaixo e registra visitas e referrers.</li>
+      </ol>
+      <p style="margin-top:12px;">No painel do GoatCounter, a aba <strong>Referrers</strong> mostra exatamente de onde vieram os acessos (Google, LinkedIn, YouTube, links diretos, etc.).</p>
+    </div>
+
+    <!-- Painel embutido (aparece quando o código está configurado) -->
+    <div class="mod-card" id="dash-box" style="display:none;">
+      <h2>Painel</h2>
+      <p class="sub" style="margin-bottom:12px;">Visitas, páginas mais vistas e referrers. Se pedir login, entre na sua conta do GoatCounter.</p>
+      <iframe class="an-frame" id="dash-frame" title="GoatCounter dashboard"></iframe>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      // >>> Use o MESMO código configurado em assets/js/main.js
+      var CODE = 'SEU-CODIGO';
+      var dashUrl = 'https://' + CODE + '.goatcounter.com';
+      var openDash = document.getElementById('open-dash');
+
+      if (CODE && CODE !== 'SEU-CODIGO') {
+        document.getElementById('dash-box').style.display = 'block';
+        document.getElementById('dash-frame').src = dashUrl;
+        openDash.href = dashUrl;
+      } else {
+        document.getElementById('setup-box').style.display = 'block';
+        openDash.href = 'https://www.goatcounter.com';
+      }
+    })();
+  </script>
+</body>
+
+</html>
