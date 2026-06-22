@@ -89,12 +89,19 @@
     };
     var nodes = [].slice.call(document.querySelectorAll('[data-i18n]'));
     nodes.forEach(function (el) { el.setAttribute('data-pt', el.innerHTML); });
+    var TYPED_EN = 'Quality Engineer, Developer, Game Dev, Teacher';
+    var typedEl = document.querySelector('.typed');
+    var typedPt = typedEl ? typedEl.getAttribute('data-typed-items') : null;
     function apply(lang) {
       nodes.forEach(function (el) {
         var k = el.getAttribute('data-i18n');
         if (lang === 'en' && EN[k] != null) el.innerHTML = EN[k];
         else el.innerHTML = el.getAttribute('data-pt');
       });
+      if (typedEl) {
+        typedEl.setAttribute('data-typed-items', lang === 'en' ? TYPED_EN : typedPt);
+        if (window.__initTyped) window.__initTyped();
+      }
       document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-br');
     }
     var lang = 'pt';
@@ -296,20 +303,22 @@
   });
 
   /**
-   * Hero type effect
+   * Hero type effect (re-inicializável p/ troca de idioma)
    */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
+  var typedInstance = null;
+  window.__initTyped = function () {
+    var typed = select('.typed')
+    if (!typed || typeof Typed === 'undefined') return
+    if (typedInstance && typedInstance.destroy) { try { typedInstance.destroy() } catch (e) {} }
+    typedInstance = new Typed('.typed', {
+      strings: typed.getAttribute('data-typed-items').split(','),
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 2000
     });
-  }
+  };
+  window.__initTyped();
 
   /**
    * Skills animation
