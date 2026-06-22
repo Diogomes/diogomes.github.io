@@ -32,17 +32,17 @@
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://github.com/Diogomes" class="github"><i class="bx bxl-github"></i></a>
-          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
       </div>
 <nav id="navbar" class="nav-menu navbar">
@@ -54,7 +54,7 @@
           <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
           <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projetos</span></a></li>
-          <li><a href="../projects.html#pokeworld"><i class="bx bx-joystick"></i> <span>Jogo</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
         </ul>
       </nav>
@@ -139,7 +139,7 @@ npx playwright test suspeito.spec.ts --repeat-each=20</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>

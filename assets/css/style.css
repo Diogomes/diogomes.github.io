@@ -2188,3 +2188,17 @@ section {
 }
 .btn-cv:hover { background: #37b3ed; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(20,157,221,.35); }
 .btn-cv i { font-size: 19px; }
+
+
+/*--------------------------------------------------------------
+# Página do jogo — showcase + devlog timeline (sobre .featured-game)
+--------------------------------------------------------------*/
+.game-showcase { border-radius: 14px; overflow: hidden; border: 1px solid rgba(92,198,245,.25); box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+.game-showcase img { width: 100%; display: block; }
+.devlog { margin-top: 6px; }
+.devlog .dl-item { position: relative; padding: 0 0 24px 34px; border-left: 2px solid rgba(92,198,245,.3); }
+.devlog .dl-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+.devlog .dl-item::before { content: ""; position: absolute; left: -7px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: #5cc6f5; box-shadow: 0 0 0 4px rgba(20,157,221,.2); }
+.devlog .dl-item .dl-tag { color: #5cc6f5; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.devlog .dl-item h4 { color: #fff; font-size: 17px; margin: 2px 0 5px; }
+.devlog .dl-item p { color: #b9d4e8; font-size: 14px; line-height: 1.6; margin: 0; }
