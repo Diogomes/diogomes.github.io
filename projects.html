@@ -46,9 +46,11 @@
           <li><a href="index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
           <li><a href="index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumo</span></a></li>
+          <li><a href="index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
           <li><a href="index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
           <li><a href="index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
           <li><a href="projects.html" class="nav-link active"><i class="bx bx-code-block"></i> <span>Projetos</span></a></li>
+          <li><a href="projects.html#pokeworld" class="nav-link scrollto"><i class="bx bx-joystick"></i> <span>Jogo</span></a></li>
           <li><a href="blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
         </ul>
       </nav></div>
@@ -64,7 +66,125 @@
           </ol>
         </div>
       </div>
-    </section><section id="projects" class="project-page">
+    </section>
+
+    <!-- ======= Featured Game Section ======= -->
+    <section id="pokeworld" class="featured-game">
+      <div class="container">
+
+        <div class="row align-items-center gy-4">
+
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="game-badge"><span class="pulse"></span> Projeto em destaque · Game Dev</span>
+            <h2 class="game-title">PokéWorld Online</h2>
+            <p class="game-subtitle"><em>(título provisório)</em> — MMORPG de captura de criaturas em 3D · por <strong>Gigaverse3D</strong></p>
+            <p class="game-lead">
+              Um MMO open-world de captura de monstros em 3D — do servidor ao mundo. Mundo estilizado em formato
+              de diorama "clay/toy", com criaturas e lore de IP original. Diferente de um protótipo de fachada, a
+              parte mais difícil de um MMO já está de pé: <strong>servidor autoritativo</strong>, mundo persistente,
+              sincronizado em tempo real entre vários jogadores e validado contra trapaça no lado do servidor.
+            </p>
+
+            <div class="game-stats">
+              <div class="stat"><span class="num">20</span><span class="label">Criaturas 3D</span></div>
+              <div class="stat"><span class="num">10 Hz</span><span class="label">Sync do mundo</span></div>
+              <div class="stat"><span class="num">3D</span><span class="label">Open World</span></div>
+            </div>
+
+            <div class="tech-stack">
+              <span class="tech-chip"><i class="bx bx-joystick"></i> Godot 4.4</span>
+              <span class="tech-chip"><i class="bx bxl-c-plus-plus"></i> C#</span>
+              <span class="tech-chip"><i class="bx bxl-spring-boot"></i> Spring Boot</span>
+              <span class="tech-chip"><i class="bx bx-broadcast"></i> WebSocket</span>
+              <span class="tech-chip"><i class="bx bx-data"></i> PostgreSQL</span>
+              <span class="tech-chip"><i class="bx bx-layer"></i> Flyway</span>
+              <span class="tech-chip"><i class="bx bx-cylinder"></i> Redis</span>
+              <span class="tech-chip"><i class="bx bxl-docker"></i> Docker</span>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3">
+              <a href="https://youtu.be/91QffN5rcNU" target="_blank" rel="noopener" class="btn-game">
+                <i class="bx bxl-youtube"></i> Assistir ao devlog
+              </a>
+              <a href="#game-details" class="btn-game outline">
+                <i class="bx bx-list-ul"></i> Ver o que o jogo tem
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/91QffN5rcNU"
+                title="PokéWorld Online - devlog Gigaverse3D"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Funcionalidades -->
+        <div id="game-details" class="game-features">
+          <h3 class="features-heading">O que o jogo já tem</h3>
+          <p class="features-sub">Sistemas reais, todos procedurais em código — não é fachada.</p>
+
+          <div class="row gy-4">
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="0">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bx bx-map-alt"></i></div>
+                <h4>Mundo 3D explorável</h4>
+                <p>Vários mapas conectados por portais e trilhas, com cidades, Centro Pokémon, Loja e Ginásios com líderes e insígnias.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bx bx-shield-quarter"></i></div>
+                <h4>Batalhas 3D em tempo real</h4>
+                <p>Atacar, golpe especial que carrega SP, esquiva com dash e captura com Pokébola — combate ágil e responsivo.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bx bx-dna"></i></div>
+                <h4>20 criaturas com evolução</h4>
+                <p>Criaturas 3D com níveis, XP e evolução reais. Lore e identidade próprias, inspiradas no gênero monster-tamer.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="0">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bx bx-cloud-rain"></i></div>
+                <h4>Ciclo dia/noite e clima</h4>
+                <p>Clima dinâmico (chuva, névoa, neve, seca…) e ciclo dia/noite que influenciam os encontros do mundo.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bx bx-group"></i></div>
+                <h4>Multiplayer em tempo real</h4>
+                <p>Os jogadores se veem andando no mesmo mapa. Chat, perfil de treinador, minimapa e mapa-múndi integrados.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bx bx-server"></i></div>
+                <h4>Servidor autoritativo</h4>
+                <p>Backend valida e persiste tudo — movimento, colisões, encontros, captura — transmitindo o estado do mundo a 10 Hz. Save/load completo.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Featured Game Section -->
+
+    <section id="projects" class="project-page">
       <div class="container">
 
         <div class="section-title">
@@ -74,28 +194,32 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
             <div class="card">
-              <img src="assets/img/portfolio/minhaklabinprojeto.jpg" class="card-img-top" alt="Minha Klabin">
+              <div class="card-img-wrap">
+                <img src="assets/img/portfolio/minhaklabinprojeto.jpg" class="card-img-top" alt="Minha Klabin">
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Portal Minha Klabin</h5>
                 <p class="card-text">Automação de testes para o portal B2B da Klabin, utilizando Cypress para garantir a qualidade e a funcionalidade da plataforma para clientes.</p>
               </div>
-              <div class="card-button p-3">
-                 <a href="#" class="btn btn-primary">Ver Detalhes</a>
+              <div class="card-button">
+                 <a href="portfolio-details.html" class="btn btn-primary">Ver Detalhes</a>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="card">
-              <img src="assets/img/portfolio/portalklabin.jpg" class="card-img-top" alt="Portal Klabin">
+              <div class="card-img-wrap">
+                <img src="assets/img/portfolio/portalklabin.jpg" class="card-img-top" alt="Portal Klabin">
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Portal Klabin</h5>
                 <p class="card-text">Análise de requisitos e elaboração de cenários de teste para o portal institucional, focando na experiência do usuário e na integridade das informações.</p>
               </div>
-              <div class="card-button p-3">
-                <a href="#" class="btn btn-primary">Ver Detalhes</a>
+              <div class="card-button">
+                <a href="portfolio-details.html" class="btn btn-primary">Ver Detalhes</a>
               </div>
             </div>
           </div>

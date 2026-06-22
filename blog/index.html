@@ -46,9 +46,11 @@
           <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
           <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
           <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
           <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projetos</span></a></li>
+          <li><a href="../projects.html#pokeworld"><i class="bx bx-joystick"></i> <span>Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
         </ul>
       </nav>
@@ -60,36 +62,136 @@
 
         <div class="section-title">
           <h2>Blog</h2>
-          <p>Artigos e estudos sobre Análise de Negócios, Garantia de Qualidade e tecnologia em geral.</p>
+          <p class="blog-intro">Artigos sobre Qualidade de Software, automação de testes, CI/CD, desenvolvimento e
+            leituras que me ajudaram no caminho. Filtre por tema abaixo.</p>
         </div>
 
-        <div class="row">
+        <!-- Filtros -->
+        <div class="row" data-aos="fade-up">
+          <div class="col-12 d-flex justify-content-center">
+            <ul id="blog-filters" class="blog-filters">
+              <li data-filter="*" class="filter-active">Todos</li>
+              <li data-filter=".cat-automacao">Automação</li>
+              <li data-filter=".cat-cicd">CI/CD</li>
+              <li data-filter=".cat-qa">QA</li>
+              <li data-filter=".cat-testes">Testes</li>
+              <li data-filter=".cat-api">API</li>
+              <li data-filter=".cat-leituras">Leituras</li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="col-lg-8 entries">
+        <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
 
-            <article class="entry">
-
-              <h2 class="entry-title">
-                <a href="naked-statistics-summary.html">Resumo do Livro "Naked Statistics"</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="naked-statistics-summary.html">Diogo Gomes</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="naked-statistics-summary.html"><time datetime="2025-10-27">27 de Outubro, 2025</time></a></li>
-                </ul>
+          <!-- Playwright -->
+          <div class="col-lg-4 col-md-6 blog-item cat-automacao">
+            <article class="post-card">
+              <div class="post-card-top cat-automacao">
+                <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+                <i class="bx bx-test-tube post-bg-icon"></i>
               </div>
-
-              <div class="entry-content">
-                <p>
-                  Uma análise sobre como a estatística, quando despida de sua complexidade, pode ser uma ferramenta poderosa para a tomada de decisões em projetos de tecnologia, especialmente nas áreas de Análise de Negócios e QA.
-                </p>
-                <div class="read-more">
-                  <a href="naked-statistics-summary.html">Ler Mais</a>
-                </div>
+              <div class="post-card-body">
+                <h3><a href="playwright-testes-e2e.html">Playwright na prática: testes E2E modernos</a></h3>
+                <p>Por que o Playwright virou meu padrão para testes end-to-end: auto-wait, multi-browser, trace viewer e execução paralela rápida.</p>
               </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 18 Jun, 2026</span>
+                <a href="playwright-testes-e2e.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
 
-            </article></div></div>
+          <!-- CI/CD -->
+          <div class="col-lg-4 col-md-6 blog-item cat-cicd">
+            <article class="post-card">
+              <div class="post-card-top cat-cicd">
+                <span class="post-cat"><i class="bx bx-infinite"></i> CI/CD</span>
+                <i class="bx bx-git-merge post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="cicd-para-qa.html">CI/CD para QA: testes no coração do pipeline</a></h3>
+                <p>Como integrar testes automatizados ao pipeline, dar feedback rápido ao time e usar quality gates para barrar regressões.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 10 Jun, 2026</span>
+                <a href="cicd-para-qa.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pensamentos QA -->
+          <div class="col-lg-4 col-md-6 blog-item cat-qa">
+            <article class="post-card">
+              <div class="post-card-top cat-qa">
+                <span class="post-cat"><i class="bx bx-bulb"></i> QA</span>
+                <i class="bx bx-bulb post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="pensamentos-qa.html">Pensamentos sobre QA: qualidade é de todos</a></h3>
+                <p>QA não é uma fase nem um departamento — é uma cultura. Reflexões sobre shift-left, prevenção e o papel do QA moderno.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 02 Jun, 2026</span>
+                <a href="pensamentos-qa.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Testes unitários -->
+          <div class="col-lg-4 col-md-6 blog-item cat-testes">
+            <article class="post-card">
+              <div class="post-card-top cat-testes">
+                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <i class="bx bx-cube post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="testes-unitarios.html">Testes unitários: a base da pirâmide</a></h3>
+                <p>O que torna um bom teste unitário, o padrão AAA, o que NÃO testar e por que eles são o investimento de maior retorno em qualidade.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 25 Mai, 2026</span>
+                <a href="testes-unitarios.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Testes de API -->
+          <div class="col-lg-4 col-md-6 blog-item cat-api">
+            <article class="post-card">
+              <div class="post-card-top cat-api">
+                <span class="post-cat"><i class="bx bx-transfer-alt"></i> API</span>
+                <i class="bx bx-data post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="testes-de-api.html">Testes de API: do Postman à automação</a></h3>
+                <p>Contratos, status codes, schema validation e como levar suas coleções do Postman para dentro do pipeline com Newman.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 17 Mai, 2026</span>
+                <a href="testes-de-api.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Naked Statistics (existente) -->
+          <div class="col-lg-4 col-md-6 blog-item cat-leituras">
+            <article class="post-card">
+              <div class="post-card-top cat-leituras">
+                <span class="post-cat"><i class="bx bx-book-reader"></i> Leituras</span>
+                <i class="bx bx-book post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="naked-statistics-summary.html">Resumo do livro "Naked Statistics"</a></h3>
+                <p>Como a estatística, despida de sua complexidade, vira uma ferramenta poderosa para decisões em BA e QA.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 27 Out, 2025</span>
+                <a href="naked-statistics-summary.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+
+        </div>
 
       </div>
     </section></main><footer id="footer">
