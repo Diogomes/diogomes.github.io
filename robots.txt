@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /moderacao.html
+Disallow: /analytics.html
+Disallow: /obrigado.html
+Disallow: /forms/
+
+Sitemap: https://diogomes.github.io/sitemap.xml
