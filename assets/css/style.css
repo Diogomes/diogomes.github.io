@@ -2143,3 +2143,31 @@ section {
 .dark-theme .contact .info { background: #131c30; }
 .dark-theme .contact .info h4 { color: #eaf2fb; }
 .dark-theme .contact .info p { color: #8aa0b8; }
+
+
+/*--------------------------------------------------------------
+# Posts relacionados + busca no blog
+--------------------------------------------------------------*/
+.post-related { margin: 38px 0 6px; }
+.post-related h3 { font-size: 18px; color: #173b6c; font-weight: 700; margin-bottom: 14px; }
+.rel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.rel-card { display: flex; flex-direction: column; gap: 7px; padding: 16px; border: 1px solid #e7eef7; border-radius: 12px; background: #fff; transition: 0.3s; }
+.rel-card:hover { border-color: #37b3ed; transform: translateY(-3px); box-shadow: 0 10px 24px rgba(20, 157, 221, 0.15); }
+.rel-cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #149ddd; display: flex; align-items: center; gap: 5px; }
+.rel-title { color: #173b6c; font-weight: 600; font-size: 14.5px; line-height: 1.4; }
+
+.blog-search { max-width: 480px; margin: 0 auto 22px; position: relative; }
+.blog-search input { width: 100%; padding: 13px 18px 13px 46px; border: 1px solid #d8e2ee; border-radius: 50px; font-size: 15px; font-family: inherit; }
+.blog-search input:focus { outline: none; border-color: #149ddd; box-shadow: 0 0 0 3px rgba(20, 157, 221, 0.15); }
+.blog-search i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #149ddd; font-size: 20px; }
+.blog-tools { text-align: center; margin-bottom: 30px; }
+.rss-link { display: inline-flex; align-items: center; gap: 6px; color: #149ddd; font-weight: 600; font-size: 14px; }
+.rss-link:hover { color: #37b3ed; }
+.blog-no-results { text-align: center; color: #6c7a8c; font-style: italic; padding: 24px; display: none; }
+
+/* dark */
+.dark-theme .post-related h3 { color: #eaf2fb; }
+.dark-theme .rel-card { background: #131c30; border-color: rgba(255,255,255,.08); }
+.dark-theme .rel-title { color: #dbe7f5; }
+.dark-theme .blog-search input { background: #131c30; border-color: rgba(255,255,255,.14); color: #e8eef7; }
+.dark-theme .blog-no-results { color: #8aa0b8; }
