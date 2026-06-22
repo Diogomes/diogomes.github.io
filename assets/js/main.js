@@ -8,6 +8,60 @@
   "use strict";
 
   /**
+   * Tema claro/escuro — aplica o quanto antes (evita flash)
+   */
+  try {
+    var savedTheme = localStorage.getItem('dg-theme');
+    if (savedTheme === 'dark' ||
+        (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-theme');
+    }
+  } catch (e) {}
+
+  /**
+   * PWA — manifesto + service worker (caminhos absolutos)
+   */
+  (function () {
+    if (!document.querySelector('link[rel="manifest"]')) {
+      var ml = document.createElement('link');
+      ml.rel = 'manifest'; ml.href = '/manifest.json';
+      document.head.appendChild(ml);
+    }
+    if (!document.querySelector('meta[name="theme-color"]')) {
+      var tc = document.createElement('meta');
+      tc.name = 'theme-color'; tc.content = '#149ddd';
+      document.head.appendChild(tc);
+    }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').catch(function () {});
+      });
+    }
+  })();
+
+  /**
+   * Botão flutuante de tema claro/escuro
+   */
+  (function () {
+    var btn = document.createElement('button');
+    btn.className = 'theme-toggle';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Alternar tema claro/escuro');
+    btn.title = 'Alternar tema claro/escuro';
+    function setIcon() {
+      var dark = document.documentElement.classList.contains('dark-theme');
+      btn.innerHTML = dark ? '<i class="bx bx-sun"></i>' : '<i class="bx bx-moon"></i>';
+    }
+    setIcon();
+    btn.addEventListener('click', function () {
+      var dark = document.documentElement.classList.toggle('dark-theme');
+      try { localStorage.setItem('dg-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      setIcon();
+    });
+    document.body.appendChild(btn);
+  })();
+
+  /**
    * Analytics — GoatCounter (privacidade, sem cookies)
    * >>> PASSO ÚNICO: crie uma conta grátis em https://www.goatcounter.com
    *     e troque 'SEU-CODIGO' abaixo pelo código do seu site (ex.: 'diogomes').
