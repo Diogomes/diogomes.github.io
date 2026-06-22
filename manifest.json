@@ -1,0 +1,16 @@
+{
+  "name": "Diogo Gomes — Portfólio",
+  "short_name": "Diogo Gomes",
+  "description": "Quality Engineer, desenvolvedor e criador dos projetos Gigaverse3D (jogo PokéWorld Online e cursos learnCode).",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#040b14",
+  "theme_color": "#149ddd",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
