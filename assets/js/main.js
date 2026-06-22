@@ -273,6 +273,49 @@
   });
 
   /**
+   * Comentários aprovados (renderiza assets/comments.json)
+   */
+  const commentsList = select('#comments-list');
+  if (commentsList) {
+    const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[c]);
+    const fmtDate = (d) => {
+      if (!d) return '';
+      const p = String(d).split('-');
+      if (p.length === 3) return `${p[2]}/${p[1]}/${p[0]}`;
+      return esc(d);
+    };
+    fetch('assets/comments.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : [])
+      .then(items => {
+        const empty = select('#comments-empty');
+        if (!Array.isArray(items) || items.length === 0) {
+          if (empty) empty.style.display = 'block';
+          return;
+        }
+        commentsList.innerHTML = items.map(c => {
+          const initial = esc((c.name || '?').trim().charAt(0).toUpperCase());
+          return `<div class="comment-card">
+              <div class="c-head">
+                <div class="c-avatar">${initial}</div>
+                <div>
+                  <div class="c-name">${esc(c.name)}</div>
+                  ${c.project ? `<div class="c-project">${esc(c.project)}</div>` : ''}
+                </div>
+              </div>
+              <p class="c-msg">${esc(c.message)}</p>
+              ${c.date ? `<div class="c-date"><i class="bi bi-clock"></i> ${fmtDate(c.date)}</div>` : ''}
+            </div>`;
+        }).join('');
+      })
+      .catch(() => {
+        const empty = select('#comments-empty');
+        if (empty) empty.style.display = 'block';
+      });
+  }
+
+  /**
    * Animation on scroll
    */
   window.addEventListener('load', () => {
