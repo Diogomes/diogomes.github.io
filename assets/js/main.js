@@ -312,21 +312,40 @@
       });
 
       let blogFilters = select('#blog-filters li', true);
+      let blogCat = '*';
+      let blogSearch = '';
+      let noResults = select('#blog-no-results');
 
-      on('click', '#blog-filters li', function(e) {
+      const blogFilterFn = function () {
+        var el = this;
+        var okCat = blogCat === '*' || el.matches(blogCat);
+        if (!okCat) return false;
+        if (!blogSearch) return true;
+        return (el.textContent || '').toLowerCase().indexOf(blogSearch) !== -1;
+      };
+      const arrangeBlog = function () {
+        blogIsotope.arrange({ filter: blogFilterFn });
+        setTimeout(function () {
+          if (noResults) noResults.style.display = blogIsotope.filteredItems.length ? 'none' : 'block';
+        }, 50);
+      };
+
+      on('click', '#blog-filters li', function (e) {
         e.preventDefault();
-        blogFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
+        blogFilters.forEach(function (el) { el.classList.remove('filter-active'); });
         this.classList.add('filter-active');
-
-        blogIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        blogIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
+        blogCat = this.getAttribute('data-filter');
+        arrangeBlog();
+        blogIsotope.on('arrangeComplete', function () { AOS.refresh(); });
       }, true);
+
+      const blogSearchInput = select('#blog-search');
+      if (blogSearchInput) {
+        blogSearchInput.addEventListener('input', function () {
+          blogSearch = this.value.toLowerCase().trim();
+          arrangeBlog();
+        });
+      }
     }
 
   });

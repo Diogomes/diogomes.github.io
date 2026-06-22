@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Blog — Diogo Gomes</title>
+    <link>https://diogomes.github.io/blog/index.html</link>
+    <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
+    <language>pt-BR</language>
+    <item>
+      <title>Page Object Model: uma suíte E2E que escala</title>
+      <link>https://diogomes.github.io/blog/page-object-model.html</link>
+      <guid>https://diogomes.github.io/blog/page-object-model.html</guid>
+      <category>Automação</category>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O padrão que evita que sua automação vire uma teia de seletores duplicados.</description>
+    </item>
+    <item>
+      <title>Playwright na prática: testes E2E modernos</title>
+      <link>https://diogomes.github.io/blog/playwright-testes-e2e.html</link>
+      <guid>https://diogomes.github.io/blog/playwright-testes-e2e.html</guid>
+      <category>Automação</category>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Auto-wait, multi-browser, trace viewer e execução paralela — por que o Playwright virou meu padrão.</description>
+    </item>
+    <item>
+      <title>Testes flaky: o veneno do seu pipeline</title>
+      <link>https://diogomes.github.io/blog/testes-flaky.html</link>
+      <guid>https://diogomes.github.io/blog/testes-flaky.html</guid>
+      <category>CI/CD</category>
+      <pubDate>Fri, 12 Jun 2026 00:00:00 +0000</pubDate>
+      <description>De onde vem a flakiness e como combatê-la antes de perder a confiança no CI.</description>
+    </item>
+    <item>
+      <title>CI/CD para QA: testes no coração do pipeline</title>
+      <link>https://diogomes.github.io/blog/cicd-para-qa.html</link>
+      <guid>https://diogomes.github.io/blog/cicd-para-qa.html</guid>
+      <category>CI/CD</category>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Integrar testes ao pipeline, feedback rápido e quality gates contra regressões.</description>
+    </item>
+    <item>
+      <title>A arte do bug report</title>
+      <link>https://diogomes.github.io/blog/bug-report.html</link>
+      <guid>https://diogomes.github.io/blog/bug-report.html</guid>
+      <category>QA</category>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A anatomia de um relatório que leva à correção rápida: passos, evidências e contexto.</description>
+    </item>
+    <item>
+      <title>Pensamentos sobre QA: qualidade é de todos</title>
+      <link>https://diogomes.github.io/blog/pensamentos-qa.html</link>
+      <guid>https://diogomes.github.io/blog/pensamentos-qa.html</guid>
+      <category>QA</category>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Shift-left, prevenção e o papel do QA moderno como facilitador de qualidade.</description>
+    </item>
+    <item>
+      <title>TDD na prática: red, green, refactor</title>
+      <link>https://diogomes.github.io/blog/tdd-na-pratica.html</link>
+      <guid>https://diogomes.github.io/blog/tdd-na-pratica.html</guid>
+      <category>Testes</category>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <description>Escrever o teste antes do código — uma das técnicas que mais melhora o design.</description>
+    </item>
+    <item>
+      <title>Testes unitários: a base da pirâmide</title>
+      <link>https://diogomes.github.io/blog/testes-unitarios.html</link>
+      <guid>https://diogomes.github.io/blog/testes-unitarios.html</guid>
+      <category>Testes</category>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <description>O padrão AAA, o que NÃO testar e por que são o maior retorno em qualidade.</description>
+    </item>
+    <item>
+      <title>Contract testing entre serviços</title>
+      <link>https://diogomes.github.io/blog/contract-testing.html</link>
+      <guid>https://diogomes.github.io/blog/contract-testing.html</guid>
+      <category>API</category>
+      <pubDate>Wed, 20 May 2026 00:00:00 +0000</pubDate>
+      <description>A confiança da integração com a velocidade do teste de unidade, via Pact.</description>
+    </item>
+    <item>
+      <title>Testes de API: do Postman à automação</title>
+      <link>https://diogomes.github.io/blog/testes-de-api.html</link>
+      <guid>https://diogomes.github.io/blog/testes-de-api.html</guid>
+      <category>API</category>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <description>Contratos, status, schema e levar suas coleções para o CI com Newman.</description>
+    </item>
+    <item>
+      <title>Clean Code no dia a dia de QA</title>
+      <link>https://diogomes.github.io/blog/clean-code-qa.html</link>
+      <guid>https://diogomes.github.io/blog/clean-code-qa.html</guid>
+      <category>Leituras</category>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <description>Código de teste também é código: princípios do livro aplicados à automação.</description>
+    </item>
+    <item>
+      <title>Resumo do livro &quot;Naked Statistics&quot;</title>
+      <link>https://diogomes.github.io/blog/naked-statistics-summary.html</link>
+      <guid>https://diogomes.github.io/blog/naked-statistics-summary.html</guid>
+      <category>Leituras</category>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+      <description>Como a estatística vira ferramenta poderosa para decisões em BA e QA.</description>
+    </item>
+  </channel>
+</rss>

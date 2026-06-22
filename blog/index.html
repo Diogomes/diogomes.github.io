@@ -22,6 +22,7 @@
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -67,6 +68,12 @@
             leituras que me ajudaram no caminho. Filtre por tema abaixo.</p>
         </div>
 
+        <!-- Busca -->
+        <div class="blog-search" data-aos="fade-up">
+          <i class="bx bx-search"></i>
+          <input type="search" id="blog-search" placeholder="Buscar nos artigos…" aria-label="Buscar nos artigos">
+        </div>
+
         <!-- Filtros -->
         <div class="row" data-aos="fade-up">
           <div class="col-12 d-flex justify-content-center">
@@ -81,6 +88,12 @@
             </ul>
           </div>
         </div>
+
+        <div class="blog-tools" data-aos="fade-up">
+          <a class="rss-link" href="../feed.xml"><i class="bx bx-rss"></i> Assinar via RSS</a>
+        </div>
+
+        <p id="blog-no-results" class="blog-no-results">Nenhum artigo encontrado para sua busca.</p>
 
         <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
 
