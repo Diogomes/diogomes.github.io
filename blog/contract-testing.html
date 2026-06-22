@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contract testing: garantindo o contrato entre serviços - Diogo Gomes</title>
+  <meta content="Contract testing: garantindo o contrato entre serviços" name="description">
+  <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
+
+  <link href="../assets/img/icon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="https://github.com/Diogomes" class="github"><i class="bx bxl-github"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+<nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projetos</span></a></li>
+          <li><a href="../projects.html#pokeworld"><i class="bx bx-joystick"></i> <span>Jogo</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>API</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>API</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-link-alt"></i> API</span>
+              <h1>Contract testing: garantindo o contrato entre serviços</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+              <p>Em arquiteturas com muitos serviços, o maior risco não está dentro de cada serviço — está no <strong>contrato entre eles</strong>. Um time muda o formato de uma resposta e, sem perceber, quebra três consumidores. Contract testing existe para evitar exatamente isso.</p>
+
+              <h2>O problema dos testes E2E entre serviços</h2>
+              <p>Subir todos os serviços juntos para testar a integração é lento, caro e frágil. Contract testing troca isso por uma verificação leve: cada lado prova que respeita o contrato acordado, sem precisar do outro no ar.</p>
+
+              <h2>Consumer-driven contracts</h2>
+              <p>Com ferramentas como o <strong>Pact</strong>, o <em>consumidor</em> declara o que espera da API. Isso gera um contrato que o <em>provedor</em> verifica no próprio pipeline.</p>
+              <pre><code>// Lado consumidor: "espero este formato"
+await provider.addInteraction({
+  state: 'usuário 1 existe',
+  uponReceiving: 'um pedido pelo usuário 1',
+  withRequest:  { method: 'GET', path: '/users/1' },
+  willRespondWith: {
+    status: 200,
+    body: { id: 1, name: like('Diogo') }
+  }
+});</code></pre>
+
+              <h2>O fluxo</h2>
+              <ol>
+                <li>O consumidor define expectativas e gera o <strong>pact</strong> (o contrato).</li>
+                <li>O contrato é publicado num broker.</li>
+                <li>O provedor roda o contrato contra sua API real e prova que o respeita.</li>
+                <li>Quebrou o contrato? O pipeline do provedor falha — antes de chegar em produção.</li>
+              </ol>
+
+              <blockquote>Contract testing dá o melhor dos dois mundos: a confiança da integração com a velocidade do teste de unidade.</blockquote>
+
+              <h2>Conclusão</h2>
+              <p>Para sistemas distribuídos, contratos versionados e verificados automaticamente são uma rede de segurança poderosa. Eles transformam "será que quebrei alguém?" em uma resposta objetiva dada pelo pipeline.</p>
+              <div class="post-tags"><span class="tag">Contract testing</span><span class="tag">Pact</span><span class="tag">Microsserviços</span><span class="tag">API</span></div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

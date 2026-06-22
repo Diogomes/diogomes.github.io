@@ -1739,3 +1739,29 @@ section {
   .post-article .post-hero { padding: 34px 24px; }
   .post-article .post-hero h1 { font-size: 28px; }
 }
+
+
+/*--------------------------------------------------------------
+# Project cards — cabeçalho em gradiente (sem imagem)
+--------------------------------------------------------------*/
+.project-page .card-icon-top {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 62px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.project-page .card-icon-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 120%, rgba(255,255,255,0.25), transparent 60%);
+}
+.project-page .card-icon-top i { position: relative; z-index: 2; }
+.project-page .card-icon-top.grad-1 { background: linear-gradient(135deg, #0a1f3c, #149ddd); }
+.project-page .card-icon-top.grad-2 { background: linear-gradient(135deg, #14532d, #22c55e); }
+.project-page .card-icon-top.grad-3 { background: linear-gradient(135deg, #4c1d95, #a855f7); }
+.project-page .card:hover .card-icon-top { filter: brightness(1.08); }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>TDD na prática: red, green, refactor - Diogo Gomes</title>
+  <meta content="TDD na prática: red, green, refactor" name="description">
+  <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
+
+  <link href="../assets/img/icon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="https://github.com/Diogomes" class="github"><i class="bx bxl-github"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+<nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projetos</span></a></li>
+          <li><a href="../projects.html#pokeworld"><i class="bx bx-joystick"></i> <span>Jogo</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Testes</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>Testes</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-revision"></i> Testes</span>
+              <h1>TDD na prática: red, green, refactor</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 28 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+              <p>TDD — <em>Test-Driven Development</em> — inverte a ordem intuitiva: você escreve o teste <strong>antes</strong> do código. Parece contraintuitivo, mas é uma das técnicas que mais melhora o design e a confiança no que se entrega.</p>
+
+              <h2>O ciclo: Red, Green, Refactor</h2>
+              <ol>
+                <li><strong>Red:</strong> escreva um teste que falha — ele descreve o comportamento que ainda não existe.</li>
+                <li><strong>Green:</strong> escreva o mínimo de código para o teste passar. Sem firula.</li>
+                <li><strong>Refactor:</strong> melhore o código com a rede de segurança do teste verde.</li>
+              </ol>
+
+              <pre><code>// 1. Red — o teste falha porque a função não existe
+test('soma dois números', () =&gt; {
+  expect(soma(2, 3)).toBe(5);
+});
+
+// 2. Green — o mínimo para passar
+function soma(a, b) { return a + b; }
+
+// 3. Refactor — agora com segurança para evoluir</code></pre>
+
+              <h2>Por que funciona</h2>
+              <ul>
+                <li><strong>Design guiado pelo uso:</strong> você projeta a API pensando em quem a chama.</li>
+                <li><strong>Cobertura natural:</strong> o código nasce testado, sem "depois eu escrevo o teste".</li>
+                <li><strong>Feedback curto:</strong> erros aparecem em segundos, não em produção.</li>
+                <li><strong>Documentação viva:</strong> os testes descrevem o comportamento esperado.</li>
+              </ul>
+
+              <blockquote>TDD não é sobre testes — é sobre design. Os testes são o efeito colateral feliz.</blockquote>
+
+              <h2>Quando pesar a mão</h2>
+              <p>TDD brilha em lógica de negócio e regras complexas. Para protótipos descartáveis ou código de exploração, pode ser exagero. O segredo é usar a ferramenta certa para o contexto — não transformar TDD em dogma.</p>
+
+              <h2>Conclusão</h2>
+              <p>Praticar o ciclo red-green-refactor treina o time a pensar em comportamento e a manter o código sempre sob uma rede de segurança. É um investimento que se paga na primeira refatoração tranquila.</p>
+              <div class="post-tags"><span class="tag">TDD</span><span class="tag">Testes unitários</span><span class="tag">Design</span></div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
