@@ -13,7 +13,7 @@
    *     e troque 'SEU-CODIGO' abaixo pelo código do seu site (ex.: 'diogomes').
    *     Isso ativa a contagem de visitas e a origem dos acessos em TODAS as páginas.
    */
-  var GOATCOUNTER_CODE = 'SEU-CODIGO';
+  var GOATCOUNTER_CODE = 'diogomes';
   if (GOATCOUNTER_CODE && GOATCOUNTER_CODE !== 'SEU-CODIGO') {
     window.goatcounter = { endpoint: 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count' };
     var gcScript = document.createElement('script');
