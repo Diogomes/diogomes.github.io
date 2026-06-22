@@ -2171,3 +2171,20 @@ section {
 .dark-theme .rel-title { color: #dbe7f5; }
 .dark-theme .blog-search input { background: #131c30; border-color: rgba(255,255,255,.14); color: #e8eef7; }
 .dark-theme .blog-no-results { color: #8aa0b8; }
+
+
+/* Botão de download do currículo */
+.btn-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  background: #149ddd;
+  color: #fff;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+.btn-cv:hover { background: #37b3ed; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(20,157,221,.35); }
+.btn-cv i { font-size: 19px; }
