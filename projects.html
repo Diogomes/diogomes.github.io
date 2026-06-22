@@ -307,7 +307,77 @@
           </div>
 
       </div>
-    </section></main><footer id="footer">
+    </section>
+
+    <!-- ======= Comentários sobre os projetos ======= -->
+    <section id="comentarios" class="comments">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Comentários</h2>
+          <p>O que dizem sobre os projetos. Quer deixar o seu? Use o formulário abaixo — todo recado passa por moderação antes de aparecer aqui.</p>
+        </div>
+
+        <div id="comments-list" class="comments-grid" data-aos="fade-up">
+          <!-- preenchido por JS a partir de assets/comments.json -->
+        </div>
+        <p id="comments-empty" class="no-comments" style="display:none;">Ainda não há comentários publicados. Seja o primeiro a comentar! 🚀</p>
+
+        <!-- Formulário -->
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <form class="comment-form" action="https://formsubmit.co/gomes.d.n05@gmail.com" method="POST" data-aos="fade-up">
+
+              <h3>Deixe um comentário</h3>
+              <p class="form-hint">Conte o que achou de um projeto. Seu recado vai para o autor e só é publicado após aprovação.</p>
+
+              <!-- Configuração do FormSubmit -->
+              <input type="hidden" name="_subject" value="Novo comentário sobre projeto — diogomes.github.io">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="hidden" name="_next" value="https://diogomes.github.io/obrigado.html">
+              <!-- Honeypot anti-spam (deixe vazio) -->
+              <input type="text" name="_honey" class="hp-hidden" tabindex="-1" autocomplete="off">
+
+              <div class="row">
+                <div class="col-md-6 mb-field">
+                  <label for="cf-name">Nome *</label>
+                  <input type="text" id="cf-name" name="name" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-field">
+                  <label for="cf-email">E-mail (não será publicado)</label>
+                  <input type="email" id="cf-email" name="email" class="form-control">
+                </div>
+              </div>
+
+              <div class="mb-field">
+                <label for="cf-project">Projeto</label>
+                <select id="cf-project" name="projeto" class="form-control">
+                  <option>PokéWorld Online</option>
+                  <option>Gigaverse3D learnCode: Java</option>
+                  <option>Gigaverse3D learnCode: Python</option>
+                  <option>MPSP</option>
+                  <option>Petros</option>
+                  <option>Prodam</option>
+                  <option>Comentário geral</option>
+                </select>
+              </div>
+
+              <div class="mb-field">
+                <label for="cf-message">Comentário *</label>
+                <textarea id="cf-message" name="message" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-send"><i class="bx bx-send"></i> Enviar comentário</button>
+              <p class="captcha-note"><i class="bx bx-shield-quarter"></i> Protegido por captcha gratuito (FormSubmit) e filtro anti-spam.</p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main><footer id="footer">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Diogo N Gomes</span></strong>

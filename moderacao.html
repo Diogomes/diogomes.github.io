@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Moderação de comentários · privado</title>
+  <link href="assets/img/icon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:400,600,700,800" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="mod-page">
+  <div class="mod-wrap">
+
+    <h1><i class="bx bx-shield-quarter"></i> Moderação de comentários</h1>
+    <p class="sub">Página privada (não aparece no menu nem nos buscadores). Aqui você decide o que é publicado na página de projetos.</p>
+
+    <div class="mod-card">
+      <h2>Como funciona</h2>
+      <ol class="mod-steps">
+        <li>Um visitante envia um comentário pelo formulário — ele chega no seu e-mail (via FormSubmit), passando por captcha.</li>
+        <li>Se você quiser publicar, preencha o comentário abaixo e clique em <strong>Adicionar</strong>.</li>
+        <li>Clique em <strong>Baixar comments.json</strong> (ou Copiar) e substitua o arquivo <code>assets/comments.json</code> no repositório.</li>
+        <li>Faça commit/push. Só os comentários desta lista aparecem publicamente.</li>
+      </ol>
+    </div>
+
+    <div class="mod-card">
+      <h2>Adicionar comentário aprovado</h2>
+      <div class="mod-grid">
+        <div>
+          <label for="m-name">Nome</label>
+          <input type="text" id="m-name" placeholder="Nome de quem comentou">
+        </div>
+        <div>
+          <label for="m-project">Projeto</label>
+          <select id="m-project">
+            <option>PokéWorld Online</option>
+            <option>Gigaverse3D learnCode: Java</option>
+            <option>Gigaverse3D learnCode: Python</option>
+            <option>MPSP</option>
+            <option>Petros</option>
+            <option>Prodam</option>
+            <option>Comentário geral</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="m-message">Comentário</label>
+          <textarea id="m-message" rows="3" placeholder="Texto do comentário"></textarea>
+        </div>
+        <div>
+          <label for="m-date">Data</label>
+          <input type="date" id="m-date">
+        </div>
+      </div>
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="mod-btn" id="m-add"><i class="bx bx-plus"></i> Adicionar à lista</button>
+        <button class="mod-btn ghost" id="m-reload"><i class="bx bx-refresh"></i> Recarregar do servidor</button>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <h2>Comentários publicados (<span id="m-count">0</span>)</h2>
+      <ul class="mod-list" id="m-list"></ul>
+    </div>
+
+    <div class="mod-card">
+      <h2>Arquivo <code>assets/comments.json</code></h2>
+      <p class="sub" style="margin-bottom:10px;">Copie ou baixe e substitua o arquivo no repositório.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="mod-btn" id="m-download"><i class="bx bx-download"></i> Baixar comments.json</button>
+        <button class="mod-btn ghost" id="m-copy"><i class="bx bx-copy"></i> Copiar JSON</button>
+      </div>
+      <textarea class="mod-json" id="m-json" readonly></textarea>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var data = [];
+      var listEl = document.getElementById('m-list');
+      var jsonEl = document.getElementById('m-json');
+      var countEl = document.getElementById('m-count');
+
+      function esc(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+      function render() {
+        countEl.textContent = data.length;
+        if (!data.length) {
+          listEl.innerHTML = '<li style="border:none;color:#98a4b3;">Nenhum comentário na lista.</li>';
+        } else {
+          listEl.innerHTML = data.map(function (c, i) {
+            return '<li><div class="mi-body"><strong>' + esc(c.name) + '</strong>'
+              + (c.project ? ' <span class="mi-proj">· ' + esc(c.project) + '</span>' : '')
+              + '<p>' + esc(c.message) + '</p>'
+              + (c.date ? '<p style="color:#98a4b3;font-size:12px;">' + esc(c.date) + '</p>' : '')
+              + '</div><button class="mod-btn danger" data-i="' + i + '">Remover</button></li>';
+          }).join('');
+        }
+        jsonEl.value = JSON.stringify(data, null, 2);
+      }
+      function load() {
+        fetch('assets/comments.json', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : []; })
+          .then(function (items) { data = Array.isArray(items) ? items : []; render(); })
+          .catch(function () { data = []; render(); });
+      }
+
+      // data de hoje no input
+      var d = new Date();
+      var iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      document.getElementById('m-date').value = iso;
+
+      document.getElementById('m-add').addEventListener('click', function () {
+        var name = document.getElementById('m-name').value.trim();
+        var message = document.getElementById('m-message').value.trim();
+        if (!name || !message) { alert('Preencha pelo menos nome e comentário.'); return; }
+        data.unshift({
+          name: name,
+          project: document.getElementById('m-project').value,
+          message: message,
+          date: document.getElementById('m-date').value || iso
+        });
+        document.getElementById('m-name').value = '';
+        document.getElementById('m-message').value = '';
+        render();
+      });
+
+      listEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-i]');
+        if (!btn) return;
+        if (confirm('Remover este comentário da lista?')) {
+          data.splice(parseInt(btn.getAttribute('data-i'), 10), 1);
+          render();
+        }
+      });
+
+      document.getElementById('m-reload').addEventListener('click', load);
+
+      document.getElementById('m-download').addEventListener('click', function () {
+        var blob = new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'comments.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      });
+
+      document.getElementById('m-copy').addEventListener('click', function () {
+        jsonEl.select();
+        navigator.clipboard.writeText(jsonEl.value).then(function () {
+          var b = document.getElementById('m-copy');
+          var t = b.innerHTML; b.innerHTML = '<i class="bx bx-check"></i> Copiado!';
+          setTimeout(function () { b.innerHTML = t; }, 1500);
+        }).catch(function () { document.execCommand('copy'); });
+      });
+
+      load();
+    })();
+  </script>
+</body>
+
+</html>
