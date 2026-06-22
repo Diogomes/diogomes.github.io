@@ -8,6 +8,22 @@
   "use strict";
 
   /**
+   * Analytics — GoatCounter (privacidade, sem cookies)
+   * >>> PASSO ÚNICO: crie uma conta grátis em https://www.goatcounter.com
+   *     e troque 'SEU-CODIGO' abaixo pelo código do seu site (ex.: 'diogomes').
+   *     Isso ativa a contagem de visitas e a origem dos acessos em TODAS as páginas.
+   */
+  var GOATCOUNTER_CODE = 'diogomes';
+  if (GOATCOUNTER_CODE && GOATCOUNTER_CODE !== 'SEU-CODIGO') {
+    window.goatcounter = { endpoint: 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count' };
+    var gcScript = document.createElement('script');
+    gcScript.async = true;
+    gcScript.setAttribute('data-goatcounter', window.goatcounter.endpoint);
+    gcScript.src = '//gc.zgo.at/count.js';
+    document.head.appendChild(gcScript);
+  }
+
+  /**
    * Easy selector helper function
    */
   const select = (el, all = false) => {
