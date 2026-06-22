@@ -62,6 +62,60 @@
   })();
 
   /**
+   * i18n — PT (padrão no HTML) / EN (dicionário)
+   */
+  (function () {
+    var EN = {
+      'nav.home': 'Home', 'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills',
+      'nav.portfolio': 'Portfolio', 'nav.contact': 'Contact', 'nav.projects': 'Projects',
+      'nav.game': 'Game', 'nav.blog': 'Blog',
+      'hero.iam': "I'm",
+      'about.h2': 'About',
+      'about.intro': 'I like technology and how it can help us solve problems.',
+      'about.h3': 'Quality Engineer & Developer',
+      'about.lead': 'Ensuring product quality from the standpoint of code accessibility and value generation for the customer.',
+      'about.role.l': 'Role:', 'about.role.v': 'Quality Engineer @ Liferay',
+      'about.site.l': 'Website:', 'about.city.l': 'City:', 'about.city.v': 'Recife, Pernambuco',
+      'about.edu.l': 'Education:', 'about.edu.v': "CS · Master's",
+      'about.email.l': 'E-mail:', 'about.focus.l': 'Focus:', 'about.focus.v': 'QA · Automation · Game Dev',
+      'skills.h2': 'Skills',
+      'skills.intro': 'Experience in end-to-end test automation in Java, JavaScript and Python, with BDD/TDD/ATDD and CI/CD. Below are the main tools and technologies I use.',
+      'resume.h2': 'Resume',
+      'resume.intro': 'Quality Engineer at Liferay for 5+ years, working on LATAM/EMEA-scale projects — from planning and running manual and automated tests to mentoring QAs. End-to-end automation with Selenium, Playwright, Cypress and Appium (Java, JavaScript, Python), aligned with BDD, TDD, ATDD and Scrum. A scientific background (MSc in Biomedical Engineering) brings a rigorous, investigative way of thinking about quality. Currently deepening functional programming and game development in personal projects.',
+      'portfolio.h2': 'Portfolio',
+      'portfolio.intro': "A selection of projects, games and tutorials I've produced. Click play to watch each item's video.",
+      'contact.h2': 'Contact', 'contact.location': 'Location:', 'contact.email': 'Email:', 'contact.call': 'Call:',
+      'footer.credits': 'Designed by'
+    };
+    var nodes = [].slice.call(document.querySelectorAll('[data-i18n]'));
+    nodes.forEach(function (el) { el.setAttribute('data-pt', el.innerHTML); });
+    function apply(lang) {
+      nodes.forEach(function (el) {
+        var k = el.getAttribute('data-i18n');
+        if (lang === 'en' && EN[k] != null) el.innerHTML = EN[k];
+        else el.innerHTML = el.getAttribute('data-pt');
+      });
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-br');
+    }
+    var lang = 'pt';
+    try { lang = localStorage.getItem('dg-lang') || 'pt'; } catch (e) {}
+    if (lang === 'en') apply('en');
+
+    var btn = document.createElement('button');
+    btn.className = 'lang-toggle';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Mudar idioma / change language');
+    function setLabel() { btn.textContent = (lang === 'en') ? 'PT' : 'EN'; }
+    setLabel();
+    btn.addEventListener('click', function () {
+      lang = (lang === 'en') ? 'pt' : 'en';
+      try { localStorage.setItem('dg-lang', lang); } catch (e) {}
+      apply(lang); setLabel();
+    });
+    document.body.appendChild(btn);
+  })();
+
+  /**
    * Analytics — GoatCounter (privacidade, sem cookies)
    * >>> PASSO ÚNICO: crie uma conta grátis em https://www.goatcounter.com
    *     e troque 'SEU-CODIGO' abaixo pelo código do seu site (ex.: 'diogomes').

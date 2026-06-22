@@ -2202,3 +2202,27 @@ section {
 .devlog .dl-item .dl-tag { color: #5cc6f5; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
 .devlog .dl-item h4 { color: #fff; font-size: 17px; margin: 2px 0 5px; }
 .devlog .dl-item p { color: #b9d4e8; font-size: 14px; line-height: 1.6; margin: 0; }
+
+
+/* Botão de idioma (flutuante) */
+.lang-toggle {
+  position: fixed;
+  right: 15px;
+  bottom: 109px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50px;
+  background: #0a1f3c;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 996;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+.lang-toggle:hover { background: #149ddd; transform: translateY(-2px); }
