@@ -11,17 +11,26 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
   <style>
-    .an-frame {
-      width: 100%;
-      height: 78vh;
-      min-height: 560px;
-      border: 1px solid #e7eef7;
-      border-radius: 12px;
-      background: #fff;
-    }
-    .an-setup { background: #eef5fc; border: 1px dashed #9cc4e6; border-radius: 12px; padding: 22px; color: #1f5297; }
-    .an-setup code { background: #0a1f3c; color: #d4e6f5; padding: 2px 7px; border-radius: 6px; }
     .an-links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+    .an-hero {
+      background: linear-gradient(135deg, #040b14, #0e2a52);
+      color: #fff; border-radius: 16px; padding: 34px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .an-hero h2 { color: #fff; margin: 0 0 6px; font-size: 22px; }
+    .an-hero p { color: #b9d4e8; margin: 0; max-width: 480px; }
+    .an-count { text-align: center; min-width: 150px; }
+    .an-count .num { font-size: 44px; font-weight: 800; color: #5cc6f5; line-height: 1; }
+    .an-count .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: #9fc6e6; }
+    .an-count .num.loading { font-size: 18px; color: #9fc6e6; font-weight: 600; }
+    .an-open {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #149ddd; color: #fff; border-radius: 50px; padding: 14px 30px;
+      font-weight: 700; text-decoration: none; transition: .3s; font-size: 16px;
+    }
+    .an-open:hover { background: #37b3ed; color:#fff; transform: translateY(-2px); }
+    .an-tip { background:#eef5fc; border:1px dashed #9cc4e6; border-radius:12px; padding:16px 20px; color:#1f5297; font-size:14px; }
+    .an-tip code { background:#0a1f3c; color:#d4e6f5; padding:2px 7px; border-radius:6px; }
   </style>
 </head>
 
@@ -32,46 +41,60 @@
     <p class="sub">Página privada (não aparece no menu nem nos buscadores). Tráfego do site e de onde as pessoas vieram, via GoatCounter.</p>
 
     <div class="an-links">
-      <a class="mod-btn" id="open-dash" href="#" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Abrir painel completo</a>
       <a class="mod-btn ghost" href="moderacao.html"><i class="bx bx-shield-quarter"></i> Ir para moderação</a>
     </div>
 
-    <!-- Mostrado se o código ainda não foi configurado -->
-    <div class="mod-card an-setup" id="setup-box" style="display:none;">
-      <h2 style="color:#173b6c;">Falta 1 passo para ativar</h2>
-      <ol class="mod-steps" style="margin-top:10px;">
-        <li>Crie uma conta gratuita em <strong>goatcounter.com</strong> e escolha um código para o site (ex.: <code>diogomes</code>).</li>
-        <li>No arquivo <code>assets/js/main.js</code>, troque <code>SEU-CODIGO</code> pelo seu código. Isso ativa a contagem em todas as páginas.</li>
-        <li>Aqui no <code>analytics.html</code>, troque também <code>SEU-CODIGO</code> (no script no fim do arquivo) para embutir o painel.</li>
-        <li>Commit/push. Pronto — o painel aparece abaixo e registra visitas e referrers.</li>
-      </ol>
-      <p style="margin-top:12px;">No painel do GoatCounter, a aba <strong>Referrers</strong> mostra exatamente de onde vieram os acessos (Google, LinkedIn, YouTube, links diretos, etc.).</p>
+    <div class="mod-card" style="padding:0; overflow:hidden;">
+      <div class="an-hero">
+        <div>
+          <h2>Seu painel de tráfego</h2>
+          <p>Visitas, páginas mais vistas e <strong>referrers</strong> (Google, LinkedIn, YouTube, links diretos…)
+            ficam no painel do GoatCounter. Ele não pode ser embutido aqui (o GoatCounter bloqueia iframes por
+            segurança), então abre em uma nova aba — onde você já está logado.</p>
+          <p style="margin-top:16px;">
+            <a class="an-open" href="https://diogomes.goatcounter.com" target="_blank" rel="noopener">
+              <i class="bx bx-link-external"></i> Abrir meu painel do GoatCounter
+            </a>
+          </p>
+        </div>
+        <div class="an-count">
+          <div class="num loading" id="an-total">…</div>
+          <div class="lbl">visualizações (total)</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Painel embutido (aparece quando o código está configurado) -->
-    <div class="mod-card" id="dash-box" style="display:none;">
-      <h2>Painel</h2>
-      <p class="sub" style="margin-bottom:12px;">Visitas, páginas mais vistas e referrers. Se pedir login, entre na sua conta do GoatCounter.</p>
-      <iframe class="an-frame" id="dash-frame" title="GoatCounter dashboard"></iframe>
+    <div class="mod-card">
+      <h2>Atalhos do painel</h2>
+      <ul class="mod-steps">
+        <li><strong>Visão geral</strong> — visitas por dia e páginas mais acessadas: <a href="https://diogomes.goatcounter.com" target="_blank" rel="noopener">diogomes.goatcounter.com</a></li>
+        <li><strong>De onde vieram</strong> — no painel, veja a aba/seção <strong>Referrers</strong> (origem dos acessos).</li>
+        <li><strong>Período</strong> — use o seletor de datas no topo do painel para comparar semanas/meses.</li>
+      </ul>
+      <div class="an-tip" style="margin-top:14px;">
+        💡 Para o número de visualizações acima funcionar, ative em <strong>GoatCounter → Settings → "Allow adding a visitor counter"</strong>.
+        Sem isso, o total não carrega aqui (mas o painel completo continua funcionando normalmente pelo botão acima).
+      </div>
     </div>
 
   </div>
 
   <script>
     (function () {
-      // >>> Use o MESMO código configurado em assets/js/main.js
       var CODE = 'diogomes';
-      var dashUrl = 'https://' + CODE + '.goatcounter.com';
-      var openDash = document.getElementById('open-dash');
-
-      if (CODE && CODE !== 'SEU-CODIGO') {
-        document.getElementById('dash-box').style.display = 'block';
-        document.getElementById('dash-frame').src = dashUrl;
-        openDash.href = dashUrl;
-      } else {
-        document.getElementById('setup-box').style.display = 'block';
-        openDash.href = 'https://www.goatcounter.com';
-      }
+      var el = document.getElementById('an-total');
+      // Contador público do GoatCounter (precisa estar habilitado em Settings)
+      fetch('https://' + CODE + '.goatcounter.com/counter/TOTAL.json', { mode: 'cors' })
+        .then(function (r) { if (!r.ok) throw new Error('counter off'); return r.json(); })
+        .then(function (d) {
+          el.classList.remove('loading');
+          el.textContent = (d && (d.count || d.count_unique)) ? (d.count || d.count_unique) : '—';
+        })
+        .catch(function () {
+          el.classList.remove('loading');
+          el.textContent = '—';
+          el.style.fontSize = '22px';
+        });
     })();
   </script>
 </body>
