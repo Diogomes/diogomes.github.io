@@ -69,6 +69,7 @@
       'nav.home': 'Home', 'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills',
       'nav.portfolio': 'Portfolio', 'nav.contact': 'Contact', 'nav.projects': 'Projects',
       'nav.game': 'Game', 'nav.blog': 'Blog',
+      'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps',
       'hero.iam': "I'm",
       'about.h2': 'About',
       'about.intro': 'I like technology and how it can help us solve problems.',

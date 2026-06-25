@@ -1573,6 +1573,9 @@ section {
 .post-card-top.cat-testes { background: linear-gradient(135deg, #7c2d12, #f97316); }
 .post-card-top.cat-api { background: linear-gradient(135deg, #155e75, #06b6d4); }
 .post-card-top.cat-leituras { background: linear-gradient(135deg, #831843, #ec4899); }
+.post-card-top.lvl-junior { background: linear-gradient(135deg, #065f46, #10b981); }
+.post-card-top.lvl-pleno { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.post-card-top.lvl-senior { background: linear-gradient(135deg, #581c87, #9333ea); }
 .post-card .post-bg-icon {
   position: absolute;
   right: -10px;
@@ -1712,6 +1715,27 @@ section {
 .post-article .post-body code {
   font-family: "Courier New", monospace;
 }
+.post-article .post-body .table-wrap { overflow-x: auto; margin: 22px 0; }
+.post-article .post-body table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+  min-width: 480px;
+}
+.post-article .post-body th,
+.post-article .post-body td {
+  border: 1px solid #e1e9f3;
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  color: #4a5568;
+}
+.post-article .post-body th {
+  background: #eef5fc;
+  color: #173b6c;
+  font-weight: 700;
+}
+.post-article .post-body tbody tr:nth-child(even) td { background: #f8fbfe; }
 .post-article .post-tags {
   margin-top: 30px;
   display: flex;
@@ -2122,6 +2146,9 @@ section {
 .dark-theme .post-article .post-body blockquote { background: #16233f; color: #dbe7f5; border-left-color: #37b3ed; }
 .dark-theme .post-article .post-tags .tag { background: #16233f; color: #9fd0f5; }
 .dark-theme .post-article .post-body pre { background: #060d1a; }
+.dark-theme .post-article .post-body th { background: #16233f; color: #eaf2fb; border-color: #25344f; }
+.dark-theme .post-article .post-body td { color: #b9c6d6; border-color: #25344f; }
+.dark-theme .post-article .post-body tbody tr:nth-child(even) td { background: #101c33; }
 
 /* Comentários */
 .dark-theme .comments { background: #0e1626; }

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Segurança no front-end: XSS, CSRF e CORS sem mistério - Diogo Gomes</title>
+  <meta content="As três siglas que todo front-end sênior precisa explicar: o que é cada ataque, como o navegador se defende e o que é responsabilidade sua." name="description">
+  <meta content="Front-end, Sênior, Segurança, XSS, CORS, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Segurança no front-end: XSS, CSRF e CORS sem mistério">
+  <meta property="og:description" content="As três siglas que todo front-end sênior precisa explicar: o que é cada ataque, como o navegador se defende e o que é responsabilidade sua.">
+  <meta property="og:url" content="https://diogomes.github.io/frontend/seguranca-frontend.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Segurança no front-end: XSS, CSRF e CORS sem mistério", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/seguranca-frontend.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "As três siglas que todo front-end sênior precisa explicar: o que é cada ataque, como o navegador se defende e o que é responsabilidade sua.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Front-end · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Front-end</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-lock"></i> Front-end · Sênior</span>
+              <h1>Segurança no front-end: XSS, CSRF e CORS sem mistério</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Segurança costuma ser tratada como "problema do back-end", mas o navegador é a linha de frente e o front-end carrega responsabilidades reais. XSS, CSRF e CORS são os três temas que mais geram confusão — e desmistificá-los, sabendo o que é de fato sua responsabilidade, é o que se espera de um sênior.</p>
+
+<h2>XSS: código injetado na sua página</h2>
+<p>O <strong>Cross-Site Scripting</strong> acontece quando um atacante consegue injetar JavaScript que roda no navegador de outros usuários — roubando cookies, sessão, ou agindo como a vítima. Há três sabores:</p>
+<ul>
+<li><strong>Stored:</strong> o script malicioso é salvo no servidor (ex.: num comentário) e servido a todos.</li>
+<li><strong>Reflected:</strong> o script vem na URL/requisição e é refletido de volta na resposta.</li>
+<li><strong>DOM-based:</strong> o problema é puramente no JS do cliente, que joga dado não confiável no DOM.</li>
+</ul>
+
+<h2>Defendendo de XSS</h2>
+<p>A regra de ouro: <strong>nunca confie em entrada e sempre escape a saída</strong> conforme o contexto. Frameworks modernos escapam por padrão ao renderizar texto — o perigo mora nas brechas como <code>innerHTML</code> ou <code>dangerouslySetInnerHTML</code>.</p>
+
+<pre><code>// PERIGOSO: interpreta HTML do usuário
+el.innerHTML = comentarioDoUsuario;
+
+// SEGURO: trata como texto puro
+el.textContent = comentarioDoUsuario;</code></pre>
+
+<p>Como segunda camada, o <strong>CSP</strong> (Content Security Policy) é um header que diz ao navegador de onde scripts podem vir, bloqueando código injetado mesmo que ele passe. Defesa em profundidade.</p>
+
+<h2>CSRF: usar sua sessão sem você saber</h2>
+<p>O <strong>Cross-Site Request Forgery</strong> explora o fato de o navegador enviar seus cookies automaticamente. Um site malicioso faz seu navegador disparar uma requisição para um site onde você está logado — e o servidor, vendo o cookie válido, executa a ação como se fosse você (ex.: transferir dinheiro).</p>
+
+<h2>Defendendo de CSRF</h2>
+<ul>
+<li><strong>Token anti-CSRF:</strong> um valor imprevisível que só sua página conhece e envia junto; o site atacante não consegue adivinhá-lo.</li>
+<li><strong>Cookie <code>SameSite</code>:</strong> instrui o navegador a não enviar o cookie em requisições vindas de outros sites.</li>
+</ul>
+
+<pre><code>Set-Cookie: sessao=abc; SameSite=Strict; Secure; HttpOnly</code></pre>
+
+<div class="table-wrap"><table><thead><tr><th></th><th>XSS</th><th>CSRF</th></tr></thead><tbody><tr><td>O que explora</td><td>Confiança do usuário no site</td><td>Confiança do site no usuário</td></tr><tr><td>Ataque</td><td>Injeta e roda script</td><td>Força uma ação autenticada</td></tr><tr><td>Defesa-chave</td><td>Escapar saída + CSP</td><td>Token + SameSite</td></tr></tbody></table></div>
+
+<h2>CORS: o mal-entendido número um</h2>
+<p>Talvez nenhum tema gere mais confusão. O CORS <strong>não é uma proteção do seu servidor que você "desliga"</strong>. É uma política <em>do navegador</em>: por padrão (same-origin policy), o JS de um site não pode <em>ler</em> respostas de outra origem. O <strong>CORS</strong> é o mecanismo pelo qual um servidor <em>autoriza</em> origens específicas a lerem suas respostas.</p>
+<p>Para requisições "não simples", o navegador faz antes um <strong>preflight</strong>: um <code>OPTIONS</code> perguntando "posso?". Se o servidor responde com os headers certos, a requisição real prossegue.</p>
+
+<blockquote>O equívoco clássico: "desabilitar o CORS para resolver o erro". Você não desabilita o CORS — você configura o servidor para permitir as origens certas. Pôr <code>Access-Control-Allow-Origin: *</code> em uma API com credenciais é abrir a porta, não consertar a fechadura.</blockquote>
+
+<p>É importante entender: CORS protege o usuário (impede que um site leia dados de outro em nome dele), <em>não</em> protege sua API contra acesso direto. Quem chama sua API por fora do navegador (curl, outro back-end) ignora CORS completamente — a autorização real é autenticação no servidor.</p>
+
+<h2>O que é responsabilidade do front</h2>
+<ul>
+<li>Tratar toda entrada/saída como suspeita: escapar antes de inserir no DOM.</li>
+<li>Evitar <code>innerHTML</code> com dados de usuário; sanitizar quando inevitável.</li>
+<li>Configurar e respeitar CSP e cookies <code>SameSite</code>/<code>HttpOnly</code>.</li>
+<li>Entender CORS para diagnosticar (e não "burlar") erros de origem.</li>
+<li>Nunca guardar segredos no front: tudo que vai ao navegador é público.</li>
+</ul>
+<p>É comum em entrevista pedir para você diferenciar XSS de CSRF ou explicar por que CORS não é uma defesa do servidor. No dia a dia, isso aparece no primeiro erro de "blocked by CORS policy" ou numa revisão de código que flagra um <code>innerHTML</code> perigoso.</p>
+
+<h2>Conclusão</h2>
+<p>XSS injeta script (escape a saída e use CSP), CSRF abusa da sessão (token e SameSite) e CORS é uma política do navegador para autorizar leitura entre origens — não um interruptor de segurança. Segurança no front é, acima de tudo, desconfiar de todo dado e entender de quem é cada responsabilidade.</p>
+              <div class="post-tags"><span class="tag">Segurança</span><span class="tag">XSS</span><span class="tag">CORS</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">CSS sem medo: box model, flexbox e grid</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>DevSecOps: segredos, least privilege e shift-left de segurança - Diogo Gomes</title>
+  <meta content="Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início." name="description">
+  <meta content="DevOps, Sênior, DevSecOps, Segurança, Sênior, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DevSecOps: segredos, least privilege e shift-left de segurança">
+  <meta property="og:description" content="Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início.">
+  <meta property="og:url" content="https://diogomes.github.io/devops/seguranca-devsecops.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DevSecOps: segredos, least privilege e shift-left de segurança", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/seguranca-devsecops.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>DevOps · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">DevOps</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-lock-alt"></i> DevOps · Sênior</span>
+              <h1>DevSecOps: segredos, least privilege e shift-left de segurança</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Durante muito tempo, segurança era a etapa final: o software ficava pronto, um time separado fazia uma auditoria e, na véspera do deploy, apontava problemas caros de consertar. DevSecOps inverte isso. A ideia é trazer segurança para o começo e distribuí-la por todo o processo, tornando-a responsabilidade de todos — não um portão no fim do caminho. Para um DevOps sênior, isso deixou de ser opcional.</p>
+
+<h2>Shift-left de segurança</h2>
+<p>"Shift-left" significa mover as preocupações de segurança para a <em>esquerda</em> da linha do tempo — para mais perto da escrita do código. Quanto mais cedo um problema é encontrado, mais barato é corrigi-lo. Um segredo vazado pego num <a href="git-fluxos.html">commit</a> custa segundos; o mesmo segredo descoberto em produção custa um incidente.</p>
+<blockquote>Segurança não é um carimbo no fim da esteira; é uma propriedade que se constrói em cada etapa. Quanto mais à esquerda você pega o problema, mais barato e menos doloroso é resolvê-lo.</blockquote>
+
+<h2>Gestão de segredos</h2>
+<p>Senhas, tokens e chaves de API <strong>nunca</strong> devem ir para o Git — nem em arquivos de configuração, nem "temporariamente". Uma vez no histórico, lá ficam para sempre. A solução é um <strong>cofre de segredos</strong> (vault), de onde a aplicação busca as credenciais em tempo de execução, com acesso auditado e rotação automática.</p>
+<pre><code># ERRADO — segredo no código, versionado para sempre
+db_password = "p@ssw0rd123"
+
+# CERTO — referência a um segredo guardado no cofre
+db_password = vault.read("secret/prod/db").password</code></pre>
+
+<h2>Menor privilégio (least privilege)</h2>
+<p>O princípio do menor privilégio diz que cada usuário, serviço ou processo deve ter <em>apenas</em> as permissões de que precisa, nada além. Na prática, isso se faz com <strong>IAM</strong> (Identity and Access Management): em vez de dar acesso de administrador "para facilitar", você concede o mínimo. Assim, se uma credencial vaza, o estrago fica contido.</p>
+
+<h2>Scan no pipeline: SAST e DAST</h2>
+<p>O <a href="ci-cd-basico.html">pipeline de CI/CD</a> é o lugar ideal para automatizar verificações de segurança a cada mudança. Três tipos aparecem com frequência:</p>
+<div class="table-wrap"><table><thead><tr><th>Técnica</th><th>O que analisa</th><th>Quando roda</th></tr></thead><tbody><tr><td>SAST</td><td>O código-fonte parado</td><td>No build</td></tr><tr><td>DAST</td><td>A aplicação em execução</td><td>Em ambiente de teste</td></tr><tr><td>Scan de imagem</td><td>Vulnerabilidades nas dependências da imagem</td><td>Após o build do container</td></tr></tbody></table></div>
+<pre><code>steps:
+  - run: trivy image minha-app:1.2   # scan de vulnerabilidades
+  - run: gitleaks detect             # procura segredos vazados
+  - run: semgrep --config auto       # análise estática (SAST)</code></pre>
+
+<h2>Segurança da cadeia de suprimentos</h2>
+<p>Software moderno é montado com centenas de dependências de terceiros — e cada uma é uma porta de entrada potencial. Ataques de <strong>supply chain</strong> exploram exatamente isso: comprometem uma biblioteca popular para atingir todos que a usam. Defender-se envolve fixar versões, verificar a procedência dos pacotes e manter um inventário do que você usa (SBOM).</p>
+
+<h2>Cultura: responsabilidade de todos</h2>
+<p>A parte mais difícil do DevSecOps não é a ferramenta, é a cultura. Segurança deixa de ser "problema do time de segurança" e passa a ser critério de qualidade que todo desenvolvedor e operador carrega. No dia a dia isso aparece em revisões de código que olham para riscos, em escolhas de arquitetura que assumem que coisas vão falhar, e na naturalidade de tratar um alerta de segurança como se trata um bug.</p>
+
+<h2>Conclusão</h2>
+<p>DevSecOps é segurança integrada, contínua e compartilhada. Trazer as verificações para a esquerda, manter segredos fora do Git, aplicar menor privilégio, automatizar scans no pipeline e cuidar da cadeia de suprimentos são práticas concretas que, somadas a uma cultura onde todos se importam, tornam o sistema resiliente por construção. É o que distingue um DevOps sênior maduro.</p>
+              <div class="post-tags"><span class="tag">DevSecOps</span><span class="tag">Segurança</span><span class="tag">Sênior</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

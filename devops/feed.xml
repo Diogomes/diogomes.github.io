@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>DevOps — Diogo Gomes</title>
+    <link>https://diogomes.github.io/devops/index.html</link>
+    <description>Trilha de DevOps por nível profissional: Linux, Git, CI/CD, containers, infraestrutura como código, observabilidade, Kubernetes e segurança — o que cai em entrevista e no dia a dia.</description>
+    <language>pt-BR</language>
+    <item>
+      <title>Linux e terminal: o mínimo que todo DevOps domina</title>
+      <link>https://diogomes.github.io/devops/linux-terminal.html</link>
+      <guid>https://diogomes.github.io/devops/linux-terminal.html</guid>
+      <category>Júnior</category>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Permissões, processos, pipes e variáveis de ambiente. O terminal não é nostalgia — é onde o trabalho de infraestrutura acontece.</description>
+    </item>
+    <item>
+      <title>Git além do commit: branches, merge e fluxos de trabalho</title>
+      <link>https://diogomes.github.io/devops/git-fluxos.html</link>
+      <guid>https://diogomes.github.io/devops/git-fluxos.html</guid>
+      <category>Júnior</category>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Merge vs rebase, o que é um conflito e os fluxos (trunk-based, GitFlow) que organizam o trabalho de um time inteiro.</description>
+    </item>
+    <item>
+      <title>CI/CD na prática: do commit ao deploy automático</title>
+      <link>https://diogomes.github.io/devops/ci-cd-basico.html</link>
+      <guid>https://diogomes.github.io/devops/ci-cd-basico.html</guid>
+      <category>Júnior</category>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O que significa integração e entrega contínuas, o que é um pipeline e por que automatizar build, teste e deploy muda tudo.</description>
+    </item>
+    <item>
+      <title>Containers e Docker: por que &#x27;funciona na minha máquina&#x27; acabou</title>
+      <link>https://diogomes.github.io/devops/containers-docker.html</link>
+      <guid>https://diogomes.github.io/devops/containers-docker.html</guid>
+      <category>Pleno</category>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Imagem, container e a diferença para uma VM. Dockerfile, camadas e o conceito que padronizou o ambiente do dev até a produção.</description>
+    </item>
+    <item>
+      <title>Infraestrutura como código: Terraform e o fim do clicar no console</title>
+      <link>https://diogomes.github.io/devops/infra-como-codigo.html</link>
+      <guid>https://diogomes.github.io/devops/infra-como-codigo.html</guid>
+      <category>Pleno</category>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Provisionar servidores com código versionado e reproduzível. O que é IaC, declarativo vs imperativo e por que idempotência importa.</description>
+    </item>
+    <item>
+      <title>Observabilidade: logs, métricas e traces (os 3 pilares)</title>
+      <link>https://diogomes.github.io/devops/observabilidade.html</link>
+      <guid>https://diogomes.github.io/devops/observabilidade.html</guid>
+      <category>Pleno</category>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Monitorar é saber que quebrou; observar é descobrir por quê. Logs, métricas e traces — e a diferença entre os três na prática.</description>
+    </item>
+    <item>
+      <title>Kubernetes sem pânico: pods, deployments e autoscaling</title>
+      <link>https://diogomes.github.io/devops/kubernetes.html</link>
+      <guid>https://diogomes.github.io/devops/kubernetes.html</guid>
+      <category>Sênior</category>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O orquestrador que virou padrão. Pod, deployment, service e como o Kubernetes mantém seu app vivo e escalando sozinho.</description>
+    </item>
+    <item>
+      <title>Arquitetura na nuvem: alta disponibilidade e o custo do downtime</title>
+      <link>https://diogomes.github.io/devops/arquitetura-cloud.html</link>
+      <guid>https://diogomes.github.io/devops/arquitetura-cloud.html</guid>
+      <category>Sênior</category>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Regiões, zonas de disponibilidade, redundância e o trade-off entre confiabilidade e custo. Projetar para que a falha de uma máquina não derrube o sistema.</description>
+    </item>
+    <item>
+      <title>DevSecOps: segredos, least privilege e shift-left de segurança</title>
+      <link>https://diogomes.github.io/devops/seguranca-devsecops.html</link>
+      <guid>https://diogomes.github.io/devops/seguranca-devsecops.html</guid>
+      <category>Sênior</category>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CSS sem medo: box model, flexbox e grid - Diogo Gomes</title>
+  <meta content="Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos." name="description">
+  <meta content="Front-end, Júnior, CSS, Layout, Fundamentos, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CSS sem medo: box model, flexbox e grid">
+  <meta property="og:description" content="Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.">
+  <meta property="og:url" content="https://diogomes.github.io/frontend/css-box-model-layout.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CSS sem medo: box model, flexbox e grid", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/css-box-model-layout.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Front-end · Júnior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Front-end</a></li>
+            <li>Júnior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-paint"></i> Front-end · Júnior</span>
+              <h1>CSS sem medo: box model, flexbox e grid</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>CSS assusta no começo porque parece imprevisível: você muda uma propriedade e a página inteira se mexe. A boa notícia é que quase toda essa "mágica" se resume a três ideias — o box model, o flexbox e o grid. Entendendo elas, o CSS deixa de ser tentativa e erro e vira algo que você controla.</p>
+
+<h2>Tudo é uma caixa: o box model</h2>
+<p>Todo elemento na tela é uma caixa retangular composta por quatro camadas, de dentro para fora: <strong>content</strong> (o conteúdo), <strong>padding</strong> (espaço interno), <strong>border</strong> (borda) e <strong>margin</strong> (espaço externo). Pense numa moldura de quadro: a foto é o content, o paspartur é o padding, a moldura é a border e o espaço até o próximo quadro na parede é a margin.</p>
+
+<pre><code>.card {
+  width: 200px;
+  padding: 20px;
+  border: 2px solid;
+}
+/* Largura real = 200 + 20*2 + 2*2 = 244px (!) */</code></pre>
+
+<h2>box-sizing: border-box salva sua sanidade</h2>
+<p>Por padrão, <code>width</code> conta só o content — padding e border somam por cima, e a caixa estoura. Com <code>box-sizing: border-box</code>, a largura passa a incluir padding e border. É tão essencial que quase todo projeto aplica isso globalmente.</p>
+
+<pre><code>* { box-sizing: border-box; }
+.card { width: 200px; padding: 20px; }
+/* Agora a largura real É 200px */</code></pre>
+
+<h2>display: como a caixa se comporta</h2>
+<p>O <code>display</code> define o fluxo: <strong>block</strong> ocupa a linha inteira (como um parágrafo), <strong>inline</strong> fica na mesma linha (como um <code>&lt;span&gt;</code>) e ignora width/height, e <strong>flex</strong>/<strong>grid</strong> transformam o elemento num container que organiza seus filhos.</p>
+
+<h2>Flexbox: layout em uma dimensão</h2>
+<p>Flexbox organiza itens ao longo de <em>um</em> eixo por vez. Você define o <strong>eixo principal</strong> com <code>flex-direction</code> (linha ou coluna) e o <strong>eixo cruzado</strong> é o perpendicular. <code>justify-content</code> alinha no eixo principal; <code>align-items</code> alinha no cruzado. Perfeito para barras de navegação, listas de botões, qualquer fileira.</p>
+
+<pre><code>.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}</code></pre>
+
+<h2>Grid: layout em duas dimensões</h2>
+<p>Quando você precisa de linhas <em>e</em> colunas ao mesmo tempo — uma galeria, um dashboard, o layout da página inteira — Grid resolve rápido. Você desenha a grade e encaixa os itens.</p>
+
+<pre><code>.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}</code></pre>
+
+<h2>Flex ou Grid? E como centralizar</h2>
+<p>A regra prática: <strong>uma direção, use flex; duas direções, use grid</strong>. Não é dogma — muita gente faz layout inteiro com flex —, mas é o ponto de partida certo.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Critério</th><th>Flexbox</th><th>Grid</th></tr></thead><tbody><tr><td>Dimensões</td><td>1D (linha OU coluna)</td><td>2D (linhas E colunas)</td></tr><tr><td>Melhor para</td><td>Componentes, barras</td><td>Layout de página, grades</td></tr><tr><td>Define forma a partir de</td><td>Conteúdo</td><td>Container</td></tr></tbody></table></div>
+
+<p>E o eterno "como centralizo um elemento?". Com flex, três linhas:</p>
+
+<pre><code>.centro {
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+}</code></pre>
+
+<blockquote>Centralizar virou trivial: o difícil não é mais "como", é lembrar que justify-content e align-items mudam de eixo conforme o flex-direction.</blockquote>
+
+<p>É comum em entrevista pedir exatamente para explicar o box model, a diferença entre <code>content-box</code> e <code>border-box</code>, ou como centralizar vertical e horizontalmente. No dia a dia, é o que você usa em <em>todo</em> componente que monta.</p>
+
+<h2>Conclusão</h2>
+<p>O box model explica o tamanho das coisas, o flexbox organiza em uma dimensão e o grid em duas. Com <code>border-box</code> ligado e essas duas ferramentas no cinto, o CSS deixa de ser sorte. O próximo passo é dar vida à página com <a href="javascript-essencial.html">JavaScript</a>.</p>
+              <div class="post-tags"><span class="tag">CSS</span><span class="tag">Layout</span><span class="tag">Fundamentos</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                <a class="rel-card" href="event-loop.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Pleno</span><span class="rel-title">O event loop: como o JavaScript faz async sem travar</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

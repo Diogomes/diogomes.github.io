@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Front-end — Diogo Gomes</title>
+    <link>https://diogomes.github.io/frontend/index.html</link>
+    <description>Trilha de front-end por nível profissional: HTML semântico, CSS, JavaScript, event loop, estado, performance, arquitetura e segurança — o que cai em entrevista e no dia a dia.</description>
+    <language>pt-BR</language>
+    <item>
+      <title>HTML semântico e acessibilidade: a base que separa amador de profissional</title>
+      <link>https://diogomes.github.io/frontend/html-semantico.html</link>
+      <guid>https://diogomes.github.io/frontend/html-semantico.html</guid>
+      <category>Júnior</category>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Usar a tag certa não é detalhe: é SEO, acessibilidade e manutenção. O que é HTML semântico e por que empilhar div para tudo te prejudica.</description>
+    </item>
+    <item>
+      <title>CSS sem medo: box model, flexbox e grid</title>
+      <link>https://diogomes.github.io/frontend/css-box-model-layout.html</link>
+      <guid>https://diogomes.github.io/frontend/css-box-model-layout.html</guid>
+      <category>Júnior</category>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.</description>
+    </item>
+    <item>
+      <title>JavaScript essencial: tipos, escopo e o DOM</title>
+      <link>https://diogomes.github.io/frontend/javascript-essencial.html</link>
+      <guid>https://diogomes.github.io/frontend/javascript-essencial.html</guid>
+      <category>Júnior</category>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Os fundamentos que sustentam qualquer framework: tipos e coerção, var/let/const, closures e como o JavaScript fala com a página.</description>
+    </item>
+    <item>
+      <title>O event loop: como o JavaScript faz async sem travar</title>
+      <link>https://diogomes.github.io/frontend/event-loop.html</link>
+      <guid>https://diogomes.github.io/frontend/event-loop.html</guid>
+      <category>Pleno</category>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.</description>
+    </item>
+    <item>
+      <title>Estado em front-end: props, state e quando subir o estado</title>
+      <link>https://diogomes.github.io/frontend/estado-componentes.html</link>
+      <guid>https://diogomes.github.io/frontend/estado-componentes.html</guid>
+      <category>Pleno</category>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O que é estado, a diferença entre props e state, fluxo de dados unidirecional e o famoso &#x27;lifting state up&#x27; sem decoreba.</description>
+    </item>
+    <item>
+      <title>Renderização e performance: reflow, repaint e o caminho crítico</title>
+      <link>https://diogomes.github.io/frontend/render-performance.html</link>
+      <guid>https://diogomes.github.io/frontend/render-performance.html</guid>
+      <category>Pleno</category>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Como o navegador transforma HTML/CSS/JS em pixels, o que é reflow vs repaint e por que seu app trava — com o que fazer a respeito.</description>
+    </item>
+    <item>
+      <title>Arquitetura de front-end: componentização, design system e monorepo</title>
+      <link>https://diogomes.github.io/frontend/arquitetura-frontend.html</link>
+      <guid>https://diogomes.github.io/frontend/arquitetura-frontend.html</guid>
+      <category>Sênior</category>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Como manter um front-end grande sem virar caos: componentes reutilizáveis, design system, organização de pastas e o trade-off do monorepo.</description>
+    </item>
+    <item>
+      <title>Web performance: Core Web Vitals, lazy loading e bundle</title>
+      <link>https://diogomes.github.io/frontend/web-performance-core-vitals.html</link>
+      <guid>https://diogomes.github.io/frontend/web-performance-core-vitals.html</guid>
+      <category>Sênior</category>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+      <description>LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.</description>
+    </item>
+    <item>
+      <title>Segurança no front-end: XSS, CSRF e CORS sem mistério</title>
+      <link>https://diogomes.github.io/frontend/seguranca-frontend.html</link>
+      <guid>https://diogomes.github.io/frontend/seguranca-frontend.html</guid>
+      <category>Sênior</category>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
+      <description>As três siglas que todo front-end sênior precisa explicar: o que é cada ataque, como o navegador se defende e o que é responsabilidade sua.</description>
+    </item>
+  </channel>
+</rss>

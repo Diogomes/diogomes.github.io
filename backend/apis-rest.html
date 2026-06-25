@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>APIs REST: o que torna uma API RESTful - Diogo Gomes</title>
+  <meta content="Recursos, verbos, status codes e statelessness — o vocabulário de API que todo back-end usa e que toda entrevista cobra." name="description">
+  <meta content="Back-end, Júnior, REST, API, Fundamentos, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="APIs REST: o que torna uma API RESTful">
+  <meta property="og:description" content="Recursos, verbos, status codes e statelessness — o vocabulário de API que todo back-end usa e que toda entrevista cobra.">
+  <meta property="og:url" content="https://diogomes.github.io/backend/apis-rest.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "APIs REST: o que torna uma API RESTful", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/apis-rest.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Recursos, verbos, status codes e statelessness — o vocabulário de API que todo back-end usa e que toda entrevista cobra.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Back-end · Júnior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Back-end</a></li>
+            <li>Júnior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-transfer-alt"></i> Back-end · Júnior</span>
+              <h1>APIs REST: o que torna uma API RESTful</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>REST é o estilo de arquitetura mais comum para construir APIs web hoje. Mas "ter endpoints HTTP" não torna uma API RESTful — REST é um conjunto de princípios sobre como modelar e expor recursos. Entender esses princípios é o que separa uma API previsível e fácil de consumir de uma bagunça.</p>
+
+<h2>A API como contrato</h2>
+<p>Uma API é um <strong>contrato</strong> entre quem fornece e quem consome. Ela define quais operações existem, o que cada uma espera receber e o que devolve. Se o contrato é claro e estável, times diferentes (ou empresas diferentes) conseguem trabalhar sem combinar nada além da documentação. Esse contrato roda sobre HTTP — vale revisar <a href="como-a-web-funciona.html">como a web funciona</a> antes de seguir.</p>
+
+<h2>Recursos são substantivos</h2>
+<p>O princípio central de REST é pensar em <strong>recursos</strong>: coisas do seu domínio, expressas como substantivos no plural. <code>/produtos</code>, <code>/usuarios</code>, <code>/pedidos</code>. O que você <em>faz</em> com o recurso é expresso pelo <strong>verbo HTTP</strong>, não pela URL. Por isso <code>/criarProduto</code> não é RESTful — o "criar" deveria ser um <code>POST /produtos</code>.</p>
+
+<h2>Verbos HTTP e a tabela de endpoints</h2>
+<div class="table-wrap"><table><thead><tr><th>Verbo</th><th>Endpoint</th><th>Ação</th></tr></thead><tbody>
+<tr><td>GET</td><td>/produtos</td><td>Lista todos os produtos</td></tr>
+<tr><td>GET</td><td>/produtos/42</td><td>Busca o produto 42</td></tr>
+<tr><td>POST</td><td>/produtos</td><td>Cria um novo produto</td></tr>
+<tr><td>PUT</td><td>/produtos/42</td><td>Substitui o produto 42 inteiro</td></tr>
+<tr><td>PATCH</td><td>/produtos/42</td><td>Atualiza parte do produto 42</td></tr>
+<tr><td>DELETE</td><td>/produtos/42</td><td>Remove o produto 42</td></tr>
+</tbody></table></div>
+
+<h2>Statelessness e representações</h2>
+<p>REST é <strong>stateless</strong>: cada requisição carrega tudo que o servidor precisa para processá-la. O servidor não guarda "onde você estava" entre chamadas. Isso é o que permite escalar horizontalmente (qualquer servidor atende qualquer requisição). O recurso em si é abstrato; o que trafega é uma <strong>representação</strong> dele, quase sempre em JSON:</p>
+<pre><code>GET /produtos/42
+
+200 OK
+{
+  "id": 42,
+  "nome": "Teclado mecânico",
+  "preco": 350.00,
+  "emEstoque": true
+}</code></pre>
+
+<h2>Status codes corretos</h2>
+<p>Usar o status code certo faz parte do contrato. Em entrevista é comum pedirem para explicar as famílias: <strong>2xx</strong> sucesso (200 OK, 201 Created), <strong>4xx</strong> erro do cliente (400 inválido, 401 não autenticado, 403 sem permissão, 404 não encontrado), <strong>5xx</strong> erro do servidor. Retornar <code>200 OK</code> com um corpo "deu erro" dentro é um clássico de API mal feita.</p>
+
+<h2>Métodos seguros e idempotentes</h2>
+<p>Dois conceitos importantes: um método é <strong>seguro</strong> se não altera dados (GET). É <strong>idempotente</strong> se repeti-lo produz o mesmo efeito de fazê-lo uma vez (GET, PUT, DELETE). POST <em>não</em> é idempotente — dois POSTs criam dois recursos. Essa noção volta a aparecer quando falamos de <a href="resiliencia.html">resiliência</a> e retries.</p>
+
+<blockquote>O que torna uma API RESTful não é a tecnologia, e sim a disciplina: recursos como substantivos, verbos HTTP fazendo o trabalho, statelessness e status codes honestos.</blockquote>
+
+<h2>O que torna uma API "não-RESTful"</h2>
+<p>Sinais de alerta: verbos na URL (<code>/getProduto</code>), tudo via POST, status sempre 200, ou guardar estado de sessão no servidor entre chamadas. No dia a dia isso aparece quando uma API "funciona" mas é imprevisível — cada endpoint tem sua própria lógica e você precisa ler o código para entender.</p>
+
+<h2>Conclusão</h2>
+<p>REST é menos sobre regras rígidas e mais sobre previsibilidade. Modele recursos, use os verbos HTTP corretamente, mantenha o servidor stateless e seja honesto nos status codes. Uma API que segue isso é fácil de consumir, documentar e escalar — e demonstra que você entende o contrato por trás da web.</p>
+              <div class="post-tags"><span class="tag">REST</span><span class="tag">API</span><span class="tag">Fundamentos</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="autenticacao-autorizacao.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Pleno</span><span class="rel-title">Autenticação vs Autorização: sessions, JWT e OAuth</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
