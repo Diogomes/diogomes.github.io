@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Resiliência: idempotência, retries e circuit breaker - Diogo Gomes</title>
+  <meta content="Falhas vão acontecer. Como projetar um back-end que sobrevive a elas: idempotência, retry com backoff e o disjuntor que evita o efeito dominó." name="description">
+  <meta content="Back-end, Sênior, Resiliência, Idempotência, Arquitetura, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Resiliência: idempotência, retries e circuit breaker">
+  <meta property="og:description" content="Falhas vão acontecer. Como projetar um back-end que sobrevive a elas: idempotência, retry com backoff e o disjuntor que evita o efeito dominó.">
+  <meta property="og:url" content="https://diogomes.github.io/backend/resiliencia.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Resiliência: idempotência, retries e circuit breaker", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/resiliencia.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Falhas vão acontecer. Como projetar um back-end que sobrevive a elas: idempotência, retry com backoff e o disjuntor que evita o efeito dominó.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Back-end · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Back-end</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-shield"></i> Back-end · Sênior</span>
+              <h1>Resiliência: idempotência, retries e circuit breaker</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Em sistemas distribuídos, falhas não são exceção — são rotina. A rede cai, um serviço fica lento, uma chamada estoura o timeout. Resiliência é projetar para que essas falhas inevitáveis não derrubem o sistema inteiro. Para um sênior, dominar idempotência, retries e circuit breaker é essencial — e tema frequente em entrevistas.</p>
+
+<h2>Falhas acontecem</h2>
+<p>A premissa que muda tudo: em escala, algo está sempre falhando. Um disco, uma instância, um link de rede. O objetivo não é evitar 100% das falhas (impossível), mas <strong>conter o impacto</strong> e se recuperar automaticamente. Resiliência é a diferença entre "um serviço lento" e "o sistema inteiro fora do ar".</p>
+
+<h2>Idempotência: a base do retry seguro</h2>
+<p>Uma operação é <strong>idempotente</strong> quando executá-la várias vezes produz o mesmo efeito de executá-la uma vez. Isso é crucial porque, quando uma requisição falha, você quer poder tentar de novo — mas só pode fazer isso com segurança se o retry não causar dano. Imagine cobrar um cliente: se a resposta se perdeu mas a cobrança aconteceu, um retry cego cobraria duas vezes.</p>
+<p>A solução é a <strong>idempotency key</strong>: o cliente envia um identificador único da operação, e o servidor garante que processa cada chave apenas uma vez:</p>
+<pre><code>POST /cobrancas
+Idempotency-Key: 7f3a-9c21
+
+// servidor:
+if jaProcessada("7f3a-9c21"):
+    return resultadoSalvo("7f3a-9c21")   // nao cobra de novo
+resultado = processarCobranca(...)
+salvar("7f3a-9c21", resultado)
+return resultado</code></pre>
+
+<h2>Retry com backoff e jitter</h2>
+<p>Quando algo falha de forma transitória, retentar faz sentido. Mas retentar imediatamente e em loop pode <strong>piorar</strong> a situação — você martela um serviço já sobrecarregado. Por isso usa-se <strong>backoff exponencial</strong>: cada tentativa espera mais que a anterior (1s, 2s, 4s, 8s). E adiciona-se <strong>jitter</strong> (uma variação aleatória) para evitar que mil clientes retentem no mesmo instante exato, criando uma onda sincronizada.</p>
+<pre><code>espera = min(base * 2^tentativa, max) + random(0, jitter)
+// tentativa 0: ~1s    tentativa 1: ~2s
+// tentativa 2: ~4s    tentativa 3: ~8s</code></pre>
+<p>E sempre com <strong>timeout</strong>: nunca espere indefinidamente por uma resposta. Sem timeout, uma dependência lenta trava suas threads e o problema se propaga. Lembre também que retry só é seguro em operações <a href="apis-rest.html">idempotentes</a>.</p>
+
+<h2>Circuit breaker</h2>
+<p>Se um serviço está claramente fora do ar, continuar tentando (mesmo com backoff) só desperdiça recursos e atrasa respostas. O <strong>circuit breaker</strong> funciona como um disjuntor elétrico: depois de muitas falhas seguidas, ele "abre" e passa a falhar rápido, sem nem tentar a chamada — dando tempo para o serviço se recuperar.</p>
+<pre><code>   sucesso                 muitas falhas
+  +---------+   falhas    +---------+
+  | FECHADO |  --------&gt;  |  ABERTO |  (falha rapido,
+  +---------+             +---------+   nem chama)
+       ^                       |
+       | sucesso               | apos timeout
+       |                       v
+       |  falha          +-------------+
+       +---------------- | MEIO-ABERTO |  (testa 1 chamada)
+                         +-------------+</code></pre>
+<p>Os três estados: <strong>fechado</strong> (normal, deixa passar), <strong>aberto</strong> (falha rápido após o limite de erros), e <strong>meio-aberto</strong> (após um tempo, deixa passar uma chamada de teste — se der certo, fecha; se falhar, reabre).</p>
+
+<div class="table-wrap"><table><thead><tr><th>Estado</th><th>Comportamento</th><th>Transição</th></tr></thead><tbody>
+<tr><td>Fechado</td><td>Chamadas passam normalmente</td><td>Muitas falhas → Aberto</td></tr>
+<tr><td>Aberto</td><td>Falha imediata, não chama</td><td>Após timeout → Meio-aberto</td></tr>
+<tr><td>Meio-aberto</td><td>Testa uma chamada</td><td>Sucesso → Fechado / Falha → Aberto</td></tr>
+</tbody></table></div>
+
+<blockquote>Retry diz "tente de novo, com calma". Circuit breaker diz "pare de tentar, está claramente quebrado". Idempotência é o que torna o primeiro seguro. Os três trabalham juntos.</blockquote>
+
+<h2>Isolamento com bulkhead</h2>
+<p>Por fim, o padrão <strong>bulkhead</strong> (numa frase): assim como um navio é dividido em compartimentos estanques para que um furo não afunde tudo, você isola recursos — pools de conexão ou threads separados por dependência — para que a falha de uma parte não consuma os recursos das outras.</p>
+
+<h2>Conclusão</h2>
+<p>Resiliência é projetar assumindo que tudo vai falhar. Torne operações idempotentes para permitir retries seguros, use backoff exponencial com jitter e timeouts para não agravar a carga, e proteja-se com circuit breakers e bulkheads para conter o estrago. Esse conjunto é o que mantém sistemas distribuídos de pé no mundo real.</p>
+              <div class="post-tags"><span class="tag">Resiliência</span><span class="tag">Idempotência</span><span class="tag">Arquitetura</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

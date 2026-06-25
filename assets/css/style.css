@@ -1573,6 +1573,9 @@ section {
 .post-card-top.cat-testes { background: linear-gradient(135deg, #7c2d12, #f97316); }
 .post-card-top.cat-api { background: linear-gradient(135deg, #155e75, #06b6d4); }
 .post-card-top.cat-leituras { background: linear-gradient(135deg, #831843, #ec4899); }
+.post-card-top.lvl-junior { background: linear-gradient(135deg, #065f46, #10b981); }
+.post-card-top.lvl-pleno { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.post-card-top.lvl-senior { background: linear-gradient(135deg, #581c87, #9333ea); }
 .post-card .post-bg-icon {
   position: absolute;
   right: -10px;

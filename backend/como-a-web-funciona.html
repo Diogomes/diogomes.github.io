@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Como a web funciona: HTTP, request e response - Diogo Gomes</title>
+  <meta content="O que acontece de verdade entre digitar uma URL e a página aparecer — DNS, request, response e o ciclo que sustenta todo back-end." name="description">
+  <meta content="Back-end, Júnior, HTTP, Web, Fundamentos, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Como a web funciona: HTTP, request e response">
+  <meta property="og:description" content="O que acontece de verdade entre digitar uma URL e a página aparecer — DNS, request, response e o ciclo que sustenta todo back-end.">
+  <meta property="og:url" content="https://diogomes.github.io/backend/como-a-web-funciona.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como a web funciona: HTTP, request e response", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/como-a-web-funciona.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O que acontece de verdade entre digitar uma URL e a página aparecer — DNS, request, response e o ciclo que sustenta todo back-end.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Back-end · Júnior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Back-end</a></li>
+            <li>Júnior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-globe"></i> Back-end · Júnior</span>
+              <h1>Como a web funciona: HTTP, request e response</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 24 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Toda vez que você digita um endereço no navegador e aperta Enter, uma sequência fascinante de eventos acontece em milissegundos. Entender esse fluxo é a base de tudo no back-end: APIs, autenticação, cache e escalabilidade são apenas variações desse mesmo modelo. Se você domina <em>request</em> e <em>response</em>, domina o resto.</p>
+
+<h2>O modelo cliente-servidor</h2>
+<p>A web funciona com dois papéis: o <strong>cliente</strong> (seu navegador, um app, um script) faz pedidos, e o <strong>servidor</strong> responde a eles. O cliente nunca "entra" no servidor — ele apenas envia uma mensagem pedindo algo e espera uma resposta. Essa conversa acontece usando o protocolo <strong>HTTP</strong> (HyperText Transfer Protocol).</p>
+<p>Uma boa analogia é pedir comida num restaurante. Você (cliente) faz um pedido ao garçom (a requisição). A cozinha (servidor) processa. O garçom volta com o prato ou com um "acabou esse ingrediente" (a resposta). Você não entra na cozinha: só envia pedidos e recebe respostas.</p>
+
+<h2>O que acontece entre a URL e a página</h2>
+<p>Ao acessar <code>https://exemplo.com/produtos</code>, vários passos acontecem em ordem:</p>
+<pre><code>1. DNS    -&gt; "exemplo.com" vira um IP (ex: 93.184.216.34)
+2. TCP    -&gt; cliente abre uma conexao com o servidor naquele IP
+3. TLS    -&gt; handshake de criptografia (o "s" do https)
+4. HTTP   -&gt; cliente envia a requisicao: GET /produtos
+5. Server -&gt; processa (consulta banco, monta resposta)
+6. HTTP   -&gt; servidor devolve a response: 200 OK + HTML/JSON
+7. Render -&gt; navegador desenha a pagina</code></pre>
+<p>O <strong>DNS</strong> é a "agenda de contatos" da internet: traduz nomes legíveis em endereços IP. O <strong>TCP</strong> estabelece um canal confiável entre cliente e servidor, e o <strong>TLS</strong> o criptografa. Só então a requisição HTTP de fato viaja.</p>
+
+<h2>Anatomia da requisição</h2>
+<p>Uma requisição HTTP tem quatro partes. Em entrevista é comum pedir para descrevê-las:</p>
+<ul>
+<li><strong>Método</strong> (verbo): o que você quer fazer — GET (ler), POST (criar), PUT/PATCH (atualizar), DELETE (remover).</li>
+<li><strong>Caminho</strong> (path): qual recurso — <code>/produtos</code>, <code>/usuarios/42</code>.</li>
+<li><strong>Headers</strong>: metadados — tipo de conteúdo, autenticação, idioma.</li>
+<li><strong>Body</strong>: os dados enviados (em POST/PUT), geralmente em JSON. GET normalmente não tem body.</li>
+</ul>
+<pre><code>POST /produtos HTTP/1.1
+Host: exemplo.com
+Content-Type: application/json
+Authorization: Bearer abc123
+
+{ "nome": "Teclado", "preco": 350 }</code></pre>
+
+<h2>Anatomia da resposta</h2>
+<p>A resposta tem três partes: o <strong>status code</strong>, os <strong>headers</strong> e o <strong>body</strong>. O status resume o que aconteceu, agrupado em famílias: <strong>2xx</strong> sucesso, <strong>3xx</strong> redirecionamento, <strong>4xx</strong> erro do cliente, <strong>5xx</strong> erro do servidor.</p>
+<div class="table-wrap"><table><thead><tr><th>Status</th><th>Significado</th><th>Quando aparece</th></tr></thead><tbody>
+<tr><td>200 OK</td><td>Sucesso</td><td>GET que encontrou o recurso</td></tr>
+<tr><td>201 Created</td><td>Criado</td><td>POST que criou algo</td></tr>
+<tr><td>404 Not Found</td><td>Não encontrado</td><td>Recurso inexistente</td></tr>
+<tr><td>500 Server Error</td><td>Erro interno</td><td>Falha no servidor</td></tr>
+</tbody></table></div>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{ "id": 42, "nome": "Teclado", "preco": 350 }</code></pre>
+
+<h2>Por que HTTP é stateless</h2>
+<p>HTTP é <strong>stateless</strong>: o servidor não lembra de você entre uma requisição e outra. Cada pedido precisa carregar tudo que o servidor precisa para entendê-lo. É como ligar para uma central de atendimento onde cada ligação cai num atendente diferente que não tem seu histórico — você precisa se identificar toda vez.</p>
+<p>Isso parece uma limitação, mas é o que permite escalar: como nenhum servidor guarda "onde você estava", qualquer servidor pode atender qualquer requisição. O estado (quem você é, seu carrinho) é mantido por fora, via cookies, tokens ou banco — assunto de <a href="autenticacao-autorizacao.html">autenticação e autorização</a>.</p>
+
+<blockquote>A web inteira é uma conversa de pedido e resposta sobre um protocolo sem memória. Entender request, response e o porquê do stateless é a fundação de todo o resto do back-end.</blockquote>
+
+<h2>Conclusão</h2>
+<p>Do DNS ao render, cada acesso é uma troca de mensagens entre cliente e servidor sobre HTTP. Saber dissecar uma requisição (método, caminho, headers, body) e uma resposta (status, headers, body), e entender por que HTTP é stateless, é o conhecimento que sustenta <a href="apis-rest.html">APIs REST</a>, sessões e escalabilidade. Domine esse fluxo e você terá o mapa de tudo que vem depois.</p>
+              <div class="post-tags"><span class="tag">HTTP</span><span class="tag">Web</span><span class="tag">Fundamentos</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="autenticacao-autorizacao.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Pleno</span><span class="rel-title">Autenticação vs Autorização: sessions, JWT e OAuth</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

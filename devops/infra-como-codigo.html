@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Infraestrutura como código: Terraform e o fim do clicar no console - Diogo Gomes</title>
+  <meta content="Provisionar servidores com código versionado e reproduzível. O que é IaC, declarativo vs imperativo e por que idempotência importa." name="description">
+  <meta content="DevOps, Pleno, IaC, Terraform, Infra, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Infraestrutura como código: Terraform e o fim do clicar no console">
+  <meta property="og:description" content="Provisionar servidores com código versionado e reproduzível. O que é IaC, declarativo vs imperativo e por que idempotência importa.">
+  <meta property="og:url" content="https://diogomes.github.io/devops/infra-como-codigo.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Infraestrutura como código: Terraform e o fim do clicar no console", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/infra-como-codigo.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Provisionar servidores com código versionado e reproduzível. O que é IaC, declarativo vs imperativo e por que idempotência importa.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>DevOps · Pleno</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">DevOps</a></li>
+            <li>Pleno</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-code-block"></i> DevOps · Pleno</span>
+              <h1>Infraestrutura como código: Terraform e o fim do clicar no console</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 15 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Houve um tempo em que montar infraestrutura significava abrir o console da nuvem e clicar: criar uma máquina aqui, um banco ali, ajustar uma regra de rede acolá. Funciona para uma coisa só. Mas quando você precisa recriar tudo idêntico em outra região, ou descobrir quem mudou o quê três meses atrás, o clique vira pesadelo. Infraestrutura como código (IaC) resolve isso tratando servidores, redes e bancos como código versionado.</p>
+
+<h2>O que é infraestrutura como código</h2>
+<p>IaC é descrever sua infraestrutura em arquivos de texto, versionados no <a href="git-fluxos.html">Git</a> como qualquer outro código. Em vez de clicar para criar um servidor, você escreve a definição dele e uma ferramenta a aplica. A infraestrutura passa a ser revisável, reproduzível e rastreável.</p>
+
+<h2>Declarativo vs imperativo</h2>
+<p>Essa distinção cai bastante em entrevista. Na abordagem <strong>imperativa</strong>, você descreve os <em>passos</em> ("crie esta VM, depois instale isto, depois abra esta porta"). Na <strong>declarativa</strong>, você descreve o <em>resultado desejado</em> ("quero 3 servidores com esta configuração") e a ferramenta descobre como chegar lá. Terraform é declarativo.</p>
+<div class="table-wrap"><table><thead><tr><th>Abordagem</th><th>Você descreve</th><th>Exemplo</th></tr></thead><tbody><tr><td>Imperativo</td><td>O passo a passo</td><td>Scripts bash, Ansible (em parte)</td></tr><tr><td>Declarativo</td><td>O estado final desejado</td><td>Terraform, CloudFormation</td></tr></tbody></table></div>
+
+<h2>O state file</h2>
+<p>O Terraform mantém um <strong>state file</strong>: um registro do que ele já criou no mundo real. É assim que ele compara o que você declarou com o que existe e decide o que mudar. Esse arquivo é crítico — costuma ser guardado em um local remoto e compartilhado (ex. um bucket) para que o time trabalhe sobre a mesma verdade, e protegido porque pode conter dados sensíveis.</p>
+
+<h2>O ciclo plan / apply</h2>
+<p>O fluxo de trabalho do Terraform é desenhado para evitar surpresas. Primeiro você roda <code>plan</code>, que mostra exatamente o que vai mudar, sem mexer em nada. Você revisa, e só então roda <code>apply</code>.</p>
+<pre><code>terraform plan    # mostra: +2 para criar, ~1 alterar, -0 destruir
+terraform apply   # aplica as mudanças após você confirmar</code></pre>
+<blockquote>O <code>plan</code> é o seu cinto de segurança. Ele transforma "vamos torcer para dar certo" em "eu vi exatamente o que vai acontecer antes de acontecer". Nunca aplique em produção sem ler o plan.</blockquote>
+
+<h2>Idempotência</h2>
+<p>Uma propriedade central da IaC declarativa é a <strong>idempotência</strong>: aplicar a mesma configuração várias vezes leva sempre ao mesmo estado. Se a infraestrutura já está como você declarou, o <code>apply</code> não faz nada. Isso é o oposto de um script que, rodado duas vezes, cria recursos duplicados.</p>
+
+<h2>Exemplo em HCL</h2>
+<p>Terraform usa a linguagem HCL. Definir um recurso é direto e legível:</p>
+<pre><code>resource "aws_instance" "web" {
+  ami           = "ami-0abc123"
+  instance_type = "t3.micro"
+  tags = {
+    Name = "servidor-web"
+    Env  = "producao"
+  }
+}</code></pre>
+
+<h2>Por que clicar no console não escala</h2>
+<p>No dia a dia, IaC aparece quando você precisa de ambientes idênticos (dev, staging, produção), recuperar-se de um desastre recriando tudo, ou auditar mudanças. Clicar no console não deixa histórico, não é revisável por um colega num Pull Request e é impossível de reproduzir com fidelidade. Código resolve os três problemas de uma vez — e se conecta naturalmente ao <a href="ci-cd-basico.html">pipeline de CI/CD</a>, que pode aplicar a infraestrutura automaticamente.</p>
+
+<h2>Conclusão</h2>
+<p>Infraestrutura como código traz para o mundo dos servidores as mesmas garantias que o Git trouxe para o software: versionamento, revisão e reprodutibilidade. Entender o modelo declarativo, o papel do state file e o ciclo plan/apply é o que permite gerenciar dezenas de ambientes sem caos — e o que esperam de um DevOps pleno.</p>
+              <div class="post-tags"><span class="tag">IaC</span><span class="tag">Terraform</span><span class="tag">Infra</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

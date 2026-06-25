@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>O event loop: como o JavaScript faz async sem travar - Diogo Gomes</title>
+  <meta content="Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior." name="description">
+  <meta content="Front-end, Pleno, JavaScript, Event loop, Async, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="O event loop: como o JavaScript faz async sem travar">
+  <meta property="og:description" content="Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.">
+  <meta property="og:url" content="https://diogomes.github.io/frontend/event-loop.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O event loop: como o JavaScript faz async sem travar", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/event-loop.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Front-end · Pleno</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Front-end</a></li>
+            <li>Pleno</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-cog"></i> Front-end · Pleno</span>
+              <h1>O event loop: como o JavaScript faz async sem travar</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 17 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>"JavaScript é single-thread" e ao mesmo tempo "JavaScript não trava ao baixar dados". Como as duas coisas são verdade? A resposta é o <strong>event loop</strong>, talvez o conceito que mais separa o júnior do pleno — porque explica de uma vez a ordem de execução, o async e por que sua UI continua respondendo.</p>
+
+<h2>Single-thread, mas não-bloqueante</h2>
+<p>O JS executa uma instrução por vez, numa única thread. Se fosse só isso, baixar um arquivo de 3 segundos congelaria a página inteira. O truque é que o JS <em>não faz</em> esse trabalho pesado sozinho: ele delega para o ambiente (o navegador) e segue em frente. Quando o trabalho termina, o resultado volta para a fila.</p>
+
+<h2>A call stack</h2>
+<p>A <strong>call stack</strong> é a pilha de funções em execução. Chamou uma função, empilhou; ela retornou, desempilhou. É aqui que o "single-thread" vive: só existe uma pilha, e ela processa uma coisa de cada vez.</p>
+
+<h2>Web APIs: o trabalho terceirizado</h2>
+<p>Quando você chama <code>setTimeout</code>, <code>fetch</code> ou escuta um clique, quem cuida disso são as <strong>Web APIs</strong> do navegador — fora da thread do JS. Pense num restaurante: o garçom (a thread) anota o pedido e entrega na cozinha (Web API) em vez de ficar parado cozinhando. Ele volta a atender outras mesas.</p>
+
+<h2>Duas filas: macrotasks e microtasks</h2>
+<p>Quando a Web API termina, o callback não roda na hora — ele entra numa fila. E existem duas:</p>
+<ul>
+<li><strong>Task queue (macrotasks):</strong> <code>setTimeout</code>, eventos de I/O, etc.</li>
+<li><strong>Microtask queue:</strong> <code>.then</code> de Promises, <code>queueMicrotask</code>.</li>
+</ul>
+<p>A regra crucial: <strong>as microtasks têm prioridade</strong>. Após cada tarefa, o event loop esvazia <em>toda</em> a fila de microtasks antes de pegar a próxima macrotask.</p>
+
+<h2>O exemplo clássico de ordem</h2>
+<p>Esse trecho é praticamente um clássico de entrevista — saber prever a saída prova que você entende o loop.</p>
+
+<pre><code>console.log('1');
+setTimeout(() =&gt; console.log('2'), 0);
+Promise.resolve().then(() =&gt; console.log('3'));
+console.log('4');
+
+// Saída: 1, 4, 3, 2</code></pre>
+
+<p>Por quê? <code>1</code> e <code>4</code> são síncronos (rodam direto na stack). O <code>setTimeout</code> vira macrotask; o <code>.then</code> vira microtask. Quando a stack esvazia, o loop roda <em>todas</em> as microtasks (<code>3</code>) antes de tocar na macrotask (<code>2</code>).</p>
+
+<h2>O loop, em diagrama</h2>
+<pre><code>   ┌──────────────┐
+   │  Call Stack  │◀── roda código síncrono
+   └──────┬───────┘
+          │ delega
+          ▼
+   ┌──────────────┐
+   │   Web APIs   │ (timer, fetch...)
+   └──────┬───────┘
+          │ pronto → enfileira
+   ┌──────▼────────────────────┐
+   │ Microtasks (.then)  ◀ alta prioridade
+   │ Macrotasks (setTimeout)    │
+   └───────────────────────────┘
+   Event Loop: stack vazia? puxa da fila</code></pre>
+
+<div class="table-wrap"><table><thead><tr><th></th><th>Microtask</th><th>Macrotask</th></tr></thead><tbody><tr><td>Exemplos</td><td>Promise.then</td><td>setTimeout, eventos</td></tr><tr><td>Prioridade</td><td>Alta (esvazia tudo)</td><td>Uma por ciclo</td></tr></tbody></table></div>
+
+<blockquote>O event loop não acelera nada — ele apenas garante que a thread nunca fique parada esperando, mantendo a UI viva enquanto o trabalho pesado acontece em paralelo.</blockquote>
+
+<p>No dia a dia isso aparece quando você precisa entender por que um <code>await</code> "espera" sem travar a tela, ou por que um loop pesado e síncrono <em>realmente</em> congela tudo — ele nunca solta a stack para o loop respirar.</p>
+
+<h2>Conclusão</h2>
+<p>A stack roda o código síncrono, as Web APIs cuidam do assíncrono, e o event loop reabastece a stack das filas — microtasks primeiro. Entender essa coreografia é o que permite escrever código async sem surpresas. Quando o async já é trivial, o próximo desafio é gerenciar o <a href="estado-componentes.html">estado dos componentes</a>.</p>
+              <div class="post-tags"><span class="tag">JavaScript</span><span class="tag">Event loop</span><span class="tag">Async</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">CSS sem medo: box model, flexbox e grid</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Back-end — Diogo Gomes</title>
+    <link>https://diogomes.github.io/backend/index.html</link>
+    <description>Trilha de back-end por nível profissional: o que entender como júnior, pleno e sênior — fundamentos da web, APIs, banco de dados, escalabilidade e os temas que caem em entrevista e no dia a dia.</description>
+    <language>pt-BR</language>
+    <item>
+      <title>Como a web funciona: HTTP, request e response</title>
+      <link>https://diogomes.github.io/backend/como-a-web-funciona.html</link>
+      <guid>https://diogomes.github.io/backend/como-a-web-funciona.html</guid>
+      <category>Júnior</category>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O que acontece de verdade entre digitar uma URL e a página aparecer — DNS, request, response e o ciclo que sustenta todo back-end.</description>
+    </item>
+    <item>
+      <title>APIs REST: o que torna uma API RESTful</title>
+      <link>https://diogomes.github.io/backend/apis-rest.html</link>
+      <guid>https://diogomes.github.io/backend/apis-rest.html</guid>
+      <category>Júnior</category>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Recursos, verbos, status codes e statelessness — o vocabulário de API que todo back-end usa e que toda entrevista cobra.</description>
+    </item>
+    <item>
+      <title>SQL essencial: CRUD, JOIN e transações</title>
+      <link>https://diogomes.github.io/backend/sql-essencial.html</link>
+      <guid>https://diogomes.github.io/backend/sql-essencial.html</guid>
+      <category>Júnior</category>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor).</description>
+    </item>
+    <item>
+      <title>Autenticação vs Autorização: sessions, JWT e OAuth</title>
+      <link>https://diogomes.github.io/backend/autenticacao-autorizacao.html</link>
+      <guid>https://diogomes.github.io/backend/autenticacao-autorizacao.html</guid>
+      <category>Pleno</category>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Quem é você (autenticação) e o que você pode fazer (autorização). Sessions, tokens JWT e OAuth explicados sem mistério.</description>
+    </item>
+    <item>
+      <title>O problema N+1: como o ORM te trai</title>
+      <link>https://diogomes.github.io/backend/problema-n-mais-1.html</link>
+      <guid>https://diogomes.github.io/backend/problema-n-mais-1.html</guid>
+      <category>Pleno</category>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A consulta escondida que multiplica o acesso ao banco e derruba a performance — como identificar e resolver com eager loading.</description>
+    </item>
+    <item>
+      <title>Cache no back-end: quando usar e como invalidar</title>
+      <link>https://diogomes.github.io/backend/cache-backend.html</link>
+      <guid>https://diogomes.github.io/backend/cache-backend.html</guid>
+      <category>Pleno</category>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Cache acelera tudo — até virar fonte de bug. Cache-aside, TTL e por que invalidar cache é um dos problemas difíceis da computação.</description>
+    </item>
+    <item>
+      <title>Escalabilidade: vertical, horizontal e load balancing</title>
+      <link>https://diogomes.github.io/backend/escalabilidade.html</link>
+      <guid>https://diogomes.github.io/backend/escalabilidade.html</guid>
+      <category>Sênior</category>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Crescer para cima ou para os lados? Stateless, load balancer e os limites de cada estratégia quando o tráfego explode.</description>
+    </item>
+    <item>
+      <title>Teorema CAP e consistência eventual</title>
+      <link>https://diogomes.github.io/backend/teorema-cap.html</link>
+      <guid>https://diogomes.github.io/backend/teorema-cap.html</guid>
+      <category>Sênior</category>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos.</description>
+    </item>
+    <item>
+      <title>Resiliência: idempotência, retries e circuit breaker</title>
+      <link>https://diogomes.github.io/backend/resiliencia.html</link>
+      <guid>https://diogomes.github.io/backend/resiliencia.html</guid>
+      <category>Sênior</category>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Falhas vão acontecer. Como projetar um back-end que sobrevive a elas: idempotência, retry com backoff e o disjuntor que evita o efeito dominó.</description>
+    </item>
+  </channel>
+</rss>

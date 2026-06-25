@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Kubernetes sem pânico: pods, deployments e autoscaling - Diogo Gomes</title>
+  <meta content="O orquestrador que virou padrão. Pod, deployment, service e como o Kubernetes mantém seu app vivo e escalando sozinho." name="description">
+  <meta content="DevOps, Sênior, Kubernetes, Orquestração, Sênior, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Kubernetes sem pânico: pods, deployments e autoscaling">
+  <meta property="og:description" content="O orquestrador que virou padrão. Pod, deployment, service e como o Kubernetes mantém seu app vivo e escalando sozinho.">
+  <meta property="og:url" content="https://diogomes.github.io/devops/kubernetes.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Kubernetes sem pânico: pods, deployments e autoscaling", "datePublished": "2026-06-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/kubernetes.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O orquestrador que virou padrão. Pod, deployment, service e como o Kubernetes mantém seu app vivo e escalando sozinho.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>DevOps · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">DevOps</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-network-chart"></i> DevOps · Sênior</span>
+              <h1>Kubernetes sem pânico: pods, deployments e autoscaling</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Um <a href="containers-docker.html">container</a> sozinho é fácil de rodar. O problema aparece quando você tem centenas deles, espalhados por dezenas de máquinas, que precisam se recuperar de falhas, escalar com a demanda e ser atualizados sem derrubar o serviço. Kubernetes é o orquestrador que cuida disso. Parece intimidante, mas o conceito central é simples: você declara o estado desejado e ele trabalha para manter a realidade igual.</p>
+
+<h2>Por que orquestração</h2>
+<p>Rodar containers manualmente em produção não escala: máquinas caem, o tráfego varia, deploys precisam acontecer sem downtime. O orquestrador automatiza o agendamento dos containers nas máquinas, reinicia o que morre, distribui carga e gerencia atualizações. Você cuida do "o quê"; ele cuida do "como" e do "onde".</p>
+
+<h2>Reconciliação do estado desejado</h2>
+<p>Este é o conceito que organiza tudo o resto e cai sempre em entrevista. Você declara, num arquivo, o estado que quer ("3 réplicas desta aplicação"). O Kubernetes roda um laço contínuo comparando o estado real com o desejado e agindo para igualá-los. Se um pod morre, ele cria outro. Se você pede 5 réplicas, ele sobe mais 2.</p>
+<blockquote>Kubernetes não executa comandos, ele persegue um objetivo. Você não diz "crie um container"; você diz "quero que sempre existam três" — e ele cuida de manter isso verdade, aconteça o que acontecer.</blockquote>
+
+<h2>Pod: a menor unidade</h2>
+<p>O <strong>pod</strong> é a menor unidade que o Kubernetes gerencia: um ou mais containers que vivem juntos, compartilham rede e são tratados como uma coisa só. Na prática, você quase nunca cria pods diretamente — eles são efêmeros e descartáveis.</p>
+
+<h2>Deployment e Service</h2>
+<p>O <strong>Deployment</strong> gerencia um conjunto de pods idênticos: garante o número de réplicas e faz <em>rolling update</em> (troca os pods aos poucos numa atualização, sem derrubar o serviço). O <strong>Service</strong> resolve o problema de que pods nascem e morrem com IPs diferentes: ele dá um endereço de rede estável e distribui o tráfego entre os pods vivos. O <strong>namespace</strong> separa recursos por time ou ambiente dentro do mesmo cluster.</p>
+<div class="table-wrap"><table><thead><tr><th>Recurso</th><th>Responsabilidade</th><th>Tempo de vida</th></tr></thead><tbody><tr><td>Pod</td><td>Roda os containers</td><td>Efêmero</td></tr><tr><td>Deployment</td><td>Mantém N réplicas e faz updates</td><td>Duradouro</td></tr><tr><td>Service</td><td>Rede estável + balanceamento</td><td>Duradouro</td></tr></tbody></table></div>
+
+<h2>Diagrama da arquitetura</h2>
+<pre><code>            Service (IP estável)
+                  |
+        +---------+---------+
+        |         |         |
+      Pod1      Pod2      Pod3     ← Deployment garante 3 réplicas
+        |         |         |
+     [container][container][container]</code></pre>
+<p>O usuário fala com o Service; o Service distribui entre os pods; o Deployment garante que sempre haja três.</p>
+
+<h2>Autoscaling com HPA</h2>
+<p>O <strong>Horizontal Pod Autoscaler</strong> ajusta automaticamente o número de réplicas com base em métricas como uso de CPU. Se o tráfego sobe, ele cria mais pods; quando baixa, remove. É aqui que <a href="observabilidade.html">observabilidade</a> e orquestração se encontram: boas métricas alimentam boas decisões de escala.</p>
+<pre><code>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+spec:
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource: { name: cpu, target: { averageUtilization: 70 } }</code></pre>
+
+<h2>Conclusão</h2>
+<p>Kubernetes deixa de ser assustador quando você entende a ideia central de reconciliação: declarar o estado desejado e deixar o sistema persegui-lo. Pods rodam, Deployments garantem réplicas e updates suaves, Services dão rede estável e o HPA escala sozinho. Esse modelo declarativo, somado à <a href="infra-como-codigo.html">infraestrutura como código</a>, é o que sustenta sistemas grandes e resilientes — e o que se espera de um DevOps sênior.</p>
+              <div class="post-tags"><span class="tag">Kubernetes</span><span class="tag">Orquestração</span><span class="tag">Sênior</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
