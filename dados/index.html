@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dados &amp; SQL — Diogo Gomes | trilha por nível (júnior, pleno, sênior)</title>
+  <meta content="Trilha de Dados e SQL por nível profissional: modelagem relacional, SQL, normalização, índices, data warehouse, ETL, NoSQL, sharding e streaming — o que cai em entrevista e no dia a dia." name="description">
+  <meta content="Dados, júnior, pleno, sênior, entrevista, carreira, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dados &amp; SQL — Diogo Gomes | trilha por nível (júnior, pleno, sênior)">
+  <meta property="og:description" content="Trilha de Dados e SQL por nível profissional: modelagem relacional, SQL, normalização, índices, data warehouse, ETL, NoSQL, sharding e streaming — o que cai em entrevista e no dia a dia.">
+  <meta property="og:url" content="https://diogomes.github.io/dados/index.html">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og-image.png">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="../mobile/index.html"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section id="blog" class="blog">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Dados</h2>
+          <p class="blog-intro">O que um profissional de dados precisa dominar em cada fase da carreira. Da modelagem relacional ao streaming de dados em tempo real — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
+        </div>
+
+        <div class="blog-search" data-aos="fade-up">
+          <i class="bx bx-search"></i>
+          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha">
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-12 d-flex justify-content-center">
+            <ul id="blog-filters" class="blog-filters">
+              <li data-filter="*" class="filter-active">Todos</li>
+              <li data-filter=".lvl-junior">Júnior</li>
+              <li data-filter=".lvl-pleno">Pleno</li>
+              <li data-filter=".lvl-senior">Sênior</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="blog-tools" data-aos="fade-up">
+          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> Assinar via RSS</a>
+        </div>
+
+        <p id="blog-no-results" class="blog-no-results">Nenhum artigo encontrado para sua busca.</p>
+
+        <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6 blog-item lvl-junior">
+            <article class="post-card">
+              <div class="post-card-top lvl-junior">
+                <span class="post-cat"><i class="bx bx-grid-alt"></i> Júnior</span>
+                <i class="bx bx-grid-alt post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="modelagem-relacional.html">Modelagem relacional: tabelas, chaves e relacionamentos</a></h3>
+                <p>Como representar o mundo em tabelas: chave primária, chave estrangeira e os relacionamentos 1:1, 1:N e N:N que estruturam qualquer banco.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 24 Jun, 2026</span>
+                <a href="modelagem-relacional.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-junior">
+            <article class="post-card">
+              <div class="post-card-top lvl-junior">
+                <span class="post-cat"><i class="bx bx-spreadsheet"></i> Júnior</span>
+                <i class="bx bx-spreadsheet post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="consultas-sql.html">SQL além do básico: agregações, GROUP BY e subqueries</a></h3>
+                <p>Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 22 Jun, 2026</span>
+                <a href="consultas-sql.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-junior">
+            <article class="post-card">
+              <div class="post-card-top lvl-junior">
+                <span class="post-cat"><i class="bx bx-sitemap"></i> Júnior</span>
+                <i class="bx bx-sitemap post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="normalizacao.html">Normalização: 1FN, 2FN e 3FN sem decorar</a></h3>
+                <p>Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 20 Jun, 2026</span>
+                <a href="normalizacao.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
+            <article class="post-card">
+              <div class="post-card-top lvl-pleno">
+                <span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> Pleno</span>
+                <i class="bx bx-bar-chart-alt-2 post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="indices-performance.html">Índices e performance: por que sua query está lenta</a></h3>
+                <p>Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 17 Jun, 2026</span>
+                <a href="indices-performance.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
+            <article class="post-card">
+              <div class="post-card-top lvl-pleno">
+                <span class="post-cat"><i class="bx bx-cube"></i> Pleno</span>
+                <i class="bx bx-cube post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="modelagem-dimensional.html">Modelagem dimensional: fato, dimensão e o data warehouse</a></h3>
+                <p>Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 15 Jun, 2026</span>
+                <a href="modelagem-dimensional.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
+            <article class="post-card">
+              <div class="post-card-top lvl-pleno">
+                <span class="post-cat"><i class="bx bx-transfer-alt"></i> Pleno</span>
+                <i class="bx bx-transfer-alt post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="etl-pipelines.html">ETL e pipelines de dados: do raw ao analítico</a></h3>
+                <p>Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 13 Jun, 2026</span>
+                <a href="etl-pipelines.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-senior">
+            <article class="post-card">
+              <div class="post-card-top lvl-senior">
+                <span class="post-cat"><i class="bx bx-data"></i> Sênior</span>
+                <i class="bx bx-data post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="nosql.html">NoSQL: documento, chave-valor, coluna e grafo — quando usar cada um</a></h3>
+                <p>Os quatro tipos de banco NoSQL, o que cada um resolve, e por que &#x27;NoSQL é mais rápido&#x27; é a resposta errada numa entrevista.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 10 Jun, 2026</span>
+                <a href="nosql.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-senior">
+            <article class="post-card">
+              <div class="post-card-top lvl-senior">
+                <span class="post-cat"><i class="bx bx-network-chart"></i> Sênior</span>
+                <i class="bx bx-network-chart post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="particionamento-sharding.html">Particionamento e sharding: escalar o banco de dados</a></h3>
+                <p>Quando uma máquina não basta: partição vertical e horizontal, sharding, chave de partição e o custo das queries entre shards.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 08 Jun, 2026</span>
+                <a href="particionamento-sharding.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6 blog-item lvl-senior">
+            <article class="post-card">
+              <div class="post-card-top lvl-senior">
+                <span class="post-cat"><i class="bx bx-broadcast"></i> Sênior</span>
+                <i class="bx bx-broadcast post-bg-icon"></i>
+              </div>
+              <div class="post-card-body">
+                <h3><a href="streaming-dados.html">Dados em streaming: batch vs tempo real (Kafka &amp; cia)</a></h3>
+                <p>Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.</p>
+              </div>
+              <div class="post-card-foot">
+                <span><i class="bi bi-clock"></i> 06 Jun, 2026</span>
+                <a href="streaming-dados.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+        <div class="self-assess" data-self-assess data-track="dados" data-aos="fade-up">
+          <h3 class="self-assess-title"><i class="bx bx-list-check"></i> <span data-i18n="assess.title">Autoavaliação: onde você está?</span></h3>
+          <p class="self-assess-intro" data-i18n="assess.intro">Marque o que você já domina. Seu progresso fica salvo só neste navegador.</p>
+          <div class="self-assess-head">
+            <div class="self-assess-bar"><span></span></div>
+            <span class="self-assess-pct">0/0 · 0%</span>
+            <button type="button" class="self-assess-reset"><i class="bx bx-reset"></i> <span data-i18n="assess.reset">Limpar</span></button>
+          </div>
+          <div class="self-assess-grid"></div>
+        </div>
+
+      </div>
+    </section></main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -69,7 +69,8 @@
       'nav.home': 'Home', 'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills',
       'nav.portfolio': 'Portfolio', 'nav.contact': 'Contact', 'nav.projects': 'Projects',
       'nav.game': 'Game', 'nav.blog': 'Blog',
-      'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps', 'nav.tracks': 'Tracks',
+      'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps',
+      'nav.dados': 'Data', 'nav.mobile': 'Mobile', 'nav.tracks': 'Tracks',
       'hero.iam': "I'm",
       'about.h2': 'About',
       'about.intro': 'I like technology and how it can help us solve problems.',
@@ -87,6 +88,9 @@
       'portfolio.intro': "A selection of projects, games and tutorials I've produced. Click play to watch each item's video.",
       'tracks.h2': 'Study tracks',
       'tracks.intro': 'Blogs by field and seniority level — what to understand at each stage of your career, for technical interviews and day-to-day work.',
+      'assess.title': 'Self-assessment: where are you?',
+      'assess.intro': 'Check what you already master. Your progress is saved in this browser only.',
+      'assess.reset': 'Reset',
       'contact.h2': 'Contact', 'contact.location': 'Location:', 'contact.email': 'Email:', 'contact.call': 'Call:',
       'footer.credits': 'Designed by'
     };
@@ -123,6 +127,101 @@
       apply(lang); setLabel();
     });
     document.body.appendChild(btn);
+  })();
+
+  /**
+   * Autoavaliação por nível (checklist com progresso salvo no navegador)
+   * Renderiza em qualquer página com <div data-self-assess data-track="...">.
+   */
+  (function () {
+    var host = document.querySelector('[data-self-assess]');
+    if (!host) return;
+    var track = host.getAttribute('data-track');
+    var LEVELS = [['junior', 'Júnior'], ['pleno', 'Pleno'], ['senior', 'Sênior']];
+    var DATA = {
+      backend: {
+        junior: ['Explicar o ciclo request/response do HTTP', 'Diferenciar GET/POST/PUT/DELETE e status codes', 'Modelar tabelas e escrever JOINs em SQL', 'Entender o que é uma API REST', 'Saber o que é uma transação (ACID)'],
+        pleno: ['Diferenciar autenticação de autorização (JWT/OAuth)', 'Identificar e resolver o problema N+1', 'Aplicar cache (cache-aside) e pensar na invalidação', 'Tratar erros, logs e configuração por ambiente', 'Escrever testes de unidade e integração'],
+        senior: ['Escalar horizontalmente serviços stateless', 'Explicar o teorema CAP e consistência eventual', 'Projetar idempotência, retries e circuit breaker', 'Avaliar monolito vs microserviços', 'Pensar em observabilidade e SLOs']
+      },
+      frontend: {
+        junior: ['Escrever HTML semântico e acessível', 'Dominar box model, flexbox e grid', 'Entender tipos, escopo e closures em JS', 'Manipular o DOM e eventos', 'Diferenciar == de ==='],
+        pleno: ['Explicar o event loop (macro/microtasks)', 'Gerenciar estado e fluxo de dados unidirecional', 'Aplicar "lifting state up" e estado derivado', 'Entender reflow vs repaint', 'Otimizar a renderização de listas'],
+        senior: ['Estruturar arquitetura de componentes e design system', 'Otimizar Core Web Vitals (LCP/CLS/INP)', 'Aplicar code splitting e lazy loading', 'Mitigar XSS e CSRF e entender CORS', 'Avaliar trade-offs de monorepo']
+      },
+      devops: {
+        junior: ['Navegar no terminal Linux (permissões, processos, pipes)', 'Usar Git: branches, merge/rebase, resolver conflitos', 'Entender CI vs CD e um pipeline básico', 'Trabalhar com variáveis de ambiente', 'Ler e interpretar logs de build'],
+        pleno: ['Criar imagens Docker e entender camadas', 'Provisionar com infraestrutura como código (Terraform)', 'Distinguir os 3 pilares de observabilidade', 'Configurar pipelines com estágios e artefatos', 'Diferenciar container de VM'],
+        senior: ['Operar Kubernetes (pods, deployments, services)', 'Projetar alta disponibilidade (multi-AZ)', 'Aplicar least privilege e gestão de segredos', 'Levar segurança para o pipeline (shift-left)', 'Equilibrar custo e confiabilidade']
+      },
+      dados: {
+        junior: ['Modelar tabelas, chaves e relacionamentos', 'Escrever agregações, GROUP BY e subqueries', 'Aplicar normalização (1FN/2FN/3FN)', 'Entender chave primária e estrangeira', 'Saber quando desnormalizar'],
+        pleno: ['Usar índices e ler um plano de execução', 'Modelar fato/dimensão (star schema)', 'Construir pipelines ETL/ELT idempotentes', 'Diferenciar OLTP de OLAP', 'Garantir qualidade dos dados'],
+        senior: ['Escolher o tipo certo de NoSQL', 'Aplicar particionamento e sharding', 'Projetar pipelines de streaming (Kafka)', 'Entender semânticas de entrega (exactly-once)', 'Escolher chave de partição evitando hotspots']
+      },
+      mobile: {
+        junior: ['Entender o ciclo de vida do app e da tela', 'Implementar navegação (stack, tabs, deep links)', 'Fazer layout responsivo (dp, safe areas)', 'Salvar e restaurar estado de tela', 'Lidar com o botão voltar'],
+        pleno: ['Escolher onde guardar estado e dados locais', 'Implementar offline-first e sincronização', 'Resolver conflitos de sincronização', 'Otimizar performance (60fps, listas)', 'Tratar bateria e rede como recursos finitos'],
+        senior: ['Aplicar arquitetura testável (MVVM/MVI)', 'Implementar push notifications ponta a ponta', 'Publicar nas lojas (assinatura, review)', 'Versionar sem quebrar quem já instalou', 'Fazer rollout gradual']
+      }
+    };
+    var data = DATA[track];
+    if (!data) return;
+
+    var KEY = 'dg-assess-' + track;
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+
+    var grid = host.querySelector('.self-assess-grid');
+    var total = 0;
+    LEVELS.forEach(function (lv) {
+      var key = lv[0], items = data[key] || [];
+      var col = document.createElement('div');
+      col.className = 'self-assess-col lvl-' + key;
+      var h = document.createElement('h4');
+      h.textContent = lv[1];
+      col.appendChild(h);
+      items.forEach(function (text, i) {
+        total++;
+        var id = track + '-' + key + '-' + i;
+        var lab = document.createElement('label');
+        lab.className = 'self-assess-item';
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.id = id;
+        cb.checked = !!saved[id];
+        cb.addEventListener('change', function () {
+          if (cb.checked) saved[id] = 1; else delete saved[id];
+          try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+          update();
+        });
+        var span = document.createElement('span');
+        span.textContent = text;
+        lab.appendChild(cb);
+        lab.appendChild(span);
+        col.appendChild(lab);
+      });
+      grid.appendChild(col);
+    });
+
+    var barFill = host.querySelector('.self-assess-bar > span');
+    var pctLabel = host.querySelector('.self-assess-pct');
+    function update() {
+      var done = Object.keys(saved).filter(function (k) { return saved[k]; }).length;
+      var pct = total ? Math.round((done / total) * 100) : 0;
+      if (barFill) barFill.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = done + '/' + total + ' · ' + pct + '%';
+    }
+    var resetBtn = host.querySelector('.self-assess-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        saved = {};
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        host.querySelectorAll('.self-assess-item input').forEach(function (c) { c.checked = false; });
+        update();
+      });
+    }
+    update();
   })();
 
   /**

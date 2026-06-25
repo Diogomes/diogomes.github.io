@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Publicação nas lojas: build, assinatura, review e versionamento - Diogo Gomes</title>
+  <meta content="O caminho até a loja: build de release, assinatura de código, processo de review e como versionar para não quebrar quem já instalou." name="description">
+  <meta content="Mobile, Sênior, Publicação, App Store, Mobile, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Publicação nas lojas: build, assinatura, review e versionamento">
+  <meta property="og:description" content="O caminho até a loja: build de release, assinatura de código, processo de review e como versionar para não quebrar quem já instalou.">
+  <meta property="og:url" content="https://diogomes.github.io/mobile/publicacao-lojas.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Publicação nas lojas: build, assinatura, review e versionamento", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/publicacao-lojas.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O caminho até a loja: build de release, assinatura de código, processo de review e como versionar para não quebrar quem já instalou.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="../dados/index.html"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Mobile · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Mobile</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-cloud-upload"></i> Mobile · Sênior</span>
+              <h1>Publicação nas lojas: build, assinatura, review e versionamento</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Escrever o app é metade do trabalho; colocá-lo na mão dos usuários é a outra. Publicar nas lojas envolve gerar um build de release assinado, passar pelo review da Apple ou do Google, versionar corretamente e atualizar sem quebrar quem já tem o app instalado. Dominar esse pipeline de release é responsabilidade típica de um sênior.</p>
+
+<h2>Build de debug vs release</h2>
+<p>O build que você roda no dia a dia (debug) é diferente do que vai para a loja (release). O debug prioriza velocidade de desenvolvimento e diagnóstico; o release prioriza tamanho, performance e segurança.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspecto</th><th>Debug</th><th>Release</th></tr></thead><tbody>
+<tr><td>Otimização de código</td><td>Mínima (compila rápido)</td><td>Máxima (mais rápido, menor)</td></tr>
+<tr><td>Ofuscação/minificação</td><td>Desligada</td><td>Ligada (ex.: R8/ProGuard)</td></tr>
+<tr><td>Logs e debug</td><td>Habilitados</td><td>Removidos/desligados</td></tr>
+<tr><td>Assinatura</td><td>Chave de debug automática</td><td>Certificado/keystore de produção</td></tr>
+<tr><td>Destino</td><td>Seu aparelho/emulador</td><td>App Store / Play Store</td></tr>
+</tbody></table></div>
+
+<h2>Assinatura de código: o que e por quê</h2>
+<p>Todo app instalado é <strong>assinado</strong> criptograficamente. A assinatura prova que o pacote veio de você e não foi adulterado no caminho. No Android isso é uma <strong>keystore</strong> (sua chave privada); no iOS, <strong>certificados</strong> e <strong>provisioning profiles</strong> emitidos pela Apple.</p>
+<p>A analogia: a assinatura é o lacre de segurança de um remédio. O SO só instala se o lacre bater, e só aceita uma atualização se for assinada pela <em>mesma</em> chave da versão anterior — caso contrário, recusa.</p>
+<blockquote>Perder a chave de assinatura de produção é catastrófico: sem ela você não consegue publicar atualizações do mesmo app, e usuários ficam presos na versão antiga. Guarde-a como guarda um cofre — backup seguro e acesso restrito.</blockquote>
+
+<h2>O processo de review</h2>
+<p>Você não publica direto: envia o build e ele entra em <strong>review</strong>. A Apple faz revisão majoritariamente manual e mais rigorosa (diretrizes de conteúdo, privacidade, uso de APIs); a Google combina checagens automáticas com revisão, geralmente mais rápida. Motivos comuns de rejeição: pedir permissões sem justificativa, crashes, política de privacidade ausente, ou tentar burlar pagamentos da plataforma. Planeje prazo de review no cronograma de lançamento.</p>
+
+<h2>Versionamento: nome vs número de build</h2>
+<p>Há dois números e eles servem a públicos diferentes:</p>
+<ul>
+  <li><strong>Version name / marketing version</strong> (ex.: <code>2.3.0</code>): o que o usuário vê. Semântico, legível.</li>
+  <li><strong>Build number / version code</strong> (ex.: <code>147</code>): um inteiro que <em>sempre cresce</em>, usado pela loja para saber qual é mais novo.</li>
+</ul>
+<pre><code>versionName "2.3.0"   // o usuario ve
+versionCode 147       // a loja compara; nunca repita nem diminua</code></pre>
+<p>É comum em entrevista pedir a diferença entre os dois — a chave é: o build number é a identidade técnica monotônica; o version name é a comunicação humana.</p>
+
+<h2>Atualizar sem quebrar quem já tem o app</h2>
+<p>Usuários atualizam em ritmos diferentes; por dias ou semanas, versões antigas e novas coexistem. Cuidados essenciais:</p>
+<ul>
+  <li><strong>Compatibilidade de API</strong>: o backend precisa atender versões antigas e novas ao mesmo tempo; evite quebrar contratos.</li>
+  <li><strong>Migração de dados local</strong>: se o esquema do banco mudou, migre os dados de quem atualizou sem perder nada.</li>
+  <li><strong>Forçar atualização com parcimônia</strong>: só bloqueie versões realmente incompatíveis.</li>
+</ul>
+
+<h2>Rollout gradual</h2>
+<p>Em vez de liberar para 100% de uma vez, as lojas permitem <strong>rollout em fases</strong> (ex.: 5% → 20% → 50% → 100%). Assim, se a nova versão tiver um crash grave, você o vê nas métricas e pausa antes de atingir toda a base. É a rede de segurança do lançamento — combine com monitoramento de crashes para reagir a tempo.</p>
+
+<h2>Conclusão</h2>
+<p>Publicar é um pipeline: gerar release otimizado, assinar com a chave de produção (e protegê-la), passar pelo review, versionar com nome legível e build number crescente, e atualizar respeitando quem está em versões antigas — tudo idealmente com rollout gradual. Quem domina esse caminho entrega valor ao usuário com segurança, sem transformar um lançamento em incêndio.</p>
+              <div class="post-tags"><span class="tag">Publicação</span><span class="tag">App Store</span><span class="tag">Mobile</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Estado e dados no mobile: do local ao gerenciamento global - Diogo Gomes</title>
+  <meta content="Estado de tela vs estado do app, cache local, banco no dispositivo e quando partir para uma solução de estado global." name="description">
+  <meta content="Mobile, Pleno, Estado, Dados, Mobile, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Estado e dados no mobile: do local ao gerenciamento global">
+  <meta property="og:description" content="Estado de tela vs estado do app, cache local, banco no dispositivo e quando partir para uma solução de estado global.">
+  <meta property="og:url" content="https://diogomes.github.io/mobile/estado-dados-mobile.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Estado e dados no mobile: do local ao gerenciamento global", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/estado-dados-mobile.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Estado de tela vs estado do app, cache local, banco no dispositivo e quando partir para uma solução de estado global.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="../dados/index.html"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Mobile · Pleno</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Mobile</a></li>
+            <li>Pleno</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-layer"></i> Mobile · Pleno</span>
+              <h1>Estado e dados no mobile: do local ao gerenciamento global</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 17 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Conforme um app cresce, a pergunta "onde guardo este dado?" aparece o tempo todo. A resposta depende de quanto tempo o dado precisa viver, quem mais o usa e qual o seu formato. Saber separar estado efêmero de tela do estado do app, e escolher entre key-value, banco local e store global, é o que distingue um pleno na hora de modelar dados.</p>
+
+<h2>Estado efêmero de tela vs estado do app</h2>
+<p>Nem todo dado tem a mesma importância. O <strong>estado efêmero</strong> pertence a uma tela e morre com ela: se um campo está expandido, qual aba está selecionada, o texto sendo digitado. Já o <strong>estado do app</strong> é compartilhado e duradouro: o usuário logado, o tema escolhido, o carrinho de compras.</p>
+<p>A analogia: estado de tela é o rascunho num post-it que você joga fora; estado do app é o caderno que vários setores consultam. Tratar tudo como estado global infla o app desnecessariamente; tratar tudo como local força você a "passar o dado de mão em mão" entre telas.</p>
+
+<h2>Armazenamento local: key-value</h2>
+<p>Para pedaços pequenos e simples de configuração, todas as plataformas oferecem um armazenamento chave-valor: <code>UserDefaults</code> (iOS), <code>SharedPreferences</code> (Android), <code>AsyncStorage</code> (React Native). É como uma gavetinha de bilhetes: ótimo para "tema = escuro" ou "já viu o onboarding = sim", péssimo para listas grandes ou dados relacionados.</p>
+<pre><code>// key-value: pequeno e simples
+prefs.set("tema", "escuro")
+prefs.set("onboardingVisto", true)
+
+let tema = prefs.get("tema")</code></pre>
+
+<h2>Armazenamento local: banco</h2>
+<p>Quando os dados são muitos, estruturados e relacionados (uma lista de pedidos, mensagens, produtos em cache), você precisa de um banco local: <strong>SQLite</strong> na base, com camadas como <strong>Room</strong> (Android), <strong>Core Data</strong> (iOS) ou bibliotecas multiplataforma. Bancos permitem consultas, filtros e relações — coisa que a gaveta de bilhetes não faz.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Onde guardar</th><th>Use para</th><th>Não use para</th></tr></thead><tbody>
+<tr><td>Memória (estado de tela)</td><td>Dados temporários da UI</td><td>Algo que precisa sobreviver ao fechar</td></tr>
+<tr><td>Key-value</td><td>Flags, preferências, tokens pequenos</td><td>Listas grandes, dados relacionais</td></tr>
+<tr><td>Banco local (SQLite/Room/Core Data)</td><td>Dados estruturados, cache de listas</td><td>Configuração trivial de 1 linha</td></tr>
+<tr><td>Store global (estado do app)</td><td>Sessão, tema, dados compartilhados em memória</td><td>Dado usado por uma única tela</td></tr>
+</tbody></table></div>
+
+<h2>Cache: nem fonte, nem lixo</h2>
+<p>Cache é uma cópia local de dados que vivem no servidor, mantida para ganhar velocidade e funcionar offline. A regra de ouro: cache pode ser <strong>descartado a qualquer momento</strong> sem perda real, pois a fonte da verdade está no backend. Confundir cache com armazenamento permanente leva a dados desatualizados ou perda do que deveria ser persistido. O cache é a base do <a href="offline-sync.html">offline-first</a>.</p>
+
+<h2>Quando partir para estado global / store</h2>
+<p>Se você se pega passando o mesmo dado por cinco telas só para chegar na sexta ("prop drilling"), ou se vários pontos do app precisam reagir à mesma mudança (logout, troca de tema), é hora de um estado global: um <em>store</em> (Redux, Zustand, ViewModels compartilhados, Provider/Riverpod, ObservableObject). Ele centraliza o estado do app e notifica quem se interessa.</p>
+<pre><code>// store global: uma fonte, varios ouvintes
+store.usuario = login(...)   // muda em um lugar
+// telas inscritas re-renderizam sozinhas</code></pre>
+<p>É comum em entrevista pedir para você decidir "onde guardar X" em um cenário dado — e a resposta forte justifica a escolha pelo tempo de vida e pelo alcance do dado, não por hábito.</p>
+
+<blockquote>Não pergunte "qual ferramenta de estado usar", pergunte "quanto tempo este dado vive e quem precisa dele". A ferramenta cai naturalmente a partir daí.</blockquote>
+
+<h2>Conclusão</h2>
+<p>Estado efêmero na memória da tela, configurações pequenas em key-value, dados estruturados em banco local, cache como cópia descartável e estado compartilhado num store global: cada dado tem seu lugar. Modelar isso com clareza deixa o app rápido, previsível e pronto para crescer — inclusive para funcionar sem rede.</p>
+              <div class="post-tags"><span class="tag">Estado</span><span class="tag">Dados</span><span class="tag">Mobile</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

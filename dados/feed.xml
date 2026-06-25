@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Dados — Diogo Gomes</title>
+    <link>https://diogomes.github.io/dados/index.html</link>
+    <description>Trilha de Dados e SQL por nível profissional: modelagem relacional, SQL, normalização, índices, data warehouse, ETL, NoSQL, sharding e streaming — o que cai em entrevista e no dia a dia.</description>
+    <language>pt-BR</language>
+    <item>
+      <title>Modelagem relacional: tabelas, chaves e relacionamentos</title>
+      <link>https://diogomes.github.io/dados/modelagem-relacional.html</link>
+      <guid>https://diogomes.github.io/dados/modelagem-relacional.html</guid>
+      <category>Júnior</category>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Como representar o mundo em tabelas: chave primária, chave estrangeira e os relacionamentos 1:1, 1:N e N:N que estruturam qualquer banco.</description>
+    </item>
+    <item>
+      <title>SQL além do básico: agregações, GROUP BY e subqueries</title>
+      <link>https://diogomes.github.io/dados/consultas-sql.html</link>
+      <guid>https://diogomes.github.io/dados/consultas-sql.html</guid>
+      <category>Júnior</category>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.</description>
+    </item>
+    <item>
+      <title>Normalização: 1FN, 2FN e 3FN sem decorar</title>
+      <link>https://diogomes.github.io/dados/normalizacao.html</link>
+      <guid>https://diogomes.github.io/dados/normalizacao.html</guid>
+      <category>Júnior</category>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito.</description>
+    </item>
+    <item>
+      <title>Índices e performance: por que sua query está lenta</title>
+      <link>https://diogomes.github.io/dados/indices-performance.html</link>
+      <guid>https://diogomes.github.io/dados/indices-performance.html</guid>
+      <category>Pleno</category>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.</description>
+    </item>
+    <item>
+      <title>Modelagem dimensional: fato, dimensão e o data warehouse</title>
+      <link>https://diogomes.github.io/dados/modelagem-dimensional.html</link>
+      <guid>https://diogomes.github.io/dados/modelagem-dimensional.html</guid>
+      <category>Pleno</category>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.</description>
+    </item>
+    <item>
+      <title>ETL e pipelines de dados: do raw ao analítico</title>
+      <link>https://diogomes.github.io/dados/etl-pipelines.html</link>
+      <guid>https://diogomes.github.io/dados/etl-pipelines.html</guid>
+      <category>Pleno</category>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam.</description>
+    </item>
+    <item>
+      <title>NoSQL: documento, chave-valor, coluna e grafo — quando usar cada um</title>
+      <link>https://diogomes.github.io/dados/nosql.html</link>
+      <guid>https://diogomes.github.io/dados/nosql.html</guid>
+      <category>Sênior</category>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Os quatro tipos de banco NoSQL, o que cada um resolve, e por que &#x27;NoSQL é mais rápido&#x27; é a resposta errada numa entrevista.</description>
+    </item>
+    <item>
+      <title>Particionamento e sharding: escalar o banco de dados</title>
+      <link>https://diogomes.github.io/dados/particionamento-sharding.html</link>
+      <guid>https://diogomes.github.io/dados/particionamento-sharding.html</guid>
+      <category>Sênior</category>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Quando uma máquina não basta: partição vertical e horizontal, sharding, chave de partição e o custo das queries entre shards.</description>
+    </item>
+    <item>
+      <title>Dados em streaming: batch vs tempo real (Kafka &amp; cia)</title>
+      <link>https://diogomes.github.io/dados/streaming-dados.html</link>
+      <guid>https://diogomes.github.io/dados/streaming-dados.html</guid>
+      <category>Sênior</category>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.</description>
+    </item>
+  </channel>
+</rss>

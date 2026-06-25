@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Normalização: 1FN, 2FN e 3FN sem decorar - Diogo Gomes</title>
+  <meta content="Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito." name="description">
+  <meta content="Dados, Júnior, Normalização, Modelagem, Fundamentos, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Normalização: 1FN, 2FN e 3FN sem decorar">
+  <meta property="og:description" content="Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito.">
+  <meta property="og:url" content="https://diogomes.github.io/dados/normalizacao.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Normalização: 1FN, 2FN e 3FN sem decorar", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/normalizacao.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="../mobile/index.html"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Dados · Júnior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Dados</a></li>
+            <li>Júnior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-sitemap"></i> Dados · Júnior</span>
+              <h1>Normalização: 1FN, 2FN e 3FN sem decorar</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Normalização tem fama de assunto chato e decoreba — 1FN, 2FN, 3FN, formas que ninguém lembra na hora. Mas a ideia por trás é simples e prática: organizar os dados para que cada fato fique guardado em um único lugar. Quando você entende o <em>problema</em> que cada forma resolve, não precisa decorar nada.</p>
+
+<h2>O problema: dado duplicado gera anomalias</h2>
+<p>Imagine uma única tabela registrando pedidos com o nome e o telefone do cliente repetidos em cada linha. Três coisas dão errado:</p>
+<ul>
+  <li><strong>Anomalia de atualização</strong> — o cliente muda de telefone e você precisa alterar dezenas de linhas; esquece uma e os dados ficam inconsistentes.</li>
+  <li><strong>Anomalia de inserção</strong> — você não consegue cadastrar um cliente novo sem que ele tenha feito um pedido.</li>
+  <li><strong>Anomalia de exclusão</strong> — apagar o último pedido de um cliente apaga o cliente junto.</li>
+</ul>
+<p>Normalizar é eliminar essas redundâncias dividindo a tabela em outras menores e bem definidas.</p>
+
+<h2>1FN: valores atômicos</h2>
+<p>A <strong>Primeira Forma Normal</strong> exige que cada célula guarde um único valor. Nada de uma coluna <code>telefones</code> com "1199, 1188" separados por vírgula, nem colunas repetidas como <code>produto1</code>, <code>produto2</code>. Se você tem uma lista dentro de uma célula, ela vira linhas em uma tabela própria.</p>
+
+<h2>2FN: dependência da chave inteira</h2>
+<p>A <strong>Segunda Forma Normal</strong> só importa quando a chave primária é composta (duas ou mais colunas). Ela diz: todo atributo não-chave deve depender da chave <em>inteira</em>, não de parte dela.</p>
+<p>Numa tabela de itens de pedido com chave <code>(pedido_id, produto_id)</code>, o <code>nome_produto</code> depende só do <code>produto_id</code> — parte da chave. Isso viola a 2FN. A solução é mover o nome para uma tabela de produtos.</p>
+
+<h2>3FN: sem dependência transitiva</h2>
+<p>A <strong>Terceira Forma Normal</strong> ataca a dependência transitiva: um atributo não-chave que depende de outro atributo não-chave. Se na tabela de clientes você guarda <code>cidade</code> e <code>estado</code>, e o estado é determinado pela cidade, há uma dependência transitiva. Cidade vira uma tabela própria.</p>
+
+<h2>Um exemplo evoluindo</h2>
+<p>Veja como uma tabela bagunçada se transforma:</p>
+
+<div class="table-wrap"><table><thead><tr><th>Antes (tudo junto)</th><th>Depois (3FN)</th></tr></thead><tbody>
+<tr><td><code>pedidos</code>: id, cliente_nome, cliente_tel, produtos (lista), produto_preco</td><td><code>clientes</code>: id, nome, tel</td></tr>
+<tr><td>Dados de cliente e produto repetidos em cada linha</td><td><code>produtos</code>: id, nome, preco</td></tr>
+<tr><td>Anomalias em toda atualização</td><td><code>itens_pedido</code>: pedido_id, produto_id, qtd</td></tr>
+</tbody></table></div>
+
+<p>Cada fato — o telefone do cliente, o preço do produto — agora vive em exatamente um lugar.</p>
+
+<blockquote>Não decore "2FN é dependência parcial". Pergunte: "este dado está repetido sem motivo? Se eu mudar ele, vou ter que mudar em vários lugares?" Se sim, ainda falta normalizar.</blockquote>
+
+<h2>Quando desnormalizar de propósito</h2>
+<p>Normalização é ótima para escrita e integridade, mas pode custar caro na leitura: para montar um relatório, você junta muitas tabelas com <a href="consultas-sql.html">JOINs</a>. Em cenários de leitura intensa, às vezes vale <strong>desnormalizar</strong> de propósito — duplicar dados controladamente para evitar joins e ganhar velocidade. É uma decisão consciente de trade-off, não preguiça. Modelos analíticos, como veremos em <a href="modelagem-dimensional.html">modelagem dimensional</a>, abraçam essa ideia.</p>
+
+<h2>Conclusão</h2>
+<p>As três primeiras formas normais resolvem, uma a uma, fontes específicas de redundância: valores não-atômicos, dependência parcial e dependência transitiva. Entenda o problema de cada uma e você normaliza por raciocínio. É comum em entrevista pedir para identificar qual forma uma tabela viola — e no dia a dia, saber quando manter o esquema normalizado e quando relaxar de propósito é o que distingue um bom projeto de dados.</p>
+              <div class="post-tags"><span class="tag">Normalização</span><span class="tag">Modelagem</span><span class="tag">Fundamentos</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="indices-performance.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Pleno</span><span class="rel-title">Índices e performance: por que sua query está lenta</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Offline-first e sincronização: o app que funciona sem rede - Diogo Gomes</title>
+  <meta content="Conexão é instável. Como guardar localmente, enfileirar mudanças e sincronizar depois — resolvendo conflitos sem perder dados." name="description">
+  <meta content="Mobile, Pleno, Offline, Sincronização, Mobile, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Offline-first e sincronização: o app que funciona sem rede">
+  <meta property="og:description" content="Conexão é instável. Como guardar localmente, enfileirar mudanças e sincronizar depois — resolvendo conflitos sem perder dados.">
+  <meta property="og:url" content="https://diogomes.github.io/mobile/offline-sync.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Offline-first e sincronização: o app que funciona sem rede", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/offline-sync.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Conexão é instável. Como guardar localmente, enfileirar mudanças e sincronizar depois — resolvendo conflitos sem perder dados.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="../dados/index.html"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Mobile · Pleno</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Mobile</a></li>
+            <li>Pleno</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-wifi-off"></i> Mobile · Pleno</span>
+              <h1>Offline-first e sincronização: o app que funciona sem rede</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 15 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Conexão móvel cai no elevador, no metrô, no interior. Um app que só funciona com rede perfeita frustra o usuário no pior momento. A estratégia <strong>offline-first</strong> inverte a lógica: o app opera sobre dados locais e trata a rede como um luxo que sincroniza quando aparece. Modelar isso bem — com fila de pendências e resolução de conflitos — é uma competência clássica de pleno.</p>
+
+<h2>Por que offline-first</h2>
+<p>Em vez de "tente buscar na rede; se falhar, mostre erro", o offline-first diz "leia e escreva localmente; a rede é só um detalhe de fundo". O usuário continua produtivo no avião, e quando a conexão volta, tudo se acerta sozinho. O ganho não é só offline: mesmo online, ler do local é instantâneo, sem telas de carregamento.</p>
+
+<h2>Ler e escrever local primeiro</h2>
+<p>O banco local (veja <a href="estado-dados-mobile.html">estado e dados no mobile</a>) vira a fonte da verdade <em>imediata</em> para a UI. Quando o usuário cria um item, ele aparece na hora — gravado localmente — sem esperar o servidor. A rede entra depois, em segundo plano.</p>
+<p>A analogia: é como anotar pedidos num caderno durante o dia e digitar tudo no sistema à noite. O atendimento (UI) nunca para esperando o sistema central.</p>
+
+<h2>A fila de operações pendentes</h2>
+<p>Cada escrita que ainda não chegou ao servidor entra numa <strong>fila de pendências</strong> persistida localmente. "Criar pedido 42", "marcar tarefa concluída", "deletar nota". A fila sobrevive ao app ser fechado e é processada em ordem quando há rede.</p>
+<pre><code>fila = [
+  { op: "criar", tipo: "pedido", id: "tmp-1", dados: {...} },
+  { op: "atualizar", tipo: "tarefa", id: 7, campo: "feito" }
+]
+// quando a rede volta: envia uma a uma, remove ao confirmar</code></pre>
+
+<h2>Diagrama do fluxo offline → sync</h2>
+<pre><code>  [ Usuario age ]
+        |
+        v
+  [ Grava no banco local ]  --&gt; UI atualiza JA
+        |
+        v
+  [ Enfileira pendencia ]
+        |
+   (sem rede) ... espera ...
+        |
+   (rede volta)
+        v
+  [ Envia fila ao servidor ] --&gt; sucesso? remove da fila
+        |                         conflito? resolve
+        v
+  [ Servidor confirma / devolve estado ]</code></pre>
+
+<h2>Sincronizar quando a rede voltar</h2>
+<p>Você observa a conectividade e dispara a sincronização ao reconectar (e, idealmente, periodicamente). O sync é bidirecional: envia suas pendências e baixa o que mudou no servidor desde a última vez (delta sync, usando um timestamp ou cursor).</p>
+
+<h2>Resolução de conflitos</h2>
+<p>O problema difícil: você editou um registro offline e outra pessoa editou o mesmo registro no servidor. Quem vence?</p>
+<div class="table-wrap"><table><thead><tr><th>Estratégia</th><th>Como funciona</th><th>Risco</th></tr></thead><tbody>
+<tr><td>Last-write-wins</td><td>A escrita mais recente (por timestamp) sobrescreve</td><td>Perde silenciosamente a outra edição</td></tr>
+<tr><td>Merge por campo</td><td>Combina alterações de campos diferentes</td><td>Complexo; campos conflitantes ainda precisam decidir</td></tr>
+<tr><td>Resolver com o usuário</td><td>Mostra as versões e pergunta</td><td>Atrito na UX; só para casos críticos</td></tr>
+</tbody></table></div>
+<p>É comum em entrevista pedir para explicar last-write-wins e quando ele <em>não</em> serve — por exemplo, num saldo financeiro, onde sobrescrever cegamente perde dinheiro.</p>
+
+<h2>Idempotência das requisições</h2>
+<p>Como a fila pode reenviar uma operação (a rede caiu bem na hora da resposta), o servidor precisa aguentar receber a mesma coisa duas vezes sem duplicar. A solução é <strong>idempotência</strong>: cada operação carrega um identificador único (idempotency key) e o servidor ignora repetições.</p>
+<pre><code>POST /pedidos
+Idempotency-Key: tmp-1-abc
+// reenviar com a mesma chave nao cria 2 pedidos</code></pre>
+
+<blockquote>Trate a rede como algo que pode falhar a qualquer momento, inclusive depois de processar mas antes de responder. Idempotência e fila persistida são o que torna o sync confiável, não opcional.</blockquote>
+
+<h2>Conclusão</h2>
+<p>Offline-first significa local primeiro, rede depois: escrever no banco, enfileirar a pendência, sincronizar ao reconectar e resolver conflitos com uma estratégia consciente. Somando idempotência para sobreviver a reenvios, você entrega um app que funciona no elevador e se acerta sozinho quando o sinal volta.</p>
+              <div class="post-tags"><span class="tag">Offline</span><span class="tag">Sincronização</span><span class="tag">Mobile</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
