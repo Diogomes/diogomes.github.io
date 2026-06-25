@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>BDD, ATDD e TDD: o que cada sigla resolve - Diogo Gomes</title>
+  <meta content="As três siglas mais confundidas em QA. O que cada uma resolve, em que nível atua e como elas se complementam no dia a dia." name="description">
+  <meta content="BDD, ATDD, TDD, QA, testes, automação, Gherkin, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="BDD, ATDD e TDD: o que cada sigla resolve">
+  <meta property="og:description" content="As três siglas mais confundidas em QA. O que cada uma resolve, em que nível atua e como elas se complementam.">
+  <meta property="og:url" content="https://diogomes.github.io/blog/bdd-atdd-tdd.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "BDD, ATDD e TDD: o que cada sigla resolve", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/bdd-atdd-tdd.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "As três siglas mais confundidas em QA. O que cada uma resolve, em que nível atua e como elas se complementam.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Testes</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>Testes</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+              <h1>BDD, ATDD e TDD: o que cada sigla resolve</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+              <p>São as três siglas que mais geram confusão — e justamente por isso aparecem o tempo todo na rotina de QA. As três compartilham a mesma ideia central: <strong>escrever o teste antes do código</strong>. A diferença está em <em>quem</em> escreve, em <em>que nível</em> e <em>com qual objetivo</em>. Entender essa divisão é o que separa repetir a sigla de saber aplicá-la.</p>
+
+              <h2>O mapa mental</h2>
+              <p>Antes dos detalhes, uma visão de cima. As três técnicas vivem em camadas diferentes do mesmo fluxo:</p>
+              <pre><code>            "Estamos construindo a coisa certa?"   (negócio)
+                                 │
+        ┌────────────────────────┴────────────────────────┐
+        │                                                  │
+       BDD ──────────────► ATDD ──────────────►          TDD
+  comportamento do        critério de aceite        unidade de código
+  ponto de vista do        vira teste de             vira teste técnico
+  usuário/negócio          aceitação executável      (red-green-refactor)
+        │                          │                        │
+   linguagem ubíqua         "três amigos"            desenvolvedor sozinho
+   (Gherkin)                PO + Dev + QA            no editor, em segundos
+        │                          │                        │
+        └──────────► foco no "o quê" ◄──────┐    foco no "como"
+                                            └── "Estamos construindo
+                                                 a coisa do jeito certo?"</code></pre>
+
+              <h2>TDD — Test-Driven Development</h2>
+              <p>É o nível mais técnico e o mais granular. O desenvolvedor escreve um teste de <strong>unidade</strong> que falha, faz o mínimo para passar e refatora — o ciclo <strong>red-green-refactor</strong>. O alvo é o design interno do código: classes, funções, regras de negócio isoladas.</p>
+              <pre><code>// Red — o teste falha porque a regra ainda não existe
+test('aplica 10% de desconto acima de R$ 100', () =&gt; {
+  expect(calcularTotal(150)).toBe(135);
+});
+
+// Green — o mínimo para passar
+function calcularTotal(valor) {
+  return valor &gt; 100 ? valor * 0.9 : valor;
+}
+
+// Refactor — agora com a rede de segurança verde</code></pre>
+              <p>TDD não é sobre cobertura — é sobre <strong>design guiado pelo uso</strong>. O detalhe importante para QA: o teste de TDD fala a língua do código (<code>calcularTotal</code>, <code>toBe(135)</code>), não a do usuário.</p>
+
+              <h2>ATDD — Acceptance-Test-Driven Development</h2>
+              <p>Sobe um nível. Antes de programar, o time transforma o <strong>critério de aceite</strong> da história em um teste de aceitação concreto. A peça-chave é a conversa conhecida como <strong>"três amigos"</strong> (<em>Product Owner, Dev e QA</em>): juntos eles definem, com exemplos, o que significa "pronto" antes de uma linha de código existir.</p>
+              <blockquote>ATDD previne o bug mais caro de todos: construir corretamente a funcionalidade errada. O teste de aceite é o acordo escrito de "feito".</blockquote>
+              <p>O QA costuma ser o protagonista aqui — é quem pergunta "e se o valor for negativo?", "e o limite exato de R$ 100, entra no desconto ou não?". Essas perguntas viram os testes de aceitação.</p>
+
+              <h2>BDD — Behavior-Driven Development</h2>
+              <p>É a evolução do ATDD com foco em <strong>linguagem</strong>. O BDD propõe descrever o comportamento do sistema do ponto de vista do usuário, numa <em>linguagem ubíqua</em> que negócio e técnica leem igual. Na prática, isso aparece como cenários em <strong>Gherkin</strong> (<code>Given / When / Then</code>):</p>
+              <pre><code>Funcionalidade: Desconto no carrinho
+
+  Cenário: Compra acima do limite ganha desconto
+    Dado um carrinho com R$ 150,00
+    Quando o cliente finaliza a compra
+    Então o total cobrado deve ser R$ 135,00</code></pre>
+              <p>Esse cenário é legível pelo negócio <em>e</em> executável pela automação (via Cucumber, Behave, SpecFlow…). É o que se chama de <strong>documentação viva</strong>: a especificação e o teste são o mesmo artefato. Detalhei a sintaxe no post sobre <a href="gherkin-given-when-then.html">Gherkin e Given-When-Then</a>.</p>
+
+              <h2>Lado a lado</h2>
+              <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th></th><th>TDD</th><th>ATDD</th><th>BDD</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Pergunta</strong></td><td>Estou construindo certo?</td><td>Construí a coisa certa?</td><td>O sistema se comporta como o usuário espera?</td></tr>
+                  <tr><td><strong>Nível</strong></td><td>Unidade / código</td><td>Aceitação / história</td><td>Comportamento / funcionalidade</td></tr>
+                  <tr><td><strong>Quem escreve</strong></td><td>Desenvolvedor</td><td>Time (3 amigos)</td><td>Time, em linguagem de negócio</td></tr>
+                  <tr><td><strong>Linguagem</strong></td><td>Código de teste</td><td>Exemplos / critérios</td><td>Gherkin (Given-When-Then)</td></tr>
+                  <tr><td><strong>Artefato</strong></td><td>Teste unitário</td><td>Teste de aceitação</td><td>Cenário executável</td></tr>
+                  <tr><td><strong>Foco</strong></td><td>Como</td><td>O quê</td><td>O quê + comunicação</td></tr>
+                </tbody>
+              </table>
+              </div>
+
+              <h2>Como elas convivem</h2>
+              <p>O erro é tratá-las como concorrentes. Na prática elas se empilham: o BDD/ATDD definem <em>o quê</em> entregar (poucos cenários de alto nível, perto do topo da pirâmide de testes), e o TDD garante que cada pedacinho do código que sustenta aquele comportamento nasça correto (muitos testes rápidos, na base). Um time maduro usa os três ao mesmo tempo, em camadas.</p>
+
+              <h2>Armadilhas que aparecem no dia a dia</h2>
+              <ul>
+                <li><strong>"BDD é uma ferramenta."</strong> Não. BDD é uma prática de colaboração. Cucumber é ferramenta; escrever Gherkin sem a conversa dos três amigos é só sintaxe nova para o mesmo silo de sempre.</li>
+                <li><strong>Gherkin descrevendo cliques.</strong> "Dado que clico no botão azul" amarra o cenário à tela. O comportamento é <em>o quê</em> acontece, não <em>como</em> se navega.</li>
+                <li><strong>Confundir ATDD com "QA escreve teste depois".</strong> O "driven" é literal: o teste vem <strong>antes</strong> e guia o desenvolvimento.</li>
+                <li><strong>TDD virar dogma.</strong> Brilha em regra de negócio; para um protótipo descartável, pode ser exagero. Use a ferramenta certa para o contexto.</li>
+              </ul>
+
+              <h2>Conclusão</h2>
+              <p>TDD cuida do código, ATDD cuida do acordo, BDD cuida da conversa — e os três cuidam de testar antes. Saber em que camada cada um atua é o que permite escolher a técnica certa para o problema na sua frente, em vez de aplicar todas por reflexo.</p>
+
+              <div class="post-tags"><span class="tag">BDD</span><span class="tag">ATDD</span><span class="tag">TDD</span><span class="tag">Gherkin</span><span class="tag">Fundamentos</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="gherkin-given-when-then.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Gherkin e Given-When-Then: especificação que vira teste</span></a>
+                <a class="rel-card" href="tdd-na-pratica.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">TDD na prática: red, green, refactor</span></a>
+                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pirâmide de testes e os quadrantes ágeis</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
