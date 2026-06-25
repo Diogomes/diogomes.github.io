@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Gherkin e Given-When-Then: especificação que vira teste - Diogo Gomes</title>
+  <meta content="A linguagem que negócio e automação leem igual. Sintaxe do Gherkin, step definitions, Scenario Outline e os anti-patterns que tornam cenários frágeis." name="description">
+  <meta content="Gherkin, BDD, Cucumber, Given When Then, QA, automação, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gherkin e Given-When-Then: especificação que vira teste">
+  <meta property="og:description" content="A linguagem que negócio e automação leem igual. Sintaxe, step definitions e os anti-patterns que tornam cenários frágeis.">
+  <meta property="og:url" content="https://diogomes.github.io/blog/gherkin-given-when-then.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gherkin e Given-When-Then: especificação que vira teste", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gherkin-given-when-then.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A linguagem que negócio e automação leem igual. Sintaxe, step definitions e os anti-patterns que tornam cenários frágeis.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Testes</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>Testes</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+              <h1>Gherkin e Given-When-Then: especificação que vira teste</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 24 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+              <p>Gherkin é a linguagem por trás do BDD: um conjunto pequeno de palavras-chave que deixa um cenário de teste <strong>legível por qualquer pessoa</strong> — do Product Owner ao desenvolvedor — e, ao mesmo tempo, <strong>executável</strong> por ferramentas como Cucumber, Behave (Python), SpecFlow (.NET) ou Behat (PHP). É o ponto onde a especificação e o teste viram o mesmo documento.</p>
+
+              <h2>As palavras-chave</h2>
+              <p>Toda a gramática cabe em poucas palavras. O resto é texto livre que <em>você</em> escolhe:</p>
+              <ul>
+                <li><strong>Funcionalidade</strong> (<code>Feature</code>) — o agrupador; descreve a capacidade do sistema.</li>
+                <li><strong>Cenário</strong> (<code>Scenario</code>) — um exemplo concreto de comportamento.</li>
+                <li><strong>Dado</strong> (<code>Given</code>) — o contexto / pré-condição. O mundo <em>antes</em> da ação.</li>
+                <li><strong>Quando</strong> (<code>When</code>) — a ação que dispara o comportamento. <em>Uma só por cenário</em>, idealmente.</li>
+                <li><strong>Então</strong> (<code>Then</code>) — o resultado observável que se verifica.</li>
+                <li><strong>E / Mas</strong> (<code>And</code> / <code>But</code>) — encadeiam passos do mesmo tipo, mantendo a leitura fluida.</li>
+              </ul>
+
+              <h2>A estrutura Given-When-Then</h2>
+              <p>O coração do Gherkin é separar <strong>contexto → ação → resultado</strong>. Essa tríade força o autor a pensar em comportamento, não em telas:</p>
+              <pre><code># language: pt
+Funcionalidade: Autenticação de usuário
+
+  Cenário: Login com credenciais válidas
+    Dado que estou na página de login
+    E possuo uma conta com e-mail "ana@exemplo.com"
+    Quando informo as credenciais corretas
+    Então devo ver o painel inicial
+    E devo ver a saudação "Olá, Ana"</code></pre>
+              <blockquote>Regra de ouro: <strong>Given</strong> não tem ação, <strong>When</strong> é uma ação só, <strong>Then</strong> não tem efeito colateral — só verifica. Se um cenário tem três "Quando", provavelmente são três cenários disfarçados.</blockquote>
+
+              <h2>Background: o contexto que se repete</h2>
+              <p>Quando vários cenários compartilham os mesmos <code>Given</code>, o <code>Background</code> (Contexto) evita repetição — ele roda antes de cada cenário do arquivo:</p>
+              <pre><code>  Contexto:
+    Dado que estou logado como administrador
+    E existe um produto "Caderno" no catálogo</code></pre>
+
+              <h2>Scenario Outline: um cenário, muitos dados</h2>
+              <p>Para testar a mesma regra com várias entradas — o caso clássico de partição de equivalência e valor-limite — usa-se o <strong>Esquema do Cenário</strong> com uma tabela de <code>Exemplos</code>:</p>
+              <pre><code>  Esquema do Cenário: Desconto por faixa de valor
+    Dado um carrinho com &lt;valor&gt; reais
+    Quando o cliente finaliza a compra
+    Então o total cobrado deve ser &lt;total&gt; reais
+
+    Exemplos:
+      | valor | total |
+      | 100   | 100   |
+      | 101   | 90.9  |
+      | 150   | 135   |</code></pre>
+              <p>Cada linha da tabela vira um cenário independente. É a forma mais limpa de cobrir limites (o <code>100</code> que não ganha desconto e o <code>101</code> que ganha) sem copiar e colar.</p>
+
+              <h2>Do texto ao código: step definitions</h2>
+              <p>O Gherkin sozinho não testa nada — ele é "colado" ao sistema pelos <strong>step definitions</strong>: funções que casam com cada passo por expressão e executam a automação de verdade. Em Cucumber com JavaScript:</p>
+              <pre><code>const { Given, When, Then } = require('@cucumber/cucumber');
+const { expect } = require('@playwright/test');
+
+Given('um carrinho com {int} reais', async function (valor) {
+  this.carrinho = criarCarrinho(valor);
+});
+
+When('o cliente finaliza a compra', async function () {
+  this.total = this.carrinho.finalizar();
+});
+
+Then('o total cobrado deve ser {float} reais', async function (esperado) {
+  expect(this.total).toBeCloseTo(esperado, 2);
+});</code></pre>
+              <p>Repare que o mesmo step <code>um carrinho com {int} reais</code> serve a todas as linhas do <code>Exemplos</code>. Steps bem escritos são <strong>reutilizáveis</strong> — esse é o ganho de manutenção do BDD.</p>
+
+              <h2>Declarativo &gt; imperativo</h2>
+              <p>O erro mais comum é escrever cenários <em>imperativos</em>, descrevendo cada clique. Eles quebram a cada ajuste de tela e ninguém do negócio consegue ler:</p>
+              <div class="table-wrap">
+              <table>
+                <thead><tr><th>Imperativo (frágil)</th><th>Declarativo (robusto)</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>Quando preencho o campo "email" com "ana@x.com"<br>E preencho o campo "senha" com "123"<br>E clico no botão "#btn-login"</td>
+                    <td>Quando faço login com credenciais válidas</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <p>O "como preencher o formulário" pertence ao step definition (e ao <a href="page-object-model.html">Page Object</a>), não ao Gherkin. O cenário descreve a <em>intenção</em>.</p>
+
+              <h2>Anti-patterns para vigiar</h2>
+              <ul>
+                <li><strong>Cenário-novela:</strong> dez passos cobrindo um fluxo inteiro. Um cenário = um comportamento.</li>
+                <li><strong>Detalhe de UI no Then:</strong> verificar cor de botão ou CSS. Verifique resultado de negócio.</li>
+                <li><strong>Acoplamento entre cenários:</strong> o cenário 2 depender do estado deixado pelo cenário 1. Cada um deve ser independente.</li>
+                <li><strong>Gherkin sem conversa:</strong> escrever os <code>.feature</code> sozinho, depois da implementação. Aí é só relatório enfeitado — perde-se o valor de descoberta do <a href="bdd-atdd-tdd.html">BDD</a>.</li>
+              </ul>
+
+              <h2>Conclusão</h2>
+              <p>Gherkin é simples de propósito: a restrição de vocabulário é o que mantém o cenário legível para todos e estável no tempo. Dominar <code>Given-When-Then</code>, <code>Background</code> e <code>Scenario Outline</code> — e saber escrever de forma declarativa — é o que transforma uma suíte de BDD em documentação viva em vez de mais um conjunto de testes frágeis.</p>
+
+              <div class="post-tags"><span class="tag">Gherkin</span><span class="tag">BDD</span><span class="tag">Cucumber</span><span class="tag">Given-When-Then</span><span class="tag">Automação</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
+                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Técnicas de design de teste: cobrir mais com menos casos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

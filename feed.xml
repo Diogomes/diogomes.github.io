@@ -6,6 +6,38 @@
     <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
     <language>pt-BR</language>
     <item>
+      <title>BDD, ATDD e TDD: o que cada sigla resolve</title>
+      <link>https://diogomes.github.io/blog/bdd-atdd-tdd.html</link>
+      <guid>https://diogomes.github.io/blog/bdd-atdd-tdd.html</guid>
+      <category>Testes</category>
+      <pubDate>Thu, 25 Jun 2026 00:00:00 +0000</pubDate>
+      <description>As três siglas mais confundidas em QA: em que nível cada uma atua e como se complementam.</description>
+    </item>
+    <item>
+      <title>Gherkin e Given-When-Then: especificação que vira teste</title>
+      <link>https://diogomes.github.io/blog/gherkin-given-when-then.html</link>
+      <guid>https://diogomes.github.io/blog/gherkin-given-when-then.html</guid>
+      <category>Testes</category>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A linguagem que negócio e automação leem igual: sintaxe, step definitions e anti-patterns.</description>
+    </item>
+    <item>
+      <title>Técnicas de design de teste: cobrir mais com menos casos</title>
+      <link>https://diogomes.github.io/blog/tecnicas-design-de-teste.html</link>
+      <guid>https://diogomes.github.io/blog/tecnicas-design-de-teste.html</guid>
+      <category>QA</category>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Partição de equivalência, valor-limite, tabela de decisão e transição de estado.</description>
+    </item>
+    <item>
+      <title>Pirâmide de testes e os quadrantes ágeis</title>
+      <link>https://diogomes.github.io/blog/piramide-de-testes.html</link>
+      <guid>https://diogomes.github.io/blog/piramide-de-testes.html</guid>
+      <category>QA</category>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Onde cada teste vive, o anti-pattern do cone de sorvete e os quadrantes de Agile Testing.</description>
+    </item>
+    <item>
       <title>Page Object Model: uma suíte E2E que escala</title>
       <link>https://diogomes.github.io/blog/page-object-model.html</link>
       <guid>https://diogomes.github.io/blog/page-object-model.html</guid>
