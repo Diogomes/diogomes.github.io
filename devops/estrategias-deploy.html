@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Estratégias de deploy: blue-green, canary e rolling - Diogo Gomes</title>
+  <meta content="Como implantar sem derrubar o sistema: recreate, rolling, blue-green e canary — o que cada um custa em risco, downtime e rollback." name="description">
+  <meta content="DevOps, Sênior, Deploy, Entrega contínua, Sênior, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Estratégias de deploy: blue-green, canary e rolling">
+  <meta property="og:description" content="Como implantar sem derrubar o sistema: recreate, rolling, blue-green e canary — o que cada um custa em risco, downtime e rollback.">
+  <meta property="og:url" content="https://diogomes.github.io/devops/estrategias-deploy.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Estratégias de deploy: blue-green, canary e rolling", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/estrategias-deploy.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como implantar sem derrubar o sistema: recreate, rolling, blue-green e canary — o que cada um custa em risco, downtime e rollback.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="../dados/index.html"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="../mobile/index.html"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>DevOps · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">DevOps</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-rocket"></i> DevOps · Sênior</span>
+              <h1>Estratégias de deploy: blue-green, canary e rolling</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 4 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Subir código novo em produção é o momento de maior risco do ciclo de vida de um sistema. A forma como você implanta — de uma vez, aos poucos, ou trocando ambientes inteiros — decide se uma versão ruim causa cinco minutos de degradação para poucos usuários ou uma hora de fora do ar para todos. Conhecer blue-green, canary e rolling, e saber quando usar cada um, é esperado de quem atua em DevOps em nível sênior.</p>
+
+<h2>Por que a forma de implantar importa</h2>
+<p>Todo deploy carrega duas perguntas: <strong>quanto downtime</strong> ele causa e <strong>qual o raio de impacto</strong> se a versão for ruim. A estratégia mais ingênua — parar a aplicação, trocar e subir de novo — tem downtime garantido e expõe 100% dos usuários ao bug de uma vez. As estratégias modernas existem para atacar esses dois eixos: reduzir ou eliminar o downtime e limitar quantas pessoas veem um problema antes de você reverter.</p>
+
+<h2>Recreate vs rolling update</h2>
+<p>O <strong>recreate</strong> derruba a versão antiga e sobe a nova: simples, mas com janela de indisponibilidade. O <strong>rolling update</strong> substitui as instâncias <em>aos poucos</em> — desliga uma da versão antiga, sobe uma da nova, repete — mantendo o serviço sempre no ar. É o padrão do <a href="kubernetes.html">Kubernetes</a> e o default razoável para a maioria dos casos. A desvantagem: durante a transição as duas versões convivem, então elas precisam ser compatíveis (atenção a mudanças de schema de banco).</p>
+
+<h2>Blue-green: dois ambientes, troca instantânea</h2>
+<p>Você mantém dois ambientes idênticos: <strong>blue</strong> (atual, em produção) e <strong>green</strong> (nova versão). Implanta e testa tudo no green com calma, sem tráfego real. Quando estiver pronto, você só aponta o roteador/load balancer do blue para o green — a troca é instantânea. Se algo der errado, o rollback é só apontar de volta para o blue, que continua intacto. A analogia: dois palcos prontos; você só decide para qual a plateia olha. O custo é manter dois ambientes completos no ar.</p>
+
+<h2>Canary: liberar para uma fração e observar</h2>
+<p>No <strong>canary</strong> (o nome vem do "canário na mina de carvão"), você libera a nova versão para uma pequena fração do tráfego — 1%, depois 5%, 25% — observando métricas a cada passo. Se erros, latência ou taxa de conversão piorarem, você aborta antes que a maioria seja afetada. É a estratégia de menor raio de impacto.</p>
+<pre><code>            ┌──────────────┐  95%  ┌─────────────────┐
+ tráfego ──▶│ Load Balancer│ ─────▶│ v1 (estável)    │
+            │              │       └─────────────────┘
+            │              │   5%  ┌─────────────────┐
+            └──────────────┘ ─────▶│ v2 (canary) 👀  │
+                                   └─────────────────┘
+            métricas do v2 OK? ── sim ▶ aumenta % até 100%
+                               └─ não ▶ rollback (volta a 0%)</code></pre>
+
+<h2>Feature flags como complemento</h2>
+<p>Deploy e <em>release</em> não precisam ser a mesma coisa. Com <strong>feature flags</strong>, você implanta o código novo desligado por uma flag e o liga depois — para um grupo, uma região, ou todos — sem novo deploy. Isso desacopla "subir o código" de "ligar a funcionalidade", permite canary <em>no nível de funcionalidade</em> e dá um botão de desligar instantâneo se algo quebrar. Combina muito bem com as outras estratégias.</p>
+
+<h2>Health checks e rollback automático</h2>
+<p>Nada disso funciona sem o orquestrador saber se uma instância está <em>saudável</em>. <strong>Health checks</strong> (readiness e liveness) dizem se uma instância está pronta para receber tráfego e se continua viva. Numa rolling ou canary, se as novas instâncias falham no health check, o orquestrador para de avançar e pode reverter automaticamente. Esse loop de "observar métrica → decidir → reverter" é o que torna o deploy seguro — e o fechamento natural do seu pipeline de <a href="ci-cd-basico.html">CI/CD</a>.</p>
+
+<h2>Comparando as estratégias</h2>
+<div class="table-wrap"><table><thead><tr><th>Estratégia</th><th>Downtime</th><th>Custo</th><th>Raio de impacto</th><th>Rollback</th></tr></thead><tbody>
+<tr><td>Recreate</td><td>Sim</td><td>Baixo</td><td>Total</td><td>Lento (subir antiga)</td></tr>
+<tr><td>Rolling</td><td>Não</td><td>Baixo</td><td>Médio (cresce gradual)</td><td>Médio (rola de volta)</td></tr>
+<tr><td>Blue-green</td><td>Não</td><td>Alto (2 ambientes)</td><td>Total na troca</td><td>Instantâneo</td></tr>
+<tr><td>Canary</td><td>Não</td><td>Médio</td><td>Mínimo (fração)</td><td>Rápido (corta a fração)</td></tr>
+</tbody></table></div>
+
+<blockquote>Não existe a melhor estratégia, existe a adequada ao risco. Um ajuste de CSS pode ir de rolling; uma reescrita do checkout merece canary com métricas vigiadas e rollback automático armado. A pergunta certa é sempre "quantas pessoas sofrem se isso der errado, e em quanto tempo eu reverto?".</blockquote>
+
+<h2>Conclusão</h2>
+<p>Rolling elimina downtime com baixo custo e serve à maioria. Blue-green dá rollback instantâneo à custa de dobrar o ambiente. Canary minimiza o raio de impacto liberando aos poucos sob observação. Feature flags desacoplam deploy de release, e health checks com rollback automático fecham o loop. Dominar essas opções e o desenho da <a href="arquitetura-cloud.html">arquitetura cloud</a> é o que transforma o deploy de um evento tenso num não-evento rotineiro.</p>
+              <div class="post-tags"><span class="tag">Deploy</span><span class="tag">Entrega contínua</span><span class="tag">Sênior</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
+                <a class="rel-card" href="kubernetes.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Sênior</span><span class="rel-title">Kubernetes sem pânico: pods, deployments e autoscaling</span></a>
+                <a class="rel-card" href="arquitetura-cloud.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Sênior</span><span class="rel-title">Arquitetura na nuvem: alta disponibilidade e o custo do downtime</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -6,6 +6,14 @@
     <description>Trilha de front-end por nível profissional: HTML semântico, CSS, JavaScript, event loop, estado, performance, arquitetura e segurança — o que cai em entrevista e no dia a dia.</description>
     <language>pt-BR</language>
     <item>
+      <title>Acessibilidade web (a11y): ARIA, foco e contraste na prática</title>
+      <link>https://diogomes.github.io/frontend/acessibilidade-web.html</link>
+      <guid>https://diogomes.github.io/frontend/acessibilidade-web.html</guid>
+      <category>Pleno</category>
+      <pubDate>Thu, 25 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença.</description>
+    </item>
+    <item>
       <title>HTML semântico e acessibilidade: a base que separa amador de profissional</title>
       <link>https://diogomes.github.io/frontend/html-semantico.html</link>
       <guid>https://diogomes.github.io/frontend/html-semantico.html</guid>
