@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Test doubles: mock, stub, spy, fake e dummy - Diogo Gomes</title>
+  <meta content="Os cinco dublês de teste segundo Gerard Meszaros: o que cada um faz, quando usar e a diferença entre verificar estado e verificar comportamento — com código." name="description">
+  <meta content="test double, mock, stub, spy, fake, dummy, QA, testes, automação, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Test doubles: mock, stub, spy, fake e dummy">
+  <meta property="og:description" content="Os cinco dublês de teste: o que cada um faz, quando usar e estado vs comportamento — com código.">
+  <meta property="og:url" content="https://diogomes.github.io/blog/test-doubles.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Test doubles: mock, stub, spy, fake e dummy", "datePublished": "2026-06-19", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/test-doubles.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Os cinco dublês de teste: o que cada um faz, quando usar e estado vs comportamento — com código.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Automação</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>Automação</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+              <h1>Test doubles: mock, stub, spy, fake e dummy</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 19 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+              <p>"Qual a diferença entre mock e stub?" é uma das perguntas técnicas que mais separa quem decora de quem entende. Na prática do dia a dia, todo teste de unidade isola a peça sob teste das suas dependências — banco, API externa, relógio, e-mail — e o faz com <strong>test doubles</strong> (dublês de teste). O termo guarda-chuva é de Gerard Meszaros, e existem cinco tipos, do mais bobo ao mais esperto.</p>
+
+              <h2>O espectro dos dublês</h2>
+              <pre><code>  só ocupa espaço ──────────────────────► verifica interação
+   DUMMY → STUB → FAKE → SPY → MOCK
+
+   DUMMY  passado mas nunca usado (preenche um parâmetro)
+   STUB   devolve respostas prontas ("quando perguntarem X, responda Y")
+   FAKE   implementação real, porém simplificada (ex.: banco em memória)
+   SPY    como o stub, mas grava como foi chamado (para checar depois)
+   MOCK   já vem com a expectativa do que DEVE ser chamado (falha se não for)</code></pre>
+
+              <h2>Dummy — só para preencher</h2>
+              <p>Um objeto passado apenas para satisfazer a assinatura, nunca de fato usado no caminho testado. Ex.: um <code>logger</code> exigido pelo construtor, mas irrelevante para o que estou verificando.</p>
+              <pre><code>const loggerDummy = {};
+const servico = new Servico(loggerDummy); // só para construir</code></pre>
+
+              <h2>Stub — respostas prontas</h2>
+              <p>O stub <strong>controla a entrada indireta</strong>: ele força a dependência a devolver um valor fixo, para eu testar como meu código reage. Não verifico <em>como</em> foi chamado — só uso a resposta.</p>
+              <pre><code>// Quero testar a regra de frete grátis sem chamar a API real de CEP
+const apiCepStub = {
+  consultar: () =&gt; ({ regiao: 'sudeste', taxa: 0 })
+};
+
+const total = calcularEntrega(apiCepStub, carrinho);
+expect(total.freteGratis).toBe(true); // verifico ESTADO</code></pre>
+
+              <h2>Fake — implementação real, porém leve</h2>
+              <p>O fake tem lógica de verdade, só que simplificada e inadequada para produção. O exemplo clássico é um repositório que guarda dados num array em memória em vez de bater no banco — rápido e sem efeito colateral.</p>
+              <pre><code>class RepositorioFake {
+  constructor() { this.itens = []; }
+  salvar(item) { this.itens.push(item); }
+  buscarPorId(id) { return this.itens.find(i =&gt; i.id === id); }
+}</code></pre>
+
+              <h2>Spy — grava o que aconteceu</h2>
+              <p>O spy embrulha uma chamada e <strong>registra</strong> como ela foi usada — quantas vezes, com quais argumentos — para eu inspecionar <em>depois</em> da ação. É o meio-termo: não impõe expectativa antes, mas permite verificar comportamento.</p>
+              <pre><code>const emailSpy = jest.fn();
+notificarUsuario(usuario, emailSpy);
+
+// verifico COMPORTAMENTO: foi chamado certo?
+expect(emailSpy).toHaveBeenCalledTimes(1);
+expect(emailSpy).toHaveBeenCalledWith('ana@exemplo.com');</code></pre>
+
+              <h2>Mock — expectativa embutida</h2>
+              <p>O mock é o mais opinativo: você define <em>antes</em> o que ele espera receber, e o próprio mock <strong>falha o teste</strong> se a interação esperada não acontecer. Ele verifica comportamento por construção.</p>
+              <pre><code>const gateway = mock(PagamentoGateway);
+when(gateway.cobrar(100)).thenReturn({ ok: true });
+
+finalizarCompra(gateway, 100);
+
+// o mock exige que cobrar(100) tenha sido chamado exatamente assim
+verify(gateway).cobrar(100);</code></pre>
+
+              <h2>A distinção que importa: estado vs comportamento</h2>
+              <p>Mais útil que decorar os cinco nomes é entender a divisão que eles revelam:</p>
+              <div class="table-wrap">
+              <table>
+                <thead><tr><th>Verifica…</th><th>Dublê típico</th><th>Pergunta do teste</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Estado</strong> (resultado)</td><td>Stub, Fake</td><td>"Dado este retorno, meu código produziu a saída certa?"</td></tr>
+                  <tr><td><strong>Comportamento</strong> (interação)</td><td>Spy, Mock</td><td>"Meu código chamou a dependência do jeito esperado?"</td></tr>
+                </tbody>
+              </table>
+              </div>
+              <blockquote>Stub responde, mock cobra. Stub está a serviço de uma verificação de estado; mock <em>é</em> a verificação — de comportamento. Confundir os dois leva a testes que verificam a coisa errada.</blockquote>
+
+              <h2>Cuidado com o excesso de mocks</h2>
+              <p>Dublês demais acoplam o teste à implementação: você passa a testar "o método X chamou o método Y" em vez do comportamento observável. Aí qualquer refatoração quebra os testes mesmo sem bug. A regra prática é dublar o que é <em>lento, instável ou tem efeito colateral</em> (rede, banco, hora, e-mail) e deixar a lógica de negócio rodar de verdade.</p>
+
+              <h2>Conclusão</h2>
+              <p>Dummy preenche, stub responde, fake implementa leve, spy grava e mock cobra. Saber qual usar não é trivia — é o que mantém seus <a href="testes-unitarios.html">testes unitários</a> rápidos, isolados e focados no que realmente importa: o comportamento do código, não os detalhes de quem ele chama.</p>
+
+              <div class="post-tags"><span class="tag">Test doubles</span><span class="tag">Mock</span><span class="tag">Stub</span><span class="tag">Testes unitários</span><span class="tag">Automação</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Testes unitários: a base da pirâmide</span></a>
+                <a class="rel-card" href="tdd-na-pratica.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">TDD na prática: red, green, refactor</span></a>
+                <a class="rel-card" href="contract-testing.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> API</span><span class="rel-title">Contract testing entre serviços</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

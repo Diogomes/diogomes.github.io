@@ -38,6 +38,14 @@
       <description>Onde cada teste vive, o anti-pattern do cone de sorvete e os quadrantes de Agile Testing.</description>
     </item>
     <item>
+      <title>Smoke, sanity, regressão e retest: os tipos que se confundem</title>
+      <link>https://diogomes.github.io/blog/tipos-de-teste.html</link>
+      <guid>https://diogomes.github.io/blog/tipos-de-teste.html</guid>
+      <category>Testes</category>
+      <pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O que cada termo significa, quando rodar cada um e por que vivem sendo trocados.</description>
+    </item>
+    <item>
       <title>Page Object Model: uma suíte E2E que escala</title>
       <link>https://diogomes.github.io/blog/page-object-model.html</link>
       <guid>https://diogomes.github.io/blog/page-object-model.html</guid>
@@ -46,12 +54,28 @@
       <description>O padrão que evita que sua automação vire uma teia de seletores duplicados.</description>
     </item>
     <item>
+      <title>Test doubles: mock, stub, spy, fake e dummy</title>
+      <link>https://diogomes.github.io/blog/test-doubles.html</link>
+      <guid>https://diogomes.github.io/blog/test-doubles.html</guid>
+      <category>Automação</category>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Os cinco dublês de teste e a diferença entre verificar estado e verificar comportamento.</description>
+    </item>
+    <item>
       <title>Playwright na prática: testes E2E modernos</title>
       <link>https://diogomes.github.io/blog/playwright-testes-e2e.html</link>
       <guid>https://diogomes.github.io/blog/playwright-testes-e2e.html</guid>
       <category>Automação</category>
       <pubDate>Thu, 18 Jun 2026 00:00:00 +0000</pubDate>
       <description>Auto-wait, multi-browser, trace viewer e execução paralela — por que o Playwright virou meu padrão.</description>
+    </item>
+    <item>
+      <title>Teste exploratório e session-based testing</title>
+      <link>https://diogomes.github.io/blog/teste-exploratorio.html</link>
+      <guid>https://diogomes.github.io/blog/teste-exploratorio.html</guid>
+      <category>QA</category>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Testar pensando, não seguindo roteiro: charters, sessões time-boxed e heurísticas.</description>
     </item>
     <item>
       <title>Testes flaky: o veneno do seu pipeline</title>
