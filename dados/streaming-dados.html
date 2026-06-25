@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Dados em streaming: batch vs tempo real (Kafka &amp; cia) - Diogo Gomes</title>
+  <meta content="Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade." name="description">
+  <meta content="Dados, Sênior, Streaming, Kafka, Engenharia de Dados, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dados em streaming: batch vs tempo real (Kafka &amp; cia)">
+  <meta property="og:description" content="Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.">
+  <meta property="og:url" content="https://diogomes.github.io/dados/streaming-dados.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Dados em streaming: batch vs tempo real (Kafka & cia)", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/streaming-dados.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="../mobile/index.html"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Dados · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Dados</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-broadcast"></i> Dados · Sênior</span>
+              <h1>Dados em streaming: batch vs tempo real (Kafka &amp; cia)</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Durante décadas, processar dados significou rodar um job toda madrugada sobre o que aconteceu no dia anterior. Hoje, muitos negócios não podem esperar até amanhã: detecção de fraude, recomendação, painéis ao vivo. Entender a diferença entre processamento em lote e em tempo real — e as ferramentas como o Kafka — é conhecimento central de um profissional sênior de dados.</p>
+
+<h2>Batch: processar em lotes</h2>
+<p>No <strong>batch</strong>, os dados são acumulados e processados em blocos, em intervalos definidos — de hora em hora, uma vez por dia. É o modelo dos <a href="etl-pipelines.html">pipelines</a> tradicionais. Tem latência alta (você só vê o resultado no próximo ciclo), mas é simples, barato e fácil de reprocessar: se algo der errado, roda o lote de novo.</p>
+
+<h2>Streaming: evento a evento</h2>
+<p>No <strong>streaming</strong>, cada evento é processado assim que chega — uma compra, um clique, uma leitura de sensor. A latência é de segundos ou menos, permitindo reações imediatas. Em troca, o sistema é mais complexo: precisa rodar continuamente, lidar com eventos fora de ordem e atrasados, e nunca "termina".</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspecto</th><th>Batch</th><th>Streaming</th></tr></thead><tbody>
+<tr><td>Unidade</td><td>Lote de dados</td><td>Evento individual</td></tr>
+<tr><td>Latência</td><td>Alta (minutos a horas)</td><td>Baixa (segundos)</td></tr>
+<tr><td>Complexidade</td><td>Menor</td><td>Maior</td></tr>
+<tr><td>Reprocessamento</td><td>Simples (roda de novo)</td><td>Mais difícil</td></tr>
+<tr><td>Bom para</td><td>Relatórios, cargas diárias</td><td>Alertas, dashboards ao vivo</td></tr>
+</tbody></table></div>
+
+<h2>O log de eventos append-only</h2>
+<p>O coração do streaming moderno é um <strong>log append-only</strong>: uma sequência de eventos à qual você só adiciona no fim, nunca altera o passado. Pense num extrato bancário — cada transação é uma nova linha; você nunca apaga uma anterior. Esse log durável é o que permite reler eventos e que vários consumidores leiam o mesmo fluxo de forma independente.</p>
+
+<h2>Kafka: tópico, partição, consumer</h2>
+<p>O <strong>Kafka</strong> é a implementação mais difundida desse log. Três conceitos bastam para começar:</p>
+<ul>
+  <li><strong>Tópico</strong> — um canal nomeado de eventos ("pedidos", "cliques").</li>
+  <li><strong>Partição</strong> — cada tópico é dividido em partições para escalar (a mesma ideia de <a href="particionamento-sharding.html">particionamento</a>); a ordem é garantida <em>dentro</em> de uma partição.</li>
+  <li><strong>Consumer</strong> — quem lê o tópico, acompanhando sua posição (offset) para saber até onde já processou.</li>
+</ul>
+
+<pre><code>Produtores ──▶ Tópico "pedidos"
+                ├─ Partição 0: [e1][e4][e7]──▶ Consumer A
+                ├─ Partição 1: [e2][e5][e8]──▶ Consumer B
+                └─ Partição 2: [e3][e6][e9]──▶ Consumer C
+                (cada evento append-only, ordem por partição)</code></pre>
+
+<h2>Janelas de tempo</h2>
+<p>Em um fluxo infinito, perguntas como "quantas vendas no último minuto?" exigem recortar o tempo em <strong>janelas</strong>. As mais comuns: <em>tumbling</em> (janelas fixas e sem sobreposição, como "cada 1 minuto") e <em>sliding</em> (janelas que deslizam e se sobrepõem). É assim que você calcula métricas contínuas sem esperar o fluxo "acabar" — porque ele nunca acaba.</p>
+
+<h2>Semânticas de entrega</h2>
+<p>Em sistemas distribuídos, mensagens podem se perder ou se duplicar. Há três garantias possíveis:</p>
+<ul>
+  <li><strong>At-most-once</strong> (no máximo uma vez) — pode perder eventos, nunca duplica. Rápido, mas arriscado.</li>
+  <li><strong>At-least-once</strong> (ao menos uma vez) — nunca perde, mas pode duplicar. O mais comum; exige que o consumidor seja idempotente para tolerar repetições.</li>
+  <li><strong>Exactly-once</strong> (exatamente uma vez) — cada evento processado uma única vez. É a garantia ideal e a mais cara de implementar.</li>
+</ul>
+
+<blockquote>A pergunta não é "batch ou streaming é melhor", e sim "quão fresco o dado precisa ser para gerar valor?". Se a decisão pode esperar a madrugada, batch é mais simples e barato. Se cada segundo conta, paga-se o preço do streaming.</blockquote>
+
+<p>É comum em entrevista pedirem para explicar at-least-once versus exactly-once e por que idempotência importa em streaming. No dia a dia isso aparece quando você decide se uma feature nova precisa de tempo real de verdade ou se um batch de hora em hora já resolve — e essa escolha define muito do custo e da complexidade do sistema.</p>
+
+<h2>Conclusão</h2>
+<p>Batch processa lotes com latência alta e simplicidade; streaming processa evento a evento com baixa latência e mais complexidade. O log append-only — concretizado no Kafka com tópicos, partições e consumers — é a fundação; janelas recortam o tempo; e as semânticas de entrega definem que garantias você tem. Saber escolher entre os dois mundos, pelo frescor que o negócio exige, é o cerne da decisão.</p>
+              <div class="post-tags"><span class="tag">Streaming</span><span class="tag">Kafka</span><span class="tag">Engenharia de Dados</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

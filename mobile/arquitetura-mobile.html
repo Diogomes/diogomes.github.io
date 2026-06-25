@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Arquitetura mobile: MVVM, camadas e testabilidade - Diogo Gomes</title>
+  <meta content="Separar UI, lógica e dados para um app que cresce sem virar caos. MVVM/MVI, camadas e por que isso torna o código testável." name="description">
+  <meta content="Mobile, Sênior, Arquitetura, MVVM, Mobile, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Arquitetura mobile: MVVM, camadas e testabilidade">
+  <meta property="og:description" content="Separar UI, lógica e dados para um app que cresce sem virar caos. MVVM/MVI, camadas e por que isso torna o código testável.">
+  <meta property="og:url" content="https://diogomes.github.io/mobile/arquitetura-mobile.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Arquitetura mobile: MVVM, camadas e testabilidade", "datePublished": "2026-06-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/arquitetura-mobile.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Separar UI, lógica e dados para um app que cresce sem virar caos. MVVM/MVI, camadas e por que isso torna o código testável.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="../dados/index.html"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Mobile · Sênior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Mobile</a></li>
+            <li>Sênior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-sitemap"></i> Mobile · Sênior</span>
+              <h1>Arquitetura mobile: MVVM, camadas e testabilidade</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Quando um app cresce, a lógica de negócio espalhada dentro das telas vira um nó impossível de testar e manter. Arquitetura mobile é a disciplina de separar responsabilidades — UI de um lado, regras de negócio de outro, acesso a dados em um terceiro — para que cada parte seja simples, substituível e testável. É exatamente o tipo de decisão que se espera de um sênior.</p>
+
+<h2>Por que separar UI da lógica</h2>
+<p>A tela (View) deveria ser "burra": mostrar dados e encaminhar eventos. Se ela também decide regras de negócio, faz chamadas de rede e formata dados, fica impossível testá-la sem subir a UI inteira, e qualquer mudança vira risco. Separar permite testar a lógica sem tela, trocar a UI sem reescrever regras, e dividir o trabalho no time.</p>
+<p>A analogia: um restaurante. O garçom (View) anota e serve, mas não cozinha. A cozinha (lógica) prepara o prato sem se importar com qual mesa. O estoque (dados) abastece a cozinha. Cada um troca de pessoa sem parar o restaurante.</p>
+
+<h2>MVC, MVVM e MVI em uma pincelada</h2>
+<p>São padrões que organizam quem fala com quem entre tela, lógica e dados.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspecto</th><th>MVC</th><th>MVVM</th></tr></thead><tbody>
+<tr><td>Peças</td><td>Model, View, Controller</td><td>Model, View, ViewModel</td></tr>
+<tr><td>Quem prepara dados p/ tela</td><td>Controller (some confunde com a View)</td><td>ViewModel, exposto como estado observável</td></tr>
+<tr><td>Acoplamento da View</td><td>Tende a inchar (Massive View Controller)</td><td>View observa o ViewModel; baixo acoplamento</td></tr>
+<tr><td>Testabilidade da lógica</td><td>Difícil quando mistura com a View</td><td>Alta: ViewModel testável sem UI</td></tr>
+</tbody></table></div>
+<p><strong>MVI</strong> (Model-View-Intent) leva o MVVM adiante com um estado único e imutável e um fluxo unidirecional: a View emite intenções, elas viram um novo estado, a View se redesenha. Frameworks declarativos (Compose, SwiftUI, React) combinam naturalmente com essa ideia.</p>
+
+<h2>Camadas: apresentação, domínio, dados</h2>
+<pre><code>+------------------------------------+
+|  APRESENTACAO  (View + ViewModel)  |  o que o usuario ve
++------------------------------------+
+|  DOMINIO       (casos de uso,      |  regras de negocio
+|                 entidades)         |  puras, sem framework
++------------------------------------+
+|  DADOS         (repositorios,      |  de onde vem o dado
+|                 API, banco, cache) |  (rede/local)
++------------------------------------+
+   dependencia aponta para baixo --&gt;</code></pre>
+<p>A regra de ouro: dependências apontam para dentro/baixo. O domínio não conhece a UI nem a API concreta — ele é o coração estável do app.</p>
+
+<h2>O repositório</h2>
+<p>O <strong>repositório</strong> é a fachada entre domínio e dados: ele decide se um dado vem da rede, do <a href="estado-dados-mobile.html">banco local</a> ou do cache, e entrega isso pronto para o domínio. A View nunca sabe (nem deve saber) a origem. Isso é o que viabiliza estratégias como <a href="offline-sync.html">offline-first</a> sem espalhar essa lógica pela tela.</p>
+<pre><code>interface UsuarioRepository {
+  fun obter(id): Usuario
+}
+// implementacao decide: cache? local? rede?
+// dominio so chama obter(id) e confia</code></pre>
+
+<h2>Injeção de dependência</h2>
+<p>Em vez de uma classe criar suas próprias dependências (<code>val api = ApiReal()</code>), ela <em>recebe</em> de fora. Assim, em produção você injeta a implementação real; em teste, uma falsa (fake/mock). Ferramentas como Hilt/Dagger, Koin, Swinject ou injeção manual via construtor fazem isso. É comum em entrevista pedir para explicar por que DI ajuda nos testes — a resposta é exatamente poder substituir o real pelo falso.</p>
+
+<h2>Por que tudo isso torna o app testável</h2>
+<ul>
+  <li><strong>ViewModel/casos de uso</strong>: testáveis com testes unitários rápidos, sem subir tela.</li>
+  <li><strong>Repositório atrás de interface</strong>: você injeta um fake e testa sem rede real.</li>
+  <li><strong>Domínio puro</strong>: sem dependência de framework, roda em qualquer ambiente de teste.</li>
+</ul>
+
+<blockquote>Arquitetura não é sobre diagramas bonitos; é sobre conseguir trocar uma peça (a UI, o banco, a API) sem reescrever as outras — e provar que cada uma funciona isoladamente com um teste.</blockquote>
+
+<h2>Conclusão</h2>
+<p>Separar apresentação, domínio e dados, esconder a origem dos dados atrás de um repositório, usar MVVM/MVI para libertar a View de regras e injetar dependências para tornar tudo substituível: esse é o kit de arquitetura que mantém um app grande sustentável e testável. O sênior não escolhe um padrão por moda, mas pela testabilidade e clareza de responsabilidades que ele traz.</p>
+              <div class="post-tags"><span class="tag">Arquitetura</span><span class="tag">MVVM</span><span class="tag">Mobile</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

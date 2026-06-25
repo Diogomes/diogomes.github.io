@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>SQL além do básico: agregações, GROUP BY e subqueries - Diogo Gomes</title>
+  <meta content="Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados." name="description">
+  <meta content="Dados, Júnior, SQL, Consultas, Fundamentos, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SQL além do básico: agregações, GROUP BY e subqueries">
+  <meta property="og:description" content="Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.">
+  <meta property="og:url" content="https://diogomes.github.io/dados/consultas-sql.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SQL além do básico: agregações, GROUP BY e subqueries", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/consultas-sql.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="../mobile/index.html"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Dados · Júnior</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Dados</a></li>
+            <li>Júnior</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-spreadsheet"></i> Dados · Júnior</span>
+              <h1>SQL além do básico: agregações, GROUP BY e subqueries</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>Saber fazer <code>SELECT * FROM tabela</code> é o básico do básico. O que separa quem está começando de quem realmente entrega valor com dados é a capacidade de responder perguntas de negócio: "qual o ticket médio?", "quais clientes compraram mais?". Para isso, você precisa de agregações, agrupamentos e subconsultas.</p>
+
+<h2>Funções de agregação: resumindo muitas linhas em um número</h2>
+<p>As funções de agregação pegam várias linhas e devolvem um único valor. As cinco fundamentais são:</p>
+<ul>
+  <li><strong>COUNT</strong> — conta linhas. <code>COUNT(*)</code> conta tudo; <code>COUNT(coluna)</code> ignora nulos.</li>
+  <li><strong>SUM</strong> — soma valores numéricos.</li>
+  <li><strong>AVG</strong> — calcula a média.</li>
+  <li><strong>MIN / MAX</strong> — o menor e o maior valor.</li>
+</ul>
+<p>Sozinhas, elas resumem a tabela inteira. <code>SELECT AVG(valor) FROM pedidos</code> devolve o ticket médio de todos os pedidos.</p>
+
+<h2>GROUP BY: agregar por categoria</h2>
+<p>Quase nunca queremos o resumo de tudo — queremos por cliente, por mês, por categoria. O <code>GROUP BY</code> divide as linhas em grupos e aplica a agregação a cada um separadamente.</p>
+
+<pre><code>SELECT cliente_id, COUNT(*) AS total_pedidos, SUM(valor) AS gasto
+FROM pedidos
+GROUP BY cliente_id;</code></pre>
+
+<p>A regra que mais gera erro: toda coluna no <code>SELECT</code> que não está dentro de uma função de agregação <strong>precisa</strong> estar no <code>GROUP BY</code>.</p>
+
+<h2>WHERE vs HAVING: a diferença que sempre cai</h2>
+<p>Ambos filtram, mas em momentos diferentes do processamento. Pense numa linha de produção:</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspecto</th><th>WHERE</th><th>HAVING</th></tr></thead><tbody>
+<tr><td>Quando age</td><td>Antes de agrupar</td><td>Depois de agrupar</td></tr>
+<tr><td>Filtra</td><td>Linhas individuais</td><td>Grupos (resultados agregados)</td></tr>
+<tr><td>Pode usar SUM/COUNT?</td><td>Não</td><td>Sim</td></tr>
+</tbody></table></div>
+
+<p>Por exemplo: "clientes que gastaram mais de R$ 1000". O filtro é sobre a soma, então usa-se <code>HAVING</code>:</p>
+
+<pre><code>SELECT cliente_id, SUM(valor) AS gasto
+FROM pedidos
+WHERE valor &gt; 0
+GROUP BY cliente_id
+HAVING SUM(valor) &gt; 1000;</code></pre>
+
+<h2>Subqueries: consultas dentro de consultas</h2>
+<p>Uma <strong>subquery</strong> é um <code>SELECT</code> aninhado dentro de outro. Útil quando o filtro depende de um cálculo. "Pedidos acima da média":</p>
+
+<pre><code>SELECT id, valor
+FROM pedidos
+WHERE valor &gt; (SELECT AVG(valor) FROM pedidos);</code></pre>
+
+<p>A subquery interna roda primeiro, calcula a média, e o resultado vira o critério da consulta externa.</p>
+
+<h2>CTE: organizando com WITH</h2>
+<p>Quando a lógica fica complexa, subqueries aninhadas viram um nó. A <strong>CTE</strong> (Common Table Expression), com a cláusula <code>WITH</code>, dá um nome a um resultado intermediário, deixando a consulta legível como uma receita passo a passo.</p>
+
+<pre><code>WITH gasto_por_cliente AS (
+  SELECT cliente_id, SUM(valor) AS gasto
+  FROM pedidos
+  GROUP BY cliente_id
+)
+SELECT * FROM gasto_por_cliente
+WHERE gasto &gt; 1000;</code></pre>
+
+<blockquote>A maioria das perguntas de negócio é uma agregação com um filtro. Quem entende a ordem em que o SQL processa — filtra, agrupa, filtra de novo — escreve consultas corretas de primeira em vez de chutar.</blockquote>
+
+<p>É comum em entrevista pedir para traduzir uma pergunta em palavras ("os 5 produtos mais vendidos do mês") em SQL, e o ponto avaliado quase sempre é justamente o <code>GROUP BY</code> com <code>HAVING</code> ou uma subquery bem colocada. No dia a dia isso aparece em todo relatório e dashboard que você precisa alimentar.</p>
+
+<h2>Conclusão</h2>
+<p>Agregações, <code>GROUP BY</code>, a distinção <code>WHERE</code>/<code>HAVING</code>, subqueries e CTEs formam o ferramental que transforma tabelas brutas em respostas. Tudo isso assume que você entende como as tabelas se relacionam — se ainda tem dúvidas aí, vale revisar <a href="modelagem-relacional.html">modelagem relacional</a> antes de seguir.</p>
+              <div class="post-tags"><span class="tag">SQL</span><span class="tag">Consultas</span><span class="tag">Fundamentos</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="indices-performance.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Pleno</span><span class="rel-title">Índices e performance: por que sua query está lenta</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Modelagem dimensional: fato, dimensão e o data warehouse - Diogo Gomes</title>
+  <meta content="Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse." name="description">
+  <meta content="Dados, Pleno, Data Warehouse, Modelagem, Analytics, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Modelagem dimensional: fato, dimensão e o data warehouse">
+  <meta property="og:description" content="Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.">
+  <meta property="og:url" content="https://diogomes.github.io/dados/modelagem-dimensional.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Modelagem dimensional: fato, dimensão e o data warehouse", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/modelagem-dimensional.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-data"></i> <span data-i18n="nav.dados">Dados</span></a></li>
+          <li><a href="../mobile/index.html"><i class="bx bx-mobile-alt"></i> <span data-i18n="nav.mobile">Mobile</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Dados · Pleno</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Dados</a></li>
+            <li>Pleno</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-cube"></i> Dados · Pleno</span>
+              <h1>Modelagem dimensional: fato, dimensão e o data warehouse</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 15 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>O modelo relacional normalizado é perfeito para um sistema que processa pedidos um a um. Mas quando o gestor pergunta "qual a receita por região, por mês, por categoria de produto, nos últimos três anos?", esse mesmo modelo trava. A modelagem dimensional nasceu para resolver justamente esse tipo de pergunta analítica.</p>
+
+<h2>OLTP vs OLAP: dois mundos diferentes</h2>
+<p>Sistemas transacionais (<strong>OLTP</strong>) são otimizados para muitas escritas pequenas e consistentes — inserir um pedido, atualizar um estoque. Por isso são normalizados. Já a análise (<strong>OLAP</strong>) faz poucas consultas, mas enormes, varrendo milhões de linhas e cruzando muitas dimensões.</p>
+<p>O modelo normalizado, com suas dezenas de tabelas, exige <a href="consultas-sql.html">JOINs</a> caríssimos para essas perguntas. A modelagem dimensional reorganiza os dados deliberadamente para a leitura analítica — uma desnormalização proposital, como antecipamos em <a href="normalizacao.html">normalização</a>.</p>
+
+<h2>Tabela fato: o que aconteceu</h2>
+<p>A <strong>tabela fato</strong> guarda os eventos mensuráveis do negócio — uma venda, um clique, um embarque. Suas colunas são de dois tipos: as <strong>métricas</strong> (valores numéricos que você soma e calcula, como quantidade e valor) e as <strong>chaves estrangeiras</strong> que apontam para as dimensões. A fato tende a ser longa e estreita: muitíssimas linhas, poucas colunas.</p>
+
+<h2>Tabela dimensão: o contexto</h2>
+<p>As <strong>dimensões</strong> dão contexto às métricas: <em>quem</em>, <em>o quê</em>, <em>quando</em>, <em>onde</em>. Dimensão de cliente, de produto, de tempo, de loja. São tabelas curtas e largas: relativamente poucas linhas, muitas colunas descritivas. É por elas que você filtra e agrupa ("vendas por categoria de produto" usa a dimensão produto).</p>
+
+<h2>Star schema: o desenho clássico</h2>
+<p>Quando você coloca a fato no centro e as dimensões ao redor, ligadas diretamente a ela, o desenho lembra uma estrela — daí <strong>star schema</strong>:</p>
+
+<pre><code>      dim_tempo      dim_produto
+          \             /
+           \           /
+            +---------------+
+            |  fato_vendas  |
+            | (qtd, valor)  |
+            +---------------+
+           /           \
+          /             \
+     dim_cliente      dim_loja</code></pre>
+
+<p>Cada dimensão se conecta à fato por uma chave. Como as dimensões são desnormalizadas (sem subníveis), basta um JOIN por dimensão — rápido e simples de consultar.</p>
+
+<h2>Snowflake: quando a dimensão se ramifica</h2>
+<p>No <strong>snowflake schema</strong>, as dimensões são normalizadas em subtabelas: a dimensão produto se desdobra em categoria, que se desdobra em departamento. Economiza espaço e reduz redundância, mas adiciona JOINs e complica a consulta.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspecto</th><th>Star schema</th><th>Snowflake</th></tr></thead><tbody>
+<tr><td>Dimensões</td><td>Desnormalizadas (planas)</td><td>Normalizadas (ramificadas)</td></tr>
+<tr><td>JOINs por consulta</td><td>Menos</td><td>Mais</td></tr>
+<tr><td>Redundância</td><td>Maior</td><td>Menor</td></tr>
+<tr><td>Performance de leitura</td><td>Melhor</td><td>Pior</td></tr>
+</tbody></table></div>
+
+<p>Na prática, o star schema costuma vencer no analítico, porque ali leitura rápida vale mais que economia de espaço.</p>
+
+<h2>Grão: a decisão mais importante</h2>
+<p>O <strong>grão</strong> (grain) define o que uma linha da fato representa. Uma linha por venda? Por item da venda? Por dia agregado? Essa é a primeira decisão de qualquer modelo dimensional, porque ela determina o nível de detalhe possível. Grão fino dá flexibilidade; grão grosso economiza espaço mas perde detalhe. Misturar grãos na mesma fato é um erro clássico.</p>
+
+<blockquote>OLTP otimiza para escrever um fato de cada vez; dimensional otimiza para ler milhões de fatos de uma vez. Não é que um seja melhor — eles resolvem problemas opostos, e você precisa do modelo certo para a pergunta certa.</blockquote>
+
+<p>É comum em entrevista pedir para você desenhar um star schema a partir de um cenário ("modele as vendas de um e-commerce") e justificar o grão escolhido. No dia a dia isso aparece quando você projeta um data warehouse ou tenta entender por que um dashboard demora a carregar.</p>
+
+<h2>Conclusão</h2>
+<p>A modelagem dimensional separa <em>fatos</em> (métricas mensuráveis) de <em>dimensões</em> (contexto), organiza tudo num star schema otimizado para leitura, e gira em torno da escolha do grão. Entender por que ela difere do modelo OLTP normalizado é o passo que abre a porta do mundo analítico e do data warehouse.</p>
+              <div class="post-tags"><span class="tag">Data Warehouse</span><span class="tag">Modelagem</span><span class="tag">Analytics</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
