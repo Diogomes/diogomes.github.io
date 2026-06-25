@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Teste exploratório e session-based testing - Diogo Gomes</title>
+  <meta content="Testar pensando, não seguindo roteiro. O que é teste exploratório, como dar estrutura com session-based testing e as heurísticas que guiam a investigação." name="description">
+  <meta content="teste exploratório, session-based testing, heurísticas, charter, QA, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Teste exploratório e session-based testing">
+  <meta property="og:description" content="Testar pensando, não seguindo roteiro: charters, heurísticas e a estrutura por trás do exploratório.">
+  <meta property="og:url" content="https://diogomes.github.io/blog/teste-exploratorio.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Teste exploratório e session-based testing", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/teste-exploratorio.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Testar pensando, não seguindo roteiro: charters, heurísticas e a estrutura por trás do exploratório.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../backend/index.html"><i class="bx bx-server"></i> <span data-i18n="nav.backend">Back-end</span></a></li>
+          <li><a href="../frontend/index.html"><i class="bx bx-layout"></i> <span data-i18n="nav.frontend">Front-end</span></a></li>
+          <li><a href="../devops/index.html"><i class="bx bx-infinite"></i> <span data-i18n="nav.devops">DevOps</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>QA</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>QA</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-bulb"></i> QA</span>
+              <h1>Teste exploratório e session-based testing</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+              <p>Existe uma confusão comum: achar que teste exploratório é "clicar por aí sem rumo". É o oposto. O teste exploratório é uma abordagem em que <strong>design, execução e aprendizado acontecem ao mesmo tempo</strong> — cada resultado que você observa orienta o próximo passo. É disciplina, não bagunça. E é justamente o tipo de teste que a automação não consegue fazer: usar a cabeça em tempo real.</p>
+
+              <h2>Scripted vs exploratório</h2>
+              <p>No teste roteirizado (scripted), alguém projeta os casos antes e depois alguém os executa — o pensamento e a ação são separados no tempo. No exploratório, eles são simultâneos:</p>
+              <pre><code>  SCRIPTED:     pensar  →  escrever caso  →  (depois)  →  executar
+                (o teste só faz o que foi previsto)
+
+  EXPLORATÓRIO: pensar + executar + aprender   (em loop, ao mesmo tempo)
+                   ▲                    │
+                   └──── o que observei guia o próximo passo ────┘</code></pre>
+              <p>Os dois são complementares. O scripted (e a automação) garante cobertura repetível do esperado; o exploratório encontra o <em>inesperado</em> — o bug que ninguém imaginou ao escrever os casos.</p>
+
+              <blockquote>Automação verifica o que você já sabe perguntar. O teste exploratório descobre as perguntas que você ainda não fez.</blockquote>
+
+              <h2>O problema: como gerenciar algo tão livre?</h2>
+              <p>Se o exploratório não tem roteiro, como planejar, medir e reportar? A resposta é o <strong>Session-Based Test Management</strong> (SBTM), criado por James e Jonathan Bach. Ele dá estrutura sem matar a liberdade, através de três ideias:</p>
+              <ul>
+                <li><strong>Charter (carta de missão):</strong> uma frase curta que define o foco da sessão — o que explorar e com que objetivo. Ex.: <em>"Explorar o upload de arquivos com foco em formatos e tamanhos inválidos."</em></li>
+                <li><strong>Sessão time-boxed:</strong> um bloco ininterrupto e cronometrado (tipicamente 60–90 min) dedicado a um charter.</li>
+                <li><strong>Notas e debrief:</strong> registro do que foi testado, bugs, dúvidas e ideias — seguido de uma conversa rápida com o time.</li>
+              </ul>
+              <p>Assim o exploratório vira reportável: dá para dizer "rodei 3 sessões sobre o checkout, achei 2 bugs e 4 perguntas de regra" — métrica concreta sobre uma atividade criativa.</p>
+
+              <h2>Heurísticas: o que guia a investigação</h2>
+              <p>O exploratório não é aleatório porque o testador usa <strong>heurísticas</strong> — atalhos mentais que apontam onde costuma haver defeito. Duas muito usadas:</p>
+              <pre><code>SFDPOT (James Bach) — "passear" pelo produto por dimensões:
+  Structure   o que o produto É (arquivos, código, hardware)
+  Function    o que ele FAZ (recursos, cálculos, tratamento de erro)
+  Data        o que ele PROCESSA (entradas, saídas, dados grandes/vazios)
+  Platform    de que ele DEPENDE (SO, navegador, dependências)
+  Operations  como ele é USADO (perfis de uso, ambientes)
+  Time        como o TEMPO afeta (timeout, fuso, concorrência)</code></pre>
+              <pre><code>RCRCRC (regressão) — onde olhar quando o tempo é curto:
+  Recent      o que mudou recentemente
+  Core        funções essenciais do produto
+  Risk        áreas de maior risco
+  Configuration  itens sensíveis a configuração
+  Repaired    o que foi corrigido há pouco
+  Chronic     o que vive quebrando</code></pre>
+              <p>Heurísticas transformam "testar à toa" em "testar com hipóteses" — você ataca o sistema por ângulos onde a experiência diz que bugs se escondem.</p>
+
+              <h2>Onde isso vive na estratégia</h2>
+              <p>Nos <a href="piramide-de-testes.html">quadrantes de Agile Testing</a>, o exploratório é o coração do Q3 (testes que criticam o produto sob a ótica do negócio). Ele não substitui a automação da base da pirâmide — combina com ela: a automação cobre a regressão repetitiva e libera o tempo do humano para a investigação que só o humano faz bem.</p>
+
+              <h2>Conclusão</h2>
+              <p>Teste exploratório é pensamento crítico aplicado em tempo real, e o session-based testing é o que o torna gerenciável e reportável. Dominar charters, sessões time-boxed e heurísticas como SFDPOT e RCRCRC é o que distingue o QA que "testa a tela" do que <em>investiga o produto</em> — e é onde aparecem os bugs que nenhum roteiro previu.</p>
+
+              <div class="post-tags"><span class="tag">Teste exploratório</span><span class="tag">Session-based</span><span class="tag">Heurísticas</span><span class="tag">SFDPOT</span><span class="tag">QA</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pirâmide de testes e os quadrantes ágeis</span></a>
+                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">A arte do bug report</span></a>
+                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Técnicas de design de teste: cobrir mais com menos casos</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
