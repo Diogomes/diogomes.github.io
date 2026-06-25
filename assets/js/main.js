@@ -485,8 +485,8 @@
       let blogSearch = '';
       let noResults = select('#blog-no-results');
 
-      const blogFilterFn = function () {
-        var el = this;
+      const blogFilterFn = function (itemElem) {
+        var el = itemElem || this;
         var okCat = blogCat === '*' || el.matches(blogCat);
         if (!okCat) return false;
         if (!blogSearch) return true;
