@@ -284,6 +284,95 @@
       </div>
     </section><!-- End Featured Course Section -->
 
+    <!-- ======= Allert — app mobile ======= -->
+    <section id="allert" class="featured-game">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-9" data-aos="fade-up">
+            <span class="game-badge"><span class="pulse"></span> Projeto em destaque · App mobile</span>
+            <h2 class="game-title">Allert</h2>
+            <p class="game-subtitle">Antecipar e relatar desastres naturais, em tempo real · Android (Java) com backend REST próprio</p>
+            <p class="game-lead">
+              O <strong>Allert</strong> conecta quem está na rua (o cidadão) com quem coordena a resposta
+              (a Defesa Civil), em cima de um <strong>mapa vivo</strong> que mostra o que está acontecendo agora —
+              alagamentos, deslizamentos, queimadas, incêndios e mais. O papel do usuário (definido no token
+              <strong>JWT</strong>) decide telas e permissões: o <strong>cidadão</strong> relata ocorrências, segue
+              áreas e pede socorro; a <strong>autarquia</strong> acompanha os relatos, edita o mapa de risco e emite
+              alertas para a população.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-chip"><i class="bx bxl-android"></i> Android · Java</span>
+              <span class="tech-chip"><i class="bx bxl-nodejs"></i> Node.js + Express</span>
+              <span class="tech-chip"><i class="bx bx-data"></i> SQLite</span>
+              <span class="tech-chip"><i class="bx bx-lock-alt"></i> JWT + papéis</span>
+              <span class="tech-chip"><i class="bx bx-broadcast"></i> Tempo real (SSE)</span>
+              <span class="tech-chip"><i class="bx bx-map-alt"></i> Google Maps</span>
+              <span class="tech-chip"><i class="bx bx-cloud"></i> Open-Meteo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4 mt-2 align-items-center">
+
+          <div class="col-lg-4" data-aos="fade-up">
+            <div class="video-frame vertical">
+              <iframe src="https://www.youtube.com/embed/TXfj8TFmwh8"
+                title="Allert — demonstração"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="text-center mt-3">
+              <a href="https://youtube.com/shorts/TXfj8TFmwh8" target="_blank" rel="noopener" class="btn-game">
+                <i class="bx bxl-youtube"></i> Assistir ao vídeo
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+
+              <div class="col-md-6">
+                <div class="course-card-info">
+                  <h4><i class="bx bx-user"></i> Para o cidadão</h4>
+                  <p>Relato detalhado (tipo, foto da câmera, GPS) ou <strong>relato automático</strong> de urgência em
+                    poucos toques. Mapa de risco, <strong>feed por área</strong>, acompanhamento dos próprios relatos e
+                    um <strong>SOS</strong> com discagem rápida (Defesa Civil 199, Bombeiros 193, SAMU 192, Polícia 190)
+                    e compartilhamento de localização.</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card-info">
+                  <h4><i class="bx bx-buildings"></i> Para a autarquia</h4>
+                  <p>Lista de relatos (concluídos/não concluídos, com anexos) e marcação de conclusão, <strong>mapa de
+                    risco editável</strong> (criar/editar/remover áreas) e <strong>emissão de alertas</strong> por área,
+                    tipo e raio de cobertura para a população.</p>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="course-card-info">
+                  <h4><i class="bx bx-pulse"></i> Tempo real (onde mais entrou engenharia)</h4>
+                  <p>
+                    <strong>Push de alerta via SSE:</strong> um <em>foreground service</em> mantém um canal
+                    Server-Sent Events sempre aberto — o alerta chega ao celular mesmo fora do app, sem espera.
+                    <strong>Direcionado por proximidade:</strong> só é notificado quem está na zona afetada (raio +
+                    margem), pela localização real. <strong>Camada de chuva quase em tempo real</strong> via Open-Meteo
+                    desenha no mapa o raio de cobertura colorido pelo risco de alagamento, e relatos "ao vivo" são
+                    <strong>confirmados pela comunidade</strong>, mantendo o mapa atualizado pela própria multidão.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Allert Section -->
+
     <!-- ======= Comentários sobre os projetos ======= -->
     <section id="comentarios" class="comments">
       <div class="container">
