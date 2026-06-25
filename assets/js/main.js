@@ -618,13 +618,19 @@
   /**
    * Animation on scroll
    */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
+  // Inicializa o AOS o quanto antes (DOM pronto), sem esperar imagens/iframes
+  // (mapa, vídeos) carregarem — evita o "flash" de conteúdo vazio entre o
+  // cabeçalho e a grade ao trocar de página.
+  const initAOS = () => AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
   });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAOS);
+  } else {
+    initAOS();
+  }
 
 })()

@@ -1,5 +1,5 @@
 /* Service worker — Diogo Gomes portfólio (PWA) */
-const CACHE = 'dg-portfolio-v1';
+const CACHE = 'dg-portfolio-v3';
 const CORE = [
   '/index.html',
   '/projects.html',
@@ -41,12 +41,18 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Estáticos: cache-first
+  // Estáticos (CSS/JS/imagens): stale-while-revalidate.
+  // Serve do cache (rápido) e, em paralelo, busca a versão nova e atualiza o
+  // cache — assim correções de JS/CSS chegam ao usuário no carregamento seguinte
+  // sem depender de trocar o nome do cache a cada deploy.
   e.respondWith(
-    caches.match(req).then((cached) => cached || fetch(req).then((res) => {
-      const copy = res.clone();
-      caches.open(CACHE).then((c) => c.put(req, copy));
-      return res;
-    }).catch(() => cached))
+    caches.match(req).then((cached) => {
+      const network = fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy));
+        return res;
+      }).catch(() => cached);
+      return cached || network;
+    })
   );
 });
