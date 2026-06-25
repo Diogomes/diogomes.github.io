@@ -69,7 +69,7 @@
       'nav.home': 'Home', 'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills',
       'nav.portfolio': 'Portfolio', 'nav.contact': 'Contact', 'nav.projects': 'Projects',
       'nav.game': 'Game', 'nav.blog': 'Blog',
-      'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps',
+      'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps', 'nav.tracks': 'Tracks',
       'hero.iam': "I'm",
       'about.h2': 'About',
       'about.intro': 'I like technology and how it can help us solve problems.',
@@ -85,6 +85,8 @@
       'resume.intro': 'Quality Engineer at Liferay for 5+ years, working on LATAM/EMEA-scale projects — from planning and running manual and automated tests to mentoring QAs. End-to-end automation with Selenium, Playwright, Cypress and Appium (Java, JavaScript, Python), aligned with BDD, TDD, ATDD and Scrum. A scientific background (MSc in Biomedical Engineering) brings a rigorous, investigative way of thinking about quality. Currently deepening functional programming and game development in personal projects.',
       'portfolio.h2': 'Portfolio',
       'portfolio.intro': "A selection of projects, games and tutorials I've produced. Click play to watch each item's video.",
+      'tracks.h2': 'Study tracks',
+      'tracks.intro': 'Blogs by field and seniority level — what to understand at each stage of your career, for technical interviews and day-to-day work.',
       'contact.h2': 'Contact', 'contact.location': 'Location:', 'contact.email': 'Email:', 'contact.call': 'Call:',
       'footer.credits': 'Designed by'
     };
