@@ -6,6 +6,14 @@
     <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
     <language>pt-BR</language>
     <item>
+      <title>Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</title>
+      <link>https://diogomes.github.io/blog/testes-de-acessibilidade.html</link>
+      <guid>https://diogomes.github.io/blog/testes-de-acessibilidade.html</guid>
+      <category>QA</category>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <description>axe pega cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. WCAG AA e um processo em camadas.</description>
+    </item>
+    <item>
       <title>Testes mobile com Appium: o que muda quando o alvo é um app</title>
       <link>https://diogomes.github.io/blog/testes-mobile-appium.html</link>
       <guid>https://diogomes.github.io/blog/testes-mobile-appium.html</guid>
