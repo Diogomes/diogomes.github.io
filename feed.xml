@@ -6,6 +6,14 @@
     <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
     <language>pt-BR</language>
     <item>
+      <title>Gestão de dados de teste: o gargalo invisível da automação</title>
+      <link>https://diogomes.github.io/blog/gestao-dados-de-teste.html</link>
+      <guid>https://diogomes.github.io/blog/gestao-dados-de-teste.html</guid>
+      <category>Testes</category>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A maior causa de teste instável não é a lógica, é o dado: factories sob demanda, isolamento e cada teste cuidando do próprio estado.</description>
+    </item>
+    <item>
       <title>Visual regression testing: quando o teste passa mas a tela está quebrada</title>
       <link>https://diogomes.github.io/blog/visual-regression-testing.html</link>
       <guid>https://diogomes.github.io/blog/visual-regression-testing.html</guid>
