@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Visual regression testing: quando o teste passa mas a tela está quebrada - Diogo Gomes</title>
+  <meta content="Seus testes funcionais passam e mesmo assim o botão sumiu, o layout vazou ou o texto ficou invisível. Como o teste de regressão visual compara screenshots, lida com falsos positivos e entra no pipeline." name="description">
+  <meta content="Testes, Visual Regression, Snapshot, Screenshot, Percy, Playwright, QA, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Visual regression testing: quando o teste passa mas a tela está quebrada">
+  <meta property="og:description" content="Seus testes funcionais passam e mesmo assim o layout quebrou. Como o teste de regressão visual compara screenshots e lida com falsos positivos.">
+  <meta property="og:url" content="https://diogomes.github.io/blog/visual-regression-testing.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Visual regression testing: quando o teste passa mas a tela está quebrada", "datePublished": "2026-06-29", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/visual-regression-testing.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Seus testes funcionais passam e mesmo assim o layout quebrou. Como o teste de regressão visual compara screenshots e lida com falsos positivos.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Automação</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>Automação</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-image"></i> Automação</span>
+              <h1>Visual regression testing: quando o teste passa mas a tela está quebrada</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 29 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>O teste E2E clica no botão, confere que o texto certo apareceu e fica verde. Enquanto isso, em produção, um CSS quebrado empurrou esse botão para fora da tela, deixou o texto branco no fundo branco ou colapsou o menu inteiro. O teste passou porque ele verifica <em>o DOM</em>, não <em>a aparência</em>. Essa lacuna — funcional ✓, visual ✗ — é exatamente o que o teste de regressão visual existe para fechar.</p>
+
+<h2>O ponto cego dos testes funcionais</h2>
+<p>Um teste tradicional pergunta "o elemento existe e tem o conteúdo certo?". Ele consegue afirmar que <code>&lt;button&gt;Comprar&lt;/button&gt;</code> está no DOM e é clicável. O que ele <em>não</em> vê: que o botão está com <code>color</code> igual ao <code>background</code>, que um <code>z-index</code> o escondeu atrás de outro elemento, que a fonte não carregou, ou que em 1280px de largura o card vazou para fora do container. Para o usuário, isso é o produto quebrado. Para a suíte funcional, é tudo verde.</p>
+
+<h2>Como funciona: baseline, comparação e diff</h2>
+<p>A ideia é direta: tire uma foto da tela e compare com uma foto aprovada anteriormente. O fluxo tem três passos:</p>
+<pre><code>  1. BASELINE      captura a tela "correta" e a guarda como referência
+        │
+  2. COMPARAÇÃO    a cada execução, tira novo screenshot e compara
+        │          pixel a pixel com a baseline
+        ▼
+  3. DIFF          ┌─ idênticos  → passa
+                   └─ diferentes → falha + imagem destacando o que mudou</code></pre>
+<p>Quando há diferença, a ferramenta gera uma imagem de <em>diff</em> realçando as regiões alteradas. Aí entra a decisão humana: se a mudança é um bug, você conserta; se é uma mudança <em>intencional</em> (você de fato redesenhou o botão), você <strong>aprova a nova baseline</strong> e ela vira a referência dali pra frente.</p>
+
+<h2>O grande inimigo: o falso positivo</h2>
+<p>Comparar pixel a pixel é poderoso e ingênuo ao mesmo tempo. Um monte de coisa muda a imagem sem que nada esteja quebrado — e cada uma vira um teste vermelho que não é bug:</p>
+<div class="table-wrap"><table><thead><tr><th>Fonte de ruído</th><th>Como domar</th></tr></thead><tbody>
+<tr><td>Anti-aliasing de fontes entre SOs</td><td>Gerar baseline no mesmo ambiente (container/CI), não no laptop</td></tr>
+<tr><td>Conteúdo dinâmico (datas, nomes, anúncios)</td><td>Mascarar/ignorar a região no screenshot</td></tr>
+<tr><td>Animações e carrosséis</td><td>Desabilitar animações e esperar a tela estabilizar</td></tr>
+<tr><td>Pequenas diferenças de renderização</td><td>Definir um <em>threshold</em> de tolerância (ex.: 0,1%)</td></tr>
+</tbody></table></div>
+<blockquote>Teste visual sem controle de falso positivo morre em duas semanas: o time se cansa de aprovar diffs que não são bugs e passa a clicar em "aprovar tudo" — momento em que o teste deixa de testar. Estabilidade da baseline não é detalhe, é o que mantém o teste vivo.</blockquote>
+
+<h2>Pixel a pixel vs. comparação perceptual</h2>
+<p>As ferramentas mais novas não comparam pixels crus: usam <em>diff perceptual</em>, que ignora variações imperceptíveis ao olho humano (como uma diferença mínima de anti-aliasing) e foca no que uma pessoa de fato notaria. É a diferença entre um teste que reclama de tudo e um que reclama do que importa. Ferramentas comuns: <strong>Percy</strong>, <strong>Chromatic</strong> (para Storybook), <strong>Applitools</strong> (com checagem por IA) e os <em>snapshots</em> visuais nativos do <a href="playwright-testes-e2e.html">Playwright</a> (<code>toHaveScreenshot</code>) e do Cypress.</p>
+<pre><code>// Snapshot visual nativo no Playwright
+await expect(page).toHaveScreenshot('checkout.png', {
+  maxDiffPixelRatio: 0.01,        // tolerância
+  mask: [page.locator('.data-hoje')] // ignora região dinâmica
+})</code></pre>
+
+<h2>Onde encaixar (sem encher o pipeline)</h2>
+<p>Regressão visual é cara: gera imagens, exige armazenamento e pede revisão humana dos diffs. Então não saia "screenshotando" tudo. A estratégia que funciona é mirar nos pontos de maior risco visual — o design system / biblioteca de componentes (onde uma mudança contamina o app inteiro) e um punhado de páginas-chave, em algumas larguras de tela representativas. É a lógica da <a href="piramide-de-testes.html">pirâmide</a> de novo: muitos testes baratos embaixo, poucos testes visuais caros no topo.</p>
+<p>No <a href="cicd-para-qa.html">pipeline</a>, o lugar natural é o pull request: a ferramenta posta os diffs como um check, e o merge espera alguém aprovar a mudança visual. Assim a revisão de aparência acontece junto com a revisão de código, e não na reclamação do usuário depois do deploy.</p>
+
+<h2>Conclusão</h2>
+<p>Teste funcional garante que o sistema <em>faz</em> a coisa certa; teste de regressão visual garante que ele <em>parece</em> certo — e os dois falham por motivos diferentes. Capture baselines em ambiente estável, ataque o falso positivo com máscaras, threshold e diff perceptual, e concentre os screenshots no design system e nas páginas críticas. Feito assim, ele pega a classe inteira de bugs que passa despercebida entre "o teste está verde" e "por que o site está assim?".</p>
+              <div class="post-tags"><span class="tag">Visual Regression</span><span class="tag">Snapshot</span><span class="tag">Screenshot</span><span class="tag">Playwright</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">Testes flaky: o veneno do seu pipeline</span></a>
+                <a class="rel-card" href="testes-de-acessibilidade.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Testes de acessibilidade: o que a automação pega e o que não pega</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

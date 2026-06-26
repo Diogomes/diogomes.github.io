@@ -6,6 +6,14 @@
     <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
     <language>pt-BR</language>
     <item>
+      <title>Visual regression testing: quando o teste passa mas a tela está quebrada</title>
+      <link>https://diogomes.github.io/blog/visual-regression-testing.html</link>
+      <guid>https://diogomes.github.io/blog/visual-regression-testing.html</guid>
+      <category>Automação</category>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      <description>O teste funcional fica verde e a tela quebra mesmo assim: baseline, diff perceptual e como domar o falso positivo.</description>
+    </item>
+    <item>
       <title>Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</title>
       <link>https://diogomes.github.io/blog/testes-de-acessibilidade.html</link>
       <guid>https://diogomes.github.io/blog/testes-de-acessibilidade.html</guid>
