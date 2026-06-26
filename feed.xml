@@ -6,6 +6,14 @@
     <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
     <language>pt-BR</language>
     <item>
+      <title>Testes de performance: carga, estresse e os números que importam</title>
+      <link>https://diogomes.github.io/blog/testes-de-performance.html</link>
+      <guid>https://diogomes.github.io/blog/testes-de-performance.html</guid>
+      <category>Testes</category>
+      <pubDate>Fri, 26 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Funciona não é o mesmo que aguenta: carga, estresse, soak e spike, e por que reportar percentis em vez de média.</description>
+    </item>
+    <item>
       <title>BDD, ATDD e TDD: o que cada sigla resolve</title>
       <link>https://diogomes.github.io/blog/bdd-atdd-tdd.html</link>
       <guid>https://diogomes.github.io/blog/bdd-atdd-tdd.html</guid>
