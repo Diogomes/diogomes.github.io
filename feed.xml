@@ -6,6 +6,14 @@
     <description>Artigos sobre Qualidade de Software, automação, CI/CD e desenvolvimento.</description>
     <language>pt-BR</language>
     <item>
+      <title>Testes mobile com Appium: o que muda quando o alvo é um app</title>
+      <link>https://diogomes.github.io/blog/testes-mobile-appium.html</link>
+      <guid>https://diogomes.github.io/blog/testes-mobile-appium.html</guid>
+      <category>Automação</category>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Automatizar app não é automatizar site: como o Appium traduz WebDriver, locators nativos, gestos e a fragmentação de dispositivos.</description>
+    </item>
+    <item>
       <title>Testes de performance: carga, estresse e os números que importam</title>
       <link>https://diogomes.github.io/blog/testes-de-performance.html</link>
       <guid>https://diogomes.github.io/blog/testes-de-performance.html</guid>
