@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar - Diogo Gomes</title>
+  <meta content="axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade: WCAG, ferramentas e o processo que combina os dois." name="description">
+  <meta content="Testes, Acessibilidade, a11y, WCAG, axe, Leitor de tela, QA, Diogo Gomes" name="keywords">
+  <meta content="Diogo Gomes" name="author">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar">
+  <meta property="og:description" content="axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade.">
+  <meta property="og:url" content="https://diogomes.github.io/blog/testes-de-acessibilidade.html">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../assets/img/icon.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar", "datePublished": "2026-06-28", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-acessibilidade.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade.", "inLanguage": "pt-BR"}</script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="../index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav.about">Sobre</span></a></li>
+          <li><a href="../index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resumo</span></a></li>
+          <li><a href="../index.html#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+          <li><a href="../index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfólio</span></a></li>
+          <li><a href="../index.html#tracks" class="nav-link scrollto"><i class="bx bx-compass"></i> <span data-i18n="nav.tracks">Trilhas</span></a></li>
+          <li><a href="../index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contato</span></a></li>
+          <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
+          <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
+          <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>QA</h2>
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li>QA</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-article">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="post-hero">
+              <span class="post-cat"><i class="bx bx-universal-access"></i> QA</span>
+              <h1>Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 28 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+            </div>
+
+            <div class="post-body">
+<p>"Rodei o axe e deu zero erros, então o site é acessível." É a frase que mais engana em acessibilidade. As ferramentas automáticas são ótimas e você deveria usá-las — mas, segundo os próprios estudos das ferramentas, elas pegam algo em torno de <strong>um terço</strong> dos problemas de acessibilidade. Os outros dois terços exigem teclado, leitor de tela e julgamento humano. Entender essa divisão é o que separa "passou no scanner" de "uma pessoa cega consegue usar".</p>
+
+<h2>Por que acessibilidade é assunto de QA</h2>
+<p>Acessibilidade (abreviada <strong>a11y</strong> — "a", 11 letras, "y") é garantir que pessoas com deficiência — visual, motora, auditiva, cognitiva — consigam usar o produto. Além de ser o certo a fazer e de ampliar o público, é exigência legal em muitos contextos (no Brasil, a LBI; lá fora, ADA e a europeia EN&nbsp;301&nbsp;549). Para o QA, isso é só mais uma dimensão de qualidade: um botão que o leitor de tela não anuncia está tão quebrado quanto um que retorna erro 500 — só que o bug é invisível para quem testa olhando a tela.</p>
+
+<h2>WCAG e os níveis A, AA, AAA</h2>
+<p>O padrão de referência é a <strong>WCAG</strong> (Web Content Accessibility Guidelines). Ela se organiza em quatro princípios — o app precisa ser <strong>P</strong>erceptível, <strong>O</strong>perável, <strong>C</strong>ompreensível e <strong>R</strong>obusto (mnemônico POUR) — e em três níveis de conformidade. O alvo prático da indústria é o <strong>AA</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Nível</th><th>O que cobre</th></tr></thead><tbody>
+<tr><td><strong>A</strong></td><td>O mínimo: sem ele, grupos inteiros ficam de fora (ex.: alt em imagem, navegação por teclado)</td></tr>
+<tr><td><strong>AA</strong></td><td>O alvo realista e mais cobrado legalmente (ex.: contraste 4.5:1, foco visível, rótulos de formulário)</td></tr>
+<tr><td><strong>AAA</strong></td><td>O ideal, nem sempre atingível em todo conteúdo (ex.: contraste 7:1)</td></tr>
+</tbody></table></div>
+
+<h2>A camada automática: rápida, barata e limitada</h2>
+<p>Ferramentas como <strong>axe-core</strong> (e seus wrappers: extensão axe DevTools, Lighthouse, Pa11y) varrem o DOM e pegam o que é verificável por regra: imagem sem <code>alt</code>, contraste insuficiente, campo de formulário sem <code>label</code>, ordem de cabeçalhos quebrada, atributos ARIA inválidos. É barato e deve virar parte do <a href="cicd-para-qa.html">pipeline</a> — um teste que falha o build quando alguém introduz uma regressão de a11y:</p>
+<pre><code>// axe-core dentro de um teste E2E (Playwright/Cypress)
+const resultados = await new AxeBuilder({ page }).analyze()
+expect(resultados.violations).toEqual([])   // falha o build se houver violação</code></pre>
+<p>O limite é conceitual: a máquina verifica <em>presença</em>, não <em>sentido</em>. Ela confirma que a imagem tem <code>alt</code> — não que o texto do alt descreve a imagem. Confirma que existe um rótulo — não que ele faz sentido. <code>alt="imagem123.png"</code> passa no scanner e é inútil para quem usa leitor de tela.</p>
+
+<h2>O que só o teste manual pega</h2>
+<p>Aqui mora a maior parte dos problemas reais — e nenhuma ferramenta substitui. Dois testes manuais dão um retorno enorme:</p>
+<p><strong>1. Navegação só por teclado.</strong> Guarde o mouse e percorra a página inteira com <kbd>Tab</kbd>, <kbd>Shift+Tab</kbd>, <kbd>Enter</kbd> e <kbd>Esc</kbd>. As perguntas: dá para chegar e acionar tudo? O <em>foco</em> está sempre visível? A ordem faz sentido? Um modal <em>prende</em> o foco enquanto aberto e o devolve ao fechar? Teclado quebrado é o bug de a11y mais comum e o mais fácil de achar.</p>
+<p><strong>2. Leitor de tela.</strong> Ligue um (NVDA no Windows, VoiceOver no Mac/iOS, TalkBack no Android) e navegue de olhos fechados. Cada elemento é anunciado com nome, função e estado? Um ícone-botão fala "botão fechar" ou só "botão"? Um erro de formulário é anunciado quando aparece? É desconfortável no começo — e é exatamente o ponto.</p>
+<blockquote>A pergunta que resume o teste manual não é "o atributo existe?", e sim "uma pessoa que depende disso consegue concluir a tarefa?". Essa pergunta nenhum scanner responde.</blockquote>
+
+<h2>Como combinar tudo num processo</h2>
+<p>O modelo que funciona é em camadas, do mais barato ao mais caro — a mesma lógica da <a href="piramide-de-testes.html">pirâmide de testes</a> aplicada à a11y:</p>
+<pre><code>  ┌─────────────────────────────────────────────┐
+  │  Automático (axe no CI)   → pega ~1/3, sempre │  barato, toda PR
+  ├─────────────────────────────────────────────┤
+  │  Manual: teclado + leitor de tela            │  por feature
+  ├─────────────────────────────────────────────┤
+  │  Teste com usuários reais com deficiência    │  o veredito final
+  └─────────────────────────────────────────────┘</code></pre>
+<p>Deixe a máquina barrar as regressões óbvias em toda PR; reserve o esforço humano (teclado e leitor de tela) para os fluxos críticos a cada feature; e, quando possível, valide com pessoas que de fato usam tecnologia assistiva — é o único teste que mede a experiência real, não a conformidade no papel.</p>
+
+<h2>Conclusão</h2>
+<p>Testar acessibilidade não é rodar uma ferramenta e arquivar o relatório verde. O automático (axe no pipeline) é a base barata que pega um terço dos problemas e impede regressões; o teclado e o leitor de tela pegam a maior parte do resto; e o teste com usuários reais dá o veredito. Mire em WCAG AA, trate um botão mudo para o leitor de tela como o bug que ele é, e lembre que "passou no scanner" e "é utilizável" são afirmações diferentes.</p>
+              <div class="post-tags"><span class="tag">Acessibilidade</span><span class="tag">a11y</span><span class="tag">WCAG</span><span class="tag">axe</span></div>
+              <div class="post-related">
+                <h3>Leia também</h3>
+                <div class="rel-grid">
+                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pirâmide de testes e os quadrantes ágeis</span></a>
+                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">CI/CD para QA: testes no coração do pipeline</span></a>
+                <a class="rel-card" href="teste-exploratorio.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Teste exploratório: a habilidade que automação não substitui</span></a>
+                </div>
+              </div>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
+      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
