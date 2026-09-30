@@ -635,6 +635,45 @@
 </div>
 </div>
 </section><!-- End Featured Game Section -->
+<!-- ======= Este site é testado ======= -->
+<section class="site-quality" id="site-testado">
+<div class="container">
+<div class="section-title">
+<h2>This site is tested</h2>
+<p>As a Quality Engineer, I apply here what I advocate at work: every push and pull request goes through an automated suite of 659 tests before it goes live.</p>
+</div>
+<div class="sq-grid" data-aos="fade-up">
+<div class="sq-item">
+<i aria-hidden="true" class="bx bx-check-shield"></i>
+<h3>End-to-end with Playwright</h3>
+<p>Every page, in Portuguese and English, loads with no JavaScript errors or broken resources. Search, filters, quiz, self-assessment, theme, language switch and the contact form are exercised on desktop and on a phone (Pixel 7).</p>
+</div>
+<div class="sq-item">
+<i aria-hidden="true" class="bx bx-accessibility"></i>
+<h3>Accessibility with axe</h3>
+<p>The main pages are audited against WCAG 2 A/AA in both languages; any serious or critical violation fails the build.</p>
+</div>
+<div class="sq-item">
+<i aria-hidden="true" class="bx bx-images"></i>
+<h3>Visual regression</h3>
+<p>Key screens are compared screenshot by screenshot, with baselines generated in the official Playwright image so the comparison is reproducible.</p>
+</div>
+<div class="sq-item">
+<i aria-hidden="true" class="bx bx-git-pull-request"></i>
+<h3>Continuous integration</h3>
+<p>GitHub Actions validates the HTML, checks that the English version and the search index are up to date, verifies internal links offline and publishes the Playwright report on every run.</p>
+</div>
+</div>
+<div class="sq-links" data-aos="fade-up">
+<a class="sq-badge" href="https://github.com/Diogomes/diogomes.github.io/actions/workflows/quality.yml" rel="noopener" target="_blank">
+<img alt="Quality workflow status on GitHub Actions" height="20" loading="lazy" src="https://github.com/Diogomes/diogomes.github.io/actions/workflows/quality.yml/badge.svg"/>
+</a>
+<a class="sq-link" href="https://github.com/Diogomes/diogomes.github.io/tree/master/tests" rel="noopener" target="_blank">
+<i aria-hidden="true" class="bx bxl-github"></i> <span>See the tests on GitHub</span>
+</a>
+</div>
+</div>
+</section>
 <!-- ======= Comentários sobre os projetos ======= -->
 <section class="comments" id="comentarios">
 <div class="container">
@@ -658,7 +697,7 @@
 <input name="_captcha" type="hidden" value="true"/>
 <input name="_next" type="hidden" value="https://diogomes.github.io/en/obrigado.html"/>
 <!-- Honeypot anti-spam (deixe vazio) -->
-<input autocomplete="off" class="hp-hidden" name="_honey" tabindex="-1" type="text"/>
+<input aria-hidden="true" autocomplete="off" class="hp-hidden" name="_honey" tabindex="-1" type="text"/>
 <div class="row">
 <div class="col-md-6 mb-field">
 <label for="cf-name">Name *</label>

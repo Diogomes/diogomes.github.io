@@ -810,6 +810,50 @@
       </div>
     </section><!-- End Featured Game Section -->
 
+    <!-- ======= Este site é testado ======= -->
+    <section id="site-testado" class="site-quality">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-en="This site is tested">Este site é testado</h2>
+          <p data-en="As a Quality Engineer, I apply here what I advocate at work: every push and pull request goes through an automated suite of 659 tests before it goes live.">Como Quality Engineer, aplico aqui o que defendo no trabalho: cada push e pull request passa por uma suíte automatizada de 659 testes antes de ir ao ar.</p>
+        </div>
+
+        <div class="sq-grid" data-aos="fade-up">
+          <div class="sq-item">
+            <i class="bx bx-check-shield" aria-hidden="true"></i>
+            <h3 data-en="End-to-end with Playwright">E2E com Playwright</h3>
+            <p data-en="Every page, in Portuguese and English, loads with no JavaScript errors or broken resources. Search, filters, quiz, self-assessment, theme, language switch and the contact form are exercised on desktop and on a phone (Pixel 7).">Todas as páginas, em português e inglês, carregam sem erro de JavaScript nem recurso quebrado. Busca, filtros, quiz, autoavaliação, tema, troca de idioma e formulário de contato são exercitados no desktop e no celular (Pixel 7).</p>
+          </div>
+          <div class="sq-item">
+            <i class="bx bx-accessibility" aria-hidden="true"></i>
+            <h3 data-en="Accessibility with axe">Acessibilidade com axe</h3>
+            <p data-en="The main pages are audited against WCAG 2 A/AA in both languages; any serious or critical violation fails the build.">As páginas principais são auditadas contra a WCAG 2 A/AA nos dois idiomas; qualquer violação séria ou crítica quebra o build.</p>
+          </div>
+          <div class="sq-item">
+            <i class="bx bx-images" aria-hidden="true"></i>
+            <h3 data-en="Visual regression">Regressão visual</h3>
+            <p data-en="Key screens are compared screenshot by screenshot, with baselines generated in the official Playwright image so the comparison is reproducible.">Telas-chave são comparadas screenshot a screenshot, com baselines geradas na imagem oficial do Playwright para que a comparação seja reproduzível.</p>
+          </div>
+          <div class="sq-item">
+            <i class="bx bx-git-pull-request" aria-hidden="true"></i>
+            <h3 data-en="Continuous integration">Integração contínua</h3>
+            <p data-en="GitHub Actions validates the HTML, checks that the English version and the search index are up to date, verifies internal links offline and publishes the Playwright report on every run.">O GitHub Actions valida o HTML, confere se a versão em inglês e o índice de busca estão em dia, checa os links internos offline e publica o relatório do Playwright a cada execução.</p>
+          </div>
+        </div>
+
+        <div class="sq-links" data-aos="fade-up">
+          <a href="https://github.com/Diogomes/diogomes.github.io/actions/workflows/quality.yml" target="_blank" rel="noopener" class="sq-badge">
+            <img src="https://github.com/Diogomes/diogomes.github.io/actions/workflows/quality.yml/badge.svg" alt="Status do workflow Quality no GitHub Actions" data-en-alt="Quality workflow status on GitHub Actions" height="20" loading="lazy">
+          </a>
+          <a href="https://github.com/Diogomes/diogomes.github.io/tree/master/tests" target="_blank" rel="noopener" class="sq-link">
+            <i class="bx bxl-github" aria-hidden="true"></i> <span data-en="See the tests on GitHub">Ver os testes no GitHub</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ======= Comentários sobre os projetos ======= -->
     <section id="comentarios" class="comments">
       <div class="container">
@@ -838,7 +882,7 @@
               <input type="hidden" name="_captcha" value="true">
               <input type="hidden" name="_next" value="https://diogomes.github.io/obrigado.html">
               <!-- Honeypot anti-spam (deixe vazio) -->
-              <input type="text" name="_honey" class="hp-hidden" tabindex="-1" autocomplete="off">
+              <input type="text" name="_honey" class="hp-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="row">
                 <div class="col-md-6 mb-field">
