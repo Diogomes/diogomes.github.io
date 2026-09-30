@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Partitioning and sharding: scaling the database - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Particionamento e sharding: escalar o banco de dados - Diogo Gomes</title>
   <meta content="Quando uma máquina não basta: partição vertical e horizontal, sharding, chave de partição e o custo das queries entre shards." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Particionamento e sharding: escalar o banco de dados", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/particionamento-sharding.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Quando uma máquina não basta: partição vertical e horizontal, sharding, chave de partição e o custo das queries entre shards.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Dados · Sênior</h2>
+          <h2 data-en="Data · Senior">Dados · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Dados</a></li>
-            <li>Sênior</li>
+            <li><a href="index.html" data-en="Data">Dados</a></li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-network-chart"></i> Dados · Sênior</span>
-              <h1>Particionamento e sharding: escalar o banco de dados</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 8 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-network-chart&quot;&gt;&lt;/i&gt; Data · Senior"><i class="bx bx-network-chart"></i> Dados · Sênior</span>
+              <h1 data-en="Partitioning and sharding: scaling the database">Particionamento e sharding: escalar o banco de dados</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">8 de Junho, 2026</span><span data-lang="en">Jun 8, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Existe um ponto em que uma única máquina não dá conta: a tabela é grande demais, as escritas são muitas demais. Quando você chega lá, precisa dividir os dados. Particionamento e sharding são as duas formas de fazer isso — e confundi-los, ou escolher mal a chave, é um erro que assombra sistemas em produção por anos.</p>
 
 <h2>Partição vertical vs horizontal</h2>
@@ -139,16 +143,69 @@
 
 <h2>Conclusão</h2>
 <p>Particionamento divide dados — vertical por colunas, horizontal por linhas — e o sharding estende a divisão horizontal entre máquinas para escalar volume e escrita. A chave de partição governa o equilíbrio da carga e o custo das consultas; replicação é coisa diferente, voltada à disponibilidade. Entender esses trade-offs é o que permite escalar um banco sem criar gargalos novos.</p>
-              <div class="post-tags"><span class="tag">Sharding</span><span class="tag">Escalabilidade</span><span class="tag">Bancos</span></div>
+              
+</div>
+<div data-lang="en">
+<p>There's a point where a single machine can't cope: the table is too big, the writes are too many. When you get there, you need to split the data. Partitioning and sharding are the two ways to do that — and confusing them, or picking the wrong key, is a mistake that haunts production systems for years.</p>
+
+<h2>Vertical vs horizontal partitioning</h2>
+<p>Splitting a table can be done in two directions:</p>
+<ul>
+  <li><strong>Vertical partitioning</strong> — separates <em>columns</em>. Rarely used or heavy columns (a blob, a long text) go to a separate table, leaving the main one lean and fast to read.</li>
+  <li><strong>Horizontal partitioning</strong> — separates <em>rows</em>. You split the rows into groups by some criterion, for example 2024 orders in one partition and 2025 in another.</li>
+</ul>
+<p>Horizontal partitioning is the most relevant for scale, because it's the basis of sharding.</p>
+
+<h2>Sharding: horizontal partitioning across machines</h2>
+<p><strong>Sharding</strong> is horizontal partitioning taken beyond a single machine: each slice (shard) lives on a different server. Instead of one giant database, you have several smaller ones, each responsible for a piece of the data. That way, storage and processing capacity grow by adding machines.</p>
+
+<pre><code>          router (picks the shard by key)
+         /            |             \
+   +---------+   +---------+   +---------+
+   | Shard A |   | Shard B |   | Shard C |
+   | ids     |   | ids     |   | ids     |
+   | 0–999   |   |1000–1999|   |2000–2999|
+   +---------+   +---------+   +---------+</code></pre>
+
+<h2>The partition key and the hotspot problem</h2>
+<p>The most critical decision is the <strong>partition key</strong>: the column that decides which shard each row lives on. A good key spreads rows and load evenly. A bad key creates <strong>hotspots</strong> — one overloaded shard while the others sit idle.</p>
+<p>Classic example: sharding by date makes the "current month" shard receive all the writes while the old months sleep. A key like customer id usually distributes better, as long as no customer is disproportionately large.</p>
+
+<h2>The cost: cross-shard queries and joins</h2>
+<p>Sharding isn't free. If the query filters by the partition key, the router goes straight to the right shard — great. But a query that has to scan <em>all</em> shards (a global <code>COUNT</code>, or a filter on another column) has to ask every machine and merge the results — slow and complex. Even worse are <a href="consultas-sql.html">JOINs</a> between tables that live on different shards: often unworkable, forcing you to denormalize or join in the application.</p>
+
+<h2>Rebalancing</h2>
+<p>Data grows unevenly, and sooner or later you need to move slices between shards or add machines — <strong>rebalancing</strong>. Moving data without stopping the system is hard; that's why techniques like <em>consistent hashing</em> exist, to minimize how much data moves when a shard joins or leaves.</p>
+
+<h2>Sharding is not replication</h2>
+<p>They're often confused, but they solve different problems:</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Replication</th><th>Sharding</th></tr></thead><tbody>
+<tr><td>What it does</td><td>Copies the same data onto several machines</td><td>Splits distinct data across machines</td></tr>
+<tr><td>Solves</td><td>Availability and reads</td><td>Volume and writes</td></tr>
+<tr><td>Each node has</td><td>Everything (full copy)</td><td>One slice</td></tr>
+<tr><td>If a node goes down</td><td>Another takes over (data exists elsewhere)</td><td>That slice becomes unavailable</td></tr>
+</tbody></table></div>
+
+<p>In practice they're combined: each shard is replicated for fault tolerance.</p>
+
+<blockquote>Sharding swaps a scale problem for a design problem: from the moment you split data across machines, the choice of partition key becomes the decision that defines the performance of everything. Getting it wrong is very expensive to fix later.</blockquote>
+
+<p>In interviews they often ask you to pick a partition key for a scenario and explain how you'd avoid hotspots — and to tell sharding apart from replication. Day to day, this shows up when a monolithic database hits its limit and the team has to decide <em>how</em> to scale without locking themselves into a bad key.</p>
+
+<h2>Conclusion</h2>
+<p>Partitioning divides data — vertically by columns, horizontally by rows — and sharding extends the horizontal split across machines to scale volume and writes. The partition key governs load balance and query cost; replication is a different thing, aimed at availability. Understanding these trade-offs is what lets you scale a database without creating new bottlenecks.</p>
+</div>
+              <div class="post-tags"><span class="tag">Sharding</span><span class="tag" data-en="Scalability">Escalabilidade</span><span class="tag" data-en="Databases">Bancos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
-                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
-                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -165,7 +222,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +233,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

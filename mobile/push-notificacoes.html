@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Push notifications: how they work end to end - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Push notifications: como funcionam de ponta a ponta - Diogo Gomes</title>
   <meta content="Do seu servidor ao aparelho do usuário: tokens, APNs/FCM, payload e por que entrega de push nunca é 100% garantida." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Push notifications: como funcionam de ponta a ponta", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/push-notificacoes.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Do seu servidor ao aparelho do usuário: tokens, APNs/FCM, payload e por que entrega de push nunca é 100% garantida.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Mobile · Sênior</h2>
+          <h2 data-en="Mobile · Senior">Mobile · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Mobile</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-bell"></i> Mobile · Sênior</span>
-              <h1>Push notifications: como funcionam de ponta a ponta</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 8 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-bell"></i> Mobile · <span data-lang="pt">Sênior</span><span data-lang="en">Senior</span></span>
+              <h1 data-en="Push notifications: how they work end to end">Push notifications: como funcionam de ponta a ponta</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">8 de Junho, 2026</span><span data-lang="en">Jun 8, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Push notifications parecem mágica: o servidor "manda" uma mensagem e ela aparece no celular mesmo com o app fechado. Por baixo há um fluxo bem definido envolvendo permissão, um token de dispositivo e os serviços da Apple (APNs) e do Google (FCM). Entender esse caminho de ponta a ponta — e por que a entrega nunca é 100% garantida — é esperado de um sênior.</p>
 
 <h2>O fluxo de ponta a ponta</h2>
@@ -144,16 +148,73 @@
 
 <h2>Conclusão</h2>
 <p>O fluxo permissão → token → backend → APNs/FCM → dispositivo, a diferença entre notification e data message, e a natureza best-effort da entrega são o núcleo do que se espera saber sobre push. Quem entende que o serviço da plataforma é o carteiro — e que o app não pode depender 100% dele — projeta notificações que funcionam sem criar bugs de dados.</p>
-              <div class="post-tags"><span class="tag">Push</span><span class="tag">Notificações</span><span class="tag">Mobile</span></div>
+</div>
+<div data-lang="en">
+<p>Push notifications look like magic: the server "sends" a message and it shows up on the phone even with the app closed. Underneath is a well-defined flow involving permission, a device token and the Apple (APNs) and Google (FCM) services. Understanding this path end to end — and why delivery is never 100% guaranteed — is expected of a senior.</p>
+
+<h2>The end-to-end flow</h2>
+<pre><code>1. App asks the user for permission
+2. The OS/service returns a unique device TOKEN
+3. App sends the token to YOUR backend, which stores it
+4. Backend sends the message + token to APNs (Apple) or FCM (Google)
+5. APNs/FCM delivers to the right device
+6. The OS displays the notification (or wakes the app)</code></pre>
+<p>The analogy: the token is the device's delivery address. Your server doesn't hand-deliver the package — it gives the package and the address to the postal service (APNs/FCM), which does the physical delivery.</p>
+
+<h2>Permission: the user decides</h2>
+<p>On iOS (and from Android 13 on) the app <strong>must ask permission</strong> to notify. If the user declines, there's no push — period. That's why you ask for permission at the right moment, explaining the value, and not on the very first screen. Interviewers often ask you to describe this step and its implications for UX and delivery rate.</p>
+
+<h2>The device token</h2>
+<p>After permission, the OS service generates a <strong>token</strong> that identifies that app on that device. Crucial points:</p>
+<ul>
+  <li>The token <strong>can change</strong> (reinstall, new device, update) — your backend needs to keep it updated.</li>
+  <li>A user can have several tokens (multiple devices).</li>
+  <li>Invalid/expired tokens should be removed from the database, or you waste sends.</li>
+</ul>
+
+<h2>APNs and FCM: the mail carriers</h2>
+<p>Your backend never talks directly to the device. It authenticates with <strong>APNs</strong> (Apple Push Notification service) for iOS or <strong>FCM</strong> (Firebase Cloud Messaging) for Android, sends the message with the destination token, and the service handles delivery — including waking the app if needed.</p>
+<pre><code>  [ Your backend ]
+        |  (message + token + auth)
+        v
+   [ APNs / FCM ]   &lt;- best-effort queue
+        |
+        v
+   [ Device ] --&gt; OS displays notification</code></pre>
+
+<h2>Notification vs data message</h2>
+<p>There are two kinds of payload, and the difference comes up in interviews:</p>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>What it does</th><th>App closed?</th></tr></thead><tbody>
+<tr><td>Notification</td><td>The OS displays the alert automatically (title/body)</td><td>Shows up without the app running</td></tr>
+<tr><td>Data message</td><td>Delivers data to the app so it decides what to do</td><td>Depends on the OS waking the app; may be deferred</td></tr>
+</tbody></table></div>
+<p>A payload can combine both. The choice defines whether the OS shows it on its own or your code processes it (e.g., silently updating a cache).</p>
+
+<h2>Why delivery isn't guaranteed</h2>
+<p>Push is <strong>best-effort</strong>, not guaranteed. The message may not arrive (or may be delayed) because:</p>
+<ul>
+  <li>The device is offline; APNs/FCM hold it for a while and may discard it.</li>
+  <li>The OS is saving battery (Doze/App Standby on Android) and defers the work.</li>
+  <li>The system batches or throttles data messages for "inactive" apps.</li>
+  <li>The user turned off notifications.</li>
+</ul>
+<p>That's why push should never be the only channel for critical information: it <em>alerts</em>, but the source of truth is on the server, and the app should revalidate when it opens.</p>
+
+<blockquote>Treat push as a reminder, not a reliable data channel. If the information is indispensable, the app must be able to get it on its own when it opens — push only speeds up discovery.</blockquote>
+
+<h2>Conclusion</h2>
+<p>The flow permission → token → backend → APNs/FCM → device, the difference between notification and data message, and the best-effort nature of delivery are the core of what's expected to know about push. Whoever understands that the platform service is the mail carrier — and that the app can't depend on it 100% — designs notifications that work without creating data bugs.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Push">Push</span><span class="tag" data-en="Notifications">Notificações</span><span class="tag" data-en="Mobile">Mobile</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
-                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
-                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="App lifecycle: states, screens and the basics that change everything">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="Navigation in apps: stack, tabs and deep links">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="Layouts that adapt: density, safe areas and different screens">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -170,7 +231,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -181,6 +242,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

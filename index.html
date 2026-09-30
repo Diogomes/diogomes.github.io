@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Diogo Gomes — Quality Engineer, Developer & Game Dev">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Diogo Gomes — Quality Engineer, Desenvolvedor & Game Dev</title>
@@ -38,6 +39,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/i18n.css" rel="stylesheet">
 
 
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Diogo Gomes", "jobTitle": "Quality Engineer", "url": "https://diogomes.github.io/", "image": "https://diogomes.github.io/assets/img/DIo.jpeg", "sameAs": ["https://github.com/Diogomes", "https://www.linkedin.com/in/dio-gomes/"], "worksFor": {"@type": "Organization", "name": "Liferay"}, "address": {"@type": "PostalAddress", "addressLocality": "Recife", "addressRegion": "PE", "addressCountry": "BR"}, "knowsAbout": ["Quality Assurance", "Test Automation", "Selenium", "Playwright", "CI/CD", "Game Development"]}</script>
@@ -47,14 +49,14 @@
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -111,9 +113,9 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.role.l">Cargo:</strong> <span>Quality Engineer @ Liferay</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.role.l">Cargo:</strong> <span data-i18n="about.role.v">Quality Engineer @ Liferay</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.site.l">Site:</strong> <span>diogomes.github.io</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.city.l">Cidade:</strong> <span>Recife, Pernambuco</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.city.l">Cidade:</strong> <span data-i18n="about.city.v">Recife, Pernambuco</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
@@ -221,7 +223,7 @@
             </div>
 
             <div class="progress">
-              <span class="skill">Testes de API (Postman / Newman) <i class="val">85%</i></span>
+              <span class="skill"><span data-en="API Testing (Postman / Newman)">Testes de API (Postman / Newman)</span> <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -286,101 +288,101 @@
             Mestrado em Engenharia Biomédica e formação em Ciências Biológicas — me deu uma forma rigorosa e
             investigativa de pensar qualidade. Atualmente aprofundo programação funcional e desenvolvimento de jogos
             em projetos pessoais.</p>
-          <a href="assets/Diogo-Gomes-CV.pdf" download class="btn-cv"><i class="bx bxs-file-pdf"></i> Baixar currículo (PDF)</a>
+          <a href="assets/Diogo-Gomes-CV.pdf" download class="btn-cv"><i class="bx bxs-file-pdf"></i> <span data-en="Download resume (PDF)">Baixar currículo (PDF)</span></a>
         </div>
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Perfil</h3>
+            <h3 class="resume-title" data-en="Profile">Perfil</h3>
             <div class="resume-item pb-0">
               <h4>Diogo Gomes</h4>
               <p><em>Quality Engineer @ Liferay</em></p>
               <ul>
-                <li>Recife, Pernambuco, Brasil</li>
+                <li data-en="Recife, Pernambuco, Brazil">Recife, Pernambuco, Brasil</li>
                 <li>gomes.d.n05@gmail.com</li>
                 <li><a href="https://www.linkedin.com/in/dio-gomes/" target="_blank" rel="noopener">linkedin.com/in/dio-gomes</a></li>
               </ul>
             </div>
 
-            <h3 class="resume-title">Formação Acadêmica</h3>
+            <h3 class="resume-title" data-en="Education">Formação Acadêmica</h3>
             <div class="resume-item">
-              <h4>Análise e Desenvolvimento de Sistemas</h4>
+              <h4 data-en="Systems Analysis and Development">Análise e Desenvolvimento de Sistemas</h4>
               <h5>2022 - 2024</h5>
-              <p><em>Centro Universitário Senac</em></p>
-              <p>Graduação em Tecnologia.</p>
+              <p data-en="Senac University Center"><em>Centro Universitário Senac</em></p>
+              <p data-en="Bachelor's degree in Technology.">Graduação em Tecnologia.</p>
             </div>
             <div class="resume-item">
-              <h4>Mestrado em Bioengenharia e Engenharia Biomédica</h4>
+              <h4 data-en="Master's in Bioengineering and Biomedical Engineering">Mestrado em Bioengenharia e Engenharia Biomédica</h4>
               <h5>2014 - 2016</h5>
-              <p><em>Universidade Federal de Pernambuco, PE</em></p>
-              <p>Desenvolvimento de substituto temporário de pele à base de alginato incorporando extrato de Anadenanthera colubrina.</p>
+              <p data-en="Federal University of Pernambuco, PE"><em>Universidade Federal de Pernambuco, PE</em></p>
+              <p data-en="Development of an alginate-based temporary skin substitute incorporating Anadenanthera colubrina extract.">Desenvolvimento de substituto temporário de pele à base de alginato incorporando extrato de Anadenanthera colubrina.</p>
             </div>
             <div class="resume-item">
-              <h4>Licenciatura em Ciências Biológicas</h4>
+              <h4 data-en="Bachelor's in Biological Sciences (teaching degree)">Licenciatura em Ciências Biológicas</h4>
               <h5>2010 - 2013</h5>
-              <p><em>Universidade Católica de Pernambuco, PE</em></p>
+              <p data-en="Catholic University of Pernambuco, PE"><em>Universidade Católica de Pernambuco, PE</em></p>
             </div>
 
-            <h3 class="resume-title">Certificações &amp; Destaques</h3>
+            <h3 class="resume-title" data-en="Certifications &amp; Highlights">Certificações &amp; Destaques</h3>
             <div class="resume-item">
               <ul>
-                <li>JMeter — Testes de performance</li>
-                <li>Introdução ao Kotlin</li>
-                <li>Git e GitHub do básico ao avançado (gist e GitHub Pages)</li>
-                <li>Introdução à criação de websites com HTML5 e CSS3</li>
+                <li data-en="JMeter — Performance testing">JMeter — Testes de performance</li>
+                <li data-en="Introduction to Kotlin">Introdução ao Kotlin</li>
+                <li data-en="Git and GitHub from basic to advanced (gist and GitHub Pages)">Git e GitHub do básico ao avançado (gist e GitHub Pages)</li>
+                <li data-en="Introduction to building websites with HTML5 and CSS3">Introdução à criação de websites com HTML5 e CSS3</li>
                 <li>Introduction to IoT and Embedded Systems</li>
-                <li>Patente: <em>Filme e arcabouços poliméricos como substituto de matriz extracelular</em></li>
+                <li data-en="Patent: &lt;em&gt;Polymeric film and scaffolds as an extracellular matrix substitute&lt;/em&gt;">Patente: <em>Filme e arcabouços poliméricos como substituto de matriz extracelular</em></li>
               </ul>
             </div>
           </div>
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Experiência Profissional</h3>
+            <h3 class="resume-title" data-en="Professional Experience">Experiência Profissional</h3>
             <div class="resume-item">
               <h4>Quality Engineer</h4>
-              <h5>Abril de 2025 - Presente</h5>
+              <h5 data-en="April 2025 - Present">Abril de 2025 - Presente</h5>
               <p><em>Liferay, Recife, PE</em></p>
               <ul>
-                <li>Lidero atividades de qualidade em projetos de escala LATAM, com foco em automação ponta a ponta e validação de migrações de plataforma.</li>
-                <li>Planejamento e execução de planos e casos de teste; análise de regressões funcionais e visuais entre ambientes.</li>
-                <li>Mentoria técnica de analistas de QA mais novos no time.</li>
+                <li data-en="I lead quality activities on LATAM-scale projects, focusing on end-to-end automation and platform migration validation.">Lidero atividades de qualidade em projetos de escala LATAM, com foco em automação ponta a ponta e validação de migrações de plataforma.</li>
+                <li data-en="Planning and execution of test plans and test cases; analysis of functional and visual regressions across environments.">Planejamento e execução de planos e casos de teste; análise de regressões funcionais e visuais entre ambientes.</li>
+                <li data-en="Technical mentoring of newer QA analysts on the team.">Mentoria técnica de analistas de QA mais novos no time.</li>
                 <li>Stack: Java, JavaScript, Python · Selenium, Playwright, Cypress, Appium, JUnit, Cucumber, pytest · Jenkins (CI), Jira · BDD/TDD/ATDD.</li>
               </ul>
             </div>
             <div class="resume-item">
               <h4>Software Quality Assurance Consultant III</h4>
-              <h5>Abril de 2023 - Abril de 2025</h5>
+              <h5 data-en="April 2023 - April 2025">Abril de 2023 - Abril de 2025</h5>
               <p><em>Liferay, Recife, PE</em></p>
               <ul>
-                <li>Planejei, desenvolvi e executei planos e casos de teste manuais e automatizados (front-end e automação multiplataforma).</li>
-                <li>Automação web (Selenium, Playwright/JavaScript), dispositivos reais (BrowserStack/Java), Android (Appium/Java) e APIs (Postman).</li>
-                <li>Mentoria de novos analistas de QA. Práticas de BDD, TDD e ATDD em ambiente ágil (Scrum).</li>
+                <li data-en="I planned, developed and executed manual and automated test plans and test cases (front-end and cross-platform automation).">Planejei, desenvolvi e executei planos e casos de teste manuais e automatizados (front-end e automação multiplataforma).</li>
+                <li data-en="Web automation (Selenium, Playwright/JavaScript), real devices (BrowserStack/Java), Android (Appium/Java) and APIs (Postman).">Automação web (Selenium, Playwright/JavaScript), dispositivos reais (BrowserStack/Java), Android (Appium/Java) e APIs (Postman).</li>
+                <li data-en="Mentoring new QA analysts. BDD, TDD and ATDD practices in an agile (Scrum) environment.">Mentoria de novos analistas de QA. Práticas de BDD, TDD e ATDD em ambiente ágil (Scrum).</li>
               </ul>
             </div>
             <div class="resume-item">
               <h4>Software Quality Assurance Engineer</h4>
-              <h5>Fevereiro de 2021 - Abril de 2023</h5>
+              <h5 data-en="February 2021 - April 2023">Fevereiro de 2021 - Abril de 2023</h5>
               <p><em>Liferay, Recife, PE</em></p>
               <ul>
-                <li>Forte uso de automação de testes funcionais com Java, JavaScript e Python.</li>
-                <li>Frameworks: Selenium, JUnit, Cucumber, pytest e Playwright, garantindo cobertura desde os estágios iniciais do ciclo.</li>
-                <li>Início via programa de formação com rotação pelos times de Front-end, Back-end e Testes; automação com o framework proprietário Poshi e monitoramento em CI (Jenkins, Testray).</li>
+                <li data-en="Heavy use of functional test automation with Java, JavaScript and Python.">Forte uso de automação de testes funcionais com Java, JavaScript e Python.</li>
+                <li data-en="Frameworks: Selenium, JUnit, Cucumber, pytest and Playwright, ensuring coverage from the early stages of the cycle.">Frameworks: Selenium, JUnit, Cucumber, pytest e Playwright, garantindo cobertura desde os estágios iniciais do ciclo.</li>
+                <li data-en="Started through a training program rotating across the Front-end, Back-end and Testing teams; automation with the proprietary Poshi framework and CI monitoring (Jenkins, Testray).">Início via programa de formação com rotação pelos times de Front-end, Back-end e Testes; automação com o framework proprietário Poshi e monitoramento em CI (Jenkins, Testray).</li>
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Pesquisador</h4>
-              <h5>Dezembro de 2014 - Dezembro de 2020</h5>
+              <h4 data-en="Researcher">Pesquisador</h4>
+              <h5 data-en="December 2014 - December 2020">Dezembro de 2014 - Dezembro de 2020</h5>
               <p><em>LBQ - BIONAT</em></p>
               <ul>
-                <li>Responsável técnico por análises químicas e espectroscópicas de produtos naturais e bioativos.</li>
+                <li data-en="Technical lead for chemical and spectroscopic analyses of natural products and bioactives.">Responsável técnico por análises químicas e espectroscópicas de produtos naturais e bioativos.</li>
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Professor</h4>
+              <h4 data-en="Teacher">Professor</h4>
               <h5>2011 - 2015</h5>
-              <p><em>Rede de ensino de Pernambuco</em></p>
+              <p data-en="Pernambuco school system"><em>Rede de ensino de Pernambuco</em></p>
               <ul>
-                <li>Professor de Química, Física e Biologia para ensino médio, fundamental e pré-vestibular.</li>
+                <li data-en="Chemistry, Physics and Biology teacher for middle school, high school and university entrance exam prep.">Professor de Química, Física e Biologia para ensino médio, fundamental e pré-vestibular.</li>
               </ul>
             </div>
           </div>
@@ -403,10 +405,10 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-Jogos">Jogos</li>
+              <li data-filter=".filter-Jogos" data-en="Games">Jogos</li>
               <li data-filter=".filter-web">Web</li>
-              <li data-filter=".filter-Automacao">Automação</li>
-              <li data-filter=".filter-Tutoriais">Tutoriais</li>
+              <li data-filter=".filter-Automacao" data-en="Automation">Automação</li>
+              <li data-filter=".filter-Tutoriais" data-en="Tutorials">Tutoriais</li>
             </ul>
           </div>
         </div>
@@ -417,16 +419,16 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-card">
               <div class="portfolio-thumb">
-                <img src="assets/img/portfolio/video/allert.jpg" class="img-fluid" alt="Allert — app de alerta de desastres naturais">
+                <img src="assets/img/portfolio/video/allert.jpg" class="img-fluid" alt="Allert — app de alerta de desastres naturais" data-en-alt="Allert — natural disaster alert app">
                 <span class="portfolio-tag">App</span>
                 <div class="portfolio-overlay">
-                  <a href="https://www.youtube.com/watch?v=TXfj8TFmwh8" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Allert — demonstração"><i class="bx bx-play"></i></a>
-                  <a href="projects.html#allert" class="info-btn" title="Ver detalhes do projeto"><i class="bx bx-link"></i></a>
+                  <a href="https://www.youtube.com/watch?v=TXfj8TFmwh8" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Allert — demonstração" data-en-title="Allert — demo"><i class="bx bx-play"></i></a>
+                  <a href="projects.html#allert" class="info-btn" title="Ver detalhes do projeto" data-en-title="View project details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
                 <h4>Allert</h4>
-                <p>App Android (Java) de alerta de desastres naturais · mapa de risco ao vivo, push por proximidade (SSE) e backend REST próprio</p>
+                <p data-en="Android app (Java) for natural disaster alerts · live risk map, proximity-based push (SSE) and its own REST backend">App Android (Java) de alerta de desastres naturais · mapa de risco ao vivo, push por proximidade (SSE) e backend REST próprio</p>
               </div>
             </div>
           </div>
@@ -436,15 +438,15 @@
             <div class="portfolio-card">
               <div class="portfolio-thumb">
                 <img src="assets/img/portfolio/video/pokeworld.jpg" class="img-fluid" alt="PokéWorld Online">
-                <span class="portfolio-tag">Jogos</span>
+                <span class="portfolio-tag" data-en="Games">Jogos</span>
                 <div class="portfolio-overlay">
-                  <a href="https://www.youtube.com/watch?v=91QffN5rcNU" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="PokéWorld Online — devlog"><i class="bx bx-play"></i></a>
-                  <a href="pokeworld.html" class="info-btn" title="Ver detalhes do projeto"><i class="bx bx-link"></i></a>
+                  <a href="https://www.youtube.com/watch?v=91QffN5rcNU" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="PokéWorld Online — devlog" data-en-title="PokéWorld Online — devlog"><i class="bx bx-play"></i></a>
+                  <a href="pokeworld.html" class="info-btn" title="Ver detalhes do projeto" data-en-title="View project details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
                 <h4>PokéWorld Online</h4>
-                <p>MMO 3D de captura de criaturas · servidor autoritativo · Gigaverse3D</p>
+                <p data-en="3D creature-catching MMO · authoritative server · Gigaverse3D">MMO 3D de captura de criaturas · servidor autoritativo · Gigaverse3D</p>
               </div>
             </div>
           </div>
@@ -454,15 +456,15 @@
             <div class="portfolio-card">
               <div class="portfolio-thumb">
                 <img src="assets/img/portfolio/video/learncode-java.jpg" class="img-fluid" alt="Gigaverse3D learnCode: Java">
-                <span class="portfolio-tag">App · Curso</span>
+                <span class="portfolio-tag" data-en="App · Course">App · Curso</span>
                 <div class="portfolio-overlay">
                   <a href="https://www.youtube.com/watch?v=JEZ9l6sROQQ" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="learnCode: Java"><i class="bx bx-play"></i></a>
-                  <a href="projects.html#learncode" class="info-btn" title="Ver detalhes"><i class="bx bx-link"></i></a>
+                  <a href="projects.html#learncode" class="info-btn" title="Ver detalhes" data-en-title="View details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
                 <h4>learnCode: Java</h4>
-                <p>Curso interativo de terminal · 25 capítulos do Deitel · Gigaverse3D</p>
+                <p data-en="Interactive terminal course · 25 chapters from Deitel · Gigaverse3D">Curso interativo de terminal · 25 capítulos do Deitel · Gigaverse3D</p>
               </div>
             </div>
           </div>
@@ -472,15 +474,15 @@
             <div class="portfolio-card">
               <div class="portfolio-thumb">
                 <img src="assets/img/portfolio/video/learncode-python.jpg" class="img-fluid" alt="Gigaverse3D learnCode: Python">
-                <span class="portfolio-tag">App · Curso</span>
+                <span class="portfolio-tag" data-en="App · Course">App · Curso</span>
                 <div class="portfolio-overlay">
                   <a href="https://www.youtube.com/watch?v=RMwZSuFpPAo" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="learnCode: Python"><i class="bx bx-play"></i></a>
-                  <a href="projects.html#learncode" class="info-btn" title="Ver detalhes"><i class="bx bx-link"></i></a>
+                  <a href="projects.html#learncode" class="info-btn" title="Ver detalhes" data-en-title="View details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
                 <h4>learnCode: Python</h4>
-                <p>Curso interativo de terminal · "Pense em Python" + funcional · Gigaverse3D</p>
+                <p data-en="Interactive terminal course · "Think Python" + functional · Gigaverse3D">Curso interativo de terminal · "Pense em Python" + funcional · Gigaverse3D</p>
               </div>
             </div>
           </div>
@@ -490,15 +492,15 @@
             <div class="portfolio-card">
               <div class="portfolio-thumb">
                 <img src="assets/img/portfolio/video/learncode-testes.jpg" class="img-fluid" alt="Gigaverse3D learnCode: Testes">
-                <span class="portfolio-tag">App · Curso</span>
+                <span class="portfolio-tag" data-en="App · Course">App · Curso</span>
                 <div class="portfolio-overlay">
                   <a href="https://www.youtube.com/watch?v=1eoXhpoSfcg" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="learnCode: Testes"><i class="bx bx-play"></i></a>
-                  <a href="projects.html#learncode" class="info-btn" title="Ver detalhes"><i class="bx bx-link"></i></a>
+                  <a href="projects.html#learncode" class="info-btn" title="Ver detalhes" data-en-title="View details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
                 <h4>learnCode: Testes</h4>
-                <p>Curso interativo de terminal · pirâmide de testes (Vitest, Playwright) · Gigaverse3D</p>
+                <p data-en="Interactive terminal course · test pyramid (Vitest, Playwright) · Gigaverse3D">Curso interativo de terminal · pirâmide de testes (Vitest, Playwright) · Gigaverse3D</p>
               </div>
             </div>
           </div>
@@ -507,16 +509,16 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-Automacao">
             <div class="portfolio-card">
               <div class="portfolio-thumb">
-                <img src="https://img.youtube.com/vi/4iNfMdnOWc4/hqdefault.jpg" class="img-fluid" alt="Automação de Testes Web com Robot Framework">
-                <span class="portfolio-tag">Automação End to End</span>
+                <img src="https://img.youtube.com/vi/4iNfMdnOWc4/hqdefault.jpg" class="img-fluid" alt="Automação de Testes Web com Robot Framework" data-en-alt="Web Test Automation with Robot Framework">
+                <span class="portfolio-tag" data-en="End-to-End Automation">Automação End to End</span>
                 <div class="portfolio-overlay">
-                  <a href="https://www.youtube.com/watch?v=4iNfMdnOWc4" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Automação de Testes Web com Robot Framework"><i class="bx bx-play"></i></a>
-                  <a href="projects.html#robot-automacao" class="info-btn" title="Ver detalhes do projeto"><i class="bx bx-link"></i></a>
+                  <a href="https://www.youtube.com/watch?v=4iNfMdnOWc4" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Automação de Testes Web com Robot Framework" data-en-title="Web Test Automation with Robot Framework"><i class="bx bx-play"></i></a>
+                  <a href="projects.html#robot-automacao" class="info-btn" title="Ver detalhes do projeto" data-en-title="View project details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
-                <h4>Automação com Robot Framework</h4>
-                <p>Suíte de testes de UI E2E contra o SauceDemo · Robot Framework 7 + SeleniumLibrary · padrão Page Object</p>
+                <h4 data-en="Robot Framework Automation">Automação com Robot Framework</h4>
+                <p data-en="E2E UI test suite against SauceDemo · Robot Framework 7 + SeleniumLibrary · Page Object pattern">Suíte de testes de UI E2E contra o SauceDemo · Robot Framework 7 + SeleniumLibrary · padrão Page Object</p>
               </div>
             </div>
           </div>
@@ -525,16 +527,16 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-Automacao">
             <div class="portfolio-card">
               <div class="portfolio-thumb">
-                <img src="https://img.youtube.com/vi/Xs0J-JJTu7k/hqdefault.jpg" class="img-fluid" alt="Cypress — Automação de Testes E2E">
-                <span class="portfolio-tag">Automação End to End</span>
+                <img src="https://img.youtube.com/vi/Xs0J-JJTu7k/hqdefault.jpg" class="img-fluid" alt="Cypress — Automação de Testes E2E" data-en-alt="Cypress — E2E Test Automation">
+                <span class="portfolio-tag" data-en="End-to-End Automation">Automação End to End</span>
                 <div class="portfolio-overlay">
-                  <a href="https://www.youtube.com/watch?v=Xs0J-JJTu7k" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Cypress — Automação de Testes E2E"><i class="bx bx-play"></i></a>
-                  <a href="projects.html#cypress-automacao" class="info-btn" title="Ver detalhes do projeto"><i class="bx bx-link"></i></a>
+                  <a href="https://www.youtube.com/watch?v=Xs0J-JJTu7k" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Cypress — Automação de Testes E2E" data-en-title="Cypress — E2E Test Automation"><i class="bx bx-play"></i></a>
+                  <a href="projects.html#cypress-automacao" class="info-btn" title="Ver detalhes do projeto" data-en-title="View project details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
-                <h4>Cypress — Automação E2E</h4>
-                <p>Suíte E2E organizada como trilha de aprendizado · 7 suítes temáticas · custom commands e cy.intercept</p>
+                <h4 data-en="Cypress — E2E Automation">Cypress — Automação E2E</h4>
+                <p data-en="E2E suite organized as a learning path · 7 themed suites · custom commands and cy.intercept">Suíte E2E organizada como trilha de aprendizado · 7 suítes temáticas · custom commands e cy.intercept</p>
               </div>
             </div>
           </div>
@@ -543,16 +545,16 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-Tutoriais">
             <div class="portfolio-card">
               <div class="portfolio-thumb">
-                <img src="assets/img/portfolio/video/tutorial-1.jpg" class="img-fluid" alt="Tutorial em vídeo">
-                <span class="portfolio-tag">Tutoriais</span>
+                <img src="assets/img/portfolio/video/tutorial-1.jpg" class="img-fluid" alt="Tutorial em vídeo" data-en-alt="Video tutorial">
+                <span class="portfolio-tag" data-en="Tutorials">Tutoriais</span>
                 <div class="portfolio-overlay">
-                  <a href="https://www.youtube.com/watch?v=j8QtacoUimQ" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Assistir ao tutorial"><i class="bx bx-play"></i></a>
-                  <a href="https://www.youtube.com/@diogogomes7163" target="_blank" rel="noopener" class="info-btn" title="Ver no YouTube"><i class="bx bx-link"></i></a>
+                  <a href="https://www.youtube.com/watch?v=j8QtacoUimQ" data-gallery="portfolioGallery" class="portfolio-lightbox play-btn" title="Assistir ao tutorial" data-en-title="Watch the tutorial"><i class="bx bx-play"></i></a>
+                  <a href="https://www.youtube.com/@diogogomes7163" target="_blank" rel="noopener" class="info-btn" title="Ver no YouTube" data-en-title="View on YouTube"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
-                <h4>Tutorial em vídeo</h4>
-                <p>Conteúdo técnico publicado no canal do YouTube.</p>
+                <h4 data-en="Video tutorial">Tutorial em vídeo</h4>
+                <p data-en="Technical content published on the YouTube channel.">Conteúdo técnico publicado no canal do YouTube.</p>
               </div>
             </div>
           </div>
@@ -561,15 +563,15 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-Tutoriais">
             <div class="portfolio-card">
               <div class="portfolio-thumb">
-                <img src="assets/img/portfolio/video/tutorial-1.jpg" class="img-fluid" alt="Canal no YouTube">
-                <span class="portfolio-tag">Tutoriais</span>
+                <img src="assets/img/portfolio/video/tutorial-1.jpg" class="img-fluid" alt="Canal no YouTube" data-en-alt="YouTube channel">
+                <span class="portfolio-tag" data-en="Tutorials">Tutoriais</span>
                 <div class="portfolio-overlay">
-                  <a href="https://www.youtube.com/@diogogomes7163" target="_blank" rel="noopener" class="info-btn" title="Abrir o canal"><i class="bx bxl-youtube"></i></a>
+                  <a href="https://www.youtube.com/@diogogomes7163" target="_blank" rel="noopener" class="info-btn" title="Abrir o canal" data-en-title="Open the channel"><i class="bx bxl-youtube"></i></a>
                 </div>
               </div>
               <div class="portfolio-card-body">
-                <h4>Canal no YouTube</h4>
-                <p>Devlogs, tutoriais e bastidores dos meus projetos.</p>
+                <h4 data-en="YouTube channel">Canal no YouTube</h4>
+                <p data-en="Devlogs, tutorials and behind the scenes of my projects.">Devlogs, tutoriais e bastidores dos meus projetos.</p>
               </div>
             </div>
           </div>
@@ -593,16 +595,16 @@
           <div class="col-lg-4 col-md-6">
             <article class="post-card">
               <div class="post-card-top cat-qa">
-                <span class="post-cat"><i class="bx bx-bulb"></i> QA &amp; Testes</span>
+                <span class="post-cat"><i class="bx bx-bulb"></i> <span data-en="QA &amp;amp; Testing">QA &amp; Testes</span></span>
                 <i class="bx bx-bulb post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="blog/index.html">Qualidade de Software</a></h3>
-                <p>Automação, CI/CD, BDD/TDD, design de testes e fundamentos de QA — o blog original.</p>
+                <h3><a href="blog/index.html" data-en="Software Quality">Qualidade de Software</a></h3>
+                <p data-en="Automation, CI/CD, BDD/TDD, test design and QA fundamentals — the original blog.">Automação, CI/CD, BDD/TDD, design de testes e fundamentos de QA — o blog original.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bx bx-book-content"></i> Vários artigos</span>
-                <a href="blog/index.html" class="post-read">Abrir <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bx bx-book-content"></i> <span data-en="Multiple articles">Vários artigos</span></span>
+                <a href="blog/index.html" class="post-read"><span data-en="Open">Abrir</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -614,12 +616,12 @@
                 <i class="bx bx-server post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="backend/index.html">Trilha Back-end</a></h3>
-                <p>Da primeira requisição HTTP à arquitetura distribuída: APIs, banco, escalabilidade, CAP e resiliência.</p>
+                <h3><a href="backend/index.html" data-en="Back-end Track">Trilha Back-end</a></h3>
+                <p data-en="From the first HTTP request to distributed architecture: APIs, databases, scalability, CAP and resilience.">Da primeira requisição HTTP à arquitetura distribuída: APIs, banco, escalabilidade, CAP e resiliência.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bx bx-layer"></i> Júnior → Sênior</span>
-                <a href="backend/index.html" class="post-read">Ver trilha <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bx bx-layer"></i> <span data-en="Junior → Senior">Júnior → Sênior</span></span>
+                <a href="backend/index.html" class="post-read"><span data-en="View track">Ver trilha</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -631,12 +633,12 @@
                 <i class="bx bx-layout post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="frontend/index.html">Trilha Front-end</a></h3>
-                <p>HTML semântico, CSS, JavaScript, event loop, estado, performance e segurança no navegador.</p>
+                <h3><a href="frontend/index.html" data-en="Front-end Track">Trilha Front-end</a></h3>
+                <p data-en="Semantic HTML, CSS, JavaScript, event loop, state, performance and browser security.">HTML semântico, CSS, JavaScript, event loop, estado, performance e segurança no navegador.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bx bx-layer"></i> Júnior → Sênior</span>
-                <a href="frontend/index.html" class="post-read">Ver trilha <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bx bx-layer"></i> <span data-en="Junior → Senior">Júnior → Sênior</span></span>
+                <a href="frontend/index.html" class="post-read"><span data-en="View track">Ver trilha</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -648,12 +650,12 @@
                 <i class="bx bx-infinite post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="devops/index.html">Trilha DevOps</a></h3>
-                <p>Linux, Git, CI/CD, containers, infra como código, observabilidade, Kubernetes e nuvem.</p>
+                <h3><a href="devops/index.html" data-en="DevOps Track">Trilha DevOps</a></h3>
+                <p data-en="Linux, Git, CI/CD, containers, infrastructure as code, observability, Kubernetes and cloud.">Linux, Git, CI/CD, containers, infra como código, observabilidade, Kubernetes e nuvem.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bx bx-layer"></i> Júnior → Sênior</span>
-                <a href="devops/index.html" class="post-read">Ver trilha <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bx bx-layer"></i> <span data-en="Junior → Senior">Júnior → Sênior</span></span>
+                <a href="devops/index.html" class="post-read"><span data-en="View track">Ver trilha</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -661,16 +663,16 @@
           <div class="col-lg-4 col-md-6">
             <article class="post-card">
               <div class="post-card-top cat-api">
-                <span class="post-cat"><i class="bx bx-data"></i> Dados</span>
+                <span class="post-cat"><i class="bx bx-data"></i> <span data-en="Data">Dados</span></span>
                 <i class="bx bx-data post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="dados/index.html">Trilha Dados &amp; SQL</a></h3>
-                <p>Modelagem, SQL, normalização, índices, data warehouse, ETL, NoSQL, sharding e streaming.</p>
+                <h3><a href="dados/index.html" data-en="Data &amp; SQL Track">Trilha Dados &amp; SQL</a></h3>
+                <p data-en="Modeling, SQL, normalization, indexes, data warehouse, ETL, NoSQL, sharding and streaming.">Modelagem, SQL, normalização, índices, data warehouse, ETL, NoSQL, sharding e streaming.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bx bx-layer"></i> Júnior → Sênior</span>
-                <a href="dados/index.html" class="post-read">Ver trilha <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bx bx-layer"></i> <span data-en="Junior → Senior">Júnior → Sênior</span></span>
+                <a href="dados/index.html" class="post-read"><span data-en="View track">Ver trilha</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -682,12 +684,12 @@
                 <i class="bx bx-mobile-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="mobile/index.html">Trilha Mobile</a></h3>
-                <p>Ciclo de vida, navegação, layout, estado, offline-first, performance, arquitetura, push e publicação.</p>
+                <h3><a href="mobile/index.html" data-en="Mobile Track">Trilha Mobile</a></h3>
+                <p data-en="Lifecycle, navigation, layout, state, offline-first, performance, architecture, push and publishing.">Ciclo de vida, navegação, layout, estado, offline-first, performance, arquitetura, push e publicação.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bx bx-layer"></i> Júnior → Sênior</span>
-                <a href="mobile/index.html" class="post-read">Ver trilha <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bx bx-layer"></i> <span data-en="Junior → Senior">Júnior → Sênior</span></span>
+                <a href="mobile/index.html" class="post-read"><span data-en="View track">Ver trilha</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -766,7 +768,7 @@
       </div>
 
       <div class="contact-map" data-aos="fade-up">
-        <iframe title="Localização — Recife, PE" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.3587235728896!2d-34.87640682499218!3d-8.064844091962918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab18bacbd81add%3A0xa3a56955ea85a3f9!2sPa%C3%A7o%20Alf%C3%A2ndega%20Shopping!5e0!3m2!1sen!2sbr!4v1702917405775!5m2!1sen!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Localização — Recife, PE" data-en-title="Location — Recife, PE" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.3587235728896!2d-34.87640682499218!3d-8.064844091962918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab18bacbd81add%3A0xa3a56955ea85a3f9!2sPa%C3%A7o%20Alf%C3%A2ndega%20Shopping!5e0!3m2!1sen!2sbr!4v1702917405775!5m2!1sen!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section><!-- End Contact Section -->
 
@@ -784,7 +786,7 @@
     </div>
   </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
@@ -798,6 +800,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 
 </body>

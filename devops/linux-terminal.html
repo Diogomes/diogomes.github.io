@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Linux and the terminal: the bare minimum every DevOps engineer masters - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Linux e terminal: o mínimo que todo DevOps domina - Diogo Gomes</title>
   <meta content="Permissões, processos, pipes e variáveis de ambiente. O terminal não é nostalgia — é onde o trabalho de infraestrutura acontece." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Linux e terminal: o mínimo que todo DevOps domina", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/linux-terminal.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Permissões, processos, pipes e variáveis de ambiente. O terminal não é nostalgia — é onde o trabalho de infraestrutura acontece.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>DevOps · Júnior</h2>
+          <h2 data-en="DevOps · Junior">DevOps · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">DevOps</a></li>
-            <li>Júnior</li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-terminal"></i> DevOps · Júnior</span>
-              <h1>Linux e terminal: o mínimo que todo DevOps domina</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 24 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-terminal&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-terminal"></i> DevOps · Júnior</span>
+              <h1 data-en="Linux and the terminal: the bare minimum every DevOps engineer masters">Linux e terminal: o mínimo que todo DevOps domina</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 24, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 24 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Quase tudo no mundo DevOps acontece em servidores Linux, e a porta de entrada para esses servidores é o terminal. Dominar a linha de comando não é um detalhe de curiosidade técnica: é a ferramenta com a qual você inspeciona, corrige e automatiza sistemas todos os dias. Quem se sente confortável no terminal trabalha mais rápido e entende melhor o que está acontecendo por baixo das interfaces gráficas.</p>
 
 <h2>Por que o terminal é onde o trabalho acontece</h2>
@@ -106,48 +110,90 @@
 
 <h2>Permissões: rwx, dono e grupo</h2>
 <p>Cada arquivo tem permissões de <strong>leitura (r)</strong>, <strong>escrita (w)</strong> e <strong>execução (x)</strong>, divididas em três grupos: dono, grupo e outros. É comum em entrevista pedir para explicar o que significa <code>chmod 755</code> — então vale entender a lógica numérica (r=4, w=2, x=1).</p>
+</div>
+<div data-lang="en">
+<p>Almost everything in the DevOps world happens on Linux servers, and the way in to those servers is the terminal. Mastering the command line isn't a technical curiosity: it's the tool you use to inspect, fix and automate systems every day. People who are comfortable in the terminal work faster and better understand what's going on beneath graphical interfaces.</p>
+<h2>Why the terminal is where the work happens</h2>
+<p>Production servers rarely have a graphical interface: you log in over SSH and all you have is the shell. Scripts, CI/CD pipelines and containers also run terminal commands. Learning to find your way around there is what separates those who depend on tutorials from those who solve problems on their own.</p>
+<h2>File hierarchy (the essentials)</h2>
+<p>Linux organizes everything starting from the root <code>/</code>. You don't need to memorize it all, but a few directories show up all the time:</p>
+<ul>
+  <li><strong>/etc</strong> — system and service configuration files.</li>
+  <li><strong>/var/log</strong> — logs (the first place to look when investigating problems).</li>
+  <li><strong>/home</strong> — user directories.</li>
+  <li><strong>/usr/bin</strong> and <strong>/bin</strong> — executables.</li>
+</ul>
+<h2>Permissions: rwx, owner and group</h2>
+<p>Every file has <strong>read (r)</strong>, <strong>write (w)</strong> and <strong>execute (x)</strong> permissions, split into three groups: owner, group and others. Interviewers often ask you to explain what <code>chmod 755</code> means — so it's worth understanding the numeric logic (r=4, w=2, x=1).</p>
+</div>
 <pre><code>ls -l script.sh
 # -rwxr-xr-x 1 deploy devops 512 jun 25 10:00 script.sh
 
 chmod 750 script.sh        # dono: rwx, grupo: r-x, outros: nada
 chown deploy:devops script.sh   # muda dono e grupo</code></pre>
-
+<div data-lang="pt">
 <h2>Processos: ver e encerrar</h2>
 <p>No dia a dia isso aparece quando um serviço trava ou consome CPU demais. Você lista os processos, identifica o PID e, se necessário, encerra.</p>
+</div>
+<div data-lang="en">
+<h2>Processes: viewing and terminating</h2>
+<p>In day-to-day work this comes up when a service hangs or uses too much CPU. You list the processes, identify the PID and, if needed, terminate it.</p>
+</div>
 <pre><code>ps aux | grep nginx     # encontra o processo
 top                     # uso de CPU/memória ao vivo
 kill 4821               # pede para o processo terminar (SIGTERM)
 kill -9 4821            # força o encerramento (SIGKILL)</code></pre>
-
+<div data-lang="pt">
 <h2>Pipes e redirecionamento</h2>
 <p>Esta é a filosofia do Unix: programas pequenos que fazem uma coisa bem, conectados entre si. O pipe <code>|</code> manda a saída de um comando para a entrada do próximo. O <code>&gt;</code> grava em arquivo (sobrescrevendo) e <code>&gt;&gt;</code> adiciona ao final.</p>
+</div>
+<div data-lang="en">
+<h2>Pipes and redirection</h2>
+<p>This is the Unix philosophy: small programs that do one thing well, connected to each other. The pipe <code>|</code> sends the output of one command to the input of the next. <code>&gt;</code> writes to a file (overwriting) and <code>&gt;&gt;</code> appends to the end.</p>
+</div>
 <pre><code>cat /var/log/app.log | grep ERROR | wc -l   # conta linhas com ERROR
 ls -l &gt; lista.txt                            # salva a saída
 echo "deploy ok" &gt;&gt; historico.log           # acrescenta ao arquivo</code></pre>
+<div data-lang="pt">
 <blockquote>Pense no terminal como uma linha de montagem: cada comando é uma estação que recebe algo, transforma e passa adiante. O poder não está em um comando gigante, mas na combinação de comandos simples.</blockquote>
 
 <h2>Variáveis de ambiente</h2>
 <p>Variáveis de ambiente configuram o comportamento de programas sem mudar código — usadas o tempo todo para senhas, URLs e flags em containers e pipelines.</p>
+</div>
+<div data-lang="en">
+<blockquote>Think of the terminal as an assembly line: each command is a station that receives something, transforms it and passes it along. The power isn't in one giant command, but in combining simple ones.</blockquote>
+<h2>Environment variables</h2>
+<p>Environment variables configure how programs behave without changing code — used all the time for passwords, URLs and flags in containers and pipelines.</p>
+</div>
 <pre><code>export ENV=producao        # define a variável
 echo $ENV                  # lê o valor
 printenv | grep PATH       # lista variáveis e filtra</code></pre>
-
+<div data-lang="pt">
 <h2>Gerenciador de pacotes</h2>
 <p>Instalar software no Linux é feito por gerenciadores de pacotes, que cuidam de dependências e atualizações. O comando varia conforme a distribuição:</p>
 <div class="table-wrap"><table><thead><tr><th>Distribuição</th><th>Gerenciador</th><th>Instalar</th></tr></thead><tbody><tr><td>Debian/Ubuntu</td><td>apt</td><td><code>apt install git</code></td></tr><tr><td>RHEL/Fedora</td><td>dnf</td><td><code>dnf install git</code></td></tr><tr><td>Alpine</td><td>apk</td><td><code>apk add git</code></td></tr></tbody></table></div>
 
 <h2>Conclusão</h2>
 <p>O terminal é a habilidade de base que sustenta todo o resto: <a href="git-fluxos.html">Git</a>, <a href="ci-cd-basico.html">CI/CD</a>, <a href="containers-docker.html">containers</a> e a operação de servidores. Não precisa decorar tudo — precisa entender a lógica e saber onde procurar. Com permissões, processos, pipes e variáveis na ponta dos dedos, você já resolve a maior parte do trabalho diário de um DevOps júnior.</p>
-              <div class="post-tags"><span class="tag">Linux</span><span class="tag">Terminal</span><span class="tag">Fundamentos</span></div>
+              
+</div>
+<div data-lang="en">
+<h2>Package manager</h2>
+<p>Software on Linux is installed through package managers, which handle dependencies and updates. The command varies by distribution:</p>
+<div class="table-wrap"><table><thead><tr><th>Distribution</th><th>Manager</th><th>Install</th></tr></thead><tbody><tr><td>Debian/Ubuntu</td><td>apt</td><td><code>apt install git</code></td></tr><tr><td>RHEL/Fedora</td><td>dnf</td><td><code>dnf install git</code></td></tr><tr><td>Alpine</td><td>apk</td><td><code>apk add git</code></td></tr></tbody></table></div>
+<h2>Conclusion</h2>
+<p>The terminal is the foundational skill that supports everything else: <a href="git-fluxos.html">Git</a>, <a href="ci-cd-basico.html">CI/CD</a>, <a href="containers-docker.html">containers</a> and server operations. You don't need to memorize everything — you need to understand the logic and know where to look. With permissions, processes, pipes and variables at your fingertips, you can already handle most of a junior DevOps engineer's daily work.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Linux">Linux</span><span class="tag" data-en="Terminal">Terminal</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
-                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
-                <a class="rel-card" href="containers-docker.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Pleno</span><span class="rel-title">Containers e Docker: por que 'funciona na minha máquina' acabou</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Git beyond the commit: branches, merge, and workflows">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="CI/CD in practice: from commit to automatic deploy">CI/CD na prática: do commit ao deploy automático</span></a>
+                <a class="rel-card" href="containers-docker.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Mid-level"><i class="bx bx-infinite"></i> DevOps · Pleno</span><span class="rel-title" data-en="Containers and Docker: why &#x27;it works on my machine&#x27; is over">Containers e Docker: por que 'funciona na minha máquina' acabou</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -164,7 +210,7 @@ printenv | grep PATH       # lista variáveis e filtra</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -175,6 +221,7 @@ printenv | grep PATH       # lista variáveis e filtra</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

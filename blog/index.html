@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Blog — Diogo Gomes | QA, automation, CI/CD and testing">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Blog — Diogo Gomes | QA, automação, CI/CD e testes</title>
@@ -31,17 +32,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
             <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -72,36 +74,36 @@
 
         <div class="section-title">
           <h2>Blog</h2>
-          <p class="blog-intro">Artigos sobre Qualidade de Software, automação de testes, CI/CD, desenvolvimento e
+          <p class="blog-intro" data-en="Articles on Software Quality, test automation, CI/CD, development, and readings that helped me along the way. Filter by topic below.">Artigos sobre Qualidade de Software, automação de testes, CI/CD, desenvolvimento e
             leituras que me ajudaram no caminho. Filtre por tema abaixo.</p>
         </div>
 
         <!-- Busca -->
         <div class="blog-search" data-aos="fade-up">
           <i class="bx bx-search"></i>
-          <input type="search" id="blog-search" placeholder="Buscar nos artigos…" aria-label="Buscar nos artigos">
+          <input type="search" id="blog-search" placeholder="Buscar nos artigos…" aria-label="Buscar nos artigos" data-en-placeholder="Search articles…" data-en-aria-label="Search articles">
         </div>
 
         <!-- Filtros -->
         <div class="row" data-aos="fade-up">
           <div class="col-12 d-flex justify-content-center">
             <ul id="blog-filters" class="blog-filters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".cat-automacao">Automação</li>
+              <li data-filter="*" class="filter-active" data-en="All">Todos</li>
+              <li data-filter=".cat-automacao" data-en="Automation">Automação</li>
               <li data-filter=".cat-cicd">CI/CD</li>
               <li data-filter=".cat-qa">QA</li>
-              <li data-filter=".cat-testes">Testes</li>
+              <li data-filter=".cat-testes" data-en="Testing">Testes</li>
               <li data-filter=".cat-api">API</li>
-              <li data-filter=".cat-leituras">Leituras</li>
+              <li data-filter=".cat-leituras" data-en="Reading">Leituras</li>
             </ul>
           </div>
         </div>
 
         <div class="blog-tools" data-aos="fade-up">
-          <a class="rss-link" href="../feed.xml"><i class="bx bx-rss"></i> Assinar via RSS</a>
+          <a class="rss-link" href="../feed.xml"><i class="bx bx-rss"></i> <span data-en="Subscribe via RSS">Assinar via RSS</span></a>
         </div>
 
-        <p id="blog-no-results" class="blog-no-results">Nenhum artigo encontrado para sua busca.</p>
+        <p id="blog-no-results" class="blog-no-results" data-en="No articles found for your search.">Nenhum artigo encontrado para sua busca.</p>
 
         <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
 
@@ -109,16 +111,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-data post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="gestao-dados-de-teste.html">Gestão de dados de teste: o gargalo invisível da automação</a></h3>
-                <p>A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Fixtures, factories, isolamento e a regra de cada teste cuidar do próprio estado.</p>
+                <h3><a href="gestao-dados-de-teste.html" data-en="Test data management: the invisible bottleneck of automation">Gestão de dados de teste: o gargalo invisível da automação</a></h3>
+                <p data-en="Most flaky tests don't fail because of logic, but because of data. Fixtures, factories, isolation, and the rule that each test owns its own state.">A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Fixtures, factories, isolamento e a regra de cada teste cuidar do próprio estado.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 30 Jun, 2026</span>
-                <a href="gestao-dados-de-teste.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 30, 2026">30 Jun, 2026</span></span>
+                <a href="gestao-dados-de-teste.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -127,16 +129,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-automacao">
             <article class="post-card">
               <div class="post-card-top cat-automacao">
-                <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+                <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
                 <i class="bx bx-image post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="visual-regression-testing.html">Visual regression testing: quando o teste passa mas a tela está quebrada</a></h3>
-                <p>O E2E fica verde e mesmo assim o botão sumiu, o layout vazou ou o texto ficou invisível. Como comparar screenshots, domar falsos positivos e encaixar no pipeline.</p>
+                <h3><a href="visual-regression-testing.html" data-en="Visual regression testing: when the test passes but the screen is broken">Visual regression testing: quando o teste passa mas a tela está quebrada</a></h3>
+                <p data-en="The E2E run is green and yet the button vanished, the layout overflowed, or the text became invisible. How to compare screenshots, tame false positives, and fit it into the pipeline.">O E2E fica verde e mesmo assim o botão sumiu, o layout vazou ou o texto ficou invisível. Como comparar screenshots, domar falsos positivos e encaixar no pipeline.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 29 Jun, 2026</span>
-                <a href="visual-regression-testing.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 29, 2026">29 Jun, 2026</span></span>
+                <a href="visual-regression-testing.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -149,12 +151,12 @@
                 <i class="bx bx-universal-access post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="testes-de-acessibilidade.html">Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</a></h3>
-                <p>axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. WCAG, ferramentas e o processo em camadas que combina os dois.</p>
+                <h3><a href="testes-de-acessibilidade.html" data-en="Accessibility testing: what automation catches and what it never will">Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</a></h3>
+                <p data-en="axe finds about a third of the problems; the rest is keyboard, screen reader, and human judgment. WCAG, tools, and the layered process that combines both.">axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. WCAG, ferramentas e o processo em camadas que combina os dois.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 28 Jun, 2026</span>
-                <a href="testes-de-acessibilidade.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 28, 2026">28 Jun, 2026</span></span>
+                <a href="testes-de-acessibilidade.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -163,16 +165,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-automacao">
             <article class="post-card">
               <div class="post-card-top cat-automacao">
-                <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+                <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
                 <i class="bx bx-mobile-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="testes-mobile-appium.html">Testes mobile com Appium: o que muda quando o alvo é um app</a></h3>
-                <p>Automatizar app não é automatizar site. Como o Appium funciona, locators nativos, a fragmentação de dispositivos e os gestos, esperas e permissões que só existem no mobile.</p>
+                <h3><a href="testes-mobile-appium.html" data-en="Mobile testing with Appium: what changes when the target is an app">Testes mobile com Appium: o que muda quando o alvo é um app</a></h3>
+                <p data-en="Automating an app is not automating a website. How Appium works, native locators, device fragmentation, and the gestures, waits, and permissions that only exist on mobile.">Automatizar app não é automatizar site. Como o Appium funciona, locators nativos, a fragmentação de dispositivos e os gestos, esperas e permissões que só existem no mobile.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 27 Jun, 2026</span>
-                <a href="testes-mobile-appium.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 27, 2026">27 Jun, 2026</span></span>
+                <a href="testes-mobile-appium.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -181,16 +183,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-tachometer post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="testes-de-performance.html">Testes de performance: carga, estresse e os números que importam</a></h3>
-                <p>Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro — com um plano mínimo no JMeter.</p>
+                <h3><a href="testes-de-performance.html" data-en="Performance testing: load, stress, and the numbers that matter">Testes de performance: carga, estresse e os números que importam</a></h3>
+                <p data-en="Working is not the same as holding up. Load, stress, soak, and spike, plus the metrics that really matter (percentiles, throughput, and error rate) with a minimal JMeter plan.">Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro — com um plano mínimo no JMeter.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 26 Jun, 2026</span>
-                <a href="testes-de-performance.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 26, 2026">26 Jun, 2026</span></span>
+                <a href="testes-de-performance.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -199,16 +201,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-git-compare post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="bdd-atdd-tdd.html">BDD, ATDD e TDD: o que cada sigla resolve</a></h3>
-                <p>As três siglas mais confundidas em QA. Em que nível cada uma atua, quem escreve, e como elas se complementam no dia a dia — com mapa mental e exemplos.</p>
+                <h3><a href="bdd-atdd-tdd.html" data-en="BDD, ATDD, and TDD: what each acronym solves">BDD, ATDD e TDD: o que cada sigla resolve</a></h3>
+                <p data-en="The three most confused acronyms in QA. Which level each one works at, who writes it, and how they complement each other day to day, with a mind map and examples.">As três siglas mais confundidas em QA. Em que nível cada uma atua, quem escreve, e como elas se complementam no dia a dia — com mapa mental e exemplos.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 25 Jun, 2026</span>
-                <a href="bdd-atdd-tdd.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 25, 2026">25 Jun, 2026</span></span>
+                <a href="bdd-atdd-tdd.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -217,16 +219,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-code-curly post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="gherkin-given-when-then.html">Gherkin e Given-When-Then: especificação que vira teste</a></h3>
-                <p>A linguagem que negócio e automação leem igual. Sintaxe, Scenario Outline, step definitions e os anti-patterns que tornam cenários frágeis.</p>
+                <h3><a href="gherkin-given-when-then.html" data-en="Gherkin and Given-When-Then: specification that becomes a test">Gherkin e Given-When-Then: especificação que vira teste</a></h3>
+                <p data-en="The language business and automation read the same way. Syntax, Scenario Outline, step definitions, and the anti-patterns that make scenarios brittle.">A linguagem que negócio e automação leem igual. Sintaxe, Scenario Outline, step definitions e os anti-patterns que tornam cenários frágeis.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 24 Jun, 2026</span>
-                <a href="gherkin-given-when-then.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 24, 2026">24 Jun, 2026</span></span>
+                <a href="gherkin-given-when-then.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -239,12 +241,12 @@
                 <i class="bx bx-grid-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="tecnicas-design-de-teste.html">Técnicas de design de teste: cobrir mais com menos casos</a></h3>
-                <p>Partição de equivalência, valor-limite, tabela de decisão e transição de estado: como escolher os casos certos em vez de tentar testar tudo.</p>
+                <h3><a href="tecnicas-design-de-teste.html" data-en="Test design techniques: covering more with fewer cases">Técnicas de design de teste: cobrir mais com menos casos</a></h3>
+                <p data-en="Equivalence partitioning, boundary values, decision tables, and state transitions: how to pick the right cases instead of trying to test everything.">Partição de equivalência, valor-limite, tabela de decisão e transição de estado: como escolher os casos certos em vez de tentar testar tudo.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 23 Jun, 2026</span>
-                <a href="tecnicas-design-de-teste.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 23, 2026">23 Jun, 2026</span></span>
+                <a href="tecnicas-design-de-teste.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -257,12 +259,12 @@
                 <i class="bx bx-pyramid post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="piramide-de-testes.html">Pirâmide de testes e os quadrantes ágeis</a></h3>
-                <p>Onde cada tipo de teste vive, o anti-pattern do cone de sorvete e como os quadrantes de Agile Testing revelam o que ninguém está cobrindo.</p>
+                <h3><a href="piramide-de-testes.html" data-en="The test pyramid and the agile testing quadrants">Pirâmide de testes e os quadrantes ágeis</a></h3>
+                <p data-en="Where each type of test lives, the ice cream cone anti-pattern, and how the Agile Testing quadrants reveal what nobody is covering.">Onde cada tipo de teste vive, o anti-pattern do cone de sorvete e como os quadrantes de Agile Testing revelam o que ninguém está cobrindo.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 22 Jun, 2026</span>
-                <a href="piramide-de-testes.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 22, 2026">22 Jun, 2026</span></span>
+                <a href="piramide-de-testes.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -271,16 +273,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-layer post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="tipos-de-teste.html">Smoke, sanity, regressão e retest: os tipos que se confundem</a></h3>
-                <p>O que cada termo significa de verdade, quando rodar cada um no pipeline e por que retest e regressão respondem a perguntas diferentes.</p>
+                <h3><a href="tipos-de-teste.html" data-en="Smoke, sanity, regression, and retest: the types that get mixed up">Smoke, sanity, regressão e retest: os tipos que se confundem</a></h3>
+                <p data-en="What each term really means, when to run each one in the pipeline, and why retest and regression answer different questions.">O que cada termo significa de verdade, quando rodar cada um no pipeline e por que retest e regressão respondem a perguntas diferentes.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 21 Jun, 2026</span>
-                <a href="tipos-de-teste.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 21, 2026">21 Jun, 2026</span></span>
+                <a href="tipos-de-teste.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -289,16 +291,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-automacao">
             <article class="post-card">
               <div class="post-card-top cat-automacao">
-                <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+                <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
                 <i class="bx bx-mask post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="test-doubles.html">Test doubles: mock, stub, spy, fake e dummy</a></h3>
-                <p>Os cinco dublês de teste, com código. A diferença entre stub e mock e a divisão que importa: verificar estado vs verificar comportamento.</p>
+                <h3><a href="test-doubles.html" data-en="Test doubles: mock, stub, spy, fake, and dummy">Test doubles: mock, stub, spy, fake e dummy</a></h3>
+                <p data-en="The five test doubles, with code. The difference between stub and mock, and the split that matters: verifying state vs. verifying behavior.">Os cinco dublês de teste, com código. A diferença entre stub e mock e a divisão que importa: verificar estado vs verificar comportamento.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 19 Jun, 2026</span>
-                <a href="test-doubles.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 19, 2026">19 Jun, 2026</span></span>
+                <a href="test-doubles.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -311,12 +313,12 @@
                 <i class="bx bx-compass post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="teste-exploratorio.html">Teste exploratório e session-based testing</a></h3>
-                <p>Testar pensando, não seguindo roteiro. Charters, sessões time-boxed e heurísticas (SFDPOT, RCRCRC) que dão estrutura à investigação.</p>
+                <h3><a href="teste-exploratorio.html" data-en="Exploratory testing and session-based testing">Teste exploratório e session-based testing</a></h3>
+                <p data-en="Testing by thinking, not by following a script. Charters, time-boxed sessions, and heuristics (SFDPOT, RCRCRC) that give structure to investigation.">Testar pensando, não seguindo roteiro. Charters, sessões time-boxed e heurísticas (SFDPOT, RCRCRC) que dão estrutura à investigação.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 13 Jun, 2026</span>
-                <a href="teste-exploratorio.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 13, 2026">13 Jun, 2026</span></span>
+                <a href="teste-exploratorio.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -325,16 +327,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-automacao">
             <article class="post-card">
               <div class="post-card-top cat-automacao">
-                <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+                <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
                 <i class="bx bx-test-tube post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="playwright-testes-e2e.html">Playwright na prática: testes E2E modernos</a></h3>
-                <p>Por que o Playwright virou meu padrão para testes end-to-end: auto-wait, multi-browser, trace viewer e execução paralela rápida.</p>
+                <h3><a href="playwright-testes-e2e.html" data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</a></h3>
+                <p data-en="Why Playwright became my default for end-to-end tests: auto-wait, multi-browser, trace viewer, and fast parallel execution.">Por que o Playwright virou meu padrão para testes end-to-end: auto-wait, multi-browser, trace viewer e execução paralela rápida.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 18 Jun, 2026</span>
-                <a href="playwright-testes-e2e.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 18, 2026">18 Jun, 2026</span></span>
+                <a href="playwright-testes-e2e.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -347,12 +349,12 @@
                 <i class="bx bx-git-merge post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="cicd-para-qa.html">CI/CD para QA: testes no coração do pipeline</a></h3>
-                <p>Como integrar testes automatizados ao pipeline, dar feedback rápido ao time e usar quality gates para barrar regressões.</p>
+                <h3><a href="cicd-para-qa.html" data-en="CI/CD for QA: tests at the heart of the pipeline">CI/CD para QA: testes no coração do pipeline</a></h3>
+                <p data-en="How to integrate automated tests into the pipeline, give the team fast feedback, and use quality gates to block regressions.">Como integrar testes automatizados ao pipeline, dar feedback rápido ao time e usar quality gates para barrar regressões.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 10 Jun, 2026</span>
-                <a href="cicd-para-qa.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 10, 2026">10 Jun, 2026</span></span>
+                <a href="cicd-para-qa.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -365,12 +367,12 @@
                 <i class="bx bx-bulb post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="pensamentos-qa.html">Pensamentos sobre QA: qualidade é de todos</a></h3>
-                <p>QA não é uma fase nem um departamento — é uma cultura. Reflexões sobre shift-left, prevenção e o papel do QA moderno.</p>
+                <h3><a href="pensamentos-qa.html" data-en="Thoughts on QA: quality belongs to everyone">Pensamentos sobre QA: qualidade é de todos</a></h3>
+                <p data-en="QA is not a phase or a department; it's a culture. Reflections on shift-left, prevention, and the role of the modern QA.">QA não é uma fase nem um departamento — é uma cultura. Reflexões sobre shift-left, prevenção e o papel do QA moderno.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 02 Jun, 2026</span>
-                <a href="pensamentos-qa.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 2, 2026">02 Jun, 2026</span></span>
+                <a href="pensamentos-qa.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -379,16 +381,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-cube post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="testes-unitarios.html">Testes unitários: a base da pirâmide</a></h3>
-                <p>O que torna um bom teste unitário, o padrão AAA, o que NÃO testar e por que eles são o investimento de maior retorno em qualidade.</p>
+                <h3><a href="testes-unitarios.html" data-en="Unit tests: the base of the pyramid">Testes unitários: a base da pirâmide</a></h3>
+                <p data-en="What makes a good unit test, the AAA pattern, what NOT to test, and why they are the highest-return investment in quality.">O que torna um bom teste unitário, o padrão AAA, o que NÃO testar e por que eles são o investimento de maior retorno em qualidade.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 25 Mai, 2026</span>
-                <a href="testes-unitarios.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="May 25, 2026">25 Mai, 2026</span></span>
+                <a href="testes-unitarios.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -401,12 +403,12 @@
                 <i class="bx bx-data post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="testes-de-api.html">Testes de API: do Postman à automação</a></h3>
-                <p>Contratos, status codes, schema validation e como levar suas coleções do Postman para dentro do pipeline com Newman.</p>
+                <h3><a href="testes-de-api.html" data-en="API testing: from Postman to automation">Testes de API: do Postman à automação</a></h3>
+                <p data-en="Contracts, status codes, schema validation, and how to bring your Postman collections into the pipeline with Newman.">Contratos, status codes, schema validation e como levar suas coleções do Postman para dentro do pipeline com Newman.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 17 Mai, 2026</span>
-                <a href="testes-de-api.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="May 17, 2026">17 Mai, 2026</span></span>
+                <a href="testes-de-api.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -415,16 +417,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-leituras">
             <article class="post-card">
               <div class="post-card-top cat-leituras">
-                <span class="post-cat"><i class="bx bx-book-reader"></i> Leituras</span>
+                <span class="post-cat"><i class="bx bx-book-reader"></i> <span data-en="Reading">Leituras</span></span>
                 <i class="bx bx-book post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="naked-statistics-summary.html">Resumo do livro "Naked Statistics"</a></h3>
-                <p>Como a estatística, despida de sua complexidade, vira uma ferramenta poderosa para decisões em BA e QA.</p>
+                <h3><a href="naked-statistics-summary.html" data-en="Book summary: &quot;Naked Statistics&quot;">Resumo do livro "Naked Statistics"</a></h3>
+                <p data-en="How statistics, stripped of its complexity, becomes a powerful tool for decisions in BA and QA.">Como a estatística, despida de sua complexidade, vira uma ferramenta poderosa para decisões em BA e QA.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 27 Out, 2025</span>
-                <a href="naked-statistics-summary.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Oct 27, 2025">27 Out, 2025</span></span>
+                <a href="naked-statistics-summary.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -433,16 +435,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-automacao">
             <article class="post-card">
               <div class="post-card-top cat-automacao">
-                <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
+                <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
                 <i class="bx bx-sitemap post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="page-object-model.html">Page Object Model: uma suíte E2E que escala</a></h3>
-                <p>O padrão que evita que sua automação vire uma teia de seletores duplicados. Regras práticas para manter a suíte legível e barata.</p>
+                <h3><a href="page-object-model.html" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</a></h3>
+                <p data-en="The pattern that keeps your automation from turning into a web of duplicated selectors. Practical rules to keep the suite readable and cheap.">O padrão que evita que sua automação vire uma teia de seletores duplicados. Regras práticas para manter a suíte legível e barata.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 20 Jun, 2026</span>
-                <a href="page-object-model.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 20, 2026">20 Jun, 2026</span></span>
+                <a href="page-object-model.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -455,12 +457,12 @@
                 <i class="bx bx-bug post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="testes-flaky.html">Testes flaky: o veneno do seu pipeline</a></h3>
-                <p>De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.</p>
+                <h3><a href="testes-flaky.html" data-en="Flaky tests: the poison in your pipeline">Testes flaky: o veneno do seu pipeline</a></h3>
+                <p data-en="Where flakiness comes from and how to fight it before the team loses trust in a green CI.">De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 12 Jun, 2026</span>
-                <a href="testes-flaky.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 12, 2026">12 Jun, 2026</span></span>
+                <a href="testes-flaky.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -473,12 +475,12 @@
                 <i class="bx bx-message-rounded-error post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="bug-report.html">A arte do bug report</a></h3>
-                <p>A anatomia de um relatório que leva à correção rápida: passos, evidências, contexto e a diferença entre severidade e prioridade.</p>
+                <h3><a href="bug-report.html" data-en="The art of the bug report">A arte do bug report</a></h3>
+                <p data-en="The anatomy of a report that leads to a quick fix: steps, evidence, context, and the difference between severity and priority.">A anatomia de um relatório que leva à correção rápida: passos, evidências, contexto e a diferença entre severidade e prioridade.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 05 Jun, 2026</span>
-                <a href="bug-report.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 5, 2026">05 Jun, 2026</span></span>
+                <a href="bug-report.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -487,16 +489,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-testes">
             <article class="post-card">
               <div class="post-card-top cat-testes">
-                <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
+                <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
                 <i class="bx bx-revision post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="tdd-na-pratica.html">TDD na prática: red, green, refactor</a></h3>
-                <p>Escrever o teste antes do código parece contraintuitivo — e é uma das técnicas que mais melhora o design do que se entrega.</p>
+                <h3><a href="tdd-na-pratica.html" data-en="TDD in practice: red, green, refactor">TDD na prática: red, green, refactor</a></h3>
+                <p data-en="Writing the test before the code feels counterintuitive, and it is one of the techniques that most improves the design of what you ship.">Escrever o teste antes do código parece contraintuitivo — e é uma das técnicas que mais melhora o design do que se entrega.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 28 Mai, 2026</span>
-                <a href="tdd-na-pratica.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="May 28, 2026">28 Mai, 2026</span></span>
+                <a href="tdd-na-pratica.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -509,12 +511,12 @@
                 <i class="bx bx-link-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="contract-testing.html">Contract testing entre serviços</a></h3>
-                <p>A confiança da integração com a velocidade do teste de unidade. Como o Pact garante o contrato entre consumidor e provedor.</p>
+                <h3><a href="contract-testing.html" data-en="Contract testing between services">Contract testing entre serviços</a></h3>
+                <p data-en="The confidence of integration with the speed of a unit test. How Pact guarantees the contract between consumer and provider.">A confiança da integração com a velocidade do teste de unidade. Como o Pact garante o contrato entre consumidor e provedor.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 20 Mai, 2026</span>
-                <a href="contract-testing.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="May 20, 2026">20 Mai, 2026</span></span>
+                <a href="contract-testing.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -523,16 +525,16 @@
           <div class="col-lg-4 col-md-6 blog-item cat-leituras">
             <article class="post-card">
               <div class="post-card-top cat-leituras">
-                <span class="post-cat"><i class="bx bx-book-reader"></i> Leituras</span>
+                <span class="post-cat"><i class="bx bx-book-reader"></i> <span data-en="Reading">Leituras</span></span>
                 <i class="bx bx-book-bookmark post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="clean-code-qa.html">Clean Code no dia a dia de QA</a></h3>
-                <p>Código de teste também é código. Os princípios do livro de Robert C. Martin aplicados a uma suíte de automação que dura.</p>
+                <h3><a href="clean-code-qa.html" data-en="Clean Code in a QA's day to day">Clean Code no dia a dia de QA</a></h3>
+                <p data-en="Test code is code too. The principles from Robert C. Martin's book applied to an automation suite that lasts.">Código de teste também é código. Os princípios do livro de Robert C. Martin aplicados a uma suíte de automação que dura.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 10 Mai, 2026</span>
-                <a href="clean-code-qa.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="May 10, 2026">10 Mai, 2026</span></span>
+                <a href="clean-code-qa.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -549,7 +551,7 @@
           Designed by <a href="#">Diogo Gomes</a>
         </div>
       </div>
-  </footer><a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  </footer><a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -560,6 +562,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <script src="../assets/js/i18n.js"></script>
 
   <script src="../assets/js/main.js"></script>
 

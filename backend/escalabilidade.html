@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Scalability: vertical, horizontal and load balancing - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Escalabilidade: vertical, horizontal e load balancing - Diogo Gomes</title>
   <meta content="Crescer para cima ou para os lados? Stateless, load balancer e os limites de cada estratégia quando o tráfego explode." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Escalabilidade: vertical, horizontal e load balancing", "datePublished": "2026-06-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/escalabilidade.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Crescer para cima ou para os lados? Stateless, load balancer e os limites de cada estratégia quando o tráfego explode.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Sênior</h2>
+          <h2 data-en="Back-end · Senior">Back-end · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-network-chart"></i> Back-end · Sênior</span>
-              <h1>Escalabilidade: vertical, horizontal e load balancing</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-network-chart&quot;&gt;&lt;/i&gt; Back-end · Senior"><i class="bx bx-network-chart"></i> Back-end · Sênior</span>
+              <h1 data-en="Scalability: vertical, horizontal and load balancing">Escalabilidade: vertical, horizontal e load balancing</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 10, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Escalar é fazer um sistema aguentar mais carga sem cair. Como dev sênior, você precisa não só conhecer as estratégias, mas explicar seus trade-offs e identificar o gargalo real — que quase nunca é a aplicação. Esse é um dos temas centrais de entrevistas de system design.</p>
 
 <h2>Vertical vs horizontal</h2>
@@ -134,16 +138,63 @@
 
 <h2>Conclusão</h2>
 <p>Escalabilidade é sobre remover gargalos, não sobre adicionar máquinas cegamente. Mantenha serviços stateless, use um load balancer para distribuir carga e, sobretudo, lembre que o banco costuma ser o limite real. Saber onde está o gargalo e qual trade-off aceitar é exatamente o tipo de raciocínio esperado de um sênior.</p>
-              <div class="post-tags"><span class="tag">Escalabilidade</span><span class="tag">Arquitetura</span><span class="tag">Sênior</span></div>
+</div>
+<div data-lang="en">
+<p>Scaling means making a system handle more load without falling over. As a senior dev, you need not only to know the strategies, but to explain their trade-offs and identify the real bottleneck — which is almost never the application. This is one of the core topics in system design interviews.</p>
+
+<h2>Vertical vs horizontal</h2>
+<p>There are two ways to scale. <strong>Vertical</strong> (scale up) means getting a bigger machine: more CPU, more RAM. <strong>Horizontal</strong> (scale out) means adding more machines, splitting the load among them. The analogy: scaling vertically is swapping your car for a truck; scaling horizontally is buying several cars. Each solves a different kind of problem.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Vertical (scale up)</th><th>Horizontal (scale out)</th></tr></thead><tbody>
+<tr><td>How</td><td>More powerful machine</td><td>More machines</td></tr>
+<tr><td>Limit</td><td>Physical hardware ceiling</td><td>Practically unlimited</td></tr>
+<tr><td>Complexity</td><td>Low (no code changes)</td><td>Higher (needs coordination)</td></tr>
+<tr><td>Resilience</td><td>Single point of failure</td><td>One machine goes down, the others keep going</td></tr>
+</tbody></table></div>
+
+<h2>Why stateless is the key</h2>
+<p>Scaling horizontally only works well if the services are <strong>stateless</strong>: no request depends on which machine handled the previous one. If the server keeps state in memory (a session, for example), a user "stuck" on that machine can't be served by another. That's why state moves out — to a database, a <a href="cache-backend.html">shared cache</a> like Redis. With stateless services, adding machines is trivial.</p>
+
+<h2>Load balancer</h2>
+<p>With multiple instances, someone has to distribute the requests among them: the <strong>load balancer</strong>. It sits in front, receives all the traffic and splits it up:</p>
+<pre><code>             +----------------+
+   clients   |  Load Balancer |
+  ---------&gt; |  (round-robin) |
+             +----------------+
+               /     |      \
+              v      v       v
+          [App 1] [App 2] [App 3]   &lt;- stateless instances
+              \      |      /
+               v     v     v
+            +-------------------+
+            |     Database      |   &lt;- shared state
+            +-------------------+</code></pre>
+<p>The simplest strategy is <strong>round-robin</strong>: requests are distributed in rotation, one to each instance in sequence. Other options take into account which instance is least busy (<em>least connections</em>) or the user's location.</p>
+
+<h2>The database as a bottleneck</h2>
+<p>Here's the point that separates juniors from seniors: you can have 50 instances of the application, but if they all hit the same database, the <strong>database becomes the bottleneck</strong>. The application scales easily; state doesn't. The main ways out:</p>
+<ul>
+<li><strong>Read replicas</strong>: copies of the database that serve reads only, relieving the primary (which keeps the writes). Works well when there are far more reads than writes.</li>
+<li><strong>Sharding</strong>: partitioning the data across several databases (e.g. users A-M in one, N-Z in another), which also spreads the writes — but with a big increase in complexity.</li>
+</ul>
+
+<blockquote>Scaling the application is the easy part; scaling the state is the hard part. When someone says "just spin up more servers", ask: can the database handle it?</blockquote>
+
+<h2>Trade-offs</h2>
+<p>There's no free lunch. Horizontal scaling brings resilience and nearly unlimited scale, but requires stateless services, load balancers and deals with the complexity of distributed systems — including consistency decisions that show up in the <a href="teorema-cap.html">CAP theorem</a>. Vertical is simple but has a ceiling and is a single point of failure. In practice, mature systems combine both: they scale vertically up to a point and horizontally from there.</p>
+
+<h2>Conclusion</h2>
+<p>Scalability is about removing bottlenecks, not blindly adding machines. Keep services stateless, use a load balancer to distribute load and, above all, remember that the database is usually the real limit. Knowing where the bottleneck is and which trade-off to accept is exactly the kind of reasoning expected of a senior.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Scalability">Escalabilidade</span><span class="tag" data-en="Architecture">Arquitetura</span><span class="tag" data-en="Senior">Sênior</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
-                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
-                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="How the web works: HTTP, request and response">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="REST APIs: what makes an API RESTful">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="Essential SQL: CRUD, JOIN and transactions">SQL essencial: CRUD, JOIN e transações</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -160,7 +211,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -171,6 +222,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

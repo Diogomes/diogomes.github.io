@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Backend caching: when to use it and how to invalidate - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Cache no back-end: quando usar e como invalidar - Diogo Gomes</title>
   <meta content="Cache acelera tudo — até virar fonte de bug. Cache-aside, TTL e por que invalidar cache é um dos problemas difíceis da computação." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Cache no back-end: quando usar e como invalidar", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/cache-backend.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Cache acelera tudo — até virar fonte de bug. Cache-aside, TTL e por que invalidar cache é um dos problemas difíceis da computação.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Pleno</h2>
+          <h2 data-en="Back-end · Mid-level">Back-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-memory-card"></i> Back-end · Pleno</span>
-              <h1>Cache no back-end: quando usar e como invalidar</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-memory-card&quot;&gt;&lt;/i&gt; Back-end · Mid-level"><i class="bx bx-memory-card"></i> Back-end · Pleno</span>
+              <h1 data-en="Backend caching: when to use it and how to invalidate">Cache no back-end: quando usar e como invalidar</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 13, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Cache é uma das ferramentas mais poderosas para deixar um sistema rápido — e uma das mais fáceis de errar. A famosa frase "as duas coisas mais difíceis em computação são nomear coisas e invalidar cache" existe por um motivo. Saber quando cachear, como invalidar e quando <em>não</em> cachear é esperado de um dev pleno.</p>
 
 <h2>Por que cachear</h2>
@@ -130,16 +134,59 @@
 
 <h2>Conclusão</h2>
 <p>Cache troca frescor por velocidade. Domine o padrão cache-aside, defina TTLs conscientes, tenha uma estratégia de invalidação e saiba reconhecer os casos onde cachear traz mais problema que benefício. É uma alavanca enorme de performance — desde que você respeite a parte difícil.</p>
-              <div class="post-tags"><span class="tag">Cache</span><span class="tag">Redis</span><span class="tag">Performance</span></div>
+</div>
+<div data-lang="en">
+<p>Caching is one of the most powerful tools for making a system fast — and one of the easiest to get wrong. The famous line "the two hardest things in computer science are naming things and cache invalidation" exists for a reason. Knowing when to cache, how to invalidate and when <em>not</em> to cache is expected of a mid-level dev.</p>
+
+<h2>Why cache</h2>
+<p>Caching means storing the result of an expensive operation so you can reuse it later instead of redoing it. The operation might be a heavy query, a call to another API or a slow computation. The analogy: instead of going to the store every time you want milk, you keep some in the fridge. The cost is that the milk in the fridge can go bad — and that's where all the complexity lives.</p>
+
+<h2>The cache-aside pattern</h2>
+<p>The most common pattern is <strong>cache-aside</strong> (also called lazy loading): the application looks at the cache first; if the data is there (<em>hit</em>), it uses it; if not (<em>miss</em>), it fetches from the source, stores it in the cache and returns it.</p>
+<pre><code>function getProduct(id):
+    value = cache.get("product:" + id)
+    if value != null:
+        return value              // cache hit
+    value = db.query(id)          // cache miss
+    cache.set("product:" + id, value, ttl=300)
+    return value</code></pre>
+<p>The upside: only what is actually requested gets cached. The downside: the first access to each item is always slow (the initial miss).</p>
+
+<h2>TTL and expiration</h2>
+<p>The <strong>TTL</strong> (Time To Live) defines how long a value stays in the cache before it expires automatically. It's the simplest way to avoid data staying stale forever. A short TTL keeps data fresher but reduces hit rate; a long TTL gets more reuse but risks serving old data. Choosing the TTL is balancing <strong>freshness</strong> against <strong>performance</strong>.</p>
+
+<h2>Write strategies</h2>
+<p>Cache-aside deals with reads. When data <em>changes</em>, there are write strategies. The most direct is <strong>write-through</strong>: when writing, you update the database and the cache together, keeping them in sync. Other options include invalidating the key on write (letting the next read reload it). What matters is having an answer to "what happens to the cache when the data changes?".</p>
+
+<h2>Why invalidation is hard</h2>
+<p>Cached data is a copy, and copies go <strong>stale</strong> when the source changes. You have to decide when to discard them — and getting it wrong in either direction hurts: invalidating too much throws away the benefit of the cache; invalidating too little serves wrong data. Worse: invalidating the right key, at the right moment, everywhere it exists, is genuinely hard in distributed systems.</p>
+
+<blockquote>Caching is easy; the hard part is knowing exactly when to throw away the stored data. Every "why is it showing the old value?" bug is an invalidation problem.</blockquote>
+
+<h2>Where the cache lives</h2>
+<div class="table-wrap"><table><thead><tr><th>Location</th><th>Speed</th><th>Shared?</th></tr></thead><tbody>
+<tr><td>Process memory</td><td>Extremely high</td><td>No (only that server)</td></tr>
+<tr><td>Redis / Memcached</td><td>Very high</td><td>Yes (across servers)</td></tr>
+<tr><td>CDN</td><td>High (close to the user)</td><td>Yes (public/static content)</td></tr>
+</tbody></table></div>
+<p>Local in-memory cache is the fastest but doesn't scale across instances — which is why <strong>Redis</strong> is so widely used: a shared cache that all instances query. This connects with <a href="escalabilidade.html">scalability</a>, since stateless services usually delegate state to an external cache.</p>
+
+<h2>When NOT to cache</h2>
+<p>Caching isn't free. Avoid it when: the data changes on every access (the cache never hits), it requires absolute accuracy (bank balance, critical inventory), or it's rarely read (not worth the complexity). Day to day, caching too early is a common source of subtle bugs — measure first, cache later.</p>
+
+<h2>Conclusion</h2>
+<p>Caching trades freshness for speed. Master the cache-aside pattern, set deliberate TTLs, have an invalidation strategy and learn to recognize the cases where caching brings more problems than benefits. It's a huge performance lever — as long as you respect the hard part.</p>
+</div>
+              <div class="post-tags"><span class="tag">Cache</span><span class="tag">Redis</span><span class="tag" data-en="Performance">Performance</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
-                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
-                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="How the web works: HTTP, request and response">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="REST APIs: what makes an API RESTful">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="Essential SQL: CRUD, JOIN and transactions">SQL essencial: CRUD, JOIN e transações</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -156,7 +203,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -167,6 +214,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

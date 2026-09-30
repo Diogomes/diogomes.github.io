@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Contract testing: guaranteeing the contract between services - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Contract testing: garantindo o contrato entre serviços - Diogo Gomes</title>
   <meta content="A confiança da integração com a velocidade do teste de unidade — como o Pact garante o contrato." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Contract testing entre serviços", "datePublished": "2026-05-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/contract-testing.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A confiança da integração com a velocidade do teste de unidade — como o Pact garante o contrato.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -85,11 +87,12 @@
 
             <div class="post-hero">
               <span class="post-cat"><i class="bx bx-link-alt"></i> API</span>
-              <h1>Contract testing: garantindo o contrato entre serviços</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <h1 data-en="Contract testing: guaranteeing the contract between services">Contract testing: garantindo o contrato entre serviços</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="May 20, 2026">20 de Maio, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Em arquiteturas com muitos serviços, o maior risco não está dentro de cada serviço — está no <strong>contrato entre eles</strong>. Um time muda o formato de uma resposta e, sem perceber, quebra três consumidores. Contract testing existe para evitar exatamente isso.</p>
 
               <h2>O problema dos testes E2E entre serviços</h2>
@@ -120,16 +123,50 @@ await provider.addInteraction({
 
               <h2>Conclusão</h2>
               <p>Para sistemas distribuídos, contratos versionados e verificados automaticamente são uma rede de segurança poderosa. Eles transformam "será que quebrei alguém?" em uma resposta objetiva dada pelo pipeline.</p>
-              <div class="post-tags"><span class="tag">Contract testing</span><span class="tag">Pact</span><span class="tag">Microsserviços</span><span class="tag">API</span></div>
+              </div>
+<div data-lang="en">
+              <p>In architectures with many services, the biggest risk is not inside each service; it's in the <strong>contract between them</strong>. One team changes the shape of a response and, without realizing it, breaks three consumers. Contract testing exists to prevent exactly that.</p>
+
+              <h2>The problem with E2E tests across services</h2>
+              <p>Spinning up all the services together to test the integration is slow, expensive, and brittle. Contract testing swaps that for a lightweight check: each side proves it honors the agreed contract, without needing the other one to be up.</p>
+
+              <h2>Consumer-driven contracts</h2>
+              <p>With tools like <strong>Pact</strong>, the <em>consumer</em> declares what it expects from the API. This generates a contract that the <em>provider</em> verifies in its own pipeline.</p>
+              <pre><code>// Consumer side: "I expect this format"
+await provider.addInteraction({
+  state: 'user 1 exists',
+  uponReceiving: 'a request for user 1',
+  withRequest:  { method: 'GET', path: '/users/1' },
+  willRespondWith: {
+    status: 200,
+    body: { id: 1, name: like('Diogo') }
+  }
+});</code></pre>
+
+              <h2>The flow</h2>
+              <ol>
+                <li>The consumer defines expectations and generates the <strong>pact</strong> (the contract).</li>
+                <li>The contract is published to a broker.</li>
+                <li>The provider runs the contract against its real API and proves it honors it.</li>
+                <li>Broke the contract? The provider's pipeline fails, before it ever reaches production.</li>
+              </ol>
+
+              <blockquote>Contract testing gives you the best of both worlds: the confidence of integration with the speed of a unit test.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>For distributed systems, versioned and automatically verified contracts are a powerful safety net. They turn "did I break anyone?" into an objective answer given by the pipeline.</p>
+
+</div>
+<div class="post-tags"><span class="tag">Contract testing</span><span class="tag">Pact</span><span class="tag" data-en="Microservices">Microsserviços</span><span class="tag">API</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="testes-de-api.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> API</span><span class="rel-title">Testes de API: do Postman à automação</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="testes-de-api.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> API</span><span class="rel-title" data-en="API testing: from Postman to automation">Testes de API: do Postman à automação</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -146,7 +183,7 @@ await provider.addInteraction({
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -157,6 +194,7 @@ await provider.addInteraction({
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

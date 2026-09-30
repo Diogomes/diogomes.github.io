@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="CI/CD for QA: tests at the heart of the pipeline - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>CI/CD para QA: testes no coração do pipeline - Diogo Gomes</title>
   <meta content="Como integrar testes ao pipeline, dar feedback rápido ao time e usar quality gates contra regressões." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CI/CD para QA: testes no coração do pipeline", "datePublished": "2026-06-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/cicd-para-qa.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como integrar testes ao pipeline, dar feedback rápido ao time e usar quality gates contra regressões.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -85,11 +87,12 @@
 
             <div class="post-hero">
               <span class="post-cat"><i class="bx bx-infinite"></i> CI/CD</span>
-              <h1>CI/CD para QA: testes no coração do pipeline</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <h1 data-en="CI/CD for QA: tests at the heart of the pipeline">CI/CD para QA: testes no coração do pipeline</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 10, 2026">10 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Automatizar testes é metade do caminho. A outra metade é fazer com que eles rodem <strong>no momento certo, automaticamente, para todo mundo</strong>. É aí que entra o CI/CD — e onde o QA deixa de ser um gargalo no fim do processo para virar parte do fluxo.</p>
 
               <h2>CI e CD, sem confusão</h2>
@@ -128,17 +131,59 @@ jobs:
 
               <h2>Conclusão</h2>
               <p>CI/CD bem feito transforma qualidade em algo contínuo e visível. O QA moderno desenha quality gates, cuida da saúde da suíte e usa o pipeline como sua principal ferramenta de prevenção.</p>
-              <div class="post-tags"><span class="tag">CI/CD</span><span class="tag">DevOps</span><span class="tag">GitHub Actions</span><span class="tag">Jenkins</span></div>
+              </div>
+<div data-lang="en">
+              <p>Automating tests is half the journey. The other half is making them run <strong>at the right time, automatically, for everyone</strong>. That's where CI/CD comes in, and where QA stops being a bottleneck at the end of the process and becomes part of the flow.</p>
+
+              <h2>CI and CD, without the confusion</h2>
+              <ul>
+                <li><strong>CI (Continuous Integration):</strong> every push triggers a build plus tests, integrating code frequently and catching problems early.</li>
+                <li><strong>CD (Continuous Delivery/Deployment):</strong> whatever passes the tests moves on automatically to staging or production.</li>
+              </ul>
+
+              <h2>Where each test fits in the pipeline</h2>
+              <p>The rule is simple: <em>the faster the test, the earlier it runs</em>. Fast feedback is what keeps the team productive.</p>
+              <ol>
+                <li><strong>Lint + unit tests</strong> — seconds, run on every commit.</li>
+                <li><strong>Integration and API tests</strong> — minutes, after the build.</li>
+                <li><strong>E2E tests</strong> — the slowest, run in parallel and on critical flows.</li>
+                <li><strong>Quality gates</strong> — minimum coverage, zero critical vulnerabilities, and so on.</li>
+              </ol>
+
+              <h2>Example with GitHub Actions</h2>
+              <pre><code>name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test -- --coverage
+      - run: npx playwright test</code></pre>
+
+              <h2>QA's role in the pipeline</h2>
+              <p>It's not enough to write the tests; you have to make sure they're <strong>reliable</strong>. A flaky test that fails at random makes the team lose trust in the pipeline and start ignoring red builds, which is the worst of all worlds.</p>
+              <blockquote>A green pipeline has to mean "it's safe to ship". If the team doesn't trust the green, CI has become theater.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Well-done CI/CD turns quality into something continuous and visible. The modern QA designs quality gates, looks after the health of the suite, and uses the pipeline as their main prevention tool.</p>
+
+</div>
+<div class="post-tags"><span class="tag">CI/CD</span><span class="tag">DevOps</span><span class="tag">GitHub Actions</span><span class="tag">Jenkins</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">Testes flaky: o veneno do seu pipeline</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
-                <a class="rel-card" href="testes-de-performance.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Testes de performance: carga, estresse e os números que importam</span></a>
+                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title" data-en="Flaky tests: the poison in your pipeline">Testes flaky: o veneno do seu pipeline</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="testes-de-performance.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title" data-en="Performance testing: load, stress, and the numbers that matter">Testes de performance: carga, estresse e os números que importam</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -155,7 +200,7 @@ jobs:
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -166,6 +211,7 @@ jobs:
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

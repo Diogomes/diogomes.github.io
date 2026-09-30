@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Observability: logs, metrics, and traces (the 3 pillars) - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Observabilidade: logs, métricas e traces (os 3 pilares) - Diogo Gomes</title>
   <meta content="Monitorar é saber que quebrou; observar é descobrir por quê. Logs, métricas e traces — e a diferença entre os três na prática." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Observabilidade: logs, métricas e traces (os 3 pilares)", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/observabilidade.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Monitorar é saber que quebrou; observar é descobrir por quê. Logs, métricas e traces — e a diferença entre os três na prática.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>DevOps · Pleno</h2>
+          <h2 data-en="DevOps · Mid-level">DevOps · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">DevOps</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-search-alt"></i> DevOps · Pleno</span>
-              <h1>Observabilidade: logs, métricas e traces (os 3 pilares)</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-search-alt&quot;&gt;&lt;/i&gt; DevOps · Mid-level"><i class="bx bx-search-alt"></i> DevOps · Pleno</span>
+              <h1 data-en="Observability: logs, metrics, and traces (the 3 pillars)">Observabilidade: logs, métricas e traces (os 3 pilares)</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 13, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Quando um sistema fica lento às 3 da manhã, a pergunta não é só "está no ar?", mas "por que está assim?". Monitoramento responde a primeira; observabilidade responde a segunda. Em sistemas distribuídos, onde uma única requisição passa por dezenas de serviços, saber investigar o desconhecido é o que diferencia apagar incêndios de entender o sistema.</p>
 
 <h2>Monitoramento vs observabilidade</h2>
@@ -102,9 +106,21 @@
 
 <h2>Logs estruturados</h2>
 <p>Logs são o registro detalhado de eventos. A boa prática moderna é usar <strong>logs estruturados</strong> (geralmente JSON), porque máquinas conseguem filtrar e agregar campos em vez de fazer busca por texto solto.</p>
+</div>
+<div data-lang="en">
+<p>When a system gets slow at 3 a.m., the question isn't just "is it up?" but "why is it like this?". Monitoring answers the first; observability answers the second. In distributed systems, where a single request goes through dozens of services, knowing how to investigate the unknown is what separates firefighting from understanding the system.</p>
+<h2>Monitoring vs observability</h2>
+<p>The distinction is subtle and comes up a lot in interviews. <strong>Monitoring</strong> is watching for things you already know can go wrong: CPU above 90%, a full disk, a service that is down. You know <em>when</em> it broke. <strong>Observability</strong> is the ability to ask new questions about the system without having to redeploy it — to find out <em>why</em> it broke, even in failures you never anticipated.</p>
+<blockquote>Monitoring answers known questions; observability lets you answer questions you didn't know you'd ask. In complex systems, most problems are of the second kind.</blockquote>
+<h2>The three pillars</h2>
+<p>Observability rests on three types of data, each answering a different class of question:</p>
+<div class="table-wrap"><table><thead><tr><th>Pillar</th><th>What it is</th><th>Answers</th></tr></thead><tbody><tr><td>Logs</td><td>Discrete, detailed events</td><td>What exactly happened here?</td></tr><tr><td>Metrics</td><td>Numbers aggregated over time</td><td>How much? How often?</td></tr><tr><td>Traces</td><td>The path of a request across services</td><td>Where in the journey is the bottleneck?</td></tr></tbody></table></div>
+<h2>Structured logs</h2>
+<p>Logs are the detailed record of events. Modern best practice is to use <strong>structured logs</strong> (usually JSON), because machines can filter and aggregate fields instead of searching loose text.</p>
+</div>
 <pre><code>{"ts":"2026-06-25T03:14:00Z","level":"ERROR","service":"checkout",
  "user_id":"u-991","msg":"pagamento recusado","latency_ms":820}</code></pre>
-
+<div data-lang="pt">
 <h2>Métricas: números agregados</h2>
 <p>Métricas são números medidos ao longo do tempo — requisições por segundo, latência, uso de memória. Por serem agregadas, são baratas de guardar e ótimas para gráficos e alertas. Dois frameworks ajudam a escolher o que medir:</p>
 <ul>
@@ -114,27 +130,46 @@
 
 <h2>Traces: a requisição atravessando serviços</h2>
 <p>Num sistema de microsserviços, uma requisição do usuário pode passar por API, autenticação, banco e cache. Um <strong>trace</strong> costura toda essa jornada e mostra quanto tempo cada etapa levou. É a ferramenta certa quando "o sistema está lento" e você precisa achar <em>onde</em>.</p>
+</div>
+<div data-lang="en">
+<h2>Metrics: aggregated numbers</h2>
+<p>Metrics are numbers measured over time — requests per second, latency, memory usage. Because they're aggregated, they're cheap to store and great for charts and alerts. Two frameworks help you choose what to measure:</p>
+<ul>
+  <li><strong>RED</strong> (for services): <em>Rate</em> (requests/s), <em>Errors</em> (error rate), <em>Duration</em> (latency).</li>
+  <li><strong>USE</strong> (for resources): <em>Utilization</em>, <em>Saturation</em>, <em>Errors</em>.</li>
+</ul>
+<h2>Traces: the request crossing services</h2>
+<p>In a microservices system, a user request may go through an API, authentication, a database and a cache. A <strong>trace</strong> stitches that whole journey together and shows how long each step took. It's the right tool when "the system is slow" and you need to find out <em>where</em>.</p>
+</div>
 <pre><code>requisição [#abc] 820ms
  ├─ api-gateway        12ms
  ├─ auth-service       40ms
  └─ checkout-service  760ms  ← gargalo
      └─ db-query       740ms</code></pre>
-
+<div data-lang="pt">
 <h2>Alertas e SLO</h2>
 <p>De nada adianta coletar dados se ninguém é avisado quando algo importa. Um <strong>alerta</strong> dispara quando uma métrica cruza um limite. Para não alertar por qualquer coisa, define-se um <strong>SLO</strong> (Service Level Objective) — uma meta como "99,9% das requisições respondem em menos de 300ms". Você alerta quando está prestes a estourar o SLO, não a cada soluço. Esses dados também alimentam decisões de escala, como o <a href="kubernetes.html">autoscaling no Kubernetes</a>.</p>
 
 <h2>Conclusão</h2>
 <p>Observabilidade é o que permite entender sistemas que você não consegue prever por completo. Logs dizem o que aconteceu, métricas dizem quanto, traces dizem onde — e juntos transformam um incidente confuso numa investigação objetiva. Saber qual pilar usar em cada situação é uma marca de maturidade técnica de um DevOps pleno.</p>
-              <div class="post-tags"><span class="tag">Observabilidade</span><span class="tag">Monitoramento</span><span class="tag">SRE</span></div>
+              
+</div>
+<div data-lang="en">
+<h2>Alerts and SLOs</h2>
+<p>There's no point collecting data if nobody is notified when something matters. An <strong>alert</strong> fires when a metric crosses a threshold. To avoid alerting on every little thing, you define an <strong>SLO</strong> (Service Level Objective) — a target such as "99.9% of requests respond in under 300ms". You alert when you're about to blow the SLO, not at every hiccup. This data also feeds scaling decisions, such as <a href="kubernetes.html">autoscaling in Kubernetes</a>.</p>
+<h2>Conclusion</h2>
+<p>Observability is what lets you understand systems you can't fully predict. Logs tell you what happened, metrics tell you how much, traces tell you where — and together they turn a confusing incident into an objective investigation. Knowing which pillar to use in each situation is a sign of technical maturity in a mid-level DevOps engineer.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Observability">Observabilidade</span><span class="tag" data-en="Monitoring">Monitoramento</span><span class="tag" data-en="SRE">SRE</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
-                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
-                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Linux and the terminal: the bare minimum every DevOps engineer masters">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Git beyond the commit: branches, merge, and workflows">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="CI/CD in practice: from commit to automatic deploy">CI/CD na prática: do commit ao deploy automático</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -151,7 +186,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -162,6 +197,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

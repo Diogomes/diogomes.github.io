@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Streaming data: batch vs real time (Kafka &amp; co.) - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Dados em streaming: batch vs tempo real (Kafka &amp; cia) - Diogo Gomes</title>
   <meta content="Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Dados em streaming: batch vs tempo real (Kafka & cia)", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/streaming-dados.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Dados · Sênior</h2>
+          <h2 data-en="Data · Senior">Dados · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Dados</a></li>
-            <li>Sênior</li>
+            <li><a href="index.html" data-en="Data">Dados</a></li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-broadcast"></i> Dados · Sênior</span>
-              <h1>Dados em streaming: batch vs tempo real (Kafka &amp; cia)</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-broadcast&quot;&gt;&lt;/i&gt; Data · Senior"><i class="bx bx-broadcast"></i> Dados · Sênior</span>
+              <h1 data-en="Streaming data: batch vs real time (Kafka &amp; co.)">Dados em streaming: batch vs tempo real (Kafka &amp; cia)</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">6 de Junho, 2026</span><span data-lang="en">Jun 6, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Durante décadas, processar dados significou rodar um job toda madrugada sobre o que aconteceu no dia anterior. Hoje, muitos negócios não podem esperar até amanhã: detecção de fraude, recomendação, painéis ao vivo. Entender a diferença entre processamento em lote e em tempo real — e as ferramentas como o Kafka — é conhecimento central de um profissional sênior de dados.</p>
 
 <h2>Batch: processar em lotes</h2>
@@ -140,16 +144,70 @@
 
 <h2>Conclusão</h2>
 <p>Batch processa lotes com latência alta e simplicidade; streaming processa evento a evento com baixa latência e mais complexidade. O log append-only — concretizado no Kafka com tópicos, partições e consumers — é a fundação; janelas recortam o tempo; e as semânticas de entrega definem que garantias você tem. Saber escolher entre os dois mundos, pelo frescor que o negócio exige, é o cerne da decisão.</p>
-              <div class="post-tags"><span class="tag">Streaming</span><span class="tag">Kafka</span><span class="tag">Engenharia de Dados</span></div>
+              
+</div>
+<div data-lang="en">
+<p>For decades, processing data meant running a job every night over what had happened the day before. Today, many businesses can't wait until tomorrow: fraud detection, recommendations, live dashboards. Understanding the difference between batch and real-time processing — and tools like Kafka — is core knowledge for a senior data professional.</p>
+
+<h2>Batch: processing in chunks</h2>
+<p>In <strong>batch</strong>, data is accumulated and processed in blocks, at set intervals — hourly, once a day. It's the model of traditional <a href="etl-pipelines.html">pipelines</a>. It has high latency (you only see the result in the next cycle), but it's simple, cheap and easy to reprocess: if something goes wrong, you just run the batch again.</p>
+
+<h2>Streaming: event by event</h2>
+<p>In <strong>streaming</strong>, each event is processed as soon as it arrives — a purchase, a click, a sensor reading. Latency is seconds or less, allowing immediate reactions. In exchange, the system is more complex: it must run continuously, deal with out-of-order and late events, and it never "finishes".</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Batch</th><th>Streaming</th></tr></thead><tbody>
+<tr><td>Unit</td><td>Batch of data</td><td>Individual event</td></tr>
+<tr><td>Latency</td><td>High (minutes to hours)</td><td>Low (seconds)</td></tr>
+<tr><td>Complexity</td><td>Lower</td><td>Higher</td></tr>
+<tr><td>Reprocessing</td><td>Simple (run again)</td><td>Harder</td></tr>
+<tr><td>Good for</td><td>Reports, daily loads</td><td>Alerts, live dashboards</td></tr>
+</tbody></table></div>
+
+<h2>The append-only event log</h2>
+<p>The heart of modern streaming is an <strong>append-only log</strong>: a sequence of events to which you only add at the end, never changing the past. Think of a bank statement — each transaction is a new line; you never erase a previous one. This durable log is what lets you re-read events and lets several consumers read the same stream independently.</p>
+
+<h2>Kafka: topic, partition, consumer</h2>
+<p><strong>Kafka</strong> is the most widespread implementation of this log. Three concepts are enough to get started:</p>
+<ul>
+  <li><strong>Topic</strong> — a named channel of events ("orders", "clicks").</li>
+  <li><strong>Partition</strong> — each topic is split into partitions to scale (the same idea as <a href="particionamento-sharding.html">partitioning</a>); order is guaranteed <em>within</em> a partition.</li>
+  <li><strong>Consumer</strong> — whoever reads the topic, tracking its position (offset) to know how far it has processed.</li>
+</ul>
+
+<pre><code>Producers ──▶ Topic "orders"
+                ├─ Partition 0: [e1][e4][e7]──▶ Consumer A
+                ├─ Partition 1: [e2][e5][e8]──▶ Consumer B
+                └─ Partition 2: [e3][e6][e9]──▶ Consumer C
+                (each event append-only, order per partition)</code></pre>
+
+<h2>Time windows</h2>
+<p>In an infinite stream, questions like "how many sales in the last minute?" require slicing time into <strong>windows</strong>. The most common: <em>tumbling</em> (fixed, non-overlapping windows, like "every 1 minute") and <em>sliding</em> (windows that slide and overlap). That's how you compute continuous metrics without waiting for the stream to "end" — because it never ends.</p>
+
+<h2>Delivery semantics</h2>
+<p>In distributed systems, messages can get lost or duplicated. There are three possible guarantees:</p>
+<ul>
+  <li><strong>At-most-once</strong> — may lose events, never duplicates. Fast, but risky.</li>
+  <li><strong>At-least-once</strong> — never loses, but may duplicate. The most common; it requires the consumer to be idempotent to tolerate repeats.</li>
+  <li><strong>Exactly-once</strong> — each event processed a single time. It's the ideal guarantee and the most expensive to implement.</li>
+</ul>
+
+<blockquote>The question isn't "which is better, batch or streaming", but "how fresh does the data need to be to create value?". If the decision can wait until the small hours, batch is simpler and cheaper. If every second counts, you pay the price of streaming.</blockquote>
+
+<p>In interviews they often ask you to explain at-least-once versus exactly-once and why idempotency matters in streaming. Day to day, this shows up when you decide whether a new feature truly needs real time or whether an hourly batch already does the job — and that choice defines much of the system's cost and complexity.</p>
+
+<h2>Conclusion</h2>
+<p>Batch processes chunks with high latency and simplicity; streaming processes event by event with low latency and more complexity. The append-only log — made concrete in Kafka with topics, partitions and consumers — is the foundation; windows slice time; and delivery semantics define which guarantees you get. Knowing how to choose between the two worlds, based on the freshness the business requires, is the crux of the decision.</p>
+</div>
+              <div class="post-tags"><span class="tag">Streaming</span><span class="tag">Kafka</span><span class="tag" data-en="Data Engineering">Engenharia de Dados</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
-                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
-                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -166,7 +224,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -177,6 +235,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

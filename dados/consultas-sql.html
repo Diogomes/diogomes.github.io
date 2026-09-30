@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="SQL beyond the basics: aggregations, GROUP BY and subqueries - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>SQL além do básico: agregações, GROUP BY e subqueries - Diogo Gomes</title>
   <meta content="Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SQL além do básico: agregações, GROUP BY e subqueries", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/consultas-sql.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Dados · Júnior</h2>
+          <h2 data-en="Data · Junior">Dados · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Dados</a></li>
-            <li>Júnior</li>
+            <li><a href="index.html" data-en="Data">Dados</a></li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-spreadsheet"></i> Dados · Júnior</span>
-              <h1>SQL além do básico: agregações, GROUP BY e subqueries</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-spreadsheet&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-spreadsheet"></i> Dados · Júnior</span>
+              <h1 data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">22 de Junho, 2026</span><span data-lang="en">Jun 22, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Saber fazer <code>SELECT * FROM tabela</code> é o básico do básico. O que separa quem está começando de quem realmente entrega valor com dados é a capacidade de responder perguntas de negócio: "qual o ticket médio?", "quais clientes compraram mais?". Para isso, você precisa de agregações, agrupamentos e subconsultas.</p>
 
 <h2>Funções de agregação: resumindo muitas linhas em um número</h2>
@@ -154,16 +158,84 @@ WHERE gasto &gt; 1000;</code></pre>
 
 <h2>Conclusão</h2>
 <p>Agregações, <code>GROUP BY</code>, a distinção <code>WHERE</code>/<code>HAVING</code>, subqueries e CTEs formam o ferramental que transforma tabelas brutas em respostas. Tudo isso assume que você entende como as tabelas se relacionam — se ainda tem dúvidas aí, vale revisar <a href="modelagem-relacional.html">modelagem relacional</a> antes de seguir.</p>
-              <div class="post-tags"><span class="tag">SQL</span><span class="tag">Consultas</span><span class="tag">Fundamentos</span></div>
+              
+</div>
+<div data-lang="en">
+<p>Knowing how to write <code>SELECT * FROM table</code> is the very basics. What separates people who are just starting out from those who really deliver value with data is the ability to answer business questions: "what's the average ticket?", "which customers bought the most?". For that, you need aggregations, grouping and subqueries.</p>
+
+<h2>Aggregate functions: boiling many rows down to one number</h2>
+<p>Aggregate functions take many rows and return a single value. The five fundamental ones are:</p>
+<ul>
+  <li><strong>COUNT</strong> — counts rows. <code>COUNT(*)</code> counts everything; <code>COUNT(column)</code> ignores nulls.</li>
+  <li><strong>SUM</strong> — adds up numeric values.</li>
+  <li><strong>AVG</strong> — computes the average.</li>
+  <li><strong>MIN / MAX</strong> — the smallest and largest value.</li>
+</ul>
+<p>On their own, they summarize the entire table. <code>SELECT AVG(valor) FROM pedidos</code> returns the average ticket across all orders.</p>
+
+<h2>GROUP BY: aggregating by category</h2>
+<p>We almost never want a summary of everything — we want it per customer, per month, per category. <code>GROUP BY</code> splits the rows into groups and applies the aggregation to each one separately.</p>
+
+<pre><code>SELECT cliente_id, COUNT(*) AS total_pedidos, SUM(valor) AS gasto
+FROM pedidos
+GROUP BY cliente_id;</code></pre>
+
+<p>The rule that causes the most errors: every column in the <code>SELECT</code> that is not inside an aggregate function <strong>must</strong> be in the <code>GROUP BY</code>.</p>
+
+<h2>WHERE vs HAVING: the difference that always comes up</h2>
+<p>Both filter, but at different moments of processing. Think of a production line:</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>WHERE</th><th>HAVING</th></tr></thead><tbody>
+<tr><td>When it acts</td><td>Before grouping</td><td>After grouping</td></tr>
+<tr><td>Filters</td><td>Individual rows</td><td>Groups (aggregated results)</td></tr>
+<tr><td>Can use SUM/COUNT?</td><td>No</td><td>Yes</td></tr>
+</tbody></table></div>
+
+<p>For example: "customers who spent more than $1,000". The filter is on the sum, so you use <code>HAVING</code>:</p>
+
+<pre><code>SELECT cliente_id, SUM(valor) AS gasto
+FROM pedidos
+WHERE valor &gt; 0
+GROUP BY cliente_id
+HAVING SUM(valor) &gt; 1000;</code></pre>
+
+<h2>Subqueries: queries inside queries</h2>
+<p>A <strong>subquery</strong> is a <code>SELECT</code> nested inside another one. Useful when the filter depends on a calculation. "Orders above the average":</p>
+
+<pre><code>SELECT id, valor
+FROM pedidos
+WHERE valor &gt; (SELECT AVG(valor) FROM pedidos);</code></pre>
+
+<p>The inner subquery runs first, computes the average, and the result becomes the criterion of the outer query.</p>
+
+<h2>CTE: getting organized with WITH</h2>
+<p>When the logic gets complex, nested subqueries turn into a tangle. The <strong>CTE</strong> (Common Table Expression), with the <code>WITH</code> clause, gives a name to an intermediate result, making the query read like a step-by-step recipe.</p>
+
+<pre><code>WITH gasto_por_cliente AS (
+  SELECT cliente_id, SUM(valor) AS gasto
+  FROM pedidos
+  GROUP BY cliente_id
+)
+SELECT * FROM gasto_por_cliente
+WHERE gasto &gt; 1000;</code></pre>
+
+<blockquote>Most business questions are an aggregation with a filter. Whoever understands the order in which SQL processes things — filter, group, filter again — writes correct queries on the first try instead of guessing.</blockquote>
+
+<p>In interviews it's common to be asked to translate a question in plain words ("the top 5 best-selling products of the month") into SQL, and what's being evaluated is almost always the <code>GROUP BY</code> with <code>HAVING</code> or a well-placed subquery. Day to day, this shows up in every report and dashboard you need to feed.</p>
+
+<h2>Conclusion</h2>
+<p>Aggregations, <code>GROUP BY</code>, the <code>WHERE</code>/<code>HAVING</code> distinction, subqueries and CTEs make up the toolkit that turns raw tables into answers. All of this assumes you understand how tables relate to each other — if you still have doubts there, it's worth reviewing <a href="modelagem-relacional.html">relational modeling</a> before moving on.</p>
+</div>
+              <div class="post-tags"><span class="tag">SQL</span><span class="tag" data-en="Queries">Consultas</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
-                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
-                <a class="rel-card" href="indices-performance.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Pleno</span><span class="rel-title">Índices e performance: por que sua query está lenta</span></a>
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="indices-performance.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Mid-level"><i class="bx bx-data"></i> Dados · Pleno</span><span class="rel-title" data-en="Indexes and performance: why your query is slow">Índices e performance: por que sua query está lenta</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -180,7 +252,7 @@ WHERE gasto &gt; 1000;</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -191,6 +263,7 @@ WHERE gasto &gt; 1000;</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="The N+1 problem: how the ORM betrays you - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>O problema N+1: como o ORM te trai - Diogo Gomes</title>
   <meta content="A consulta escondida que multiplica o acesso ao banco e derruba a performance — como identificar e resolver com eager loading." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O problema N+1: como o ORM te trai", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/problema-n-mais-1.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A consulta escondida que multiplica o acesso ao banco e derruba a performance — como identificar e resolver com eager loading.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Pleno</h2>
+          <h2 data-en="Back-end · Mid-level">Back-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-bug"></i> Back-end · Pleno</span>
-              <h1>O problema N+1: como o ORM te trai</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 15 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-bug&quot;&gt;&lt;/i&gt; Back-end · Mid-level"><i class="bx bx-bug"></i> Back-end · Pleno</span>
+              <h1 data-en="The N+1 problem: how the ORM betrays you">O problema N+1: como o ORM te trai</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 15, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 15 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>O problema N+1 é uma das armadilhas de performance mais comuns no back-end, e o mais traiçoeiro é que o código parece perfeito. Ele nasce da comodidade dos ORMs e só aparece quando o volume de dados cresce. Saber identificá-lo e resolvê-lo é conhecimento esperado de qualquer dev pleno.</p>
 
 <h2>O que é o problema N+1</h2>
@@ -139,16 +143,68 @@ pedidos = Pedido.all().include('cliente')
 
 <h2>Conclusão</h2>
 <p>O problema N+1 é o exemplo perfeito de como abstrações cômodas escondem custos. Aprenda a ler o log de queries, reconheça o padrão de SELECTs repetidos e use eager loading para colapsar N queries em uma. É um daqueles conhecimentos que, uma vez aprendidos, você passa a enxergar em todo lugar.</p>
-              <div class="post-tags"><span class="tag">ORM</span><span class="tag">Performance</span><span class="tag">Banco de dados</span></div>
+</div>
+<div data-lang="en">
+<p>The N+1 problem is one of the most common performance traps in the back-end, and the sneakiest part is that the code looks perfect. It comes from the convenience of ORMs and only shows up when data volume grows. Knowing how to spot and fix it is expected of any mid-level dev.</p>
+
+<h2>What the N+1 problem is</h2>
+<p>The name describes exactly what happens: you run <strong>1 query</strong> to fetch a list of items, and then <strong>N queries</strong> — one per item — to fetch related data. If you list 100 orders and fetch the customer for each one, that's 1 + 100 = 101 queries where two would do.</p>
+
+<h2>How the ORM betrays you</h2>
+<p>ORMs (Object-Relational Mappers) let you access relations as if they were ordinary attributes. The catch is that each access can trigger a hidden query — so-called <em>lazy loading</em>:</p>
+<pre><code>orders = Order.all()            // 1 query: SELECT * FROM orders
+
+for order in orders:
+    print(order.customer.name)  // N queries! each .customer
+                                // fires SELECT * FROM customers WHERE id = ?</code></pre>
+<p>The code is clean and readable — that's the betrayal. Nothing visually indicates that <code>order.customer</code> is hitting the database on every iteration. With 10 orders you won't even notice; with 10 thousand, the page grinds to a halt.</p>
+
+<h2>How to detect it</h2>
+<p>The most direct way is to <strong>turn on the ORM's query log</strong> in your development environment. If you see dozens of nearly identical SELECTs varying only by ID, you've found an N+1:</p>
+<pre><code>SELECT * FROM orders;
+SELECT * FROM customers WHERE id = 1;
+SELECT * FROM customers WHERE id = 2;
+SELECT * FROM customers WHERE id = 3;
+... (repeats N times)</code></pre>
+<p>Day to day, this shows up when an endpoint that used to be fast starts degrading as the database grows. APM tools and the query log itself are your allies.</p>
+
+<h2>How to fix it: eager loading</h2>
+<p>The fix is to tell the ORM up front that you'll need the relation. This is <strong>eager loading</strong>, which the ORM translates into a JOIN or a second batched query:</p>
+<pre><code>// Before (N+1):
+orders = Order.all()
+
+// After (eager loading):
+orders = Order.all().include('customer')
+
+// The ORM generates something like:
+// SELECT * FROM orders;
+// SELECT * FROM customers WHERE id IN (1, 2, 3, ...);  // just 1 query</code></pre>
+
+<h2>Before and after: the impact</h2>
+<div class="table-wrap"><table><thead><tr><th>Scenario</th><th>Queries (100 items)</th><th>Result</th></tr></thead><tbody>
+<tr><td>Lazy loading (N+1)</td><td>101</td><td>Slow, scales poorly</td></tr>
+<tr><td>Eager loading (JOIN or IN)</td><td>1 or 2</td><td>Fast and constant</td></tr>
+</tbody></table></div>
+<p>The difference isn't just speed: N+1 gets worse <strong>linearly</strong> with the number of items, while eager loading keeps the cost practically constant. It's the difference between an endpoint that can handle growth and one that becomes a bottleneck.</p>
+
+<blockquote>N+1 isn't an ORM bug — it's the ORM doing exactly what you asked without you noticing. The fix is to make your intent explicit: say up front that you'll need the relation.</blockquote>
+
+<h2>When to accept it, and caveats</h2>
+<p>Not every loop that accesses a relation is a problem: if the list has 2 items, N+1 is irrelevant. On the other hand, excessive eager loading (loading relations you don't use) also wastes resources. The balance is to load what you'll actually use, in batches. This topic ties in directly with <a href="cache-backend.html">caching in the back-end</a>, another performance lever.</p>
+
+<h2>Conclusion</h2>
+<p>The N+1 problem is the perfect example of how convenient abstractions hide costs. Learn to read the query log, recognize the pattern of repeated SELECTs and use eager loading to collapse N queries into one. It's one of those pieces of knowledge that, once learned, you start seeing everywhere.</p>
+</div>
+              <div class="post-tags"><span class="tag">ORM</span><span class="tag" data-en="Performance">Performance</span><span class="tag" data-en="Databases">Banco de dados</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
-                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
-                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="How the web works: HTTP, request and response">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="REST APIs: what makes an API RESTful">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="Essential SQL: CRUD, JOIN and transactions">SQL essencial: CRUD, JOIN e transações</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -165,7 +221,7 @@ pedidos = Pedido.all().include('cliente')
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +232,7 @@ pedidos = Pedido.all().include('cliente')
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

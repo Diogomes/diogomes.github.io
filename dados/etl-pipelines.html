@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="ETL and data pipelines: from raw to analytics - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>ETL e pipelines de dados: do raw ao analítico - Diogo Gomes</title>
   <meta content="Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ETL e pipelines de dados: do raw ao analítico", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/etl-pipelines.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Dados · Pleno</h2>
+          <h2 data-en="Data · Mid-level">Dados · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Dados</a></li>
-            <li>Pleno</li>
+            <li><a href="index.html" data-en="Data">Dados</a></li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-transfer-alt"></i> Dados · Pleno</span>
-              <h1>ETL e pipelines de dados: do raw ao analítico</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-transfer-alt&quot;&gt;&lt;/i&gt; Data · Mid-level"><i class="bx bx-transfer-alt"></i> Dados · Pleno</span>
+              <h1 data-en="ETL and data pipelines: from raw to analytics">ETL e pipelines de dados: do raw ao analítico</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">13 de Junho, 2026</span><span data-lang="en">Jun 13, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Os dados raramente nascem prontos para análise. Eles chegam de APIs, bancos transacionais, planilhas e logs, cada um com seu formato e suas sujeiras. O trabalho de levar esse material bruto até uma tabela limpa e confiável é o que chamamos de pipeline de dados — e entender ETL é central no trabalho de qualquer profissional pleno.</p>
 
 <h2>ETL: Extract, Transform, Load</h2>
@@ -139,16 +143,69 @@
 
 <h2>Conclusão</h2>
 <p>ETL e ELT descrevem como mover e transformar dados; as camadas raw/staging/analytics organizam essa jornada; orquestração via DAG garante a ordem; e idempotência mais data quality garantem que o resultado seja confiável e reprocessável. Esses princípios valem para qualquer ferramenta — entendê-los é o que faz você construir pipelines que não quebram silenciosamente.</p>
-              <div class="post-tags"><span class="tag">ETL</span><span class="tag">Pipelines</span><span class="tag">Engenharia de Dados</span></div>
+              
+</div>
+<div data-lang="en">
+<p>Data rarely comes ready for analysis. It arrives from APIs, transactional databases, spreadsheets and logs, each with its own format and its own mess. The work of taking this raw material to a clean, trustworthy table is what we call a data pipeline — and understanding ETL is central to the work of any mid-level professional.</p>
+
+<h2>ETL: Extract, Transform, Load</h2>
+<p>The classic pattern has three steps:</p>
+<ul>
+  <li><strong>Extract</strong> — pull the data from the source systems.</li>
+  <li><strong>Transform</strong> — clean, standardize, join, calculate. This is where most of the complexity lives.</li>
+  <li><strong>Load</strong> — load the result into the destination (a data warehouse, for example).</li>
+</ul>
+<p>In traditional ETL, the transformation happens <em>before</em> loading, on an intermediate server.</p>
+
+<h2>ELT: the inversion the modern warehouse brought</h2>
+<p>In <strong>ELT</strong>, you flip the order: load the raw data first and transform it <em>inside</em> the data warehouse. Why did this take off? Because modern warehouses (BigQuery, Snowflake, Redshift) have massive, cheap processing power. Instead of maintaining a separate server to transform, you dump the raw data in and use SQL to transform it with the full power of the warehouse.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>ETL</th><th>ELT</th></tr></thead><tbody>
+<tr><td>Order</td><td>Transforms before loading</td><td>Loads raw, transforms afterwards</td></tr>
+<tr><td>Where it transforms</td><td>Intermediate server</td><td>Inside the warehouse</td></tr>
+<tr><td>Raw data preserved?</td><td>Usually not</td><td>Yes</td></tr>
+<tr><td>When it shines</td><td>Limited destination resources</td><td>Modern, scalable warehouse</td></tr>
+</tbody></table></div>
+
+<h2>The stages and the raw → staging → analytics flow</h2>
+<p>A mature pipeline organizes data in layers, each with its own purpose:</p>
+
+<pre><code> Sources       raw            staging         analytics
++-------+    +-------+      +----------+    +-----------+
+| API   |───▶| raw   |─────▶| cleaned, |───▶| business  |
+| DB    |    | data  |      | standard.|    | models    |
+| CSV   |    | (exact|      | typed    |    | (fact/dim)|
++-------+    | copy) |      +----------+    +-----------+
+             +-------+</code></pre>
+
+<p>The <strong>raw</strong> layer keeps an exact copy of the source (useful for reprocessing); <strong>staging</strong> cleans and standardizes; <strong>analytics</strong> delivers tables ready for consumption, often in the <a href="modelagem-dimensional.html">dimensional</a> model.</p>
+
+<h2>Orchestration: who says what runs, and in what order</h2>
+<p>Pipelines have dependencies: you can't transform before extracting. An <strong>orchestrator</strong> coordinates this by modeling tasks as a <strong>DAG</strong> (directed acyclic graph) — a web of "this task only runs after that one". Airflow is the best-known tool for defining and scheduling these DAGs.</p>
+
+<h2>Idempotency and reprocessing</h2>
+<p>Pipelines fail — the network goes down, a source becomes unavailable. That's why a task should be <strong>idempotent</strong>: running it twice produces the same result as running it once, without duplicating data. Think of a light switch: pressing "on" three times still leaves the light on, not "three times on". In practice, this means overwriting a partition instead of just inserting — so you can safely reprocess a day.</p>
+
+<h2>Data quality: trust in what comes out</h2>
+<p>A pipeline that delivers wrong data is worse than none, because nobody notices. That's why we build in <strong>quality</strong> checks: does the key column have nulls? Did the row count suddenly drop? Are the values within the expected range? Failing the pipeline early is better than polluting the director's report.</p>
+
+<blockquote>A good pipeline isn't the one that runs when everything goes right — it's the one that fails safely, can be reprocessed without duplicating anything, and warns you when the data looks wrong.</blockquote>
+
+<p>In interviews it's common to be asked the difference between ETL and ELT and why ELT became the standard — and also what makes a task idempotent. Day to day, this shows up when a pipeline fails at 3 a.m. and you need to reprocess it in the morning without fear of messing up the data.</p>
+
+<h2>Conclusion</h2>
+<p>ETL and ELT describe how to move and transform data; the raw/staging/analytics layers organize that journey; DAG orchestration guarantees the order; and idempotency plus data quality guarantee the result is trustworthy and reprocessable. These principles hold for any tool — understanding them is what lets you build pipelines that don't break silently.</p>
+</div>
+              <div class="post-tags"><span class="tag">ETL</span><span class="tag">Pipelines</span><span class="tag" data-en="Data Engineering">Engenharia de Dados</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
-                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
-                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -165,7 +222,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +233,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

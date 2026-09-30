@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Data &amp; SQL — Diogo Gomes | track by level (junior, mid-level, senior)">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Dados &amp; SQL — Diogo Gomes | trilha por nível (júnior, pleno, sênior)</title>
@@ -30,17 +31,19 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -71,175 +74,175 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Dados</h2>
-          <p class="blog-intro">O que um profissional de dados precisa dominar em cada fase da carreira. Da modelagem relacional ao streaming de dados em tempo real — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
+          <h2 data-en="Data">Dados</h2>
+          <p class="blog-intro" data-en="What a data professional needs to master at each stage of their career. From relational modeling to real-time data streaming — the concepts that show up in technical interviews and in everyday work, explained directly. Filter by level below.">O que um profissional de dados precisa dominar em cada fase da carreira. Da modelagem relacional ao streaming de dados em tempo real — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
         </div>
 
         <div class="blog-search" data-aos="fade-up">
           <i class="bx bx-search"></i>
-          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha">
+          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha" data-en-placeholder="Search the track…" data-en-aria-label="Search the track">
         </div>
 
         <div class="row" data-aos="fade-up">
           <div class="col-12 d-flex justify-content-center">
             <ul id="blog-filters" class="blog-filters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".lvl-junior">Júnior</li>
-              <li data-filter=".lvl-pleno">Pleno</li>
-              <li data-filter=".lvl-senior">Sênior</li>
+              <li data-filter="*" class="filter-active" data-en="All">Todos</li>
+              <li data-filter=".lvl-junior" data-en="Junior">Júnior</li>
+              <li data-filter=".lvl-pleno" data-en="Mid-level">Pleno</li>
+              <li data-filter=".lvl-senior" data-en="Senior">Sênior</li>
             </ul>
           </div>
         </div>
 
         <div class="blog-tools" data-aos="fade-up">
-          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> Assinar via RSS</a>
+          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> <span data-lang="pt">Assinar via RSS</span><span data-lang="en">Subscribe via RSS</span></a>
         </div>
 
-        <p id="blog-no-results" class="blog-no-results">Nenhum artigo encontrado para sua busca.</p>
+        <p id="blog-no-results" class="blog-no-results" data-en="No articles found for your search.">Nenhum artigo encontrado para sua busca.</p>
 
         <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-grid-alt"></i> Júnior</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-grid-alt&quot;&gt;&lt;/i&gt; Junior"><i class="bx bx-grid-alt"></i> Júnior</span>
                 <i class="bx bx-grid-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="modelagem-relacional.html">Modelagem relacional: tabelas, chaves e relacionamentos</a></h3>
-                <p>Como representar o mundo em tabelas: chave primária, chave estrangeira e os relacionamentos 1:1, 1:N e N:N que estruturam qualquer banco.</p>
+                <h3><a href="modelagem-relacional.html" data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</a></h3>
+                <p data-en="How to represent the world in tables: primary key, foreign key and the 1:1, 1:N and N:N relationships that structure every database.">Como representar o mundo em tabelas: chave primária, chave estrangeira e os relacionamentos 1:1, 1:N e N:N que estruturam qualquer banco.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 24 Jun, 2026</span>
-                <a href="modelagem-relacional.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">24 Jun, 2026</span><span data-lang="en">Jun 24, 2026</span></span>
+                <a href="modelagem-relacional.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-spreadsheet"></i> Júnior</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-spreadsheet&quot;&gt;&lt;/i&gt; Junior"><i class="bx bx-spreadsheet"></i> Júnior</span>
                 <i class="bx bx-spreadsheet post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="consultas-sql.html">SQL além do básico: agregações, GROUP BY e subqueries</a></h3>
-                <p>Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.</p>
+                <h3><a href="consultas-sql.html" data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</a></h3>
+                <p data-en="Moving past the simple SELECT: COUNT/SUM/AVG, GROUP BY with HAVING, subqueries and CTEs to answer real questions with data.">Sair do SELECT simples: COUNT/SUM/AVG, GROUP BY com HAVING, subqueries e CTEs para responder perguntas reais com dados.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 22 Jun, 2026</span>
-                <a href="consultas-sql.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">22 Jun, 2026</span><span data-lang="en">Jun 22, 2026</span></span>
+                <a href="consultas-sql.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-sitemap"></i> Júnior</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-sitemap&quot;&gt;&lt;/i&gt; Junior"><i class="bx bx-sitemap"></i> Júnior</span>
                 <i class="bx bx-sitemap post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="normalizacao.html">Normalização: 1FN, 2FN e 3FN sem decorar</a></h3>
-                <p>Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito.</p>
+                <h3><a href="normalizacao.html" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</a></h3>
+                <p data-en="Why duplicated data becomes a bug. The three normal forms explained with a single example, and when to denormalize on purpose.">Por que dado repetido vira bug. As três formas normais explicadas com um exemplo só, e quando desnormalizar de propósito.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 20 Jun, 2026</span>
-                <a href="normalizacao.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">20 Jun, 2026</span><span data-lang="en">Jun 20, 2026</span></span>
+                <a href="normalizacao.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> Pleno</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-bar-chart-alt-2&quot;&gt;&lt;/i&gt; Mid-level"><i class="bx bx-bar-chart-alt-2"></i> Pleno</span>
                 <i class="bx bx-bar-chart-alt-2 post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="indices-performance.html">Índices e performance: por que sua query está lenta</a></h3>
-                <p>Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.</p>
+                <h3><a href="indices-performance.html" data-en="Indexes and performance: why your query is slow">Índices e performance: por que sua query está lenta</a></h3>
+                <p data-en="How an index works (the book index analogy), B-tree, when it helps, when it hurts and how to read an execution plan.">Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 17 Jun, 2026</span>
-                <a href="indices-performance.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">17 Jun, 2026</span><span data-lang="en">Jun 17, 2026</span></span>
+                <a href="indices-performance.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-cube"></i> Pleno</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-cube&quot;&gt;&lt;/i&gt; Mid-level"><i class="bx bx-cube"></i> Pleno</span>
                 <i class="bx bx-cube post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="modelagem-dimensional.html">Modelagem dimensional: fato, dimensão e o data warehouse</a></h3>
-                <p>Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.</p>
+                <h3><a href="modelagem-dimensional.html" data-en="Dimensional modeling: fact, dimension and the data warehouse">Modelagem dimensional: fato, dimensão e o data warehouse</a></h3>
+                <p data-en="Why the transactional system&#x27;s model doesn&#x27;t work for analysis. Fact and dimension tables, star schema and data warehouse basics.">Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 15 Jun, 2026</span>
-                <a href="modelagem-dimensional.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">15 Jun, 2026</span><span data-lang="en">Jun 15, 2026</span></span>
+                <a href="modelagem-dimensional.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-transfer-alt"></i> Pleno</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-transfer-alt&quot;&gt;&lt;/i&gt; Mid-level"><i class="bx bx-transfer-alt"></i> Pleno</span>
                 <i class="bx bx-transfer-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="etl-pipelines.html">ETL e pipelines de dados: do raw ao analítico</a></h3>
-                <p>Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam.</p>
+                <h3><a href="etl-pipelines.html" data-en="ETL and data pipelines: from raw to analytics">ETL e pipelines de dados: do raw ao analítico</a></h3>
+                <p data-en="Extract, transform and load — or ELT? How data travels from source to report, and why orchestration and idempotency matter.">Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 13 Jun, 2026</span>
-                <a href="etl-pipelines.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">13 Jun, 2026</span><span data-lang="en">Jun 13, 2026</span></span>
+                <a href="etl-pipelines.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-data"></i> Sênior</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Senior"><i class="bx bx-data"></i> Sênior</span>
                 <i class="bx bx-data post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="nosql.html">NoSQL: documento, chave-valor, coluna e grafo — quando usar cada um</a></h3>
-                <p>Os quatro tipos de banco NoSQL, o que cada um resolve, e por que &#x27;NoSQL é mais rápido&#x27; é a resposta errada numa entrevista.</p>
+                <h3><a href="nosql.html" data-en="NoSQL: document, key-value, column and graph — when to use each">NoSQL: documento, chave-valor, coluna e grafo — quando usar cada um</a></h3>
+                <p data-en="The four types of NoSQL database, what each one solves, and why &#x27;NoSQL is faster&#x27; is the wrong answer in an interview.">Os quatro tipos de banco NoSQL, o que cada um resolve, e por que &#x27;NoSQL é mais rápido&#x27; é a resposta errada numa entrevista.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 10 Jun, 2026</span>
-                <a href="nosql.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">10 Jun, 2026</span><span data-lang="en">Jun 10, 2026</span></span>
+                <a href="nosql.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-network-chart"></i> Sênior</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-network-chart&quot;&gt;&lt;/i&gt; Senior"><i class="bx bx-network-chart"></i> Sênior</span>
                 <i class="bx bx-network-chart post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="particionamento-sharding.html">Particionamento e sharding: escalar o banco de dados</a></h3>
-                <p>Quando uma máquina não basta: partição vertical e horizontal, sharding, chave de partição e o custo das queries entre shards.</p>
+                <h3><a href="particionamento-sharding.html" data-en="Partitioning and sharding: scaling the database">Particionamento e sharding: escalar o banco de dados</a></h3>
+                <p data-en="When one machine isn&#x27;t enough: vertical and horizontal partitioning, sharding, the partition key and the cost of cross-shard queries.">Quando uma máquina não basta: partição vertical e horizontal, sharding, chave de partição e o custo das queries entre shards.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 08 Jun, 2026</span>
-                <a href="particionamento-sharding.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">08 Jun, 2026</span><span data-lang="en">Jun 8, 2026</span></span>
+                <a href="particionamento-sharding.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-broadcast"></i> Sênior</span>
+                <span class="post-cat" data-en="&lt;i class=&quot;bx bx-broadcast&quot;&gt;&lt;/i&gt; Senior"><i class="bx bx-broadcast"></i> Sênior</span>
                 <i class="bx bx-broadcast post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="streaming-dados.html">Dados em streaming: batch vs tempo real (Kafka &amp; cia)</a></h3>
-                <p>Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.</p>
+                <h3><a href="streaming-dados.html" data-en="Streaming data: batch vs real time (Kafka &amp; co.)">Dados em streaming: batch vs tempo real (Kafka &amp; cia)</a></h3>
+                <p data-en="Processing data as it arrives, not hour by hour. Batch vs streaming, the event log, and what exactly-once really means.">Processar dados quando chegam, não de hora em hora. Batch vs streaming, o log de eventos, e o que é exactly-once de verdade.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 06 Jun, 2026</span>
-                <a href="streaming-dados.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">06 Jun, 2026</span><span data-lang="en">Jun 6, 2026</span></span>
+                <a href="streaming-dados.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -267,7 +270,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -278,6 +281,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

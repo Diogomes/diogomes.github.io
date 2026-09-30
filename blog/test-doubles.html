@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Test doubles: mock, stub, spy, fake and dummy - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Test doubles: mock, stub, spy, fake e dummy - Diogo Gomes</title>
   <meta content="Os cinco dublês de teste segundo Gerard Meszaros: o que cada um faz, quando usar e a diferença entre verificar estado e verificar comportamento — com código." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Test doubles: mock, stub, spy, fake e dummy", "datePublished": "2026-06-19", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/test-doubles.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Os cinco dublês de teste: o que cada um faz, quando usar e estado vs comportamento — com código.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Automação</h2>
+          <h2 data-en="Automation">Automação</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Automação</li>
+            <li data-en="Automation">Automação</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
-              <h1>Test doubles: mock, stub, spy, fake e dummy</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 19 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
+              <h1 data-en="Test doubles: mock, stub, spy, fake and dummy">Test doubles: mock, stub, spy, fake e dummy</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 19, 2026">19 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="7 min read">7 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>"Qual a diferença entre mock e stub?" é uma das perguntas técnicas que mais separa quem decora de quem entende. Na prática do dia a dia, todo teste de unidade isola a peça sob teste das suas dependências — banco, API externa, relógio, e-mail — e o faz com <strong>test doubles</strong> (dublês de teste). O termo guarda-chuva é de Gerard Meszaros, e existem cinco tipos, do mais bobo ao mais esperto.</p>
 
               <h2>O espectro dos dublês</h2>
@@ -162,17 +165,91 @@ verify(gateway).cobrar(100);</code></pre>
 
               <h2>Conclusão</h2>
               <p>Dummy preenche, stub responde, fake implementa leve, spy grava e mock cobra. Saber qual usar não é trivia — é o que mantém seus <a href="testes-unitarios.html">testes unitários</a> rápidos, isolados e focados no que realmente importa: o comportamento do código, não os detalhes de quem ele chama.</p>
+</div>
+<div data-lang="en">
+<p>"What's the difference between a mock and a stub?" is one of those technical questions that best separates people who memorize from people who understand. In day-to-day practice, every unit test isolates the piece under test from its dependencies — database, external API, clock, email — and does so with <strong>test doubles</strong>. The umbrella term comes from Gerard Meszaros, and there are five kinds, from the dumbest to the smartest.</p>
 
-              <div class="post-tags"><span class="tag">Test doubles</span><span class="tag">Mock</span><span class="tag">Stub</span><span class="tag">Testes unitários</span><span class="tag">Automação</span></div>
+              <h2>The spectrum of doubles</h2>
+              <pre><code>  just takes up space ──────────────────────► verifies interaction
+   DUMMY → STUB → FAKE → SPY → MOCK
+
+   DUMMY  passed around but never used (fills a parameter)
+   STUB   returns canned answers ("when asked X, answer Y")
+   FAKE   a real implementation, but simplified (e.g. in-memory database)
+   SPY    like a stub, but records how it was called (to check later)
+   MOCK   comes with the expectation of what MUST be called (fails if not)</code></pre>
+
+              <h2>Dummy — just to fill the slot</h2>
+              <p>An object passed only to satisfy the signature, never actually used on the tested path. E.g. a <code>logger</code> required by the constructor, but irrelevant to what I'm verifying.</p>
+              <pre><code>const loggerDummy = {};
+const servico = new Servico(loggerDummy); // just to build it</code></pre>
+
+              <h2>Stub — canned answers</h2>
+              <p>The stub <strong>controls indirect input</strong>: it forces the dependency to return a fixed value, so I can test how my code reacts. I don't verify <em>how</em> it was called — I just use the answer.</p>
+              <pre><code>// I want to test the free-shipping rule without calling the real ZIP code API
+const apiCepStub = {
+  consultar: () =&gt; ({ regiao: 'sudeste', taxa: 0 })
+};
+
+const total = calcularEntrega(apiCepStub, carrinho);
+expect(total.freteGratis).toBe(true); // I verify STATE</code></pre>
+
+              <h2>Fake — a real but lightweight implementation</h2>
+              <p>The fake has real logic, just simplified and unsuitable for production. The classic example is a repository that keeps data in an in-memory array instead of hitting the database — fast and with no side effects.</p>
+              <pre><code>class RepositorioFake {
+  constructor() { this.itens = []; }
+  salvar(item) { this.itens.push(item); }
+  buscarPorId(id) { return this.itens.find(i =&gt; i.id === id); }
+}</code></pre>
+
+              <h2>Spy — records what happened</h2>
+              <p>The spy wraps a call and <strong>records</strong> how it was used — how many times, with which arguments — so I can inspect it <em>after</em> the action. It's the middle ground: it sets no expectation up front, but lets me verify behavior.</p>
+              <pre><code>const emailSpy = jest.fn();
+notificarUsuario(usuario, emailSpy);
+
+// I verify BEHAVIOR: was it called correctly?
+expect(emailSpy).toHaveBeenCalledTimes(1);
+expect(emailSpy).toHaveBeenCalledWith('ana@exemplo.com');</code></pre>
+
+              <h2>Mock — built-in expectation</h2>
+              <p>The mock is the most opinionated: you define <em>up front</em> what it expects to receive, and the mock itself <strong>fails the test</strong> if the expected interaction doesn't happen. It verifies behavior by construction.</p>
+              <pre><code>const gateway = mock(PagamentoGateway);
+when(gateway.cobrar(100)).thenReturn({ ok: true });
+
+finalizarCompra(gateway, 100);
+
+// the mock requires that cobrar(100) was called exactly like this
+verify(gateway).cobrar(100);</code></pre>
+
+              <h2>The distinction that matters: state vs behavior</h2>
+              <p>More useful than memorizing the five names is understanding the split they reveal:</p>
+              <div class="table-wrap">
+              <table>
+                <thead><tr><th>Verifies…</th><th>Typical double</th><th>The test's question</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>State</strong> (result)</td><td>Stub, Fake</td><td>"Given this return value, did my code produce the right output?"</td></tr>
+                  <tr><td><strong>Behavior</strong> (interaction)</td><td>Spy, Mock</td><td>"Did my code call the dependency the way I expected?"</td></tr>
+                </tbody>
+              </table>
+              </div>
+              <blockquote>A stub answers, a mock demands. A stub serves a state verification; a mock <em>is</em> the verification — of behavior. Confusing the two leads to tests that verify the wrong thing.</blockquote>
+
+              <h2>Beware of too many mocks</h2>
+              <p>Too many doubles couple the test to the implementation: you end up testing "method X called method Y" instead of observable behavior. Then any refactoring breaks the tests even without a bug. The practical rule is to double what is <em>slow, unstable or has side effects</em> (network, database, time, email) and let the business logic run for real.</p>
+
+              <h2>Conclusion</h2>
+              <p>A dummy fills, a stub answers, a fake implements lightly, a spy records and a mock demands. Knowing which one to use isn't trivia — it's what keeps your <a href="testes-unitarios.html">unit tests</a> fast, isolated and focused on what really matters: the behavior of the code, not the details of whom it calls.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Test doubles">Test doubles</span><span class="tag" data-en="Mock">Mock</span><span class="tag" data-en="Stub">Stub</span><span class="tag" data-en="Unit tests">Testes unitários</span><span class="tag" data-en="Automation">Automação</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Testes unitários: a base da pirâmide</span></a>
-                <a class="rel-card" href="tdd-na-pratica.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">TDD na prática: red, green, refactor</span></a>
-                <a class="rel-card" href="contract-testing.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> API</span><span class="rel-title">Contract testing entre serviços</span></a>
+                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="Unit tests: the base of the pyramid">Testes unitários: a base da pirâmide</span></a>
+                <a class="rel-card" href="tdd-na-pratica.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="TDD in practice: red, green, refactor">TDD na prática: red, green, refactor</span></a>
+                <a class="rel-card" href="contract-testing.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> <span data-en="API">API</span></span><span class="rel-title" data-en="Contract testing between services">Contract testing entre serviços</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -189,7 +266,7 @@ verify(gateway).cobrar(100);</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -200,6 +277,7 @@ verify(gateway).cobrar(100);</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

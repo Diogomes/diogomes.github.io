@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Relational modeling: tables, keys and relationships - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Modelagem relacional: tabelas, chaves e relacionamentos - Diogo Gomes</title>
   <meta content="Como representar o mundo em tabelas: chave primária, chave estrangeira e os relacionamentos 1:1, 1:N e N:N que estruturam qualquer banco." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Modelagem relacional: tabelas, chaves e relacionamentos", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/modelagem-relacional.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como representar o mundo em tabelas: chave primária, chave estrangeira e os relacionamentos 1:1, 1:N e N:N que estruturam qualquer banco.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Dados · Júnior</h2>
+          <h2 data-en="Data · Junior">Dados · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Dados</a></li>
-            <li>Júnior</li>
+            <li><a href="index.html" data-en="Data">Dados</a></li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-grid-alt"></i> Dados · Júnior</span>
-              <h1>Modelagem relacional: tabelas, chaves e relacionamentos</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 24 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-grid-alt&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-grid-alt"></i> Dados · Júnior</span>
+              <h1 data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">24 de Junho, 2026</span><span data-lang="en">Jun 24, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Antes de escrever qualquer consulta, todo profissional de dados precisa entender como a informação é organizada. O modelo relacional é a base de praticamente todo banco que você vai encontrar no dia a dia, e dominar seus conceitos é o primeiro passo para não cometer erros que custam caro depois.</p>
 
 <h2>O vocabulário básico: tabela, linha e coluna</h2>
@@ -149,16 +153,79 @@ CREATE TABLE pedidos (
 
 <h2>Conclusão</h2>
 <p>O modelo relacional gira em torno de poucos conceitos: tabelas como entidades, chaves que identificam e conectam registros, e relacionamentos que estruturam o todo. Com essa base sólida, escrever consultas e evoluir o esquema deixa de ser tentativa e erro. O próximo passo natural é aprender a consultar esses dados de forma eficiente.</p>
-              <div class="post-tags"><span class="tag">Modelagem</span><span class="tag">SQL</span><span class="tag">Fundamentos</span></div>
+              
+</div>
+<div data-lang="en">
+<p>Before writing any query, every data professional needs to understand how information is organized. The relational model is the foundation of practically every database you'll run into day to day, and mastering its concepts is the first step toward avoiding mistakes that are costly later.</p>
+
+<h2>The basic vocabulary: table, row and column</h2>
+<p>Think of a spreadsheet. A <strong>table</strong> represents a real-world entity — customers, products, orders. Each <strong>row</strong> (or record) is a specific occurrence of that entity: one particular customer. Each <strong>column</strong> (or attribute) describes a characteristic: name, email, sign-up date.</p>
+<p>The golden rule is: a table is about one thing only. Mixing customer and order data in the same table is the kind of decision that seems practical today and becomes a nightmare tomorrow.</p>
+
+<h2>Primary key: the identity of each row</h2>
+<p>The <strong>primary key</strong> is the column — or set of columns — that uniquely identifies each row. Two customers can have the same name, but never the same <code>id</code>. It ensures you can point to a specific record without ambiguity.</p>
+<p>In practice, a sequential number or a database-generated identifier is commonly used. What matters is that it's unique and doesn't change over time.</p>
+
+<h2>Foreign key: connecting tables</h2>
+<p>A <strong>foreign key</strong> is a column that points to the primary key of another table. That's how we say "this order belongs to that customer". It creates the link and, on top of that, guarantees referential integrity: the database prevents you from registering an order for a customer that doesn't exist.</p>
+
+<pre><code>CREATE TABLE clientes (
+  id    INTEGER PRIMARY KEY,
+  nome  VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE
+);
+
+CREATE TABLE pedidos (
+  id         INTEGER PRIMARY KEY,
+  cliente_id INTEGER NOT NULL,
+  valor      DECIMAL(10,2),
+  FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);</code></pre>
+
+<h2>The three types of relationship</h2>
+<p>Relationships describe how entities connect. There are three:</p>
+<ul>
+  <li><strong>1:1 (one to one)</strong> — each record in A links to at most one in B. E.g.: a user and their extended profile. It's rare and can often become a single table.</li>
+  <li><strong>1:N (one to many)</strong> — the most common. A customer has many orders, but each order belongs to a single customer. The foreign key sits on the "many" side.</li>
+  <li><strong>N:N (many to many)</strong> — students take many courses and each course has many students. This is where the <strong>junction table</strong> comes in.</li>
+</ul>
+
+<h2>The N:N case and the junction table</h2>
+<p>A relational database can't represent N:N directly. The solution is to create a third table, called a <strong>junction table</strong> (or associative table), that stores the pairs. It has two foreign keys, one for each side.</p>
+
+<pre><code>CREATE TABLE matriculas (
+  aluno_id     INTEGER REFERENCES alunos(id),
+  disciplina_id INTEGER REFERENCES disciplinas(id),
+  PRIMARY KEY (aluno_id, disciplina_id)
+);</code></pre>
+
+<h2>Visualizing the relationship</h2>
+<p>A simple diagram helps cement the 1:N relationship between customers and orders:</p>
+
+<pre><code>  clientes                pedidos
+ +--------+              +-------------+
+ | id (PK)|◄────────────┤ cliente_id  |
+ | nome   |   1     N    | id (PK)     |
+ | email  |              | valor       |
+ +--------+              +-------------+</code></pre>
+
+<blockquote>Modeling well isn't about memorizing key types: it's about asking "what is each table about?" and "how do they connect?". Whoever answers that clearly designs schemas that can handle growth.</blockquote>
+
+<p>In interviews it's common to be asked to model a simple scenario — a store, a library — and identify the relationships. Day to day, this shows up every time you need to decide where a new column should live or why a <a href="consultas-sql.html">JOIN</a> is duplicating rows.</p>
+
+<h2>Conclusion</h2>
+<p>The relational model revolves around a few concepts: tables as entities, keys that identify and connect records, and relationships that structure the whole. With this solid foundation, writing queries and evolving the schema stops being trial and error. The natural next step is learning to query this data efficiently.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Modeling">Modelagem</span><span class="tag">SQL</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
-                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
-                <a class="rel-card" href="indices-performance.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Pleno</span><span class="rel-title">Índices e performance: por que sua query está lenta</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="indices-performance.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Mid-level"><i class="bx bx-data"></i> Dados · Pleno</span><span class="rel-title" data-en="Indexes and performance: why your query is slow">Índices e performance: por que sua query está lenta</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -175,7 +242,7 @@ CREATE TABLE pedidos (
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -186,6 +253,7 @@ CREATE TABLE pedidos (
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

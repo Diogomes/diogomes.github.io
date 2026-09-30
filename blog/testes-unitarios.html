@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Unit tests: the base of the pyramid - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Testes unitários: a base da pirâmide - Diogo Gomes</title>
   <meta content="O padrão AAA, o que NÃO testar e por que testes unitários são o investimento de maior retorno em qualidade." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes unitários: a base da pirâmide", "datePublished": "2026-05-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-unitarios.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O padrão AAA, o que NÃO testar e por que testes unitários são o investimento de maior retorno em qualidade.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testes</h2>
+          <h2 data-en="Tests">Testes</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Testes</li>
+            <li data-en="Tests">Testes</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
-              <h1>Testes unitários: a base da pirâmide</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span>
+              <h1 data-en="Unit tests: the base of the pyramid">Testes unitários: a base da pirâmide</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="May 25, 2026">25 de Maio, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Na pirâmide de testes, os <strong>testes unitários</strong> formam a base larga: muitos, rápidos e baratos. São eles que dão ao time a coragem de refatorar sem medo. Mas escrever bons testes unitários é uma habilidade — e tem armadilhas.</p>
 
               <h2>O que é (e o que não é) um teste unitário</h2>
@@ -124,16 +127,53 @@ void deveAplicarDescontoParaClienteVip() {
 
               <h2>Conclusão</h2>
               <p>Testes unitários são o investimento de maior retorno em qualidade: feedback instantâneo, documentação viva do comportamento e a segurança para evoluir o código. Comece por eles antes de subir na pirâmide.</p>
-              <div class="post-tags"><span class="tag">Testes unitários</span><span class="tag">TDD</span><span class="tag">JUnit</span><span class="tag">Boas práticas</span></div>
+</div>
+<div data-lang="en">
+<p>In the test pyramid, <strong>unit tests</strong> form the wide base: many, fast and cheap. They are what gives the team the courage to refactor without fear. But writing good unit tests is a skill — and it has pitfalls.</p>
+
+              <h2>What a unit test is (and isn't)</h2>
+              <p>A unit test verifies a <em>unit</em> of behavior in isolation, without touching the database, network or file system. If it needs a server up and running, it's probably an integration test in disguise.</p>
+
+              <h2>The AAA pattern</h2>
+              <p>A good test reads like a little story: <strong>Arrange, Act, Assert</strong>.</p>
+              <pre><code>@Test
+void deveAplicarDescontoParaClienteVip() {
+    // Arrange
+    Carrinho carrinho = new Carrinho(new Cliente(Tipo.VIP));
+    carrinho.adicionar(new Item("Livro", 100.0));
+
+    // Act
+    double total = carrinho.total();
+
+    // Assert
+    assertEquals(90.0, total); // 10% VIP discount
+}</code></pre>
+
+              <h2>What makes a good test</h2>
+              <ul>
+                <li><strong>Fast:</strong> thousands of them run in seconds.</li>
+                <li><strong>Deterministic:</strong> same input, same result, always.</li>
+                <li><strong>Isolated:</strong> doesn't depend on execution order or on other tests.</li>
+                <li><strong>Focused:</strong> tests one behavior; the name describes the business rule.</li>
+              </ul>
+
+              <h2>What NOT to test</h2>
+              <p>Don't test implementation details or trivial getters/setters. Test <em>behavior</em>, not internal structure — that way the test survives refactoring.</p>
+              <blockquote>100% coverage doesn't mean quality. It means every line ran — not that every line is correct.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Unit tests are the highest-return investment in quality: instant feedback, living documentation of behavior and the confidence to evolve the code. Start with them before moving up the pyramid.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Unit tests">Testes unitários</span><span class="tag" data-en="TDD">TDD</span><span class="tag" data-en="JUnit">JUnit</span><span class="tag" data-en="Best practices">Boas práticas</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="tdd-na-pratica.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">TDD na prática: red, green, refactor</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="tdd-na-pratica.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="TDD in practice: red, green, refactor">TDD na prática: red, green, refactor</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E tests">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -150,7 +190,7 @@ void deveAplicarDescontoParaClienteVip() {
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -161,6 +201,7 @@ void deveAplicarDescontoParaClienteVip() {
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

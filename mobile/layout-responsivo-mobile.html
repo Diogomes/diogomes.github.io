@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Layouts that adapt: density, safe areas and different screens - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Layout que se adapta: densidade, safe areas e telas diferentes - Diogo Gomes</title>
   <meta content="Pixels não são pixels. Densidade de tela (dp/pt), safe areas (notch), e como fazer uma UI que funciona do celular pequeno ao tablet." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Layout que se adapta: densidade, safe areas e telas diferentes", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/layout-responsivo-mobile.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Pixels não são pixels. Densidade de tela (dp/pt), safe areas (notch), e como fazer uma UI que funciona do celular pequeno ao tablet.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Mobile · Júnior</h2>
+          <h2 data-en="Mobile · Junior">Mobile · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Mobile</a></li>
-            <li>Júnior</li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span>
-              <h1>Layout que se adapta: densidade, safe areas e telas diferentes</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span>
+              <h1 data-en="Layouts that adapt: density, safe areas and different screens">Layout que se adapta: densidade, safe areas e telas diferentes</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">20 de Junho, 2026</span><span data-lang="en">Jun 20, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Existem celulares minúsculos, telas enormes, notches, barras de status e tablets — e seu layout precisa ficar bom em todos. O segredo não é desenhar em pixels, mas pensar em unidades lógicas, respeitar as áreas seguras e deixar o layout se adaptar sozinho. É um dos primeiros temas em que um júnior tropeça e um dos primeiros que entrevistadores cobram.</p>
 
 <h2>Pixel físico vs pixel lógico</h2>
@@ -140,16 +144,69 @@ imagem.altura  = aspecto(16, 9)</code></pre>
 
 <h2>Conclusão</h2>
 <p>Medir em dp/pt, respeitar as safe areas e usar constraints/flex em vez de pixels cravados é o tripé do layout responsivo mobile. Quem internaliza a diferença entre pixel físico e lógico evita os bugs visuais mais frequentes e entrega telas que funcionam do menor celular ao maior tablet.</p>
-              <div class="post-tags"><span class="tag">Layout</span><span class="tag">Responsivo</span><span class="tag">Mobile</span></div>
+</div>
+<div data-lang="en">
+<p>There are tiny phones, huge screens, notches, status bars and tablets — and your layout has to look good on all of them. The secret isn't designing in pixels, but thinking in logical units, respecting safe areas and letting the layout adapt on its own. It is one of the first topics where a junior stumbles and one of the first that interviewers ask about.</p>
+
+<h2>Physical pixel vs logical pixel</h2>
+<p>Two phones can have the same physical size but very different pixel counts: one has a "normal" screen, the other a "retina/high-density" one with twice the pixels in the same space. If you positioned everything in physical pixels, a 100px button would be gigantic on one screen and tiny on the other.</p>
+<p>That's why platforms use logical units: <strong>dp</strong> (density-independent pixels, Android) and <strong>pt</strong> (points, iOS). You say "I want 16 units of space" and the system multiplies by the screen density to arrive at the actual physical pixels.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Density</th><th>Factor</th><th>16 dp/pt become</th></tr></thead><tbody>
+<tr><td>mdpi / @1x</td><td>1x</td><td>16 physical px</td></tr>
+<tr><td>xhdpi / @2x</td><td>2x</td><td>32 physical px</td></tr>
+<tr><td>xxhdpi / @3x</td><td>3x</td><td>48 physical px</td></tr>
+</tbody></table></div>
+
+<p>The analogy: dp/pt are like the "centimeters" of the mobile world — a measure that means the same apparent size on any screen. Physical pixels are like counting grains of sand, which vary from beach to beach.</p>
+
+<h2>Why measure in dp/pt</h2>
+<p>Measuring in dp, an 8 dp spacing looks the same on the intern's phone and on a flagship. The system handles the conversion. Interviewers often ask you to explain the difference between px and dp and why you should never hardcode physical pixels — the expected answer is exactly this density independence.</p>
+
+<h2>The hardcoded pixels trap</h2>
+<pre><code>// BAD: assumes a fixed width in pixels
+image.width = 320      // overflows on small screens
+
+// GOOD: relative to the available space
+image.width = "100%"   // or use constraints/flex
+image.height = aspect(16, 9)</code></pre>
+<p>Hardcoding a width of 320 breaks on a 4-inch device and wastes space on a tablet. Day to day, this bug shows up as clipped text, a button off the screen or a layout that "overflows" on certain models.</p>
+
+<h2>Safe areas: notch, status bar and home indicator</h2>
+<p>Not all of the rectangular screen is usable. At the top there's the status bar (clock, battery) and the notch/island; at the bottom, the gesture bar or home indicator. The <strong>safe area</strong> is the region where your content isn't hidden behind these elements.</p>
+<pre><code>+---------------------+
+| [status bar / notch]|  &lt;- don't put buttons here
+|                     |
+|   SAFE AREA         |
+|   (your content)    |
+|                     |
+| [home indicator]    |  &lt;- nor here
++---------------------+</code></pre>
+<p>Ignoring the safe area makes the title disappear behind the notch or the action button end up under the gesture bar, where the user can't tap it properly.</p>
+
+<h2>From small phones to tablets</h2>
+<p>Adapting isn't just stretching. Use <strong>constraints</strong> (iOS Auto Layout), <strong>flexbox</strong> (React Native) or flexible widgets (Flutter, ConstraintLayout on Android) so elements rearrange according to the available space. On tablets, it's common to change the layout itself: a list that becomes list + detail side by side (master-detail).</p>
+<ul>
+  <li><strong>Proportions, not fixed sizes</strong>: "take up half the width" instead of "240 dp".</li>
+  <li><strong>Breakpoints</strong>: switch from a single-column layout to two columns above a certain width.</li>
+  <li><strong>Text that scales</strong>: respect the font size increased by the user (accessibility).</li>
+</ul>
+
+<blockquote>You don't design for a device; you design adaptation rules. Think "how does this behave when the space shrinks or doubles", not "how many pixels are here".</blockquote>
+
+<h2>Conclusion</h2>
+<p>Measuring in dp/pt, respecting safe areas and using constraints/flex instead of hardcoded pixels is the tripod of responsive mobile layout. Whoever internalizes the difference between physical and logical pixels avoids the most frequent visual bugs and delivers screens that work from the smallest phone to the largest tablet.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Layout">Layout</span><span class="tag" data-en="Responsive">Responsivo</span><span class="tag" data-en="Mobile">Mobile</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
-                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
-                <a class="rel-card" href="estado-dados-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Pleno</span><span class="rel-title">Estado e dados no mobile: do local ao gerenciamento global</span></a>
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="App lifecycle: states, screens and the basics that change everything">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="Navigation in apps: stack, tabs and deep links">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="estado-dados-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Pleno</span><span data-lang="en">Mid-level</span></span><span class="rel-title" data-en="State and data on mobile: from local to global management">Estado e dados no mobile: do local ao gerenciamento global</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -166,7 +223,7 @@ imagem.altura  = aspecto(16, 9)</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -177,6 +234,7 @@ imagem.altura  = aspecto(16, 9)</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

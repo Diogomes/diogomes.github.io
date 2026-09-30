@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Deploy strategies: blue-green, canary, and rolling - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Estratégias de deploy: blue-green, canary e rolling - Diogo Gomes</title>
   <meta content="Como implantar sem derrubar o sistema: recreate, rolling, blue-green e canary — o que cada um custa em risco, downtime e rollback." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Estratégias de deploy: blue-green, canary e rolling", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/estrategias-deploy.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como implantar sem derrubar o sistema: recreate, rolling, blue-green e canary — o que cada um custa em risco, downtime e rollback.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>DevOps · Sênior</h2>
+          <h2 data-en="DevOps · Senior">DevOps · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">DevOps</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-rocket"></i> DevOps · Sênior</span>
-              <h1>Estratégias de deploy: blue-green, canary e rolling</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 4 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-rocket&quot;&gt;&lt;/i&gt; DevOps · Senior"><i class="bx bx-rocket"></i> DevOps · Sênior</span>
+              <h1 data-en="Deploy strategies: blue-green, canary, and rolling">Estratégias de deploy: blue-green, canary e rolling</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 25, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 4 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 4 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Subir código novo em produção é o momento de maior risco do ciclo de vida de um sistema. A forma como você implanta — de uma vez, aos poucos, ou trocando ambientes inteiros — decide se uma versão ruim causa cinco minutos de degradação para poucos usuários ou uma hora de fora do ar para todos. Conhecer blue-green, canary e rolling, e saber quando usar cada um, é esperado de quem atua em DevOps em nível sênior.</p>
 
 <h2>Por que a forma de implantar importa</h2>
@@ -103,6 +107,18 @@
 
 <h2>Canary: liberar para uma fração e observar</h2>
 <p>No <strong>canary</strong> (o nome vem do "canário na mina de carvão"), você libera a nova versão para uma pequena fração do tráfego — 1%, depois 5%, 25% — observando métricas a cada passo. Se erros, latência ou taxa de conversão piorarem, você aborta antes que a maioria seja afetada. É a estratégia de menor raio de impacto.</p>
+</div>
+<div data-lang="en">
+<p>Putting new code into production is the moment of greatest risk in a system's lifecycle. How you deploy — all at once, gradually, or by swapping entire environments — decides whether a bad version causes five minutes of degradation for a few users or an hour of downtime for everyone. Knowing blue-green, canary and rolling, and when to use each, is expected of anyone working in DevOps at a senior level.</p>
+<h2>Why the way you deploy matters</h2>
+<p>Every deploy carries two questions: <strong>how much downtime</strong> it causes and <strong>what the blast radius is</strong> if the version is bad. The most naive strategy — stop the application, swap it and start it again — guarantees downtime and exposes 100% of users to the bug at once. Modern strategies exist to attack these two axes: reducing or eliminating downtime and limiting how many people see a problem before you roll back.</p>
+<h2>Recreate vs rolling update</h2>
+<p><strong>Recreate</strong> tears down the old version and brings up the new one: simple, but with a window of unavailability. A <strong>rolling update</strong> replaces instances <em>gradually</em> — shut down one of the old version, bring up one of the new, repeat — keeping the service always up. It's the <a href="kubernetes.html">Kubernetes</a> default and a reasonable default for most cases. The downside: during the transition both versions coexist, so they need to be compatible (watch out for database schema changes).</p>
+<h2>Blue-green: two environments, instant switch</h2>
+<p>You keep two identical environments: <strong>blue</strong> (current, in production) and <strong>green</strong> (the new version). You deploy and test everything on green at your own pace, with no real traffic. When it's ready, you just point the router/load balancer from blue to green — the switch is instant. If something goes wrong, the rollback is just pointing back to blue, which remains intact. The analogy: two stages set up; you just decide which one the audience looks at. The cost is keeping two full environments running.</p>
+<h2>Canary: release to a fraction and observe</h2>
+<p>With <strong>canary</strong> (the name comes from the "canary in the coal mine"), you release the new version to a small fraction of traffic — 1%, then 5%, then 25% — watching metrics at each step. If errors, latency or conversion rate get worse, you abort before most people are affected. It's the strategy with the smallest blast radius.</p>
+</div>
 <pre><code>            ┌──────────────┐  95%  ┌─────────────────┐
  tráfego ──▶│ Load Balancer│ ─────▶│ v1 (estável)    │
             │              │       └─────────────────┘
@@ -111,7 +127,7 @@
                                    └─────────────────┘
             métricas do v2 OK? ── sim ▶ aumenta % até 100%
                                └─ não ▶ rollback (volta a 0%)</code></pre>
-
+<div data-lang="pt">
 <h2>Feature flags como complemento</h2>
 <p>Deploy e <em>release</em> não precisam ser a mesma coisa. Com <strong>feature flags</strong>, você implanta o código novo desligado por uma flag e o liga depois — para um grupo, uma região, ou todos — sem novo deploy. Isso desacopla "subir o código" de "ligar a funcionalidade", permite canary <em>no nível de funcionalidade</em> e dá um botão de desligar instantâneo se algo quebrar. Combina muito bem com as outras estratégias.</p>
 
@@ -130,16 +146,34 @@
 
 <h2>Conclusão</h2>
 <p>Rolling elimina downtime com baixo custo e serve à maioria. Blue-green dá rollback instantâneo à custa de dobrar o ambiente. Canary minimiza o raio de impacto liberando aos poucos sob observação. Feature flags desacoplam deploy de release, e health checks com rollback automático fecham o loop. Dominar essas opções e o desenho da <a href="arquitetura-cloud.html">arquitetura cloud</a> é o que transforma o deploy de um evento tenso num não-evento rotineiro.</p>
-              <div class="post-tags"><span class="tag">Deploy</span><span class="tag">Entrega contínua</span><span class="tag">Sênior</span></div>
+              
+</div>
+<div data-lang="en">
+<h2>Feature flags as a complement</h2>
+<p>Deploy and <em>release</em> don't have to be the same thing. With <strong>feature flags</strong>, you deploy the new code switched off behind a flag and turn it on later — for a group, a region or everyone — without a new deploy. This decouples "shipping the code" from "turning on the feature", enables canary <em>at the feature level</em> and gives you an instant off switch if something breaks. It pairs very well with the other strategies.</p>
+<h2>Health checks and automatic rollback</h2>
+<p>None of this works without the orchestrator knowing whether an instance is <em>healthy</em>. <strong>Health checks</strong> (readiness and liveness) tell you whether an instance is ready to receive traffic and whether it's still alive. In a rolling or canary deploy, if the new instances fail the health check, the orchestrator stops advancing and can roll back automatically. This "observe metric → decide → roll back" loop is what makes deploys safe — and the natural close of your <a href="ci-cd-basico.html">CI/CD</a> pipeline.</p>
+<h2>Comparing the strategies</h2>
+<div class="table-wrap"><table><thead><tr><th>Strategy</th><th>Downtime</th><th>Cost</th><th>Blast radius</th><th>Rollback</th></tr></thead><tbody>
+<tr><td>Recreate</td><td>Yes</td><td>Low</td><td>Total</td><td>Slow (bring the old one back up)</td></tr>
+<tr><td>Rolling</td><td>No</td><td>Low</td><td>Medium (grows gradually)</td><td>Medium (rolls back)</td></tr>
+<tr><td>Blue-green</td><td>No</td><td>High (2 environments)</td><td>Total at the switch</td><td>Instant</td></tr>
+<tr><td>Canary</td><td>No</td><td>Medium</td><td>Minimal (a fraction)</td><td>Fast (cut off the fraction)</td></tr>
+</tbody></table></div>
+<blockquote>There is no best strategy, only the one that fits the risk. A CSS tweak can go with rolling; a checkout rewrite deserves a canary with closely watched metrics and automatic rollback armed. The right question is always "how many people suffer if this goes wrong, and how long until I roll back?".</blockquote>
+<h2>Conclusion</h2>
+<p>Rolling eliminates downtime at low cost and serves most cases. Blue-green gives instant rollback at the price of doubling the environment. Canary minimizes the blast radius by releasing gradually under observation. Feature flags decouple deploy from release, and health checks with automatic rollback close the loop. Mastering these options and the design of <a href="arquitetura-cloud.html">cloud architecture</a> is what turns deploying from a tense event into a routine non-event.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Deploy">Deploy</span><span class="tag" data-en="Continuous delivery">Entrega contínua</span><span class="tag" data-en="Senior">Sênior</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
-                <a class="rel-card" href="kubernetes.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Sênior</span><span class="rel-title">Kubernetes sem pânico: pods, deployments e autoscaling</span></a>
-                <a class="rel-card" href="arquitetura-cloud.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Sênior</span><span class="rel-title">Arquitetura na nuvem: alta disponibilidade e o custo do downtime</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="CI/CD in practice: from commit to automatic deploy">CI/CD na prática: do commit ao deploy automático</span></a>
+                <a class="rel-card" href="kubernetes.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Senior"><i class="bx bx-infinite"></i> DevOps · Sênior</span><span class="rel-title" data-en="Kubernetes without panic: pods, deployments, and autoscaling">Kubernetes sem pânico: pods, deployments e autoscaling</span></a>
+                <a class="rel-card" href="arquitetura-cloud.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Senior"><i class="bx bx-infinite"></i> DevOps · Sênior</span><span class="rel-title" data-en="Cloud architecture: high availability and the cost of downtime">Arquitetura na nuvem: alta disponibilidade e o custo do downtime</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -156,7 +190,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -167,6 +201,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

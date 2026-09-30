@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="The art of the bug report: reports the dev will thank you for - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>A arte do bug report: relatórios que o dev agradece - Diogo Gomes</title>
   <meta content="A anatomia de um relatório que leva à correção rápida: passos, evidências, contexto e severidade vs prioridade." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A arte do bug report", "datePublished": "2026-06-05", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/bug-report.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A anatomia de um relatório que leva à correção rápida: passos, evidências, contexto e severidade vs prioridade.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -85,11 +87,12 @@
 
             <div class="post-hero">
               <span class="post-cat"><i class="bx bx-message-rounded-error"></i> QA</span>
-              <h1>A arte do bug report: relatórios que o dev agradece</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 05 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <h1 data-en="The art of the bug report: reports the dev will thank you for">A arte do bug report: relatórios que o dev agradece</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 5, 2026">05 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Encontrar o bug é metade do trabalho. A outra metade é <strong>comunicá-lo de um jeito que leve à correção rápida</strong>. Um bom relatório economiza horas de ida e volta entre QA e desenvolvimento.</p>
 
               <h2>A anatomia de um bom bug report</h2>
@@ -121,16 +124,51 @@ Severidade: Alta (perda de receita) · Prioridade: Alta</code></pre>
 
               <h2>Conclusão</h2>
               <p>Relatórios claros aceleram a correção, reduzem o atrito e elevam a reputação do QA como parceiro do time — não como mensageiro de más notícias. Reproduza, documente e contextualize: o resto é consequência.</p>
-              <div class="post-tags"><span class="tag">Bug report</span><span class="tag">QA</span><span class="tag">Comunicação</span><span class="tag">Jira</span></div>
+              </div>
+<div data-lang="en">
+              <p>Finding the bug is half the job. The other half is <strong>communicating it in a way that leads to a quick fix</strong>. A good report saves hours of back and forth between QA and development.</p>
+
+              <h2>The anatomy of a good bug report</h2>
+              <ul>
+                <li><strong>Objective title:</strong> what + where + when. "Checkout fails when applying an expired coupon" &gt; "cart error".</li>
+                <li><strong>Steps to reproduce:</strong> numbered, from the initial state to the failure.</li>
+                <li><strong>Expected vs. actual result:</strong> the difference is the bug.</li>
+                <li><strong>Evidence:</strong> screenshot, video, logs, request/response, trace.</li>
+                <li><strong>Environment:</strong> browser, version, build, user, data.</li>
+                <li><strong>Severity vs. priority:</strong> business impact vs. urgency of the fix.</li>
+              </ul>
+
+              <h2>A lean example</h2>
+              <pre><code>Title: Expired coupon is accepted at checkout (web, build 4.12.0)
+
+Steps:
+1. Add an item to the cart
+2. Apply the coupon "PROMO2023" (expired on 12/31/2023)
+3. Complete the purchase
+
+Expected: coupon rejected with the message "Coupon expired"
+Actual:   20% discount applied and order completed
+
+Evidence: video.mp4, POST /coupons response (200, valid=true)
+Environment: Chrome 124, production-staging, user qa01
+Severity: High (revenue loss) · Priority: High</code></pre>
+
+              <blockquote>A bug report is an act of empathy: you write it so someone else can reproduce the problem without having to ask you anything.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Clear reports speed up the fix, reduce friction, and raise QA's reputation as a partner of the team, not as a messenger of bad news. Reproduce, document, and add context: the rest follows.</p>
+
+</div>
+<div class="post-tags"><span class="tag">Bug report</span><span class="tag">QA</span><span class="tag" data-en="Communication">Comunicação</span><span class="tag">Jira</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="pensamentos-qa.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pensamentos sobre QA: qualidade é de todos</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="pensamentos-qa.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title" data-en="Thoughts on QA: quality belongs to everyone">Pensamentos sobre QA: qualidade é de todos</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -147,7 +185,7 @@ Severidade: Alta (perda de receita) · Prioridade: Alta</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -158,6 +196,7 @@ Severidade: Alta (perda de receita) · Prioridade: Alta</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

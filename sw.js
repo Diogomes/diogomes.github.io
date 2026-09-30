@@ -1,10 +1,12 @@
 /* Service worker — Diogo Gomes portfólio (PWA) */
-const CACHE = 'dg-portfolio-v3';
+const CACHE = 'dg-portfolio-v4';
 const CORE = [
   '/index.html',
   '/projects.html',
   '/blog/index.html',
   '/assets/css/style.css',
+  '/assets/css/i18n.css',
+  '/assets/js/i18n.js',
   '/assets/js/main.js',
   '/assets/img/DIo.jpeg',
   '/assets/img/icon-192.png',

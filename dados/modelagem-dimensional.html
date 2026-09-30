@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Dimensional modeling: fact, dimension and the data warehouse - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Modelagem dimensional: fato, dimensão e o data warehouse - Diogo Gomes</title>
   <meta content="Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Modelagem dimensional: fato, dimensão e o data warehouse", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/modelagem-dimensional.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que o modelo do sistema transacional não serve para análise. Tabelas fato e dimensão, star schema e o básico de data warehouse.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Dados · Pleno</h2>
+          <h2 data-en="Data · Mid-level">Dados · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Dados</a></li>
-            <li>Pleno</li>
+            <li><a href="index.html" data-en="Data">Dados</a></li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-cube"></i> Dados · Pleno</span>
-              <h1>Modelagem dimensional: fato, dimensão e o data warehouse</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 15 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-cube&quot;&gt;&lt;/i&gt; Data · Mid-level"><i class="bx bx-cube"></i> Dados · Pleno</span>
+              <h1 data-en="Dimensional modeling: fact, dimension and the data warehouse">Modelagem dimensional: fato, dimensão e o data warehouse</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">15 de Junho, 2026</span><span data-lang="en">Jun 15, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>O modelo relacional normalizado é perfeito para um sistema que processa pedidos um a um. Mas quando o gestor pergunta "qual a receita por região, por mês, por categoria de produto, nos últimos três anos?", esse mesmo modelo trava. A modelagem dimensional nasceu para resolver justamente esse tipo de pergunta analítica.</p>
 
 <h2>OLTP vs OLAP: dois mundos diferentes</h2>
@@ -139,16 +143,69 @@
 
 <h2>Conclusão</h2>
 <p>A modelagem dimensional separa <em>fatos</em> (métricas mensuráveis) de <em>dimensões</em> (contexto), organiza tudo num star schema otimizado para leitura, e gira em torno da escolha do grão. Entender por que ela difere do modelo OLTP normalizado é o passo que abre a porta do mundo analítico e do data warehouse.</p>
-              <div class="post-tags"><span class="tag">Data Warehouse</span><span class="tag">Modelagem</span><span class="tag">Analytics</span></div>
+              
+</div>
+<div data-lang="en">
+<p>The normalized relational model is perfect for a system that processes orders one at a time. But when a manager asks "what's the revenue by region, by month, by product category, over the last three years?", that same model chokes. Dimensional modeling was born to solve exactly this kind of analytical question.</p>
+
+<h2>OLTP vs OLAP: two different worlds</h2>
+<p>Transactional systems (<strong>OLTP</strong>) are optimized for many small, consistent writes — inserting an order, updating stock. That's why they're normalized. Analysis (<strong>OLAP</strong>), on the other hand, runs few queries, but huge ones, scanning millions of rows and cutting across many dimensions.</p>
+<p>The normalized model, with its dozens of tables, requires very expensive <a href="consultas-sql.html">JOINs</a> for these questions. Dimensional modeling deliberately reorganizes the data for analytical reads — a purposeful denormalization, as we anticipated in <a href="normalizacao.html">normalization</a>.</p>
+
+<h2>Fact table: what happened</h2>
+<p>The <strong>fact table</strong> stores the measurable events of the business — a sale, a click, a shipment. Its columns are of two kinds: <strong>measures</strong> (numeric values you sum and compute on, like quantity and amount) and the <strong>foreign keys</strong> that point to the dimensions. The fact table tends to be long and narrow: a huge number of rows, few columns.</p>
+
+<h2>Dimension table: the context</h2>
+<p><strong>Dimensions</strong> give context to the measures: <em>who</em>, <em>what</em>, <em>when</em>, <em>where</em>. Customer dimension, product, time, store. They're short and wide tables: relatively few rows, many descriptive columns. They're what you filter and group by ("sales by product category" uses the product dimension).</p>
+
+<h2>Star schema: the classic design</h2>
+<p>When you put the fact table in the center and the dimensions around it, linked directly to it, the drawing looks like a star — hence <strong>star schema</strong>:</p>
+
+<pre><code>      dim_time       dim_product
+          \             /
+           \           /
+            +---------------+
+            |  fact_sales   |
+            | (qty, amount) |
+            +---------------+
+           /           \
+          /             \
+     dim_customer      dim_store</code></pre>
+
+<p>Each dimension connects to the fact table through a key. Since dimensions are denormalized (no sub-levels), you need just one JOIN per dimension — fast and simple to query.</p>
+
+<h2>Snowflake: when the dimension branches out</h2>
+<p>In a <strong>snowflake schema</strong>, dimensions are normalized into sub-tables: the product dimension splits into category, which splits into department. It saves space and reduces redundancy, but adds JOINs and complicates the query.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Star schema</th><th>Snowflake</th></tr></thead><tbody>
+<tr><td>Dimensions</td><td>Denormalized (flat)</td><td>Normalized (branched)</td></tr>
+<tr><td>JOINs per query</td><td>Fewer</td><td>More</td></tr>
+<tr><td>Redundancy</td><td>Higher</td><td>Lower</td></tr>
+<tr><td>Read performance</td><td>Better</td><td>Worse</td></tr>
+</tbody></table></div>
+
+<p>In practice, the star schema usually wins in analytics, because there fast reads matter more than saving space.</p>
+
+<h2>Grain: the most important decision</h2>
+<p>The <strong>grain</strong> defines what one row of the fact table represents. One row per sale? Per sale item? Per aggregated day? This is the first decision of any dimensional model, because it determines the level of detail possible. Fine grain gives flexibility; coarse grain saves space but loses detail. Mixing grains in the same fact table is a classic mistake.</p>
+
+<blockquote>OLTP optimizes for writing one fact at a time; dimensional optimizes for reading millions of facts at once. It's not that one is better — they solve opposite problems, and you need the right model for the right question.</blockquote>
+
+<p>In interviews it's common to be asked to draw a star schema from a scenario ("model the sales of an e-commerce store") and justify the grain you chose. Day to day, this shows up when you design a data warehouse or try to understand why a dashboard is slow to load.</p>
+
+<h2>Conclusion</h2>
+<p>Dimensional modeling separates <em>facts</em> (measurable metrics) from <em>dimensions</em> (context), organizes everything in a star schema optimized for reading, and revolves around the choice of grain. Understanding why it differs from the normalized OLTP model is the step that opens the door to the analytical world and the data warehouse.</p>
+</div>
+              <div class="post-tags"><span class="tag">Data Warehouse</span><span class="tag" data-en="Modeling">Modelagem</span><span class="tag">Analytics</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
-                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
-                <a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
+                <a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Relational modeling: tables, keys and relationships">Modelagem relacional: tabelas, chaves e relacionamentos</span></a>
+                <a class="rel-card" href="consultas-sql.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="SQL beyond the basics: aggregations, GROUP BY and subqueries">SQL além do básico: agregações, GROUP BY e subqueries</span></a>
+                <a class="rel-card" href="normalizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Data · Junior"><i class="bx bx-data"></i> Dados · Júnior</span><span class="rel-title" data-en="Normalization: 1NF, 2NF and 3NF without memorizing">Normalização: 1FN, 2FN e 3FN sem decorar</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -165,7 +222,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +233,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

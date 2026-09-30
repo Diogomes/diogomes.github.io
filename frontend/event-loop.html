@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="The event loop: how JavaScript does async without freezing - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>O event loop: como o JavaScript faz async sem travar - Diogo Gomes</title>
   <meta content="Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O event loop: como o JavaScript faz async sem travar", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/event-loop.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Front-end · Pleno</h2>
+          <h2 data-en="Front-end · Mid-level">Front-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Front-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-cog"></i> Front-end · Pleno</span>
-              <h1>O event loop: como o JavaScript faz async sem travar</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 17 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-cog"></i> <span data-en="Front-end · Mid-level">Front-end · Pleno</span></span>
+              <h1 data-en="The event loop: how JavaScript does async without freezing">O event loop: como o JavaScript faz async sem travar</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 17, 2026">17 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="3 min read">3 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>"JavaScript é single-thread" e ao mesmo tempo "JavaScript não trava ao baixar dados". Como as duas coisas são verdade? A resposta é o <strong>event loop</strong>, talvez o conceito que mais separa o júnior do pleno — porque explica de uma vez a ordem de execução, o async e por que sua UI continua respondendo.</p>
 
 <h2>Single-thread, mas não-bloqueante</h2>
@@ -145,16 +149,61 @@ console.log('4');
 
 <h2>Conclusão</h2>
 <p>A stack roda o código síncrono, as Web APIs cuidam do assíncrono, e o event loop reabastece a stack das filas — microtasks primeiro. Entender essa coreografia é o que permite escrever código async sem surpresas. Quando o async já é trivial, o próximo desafio é gerenciar o <a href="estado-componentes.html">estado dos componentes</a>.</p>
-              <div class="post-tags"><span class="tag">JavaScript</span><span class="tag">Event loop</span><span class="tag">Async</span></div>
+</div>
+<div data-lang="en">
+<p>"JavaScript is single-threaded" and at the same time "JavaScript doesn't freeze while downloading data". How can both be true? The answer is the <strong>event loop</strong>, perhaps the concept that most separates junior from mid-level — because it explains execution order, async and why your UI keeps responding all at once.</p>
+<h2>Single-threaded, but non-blocking</h2>
+<p>JS executes one instruction at a time, on a single thread. If that were all, downloading a file that takes 3 seconds would freeze the entire page. The trick is that JS <em>doesn't do</em> that heavy work itself: it delegates to the environment (the browser) and moves on. When the work finishes, the result comes back via a queue.</p>
+<h2>The call stack</h2>
+<p>The <strong>call stack</strong> is the stack of running functions. Call a function, it gets pushed; it returns, it gets popped. This is where "single-threaded" lives: there is only one stack, and it processes one thing at a time.</p>
+<h2>Web APIs: outsourced work</h2>
+<p>When you call <code>setTimeout</code>, <code>fetch</code> or listen for a click, the browser's <strong>Web APIs</strong> take care of it — outside the JS thread. Think of a restaurant: the waiter (the thread) takes the order and hands it to the kitchen (Web API) instead of standing around cooking. He goes back to serving other tables.</p>
+<h2>Two queues: macrotasks and microtasks</h2>
+<p>When the Web API finishes, the callback doesn't run right away — it goes into a queue. And there are two:</p>
+<ul>
+<li><strong>Task queue (macrotasks):</strong> <code>setTimeout</code>, I/O events, etc.</li>
+<li><strong>Microtask queue:</strong> Promise <code>.then</code>, <code>queueMicrotask</code>.</li>
+</ul>
+<p>The crucial rule: <strong>microtasks have priority</strong>. After each task, the event loop drains the <em>entire</em> microtask queue before picking the next macrotask.</p>
+<h2>The classic ordering example</h2>
+<p>This snippet is practically an interview classic — being able to predict the output proves you understand the loop.</p>
+<pre><code>console.log('1');
+setTimeout(() =&gt; console.log('2'), 0);
+Promise.resolve().then(() =&gt; console.log('3'));
+console.log('4');
+// Output: 1, 4, 3, 2</code></pre>
+<p>Why? <code>1</code> and <code>4</code> are synchronous (they run directly on the stack). The <code>setTimeout</code> becomes a macrotask; the <code>.then</code> becomes a microtask. When the stack empties, the loop runs <em>all</em> microtasks (<code>3</code>) before touching the macrotask (<code>2</code>).</p>
+<h2>The loop, in a diagram</h2>
+<pre><code>   ┌──────────────┐
+   │  Call Stack  │◀── runs synchronous code
+   └──────┬───────┘
+          │ delegates
+          ▼
+   ┌──────────────┐
+   │   Web APIs   │ (timer, fetch...)
+   └──────┬───────┘
+          │ done → enqueues
+   ┌──────▼────────────────────┐
+   │ Microtasks (.then)  ◀ high priority
+   │ Macrotasks (setTimeout)    │
+   └───────────────────────────┘
+   Event Loop: stack empty? pull from queue</code></pre>
+<div class="table-wrap"><table><thead><tr><th></th><th>Microtask</th><th>Macrotask</th></tr></thead><tbody><tr><td>Examples</td><td>Promise.then</td><td>setTimeout, events</td></tr><tr><td>Priority</td><td>High (drains everything)</td><td>One per cycle</td></tr></tbody></table></div>
+<blockquote>The event loop doesn't speed anything up — it just ensures the thread never sits idle waiting, keeping the UI alive while the heavy work happens in parallel.</blockquote>
+<p>Day to day this shows up when you need to understand why an <code>await</code> "waits" without freezing the screen, or why a heavy synchronous loop <em>really</em> freezes everything — it never releases the stack to let the loop breathe.</p>
+<h2>Conclusion</h2>
+<p>The stack runs synchronous code, Web APIs handle the asynchronous work, and the event loop refills the stack from the queues — microtasks first. Understanding this choreography is what lets you write async code without surprises. Once async is trivial, the next challenge is managing <a href="estado-componentes.html">component state</a>.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="JavaScript">JavaScript</span><span class="tag" data-en="Event loop">Event loop</span><span class="tag" data-en="Async">Async</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
-                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">CSS sem medo: box model, flexbox e grid</span></a>
-                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="CSS without fear: box model, flexbox and grid">CSS sem medo: box model, flexbox e grid</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Essential JavaScript: types, scope and the DOM">JavaScript essencial: tipos, escopo e o DOM</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to track">Voltar à trilha</span></a>
             </div>
 
           </div>
@@ -171,7 +220,7 @@ console.log('4');
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -182,6 +231,7 @@ console.log('4');
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

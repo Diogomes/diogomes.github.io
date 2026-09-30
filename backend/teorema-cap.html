@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="CAP theorem and eventual consistency - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Teorema CAP e consistência eventual - Diogo Gomes</title>
   <meta content="Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Teorema CAP e consistência eventual", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/teorema-cap.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Sênior</h2>
+          <h2 data-en="Back-end · Senior">Back-end · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-cube"></i> Back-end · Sênior</span>
-              <h1>Teorema CAP e consistência eventual</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 8 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-cube&quot;&gt;&lt;/i&gt; Back-end · Senior"><i class="bx bx-cube"></i> Back-end · Sênior</span>
+              <h1 data-en="CAP theorem and eventual consistency">Teorema CAP e consistência eventual</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 8, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 8 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>O teorema CAP é o ponto onde muita gente trava em entrevistas de system design — geralmente porque o explicam errado. Ele não diz "escolha 2 de 3" de forma absoluta; diz algo mais sutil sobre o que acontece quando a rede falha. Entender isso de verdade muda como você projeta sistemas distribuídos.</p>
 
 <h2>O que são C, A e P</h2>
@@ -127,16 +131,56 @@ le("perfil.nome") no nó 2 -&gt; "Ana"  (convergiu)</code></pre>
 
 <h2>Conclusão</h2>
 <p>O teorema CAP é uma lente para decidir o comportamento do seu sistema sob falha de rede. Não é escolher arbitrariamente dois pilares: é entender que a partição manda, e que a decisão real é entre consistência e disponibilidade no momento da falha — e entre consistência e latência no resto do tempo. Essa decisão é inseparável de como você pensa <a href="escalabilidade.html">escalabilidade</a>.</p>
-              <div class="post-tags"><span class="tag">CAP</span><span class="tag">Distribuídos</span><span class="tag">Arquitetura</span></div>
+</div>
+<div data-lang="en">
+<p>The CAP theorem is where a lot of people get stuck in system design interviews — usually because they explain it wrong. It doesn't say "pick 2 out of 3" in an absolute way; it says something subtler about what happens when the network fails. Truly understanding it changes how you design distributed systems.</p>
+
+<h2>What C, A and P are</h2>
+<p>The CAP theorem deals with three properties of a distributed system:</p>
+<ul>
+<li><strong>C — Consistency:</strong> every read sees the most recent write. All nodes agree on the current value.</li>
+<li><strong>A — Availability:</strong> every request receives a response (not an error), even if it isn't the most up to date.</li>
+<li><strong>P — Partition Tolerance:</strong> the system keeps working even when the network between nodes fails and they can't communicate.</li>
+</ul>
+
+<h2>Partitions are inevitable</h2>
+<p>Here is the correct interpretation: in a real distributed system, <strong>network partitions will happen</strong> — cables get cut, latency spikes, nodes become isolated. You can't "give up" P, because P isn't a choice, it's reality. So the theorem becomes: <strong>when there's a partition, you choose between C and A</strong>. Outside of partitions, you can have both.</p>
+<p>The analogy: two bank tellers who lose contact with each other. If a customer wants to withdraw money, the teller has two options. Refuse until they reconnect and confirm the balance (chooses C — consistent, but unavailable). Or allow the withdrawal with the balance they know (chooses A — available, but risks inconsistency). You can't have both during the failure.</p>
+
+<h2>CP vs AP in practice</h2>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Prioritizes</th><th>During a partition</th><th>Example use</th></tr></thead><tbody>
+<tr><td>CP</td><td>Consistency</td><td>Refuses/blocks rather than give a wrong answer</td><td>Banking, inventory, payments</td></tr>
+<tr><td>AP</td><td>Availability</td><td>Responds even with possibly stale data</td><td>Social feed, likes, timeline</td></tr>
+</tbody></table></div>
+<p>The choice depends on the domain. In a payments system, showing a wrong balance is unacceptable — you choose <strong>CP</strong>. In a social feed, seeing a like a few seconds late hurts no one — you choose <strong>AP</strong>, prioritizing that the screen always loads.</p>
+
+<h2>Strong vs eventual consistency</h2>
+<p>This leads to two consistency models. <strong>Strong consistency</strong>: after a write, every read sees the new value immediately — the intuitive behavior, but expensive in distributed systems. <strong>Eventual consistency</strong>: replicas converge to the same value "eventually", and may diverge for a short period. AP systems embrace eventual consistency.</p>
+<pre><code>// Eventual consistency in action:
+write("profile.name", "Ana")  // on node 1
+
+read("profile.name") on node 2 -&gt; "João" (old value, hasn't propagated yet)
+... 200ms later ...
+read("profile.name") on node 2 -&gt; "Ana"  (converged)</code></pre>
+
+<blockquote>CAP is not "pick 2 out of 3". It's this: since partitions are inevitable, when the network fails you'll choose between answering consistently or answering availably. Outside of a failure, you can have both.</blockquote>
+
+<h2>Beyond CAP: PACELC</h2>
+<p>CAP only talks about what happens <em>during</em> a partition, and that's where it's worth mentioning <strong>PACELC</strong>: during a partition (P) you choose between A and C; but even without a partition (Else, E), there's a trade-off between Latency (L) and Consistency (C) — keeping everything strongly consistent costs response time. PACELC is CAP completed with the everyday, normal-operation part.</p>
+
+<h2>Conclusion</h2>
+<p>The CAP theorem is a lens for deciding how your system behaves under network failure. It's not about arbitrarily picking two pillars: it's about understanding that the partition calls the shots, and that the real decision is between consistency and availability at the moment of failure — and between consistency and latency the rest of the time. That decision is inseparable from how you think about <a href="escalabilidade.html">scalability</a>.</p>
+</div>
+              <div class="post-tags"><span class="tag">CAP</span><span class="tag" data-en="Distributed">Distribuídos</span><span class="tag" data-en="Architecture">Arquitetura</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
-                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
-                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="How the web works: HTTP, request and response">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="REST APIs: what makes an API RESTful">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="Essential SQL: CRUD, JOIN and transactions">SQL essencial: CRUD, JOIN e transações</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -153,7 +197,7 @@ le("perfil.nome") no nó 2 -&gt; "Ana"  (convergiu)</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -164,6 +208,7 @@ le("perfil.nome") no nó 2 -&gt; "Ana"  (convergiu)</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="TDD in practice: red, green, refactor - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>TDD na prática: red, green, refactor - Diogo Gomes</title>
   <meta content="Escrever o teste antes do código: uma das técnicas que mais melhora o design do que se entrega." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "TDD na prática: red, green, refactor", "datePublished": "2026-05-28", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/tdd-na-pratica.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Escrever o teste antes do código: uma das técnicas que mais melhora o design do que se entrega.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testes</h2>
+          <h2 data-en="Tests">Testes</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Testes</li>
+            <li data-en="Tests">Testes</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-revision"></i> Testes</span>
-              <h1>TDD na prática: red, green, refactor</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 28 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-revision"></i> <span data-en="Tests">Testes</span></span>
+              <h1 data-en="TDD in practice: red, green, refactor">TDD na prática: red, green, refactor</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="May 28, 2026">28 de Maio, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>TDD — <em>Test-Driven Development</em> — inverte a ordem intuitiva: você escreve o teste <strong>antes</strong> do código. Parece contraintuitivo, mas é uma das técnicas que mais melhora o design e a confiança no que se entrega.</p>
 
               <h2>O ciclo: Red, Green, Refactor</h2>
@@ -124,16 +127,53 @@ function soma(a, b) { return a + b; }
 
               <h2>Conclusão</h2>
               <p>Praticar o ciclo red-green-refactor treina o time a pensar em comportamento e a manter o código sempre sob uma rede de segurança. É um investimento que se paga na primeira refatoração tranquila.</p>
-              <div class="post-tags"><span class="tag">TDD</span><span class="tag">Testes unitários</span><span class="tag">Design</span></div>
+</div>
+<div data-lang="en">
+<p>TDD — <em>Test-Driven Development</em> — flips the intuitive order: you write the test <strong>before</strong> the code. It sounds counterintuitive, but it is one of the techniques that most improves design and confidence in what you ship.</p>
+
+              <h2>The cycle: Red, Green, Refactor</h2>
+              <ol>
+                <li><strong>Red:</strong> write a failing test — it describes behavior that doesn't exist yet.</li>
+                <li><strong>Green:</strong> write the minimum code to make the test pass. No frills.</li>
+                <li><strong>Refactor:</strong> improve the code with the safety net of a green test.</li>
+              </ol>
+
+              <pre><code>// 1. Red — the test fails because the function doesn't exist
+test('adds two numbers', () =&gt; {
+  expect(soma(2, 3)).toBe(5);
+});
+
+// 2. Green — the minimum to pass
+function soma(a, b) { return a + b; }
+
+// 3. Refactor — now safe to evolve</code></pre>
+
+              <h2>Why it works</h2>
+              <ul>
+                <li><strong>Usage-driven design:</strong> you design the API thinking about whoever calls it.</li>
+                <li><strong>Natural coverage:</strong> the code is born tested, with no "I'll write the test later".</li>
+                <li><strong>Short feedback:</strong> errors show up in seconds, not in production.</li>
+                <li><strong>Living documentation:</strong> the tests describe the expected behavior.</li>
+              </ul>
+
+              <blockquote>TDD isn't about testing — it's about design. The tests are the happy side effect.</blockquote>
+
+              <h2>When to go easy</h2>
+              <p>TDD shines in business logic and complex rules. For throwaway prototypes or exploratory code, it can be overkill. The key is to use the right tool for the context — not to turn TDD into dogma.</p>
+
+              <h2>Conclusion</h2>
+              <p>Practicing the red-green-refactor cycle trains the team to think in terms of behavior and to keep the code always under a safety net. It's an investment that pays off with the first painless refactoring.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="TDD">TDD</span><span class="tag" data-en="Unit tests">Testes unitários</span><span class="tag" data-en="Design">Design</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Testes unitários: a base da pirâmide</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="Unit tests: the base of the pyramid">Testes unitários: a base da pirâmide</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E tests">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -150,7 +190,7 @@ function soma(a, b) { return a + b; }
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -161,6 +201,7 @@ function soma(a, b) { return a + b; }
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Mobile testing with Appium: what changes when the target is an app - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Testes mobile com Appium: o que muda quando o alvo é um app - Diogo Gomes</title>
   <meta content="Automatizar app não é automatizar site. Como o Appium funciona, locators nativos, a fragmentação de dispositivos e os gestos, esperas e permissões que só existem no mobile." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes mobile com Appium: o que muda quando o alvo é um app", "datePublished": "2026-06-27", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-mobile-appium.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Automatizar app não é automatizar site. Como o Appium funciona, locators nativos, a fragmentação de dispositivos e os gestos, esperas e permissões que só existem no mobile.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Automação</h2>
+          <h2 data-en="Automation">Automação</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Automação</li>
+            <li data-en="Automation">Automação</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-mobile-alt"></i> Automação</span>
-              <h1>Testes mobile com Appium: o que muda quando o alvo é um app</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 27 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-mobile-alt"></i> <span data-en="Automation">Automação</span></span>
+              <h1 data-en="Mobile testing with Appium: what changes when the target is an app">Testes mobile com Appium: o que muda quando o alvo é um app</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 27, 2026">27 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="5 min read">5 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Quem vem da automação web costuma achar que testar um app é "Selenium com tela menor". Não é. O alvo deixa de ser um DOM num navegador e passa a ser uma árvore de elementos nativos rodando num sistema operacional que controla permissões, ciclo de vida e rede — em centenas de aparelhos diferentes. O Appium é a ponte para esse mundo, e entender o que ele faz por baixo evita a maior parte da frustração de quem está começando.</p>
 
 <h2>Por que app é um alvo diferente</h2>
@@ -135,16 +139,64 @@
 
 <h2>Conclusão</h2>
 <p>Testar mobile com Appium reaproveita o que você já sabe de WebDriver, mas o terreno muda: árvore nativa em vez de DOM, accessibility ids em vez de CSS, gestos e esperas explícitas em vez de cliques, e um ecossistema fragmentado que obriga a escolher onde rodar com critério. Mantenha a suíte E2E enxuta no topo da <a href="piramide-de-testes.html">pirâmide</a>, ataque o flaky com esperas de verdade e ancore a cobertura numa matriz de dispositivos guiada pelos seus usuários reais.</p>
-              <div class="post-tags"><span class="tag">Mobile</span><span class="tag">Appium</span><span class="tag">Automação</span><span class="tag">Android</span><span class="tag">iOS</span></div>
+</div>
+<div data-lang="en">
+<p>People coming from web automation tend to think testing an app is "Selenium with a smaller screen". It isn't. The target stops being a DOM in a browser and becomes a tree of native elements running on an operating system that controls permissions, lifecycle and network — across hundreds of different devices. Appium is the bridge to that world, and understanding what it does under the hood avoids most of the frustration for beginners.</p>
+
+<h2>Why an app is a different target</h2>
+<p>In a web test you have one standard (HTML/DOM) and basically two or three rendering engines. On mobile, each platform has its own UI tree: on Android they are <code>View</code>s exposed by UiAutomator; on iOS they are XCUITest's <code>XCUIElement</code>s. These are different automation APIs, maintained by Google and Apple, with their own vocabularies. Add runtime permissions, the app going to the background, screen rotation, the virtual keyboard covering fields and networks that drop — situations that rarely matter in the browser and are everyday life on a phone.</p>
+
+<h2>How Appium works under the hood</h2>
+<p>Appium is a server that speaks the <strong>WebDriver</strong> protocol (the same as Selenium). Your test sends standardized HTTP commands ("find this element", "tap here") and Appium <em>translates</em> them to the platform's native framework through a <em>driver</em>: UiAutomator2 on Android, XCUITest on iOS. That is the big advantage — you write the test almost the same for both platforms, in any language with a WebDriver client (Java, JavaScript, Python).</p>
+<pre><code>  Your test (Java/JS/Python)
+        │  WebDriver commands (HTTP/JSON)
+        ▼
+  ┌──────────────┐
+  │ Appium Server│  ── translates ──▶  platform driver
+  └──────────────┘
+        │                              │
+   UiAutomator2 (Android)        XCUITest (iOS)
+        │                              │
+        ▼                              ▼
+     App on device / emulator / simulator</code></pre>
+<p>This translation has a cost: each command makes a trip over the network to the device. That's why Appium tests are slower than web tests — and why it's worth keeping the mobile E2E suite lean, pushing as much coverage as possible to cheaper levels, exactly as the <a href="piramide-de-testes.html">test pyramid</a> preaches.</p>
+
+<h2>Finding elements: no CSS here</h2>
+<p>The biggest shock for people coming from the web: there is no CSS selector. You locate by accessibility attributes and by platform-specific strategies. The golden rule is the same as in <a href="page-object-model.html">good locator design</a> — prefer stable identifiers over position or visible text.</p>
+<div class="table-wrap"><table><thead><tr><th>Strategy</th><th>When to use</th></tr></thead><tbody>
+<tr><td><strong>accessibility id</strong></td><td>First choice: stable and cross-platform (maps to <code>contentDescription</code> on Android and <code>accessibilityIdentifier</code> on iOS)</td></tr>
+<tr><td><strong>id</strong> (resource-id)</td><td>Good on Android; there's no equivalent on iOS</td></tr>
+<tr><td><strong>XPath</strong></td><td>Last resort: fragile and slow, it walks the entire tree</td></tr>
+</tbody></table></div>
+<blockquote>Ask the dev team for an accessibility id on every testable element. Besides making automation stable, it's the same attribute the screen reader uses — you get testability and accessibility in the same commit.</blockquote>
+
+<h2>Gestures, waits and what only exists on mobile</h2>
+<p>Tapping isn't clicking. Apps live on gestures — swipe, scroll to an element, long press, pinch — which in Appium are expressed through pointer actions (W3C Actions), not a simple <code>click()</code>. And since native UI animates and loads asynchronously, <strong>never</strong> use a fixed <em>sleep</em>: use explicit waits that wait for the element to become visible or clickable. A fixed sleep is the number one recipe for the <a href="testes-flaky.html">flaky tests</a> that haunt mobile suites.</p>
+<p>There is also what has no parallel in the browser and needs to be in the test plan:</p>
+<ul>
+<li><strong>Runtime permissions</strong> (camera, location, notifications) — the OS dialog appears on top of the app and has to be handled.</li>
+<li><strong>Lifecycle</strong>: sending the app to the background and bringing it back, and making sure state survives.</li>
+<li><strong>Network conditions</strong>: airplane mode, slow 3G, connection loss in the middle of an action.</li>
+<li><strong>Interruptions</strong>: a call or notification arriving during the flow.</li>
+</ul>
+
+<h2>Fragmentation: where you run matters</h2>
+<p>Writing the test is half the work; the other half is <em>where</em> it runs. Emulators (Android) and simulators (iOS) are fast and great for development, but they don't reproduce real GPU, sensors, camera or the battery and network behavior of a physical device. Real devices catch bugs the emulator hides — at the cost of maintenance and slowness.</p>
+<p>And then there is <strong>fragmentation</strong>: dozens of screen sizes, OS versions and manufacturers that customize Android. Testing on everything is impossible; testing only on your own device is naive. The practical way out is a <em>device matrix</em> based on real data from the people who use the app (the 5–10 most common device+OS pairs in your user base), run on a cloud device farm — BrowserStack, Sauce Labs — to cover the rest on demand.</p>
+
+<h2>Conclusion</h2>
+<p>Testing mobile with Appium reuses what you already know about WebDriver, but the terrain changes: a native tree instead of the DOM, accessibility ids instead of CSS, gestures and explicit waits instead of clicks, and a fragmented ecosystem that forces you to choose where to run with care. Keep the E2E suite lean at the top of the <a href="piramide-de-testes.html">pyramid</a>, attack flakiness with real waits and anchor coverage in a device matrix driven by your real users.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Mobile">Mobile</span><span class="tag" data-en="Appium">Appium</span><span class="tag" data-en="Automation">Automação</span><span class="tag" data-en="Android">Android</span><span class="tag" data-en="iOS">iOS</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">Testes flaky: o veneno do seu pipeline</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E tests">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> <span data-en="CI/CD">CI/CD</span></span><span class="rel-title" data-en="Flaky tests: the poison in your pipeline">Testes flaky: o veneno do seu pipeline</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -161,7 +213,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -172,6 +224,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

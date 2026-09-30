@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="CI/CD in practice: from commit to automatic deploy - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>CI/CD na prática: do commit ao deploy automático - Diogo Gomes</title>
   <meta content="O que significa integração e entrega contínuas, o que é um pipeline e por que automatizar build, teste e deploy muda tudo." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CI/CD na prática: do commit ao deploy automático", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/ci-cd-basico.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O que significa integração e entrega contínuas, o que é um pipeline e por que automatizar build, teste e deploy muda tudo.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>DevOps · Júnior</h2>
+          <h2 data-en="DevOps · Junior">DevOps · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">DevOps</a></li>
-            <li>Júnior</li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span>
-              <h1>CI/CD na prática: do commit ao deploy automático</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span>
+              <h1 data-en="CI/CD in practice: from commit to automatic deploy">CI/CD na prática: do commit ao deploy automático</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 20, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Antes da automação, soltar uma nova versão de software era um evento tenso: juntava-se semanas de código de várias pessoas, rezava-se para tudo funcionar e o deploy era feito à mão na madrugada. CI/CD inverteu essa lógica. A ideia é integrar e entregar com frequência, em pequenos passos automatizados, para que o software esteja sempre pronto e os erros apareçam cedo, quando ainda são baratos de corrigir.</p>
 
 <h2>CI: integração contínua</h2>
@@ -105,7 +109,23 @@
 
 <h2>Os estágios de um pipeline</h2>
 <p>Um pipeline é uma sequência de etapas que o código atravessa, do commit até a produção. Cada etapa só roda se a anterior passou. Um fluxo típico:</p>
+</div>
+<div data-lang="en">
+<p>Before automation, shipping a new version of software was a tense event: weeks of code from several people were piled together, everyone prayed it would all work, and the deploy was done by hand in the middle of the night. CI/CD flipped that logic. The idea is to integrate and deliver often, in small automated steps, so the software is always ready and errors show up early, while they are still cheap to fix.</p>
+<h2>CI: continuous integration</h2>
+<p><strong>Continuous Integration</strong> means integrating everyone's code frequently — several times a day — and automatically running the build and tests on every integration. That way, if someone breaks something, the team finds out in minutes, not days later. This depends on good use of <a href="git-fluxos.html">branches and Pull Requests</a>.</p>
+<h2>CD: delivery vs deployment</h2>
+<p>The "CD" has two meanings that confuse a lot of people, and interviewers often ask you to tell them apart:</p>
+<ul>
+  <li><strong>Continuous Delivery</strong> — every approved change is kept <em>ready</em> to go to production at any time, but the last step (pressing the button) is manual.</li>
+  <li><strong>Continuous Deployment</strong> — goes further: every change that passes the tests goes to production <em>automatically</em>, with no human intervention.</li>
+</ul>
+<div class="table-wrap"><table><thead><tr><th>Concept</th><th>What it automates</th><th>Production deploy</th></tr></thead><tbody><tr><td>CI</td><td>Build + tests on every commit</td><td>No</td></tr><tr><td>Continuous Delivery</td><td>Everything up to being ready to deploy</td><td>Manual (one click)</td></tr><tr><td>Continuous Deployment</td><td>Everything, including the deploy</td><td>Automatic</td></tr></tbody></table></div>
+<h2>The stages of a pipeline</h2>
+<p>A pipeline is a sequence of steps the code goes through, from commit to production. Each step only runs if the previous one passed. A typical flow:</p>
+</div>
 <pre><code>commit → build → testes → empacota (artefato) → deploy staging → deploy produção</code></pre>
+<div data-lang="pt">
 <p>Se os testes falham, o pipeline para ali e ninguém precisa investigar um deploy quebrado depois.</p>
 
 <h2>Artefatos</h2>
@@ -114,6 +134,15 @@
 
 <h2>Exemplo de pipeline em YAML</h2>
 <p>A maioria das ferramentas (GitHub Actions, GitLab CI, etc.) descreve o pipeline num arquivo YAML versionado junto ao código:</p>
+</div>
+<div data-lang="en">
+<p>If the tests fail, the pipeline stops right there and nobody has to investigate a broken deploy later.</p>
+<h2>Artifacts</h2>
+<p>The <strong>artifact</strong> is the packaged result of the build — a .jar file, a binary or, increasingly common, a <a href="containers-docker.html">container image</a>. The golden rule: build the artifact once and promote the <em>same</em> artifact through every environment. That guarantees that what was tested in staging is exactly what goes to production.</p>
+<blockquote>The real value of CI/CD isn't "deploying fast": it's shortening the feedback loop. The sooner you find out something broke, the smaller the damage and the cheaper the fix.</blockquote>
+<h2>Pipeline example in YAML</h2>
+<p>Most tools (GitHub Actions, GitLab CI, etc.) describe the pipeline in a YAML file versioned alongside the code:</p>
+</div>
 <pre><code>jobs:
   build-e-teste:
     runs-on: ubuntu-latest
@@ -122,22 +151,30 @@
       - run: npm ci
       - run: npm test
       - run: npm run build</code></pre>
-
+<div data-lang="pt">
 <h2>Por que isso importa</h2>
 <p>Os ganhos práticos são diretos: <strong>feedback rápido</strong> (erros aparecem em minutos), <strong>menos regressão</strong> (testes automáticos pegam o que o humano esqueceria) e <strong>deploys previsíveis</strong> (o processo é o mesmo toda vez, sem passos manuais que alguém pode errar). Times com bom CI/CD entregam mais e com menos medo.</p>
 
 <h2>Conclusão</h2>
 <p>CI/CD é a espinha dorsal do DevOps moderno: transforma entregas de eventos arriscados em rotina tranquila. Comece entendendo a diferença entre integração e entrega, o que é um artefato e por que o feedback rápido muda tudo. Com isso, você já consegue ler e contribuir com a maioria dos pipelines que vai encontrar.</p>
-              <div class="post-tags"><span class="tag">CI/CD</span><span class="tag">Pipeline</span><span class="tag">Automação</span></div>
+              
+</div>
+<div data-lang="en">
+<h2>Why it matters</h2>
+<p>The practical gains are direct: <strong>fast feedback</strong> (errors show up in minutes), <strong>fewer regressions</strong> (automated tests catch what a human would forget) and <strong>predictable deploys</strong> (the process is the same every time, with no manual steps someone can get wrong). Teams with good CI/CD ship more and with less fear.</p>
+<h2>Conclusion</h2>
+<p>CI/CD is the backbone of modern DevOps: it turns releases from risky events into a calm routine. Start by understanding the difference between integration and delivery, what an artifact is and why fast feedback changes everything. With that, you can already read and contribute to most pipelines you will come across.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="CI/CD">CI/CD</span><span class="tag" data-en="Pipeline">Pipeline</span><span class="tag" data-en="Automation">Automação</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
-                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
-                <a class="rel-card" href="containers-docker.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Pleno</span><span class="rel-title">Containers e Docker: por que 'funciona na minha máquina' acabou</span></a>
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Linux and the terminal: the bare minimum every DevOps engineer masters">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Git beyond the commit: branches, merge, and workflows">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="containers-docker.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Mid-level"><i class="bx bx-infinite"></i> DevOps · Pleno</span><span class="rel-title" data-en="Containers and Docker: why &#x27;it works on my machine&#x27; is over">Containers e Docker: por que 'funciona na minha máquina' acabou</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -154,7 +191,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -165,6 +202,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

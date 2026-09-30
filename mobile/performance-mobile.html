@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Mobile performance: jank, lists and battery usage - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Performance mobile: jank, listas e consumo de bateria - Diogo Gomes</title>
   <meta content="60fps ou o usuário sente. O que causa &#x27;jank&#x27;, como listas longas devem ser feitas e por que rede e bateria são orçamento, não infinito." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Performance mobile: jank, listas e consumo de bateria", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/performance-mobile.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "60fps ou o usuário sente. O que causa 'jank', como listas longas devem ser feitas e por que rede e bateria são orçamento, não infinito.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Mobile · Pleno</h2>
+          <h2 data-en="Mobile · Mid-level">Mobile · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Mobile</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-pulse"></i> Mobile · Pleno</span>
-              <h1>Performance mobile: jank, listas e consumo de bateria</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-pulse"></i> Mobile · <span data-lang="pt">Pleno</span><span data-lang="en">Mid-level</span></span>
+              <h1 data-en="Mobile performance: jank, lists and battery usage">Performance mobile: jank, listas e consumo de bateria</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-lang="pt">13 de Junho, 2026</span><span data-lang="en">Jun 13, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-lang="pt">3 min de leitura</span><span data-lang="en">3 min read</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Um app pode estar "funcionando" e ainda assim parecer ruim: rola travado, demora a responder, esquenta o celular e drena a bateria. Performance mobile é entender que você tem um orçamento de tempo por frame, recursos finitos de bateria e rede, e que listas e imagens são os vilões mais comuns. Esse é o tipo de problema que um pleno precisa diagnosticar e corrigir.</p>
 
 <h2>O orçamento de 16ms por frame</h2>
@@ -143,16 +147,72 @@ async {
 
 <h2>Conclusão</h2>
 <p>Performance mobile se resume a respeitar o orçamento de 16ms, manter a main thread livre, reciclar listas longas, tratar imagens com tamanho e cache, e gastar bateria e rede como recursos preciosos. Diagnosticar onde o tempo está sendo gasto, e mover o peso para o lugar certo, é o que transforma um app funcional em um app que parece bom.</p>
-              <div class="post-tags"><span class="tag">Performance</span><span class="tag">Mobile</span><span class="tag">UX</span></div>
+</div>
+<div data-lang="en">
+<p>An app can be "working" and still feel bad: it scrolls with stutters, takes a while to respond, heats up the phone and drains the battery. Mobile performance is understanding that you have a time budget per frame, finite battery and network resources, and that lists and images are the most common villains. This is the kind of problem a mid-level engineer needs to diagnose and fix.</p>
+
+<h2>The 16ms-per-frame budget</h2>
+<p>For a smooth 60fps animation, the screen is redrawn 60 times per second — meaning you have about <strong>16 milliseconds</strong> to prepare each frame. On 120Hz screens, it's ~8ms. If a frame blows this budget, it is "dropped": the image doesn't update in time and the user sees a stutter.</p>
+<p>The analogy: it's a production line that must deliver one piece every 16ms. If one station takes too long, the whole line chokes.</p>
+
+<h2>What is "jank"</h2>
+<p><strong>Jank</strong> is exactly this visual choking: dropped frames during scrolling or animation, perceived as little stutters. Almost always the cause is heavy work running on the wrong thread at the wrong time.</p>
+
+<h2>Off the main/UI thread</h2>
+<p>The <strong>main thread</strong> (or UI thread) is the only one that draws the screen and processes touches. If you do anything slow on it — read a large file, parse JSON, decode an image, query the database — it can't draw the next frame and the app freezes. The rule: heavy work goes to background threads (coroutines, GCD/async, isolates, workers); only the result returns to the UI.</p>
+<pre><code>// BAD: blocks the UI
+let data = downloadAndParseAll()   // on the main thread
+show(data)
+
+// GOOD
+async {
+  let data = downloadAndParseAll() // in the background
+  onMainThread { show(data) }      // only the result
+}</code></pre>
+<p>Interviewers often ask you to identify why a screen "freezes while scrolling" — a strong answer points to synchronous work on the main thread.</p>
+
+<h2>Long lists: recycling and virtualization</h2>
+<p>A list of 10,000 items can't create 10,000 views. The solution is to <strong>recycle</strong>: keep only the visible views (plus a margin) and reuse them as you scroll, swapping only the content. RecyclerView (Android), UICollectionView/diffable (iOS), FlatList (React Native) and ListView.builder (Flutter) do this. Rendering everything at once is the number one cause of jank in lists.</p>
+
+<h2>Images: size and cache</h2>
+<ul>
+  <li><strong>Resize before displaying</strong>: loading a 4000px photo into a 100px thumbnail wastes memory and decoding time.</li>
+  <li><strong>Memory and disk cache</strong>: don't re-download and re-decode the same image on every scroll (libraries like Glide, Coil, SDWebImage, Kingfisher handle this).</li>
+  <li><strong>Decode off the main thread</strong>: image decoding is expensive.</li>
+</ul>
+
+<h2>Battery and network are finite</h2>
+<p>Every network access and every radio wake-up consumes battery. Good practices:</p>
+<ul>
+  <li>Batch requests instead of many small, frequent ones.</li>
+  <li>Respect battery saver mode and do heavy work in the background via OS APIs (WorkManager, BackgroundTasks).</li>
+  <li>Avoid aggressive polling; prefer push when possible.</li>
+  <li>Release sensors (GPS, camera) as soon as they're no longer needed.</li>
+</ul>
+
+<h2>Common causes and fixes</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody>
+<tr><td>List stutters while scrolling</td><td>Work on the main thread / no recycling</td><td>Background thread + virtualized list</td></tr>
+<tr><td>App heats up and drains battery</td><td>Polling/loop/GPS always on</td><td>Batch work, release sensors</td></tr>
+<tr><td>Images flicker/slow</td><td>No cache, wrong size</td><td>Cache + resize</td></tr>
+<tr><td>Taps are slow to respond</td><td>Main thread blocked</td><td>Move I/O and parsing to the background</td></tr>
+</tbody></table></div>
+
+<blockquote>The main thread is sacred: it should only draw and respond to touches. Everything else — network, database, parsing, images — belongs in the background. Internalize this and most jank disappears.</blockquote>
+
+<h2>Conclusion</h2>
+<p>Mobile performance boils down to respecting the 16ms budget, keeping the main thread free, recycling long lists, handling images with proper size and cache, and spending battery and network as precious resources. Diagnosing where time is being spent, and moving the weight to the right place, is what turns a functional app into one that feels good.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Performance">Performance</span><span class="tag" data-en="Mobile">Mobile</span><span class="tag" data-en="UX">UX</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
-                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Navegação em apps: stack, tabs e deep links</span></a>
-                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · Júnior</span><span class="rel-title">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
+                <a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="App lifecycle: states, screens and the basics that change everything">Ciclo de vida de um app: estados, telas e o básico que muda tudo</span></a>
+                <a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="Navigation in apps: stack, tabs and deep links">Navegação em apps: stack, tabs e deep links</span></a>
+                <a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span><span class="rel-title" data-en="Layouts that adapt: density, safe areas and different screens">Layout que se adapta: densidade, safe areas e telas diferentes</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-lang="pt">Voltar à trilha</span><span data-lang="en">Back to the track</span></a>
             </div>
 
           </div>
@@ -169,7 +229,7 @@ async {
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -180,6 +240,7 @@ async {
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

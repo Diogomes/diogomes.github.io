@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Exploratory testing and session-based testing - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Teste exploratório e session-based testing - Diogo Gomes</title>
   <meta content="Testar pensando, não seguindo roteiro. O que é teste exploratório, como dar estrutura com session-based testing e as heurísticas que guiam a investigação." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Teste exploratório e session-based testing", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/teste-exploratorio.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Testar pensando, não seguindo roteiro: charters, heurísticas e a estrutura por trás do exploratório.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>QA</h2>
+          <h2 data-en="QA">QA</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>QA</li>
+            <li data-en="QA">QA</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-bulb"></i> QA</span>
-              <h1>Teste exploratório e session-based testing</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span>
+              <h1 data-en="Exploratory testing and session-based testing">Teste exploratório e session-based testing</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 13, 2026">13 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="7 min read">7 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Existe uma confusão comum: achar que teste exploratório é "clicar por aí sem rumo". É o oposto. O teste exploratório é uma abordagem em que <strong>design, execução e aprendizado acontecem ao mesmo tempo</strong> — cada resultado que você observa orienta o próximo passo. É disciplina, não bagunça. E é justamente o tipo de teste que a automação não consegue fazer: usar a cabeça em tempo real.</p>
 
               <h2>Scripted vs exploratório</h2>
@@ -136,18 +139,66 @@
 
               <h2>Conclusão</h2>
               <p>Teste exploratório é pensamento crítico aplicado em tempo real, e o session-based testing é o que o torna gerenciável e reportável. Dominar charters, sessões time-boxed e heurísticas como SFDPOT e RCRCRC é o que distingue o QA que "testa a tela" do que <em>investiga o produto</em> — e é onde aparecem os bugs que nenhum roteiro previu.</p>
+</div>
+<div data-lang="en">
+<p>There is a common misconception: that exploratory testing is "clicking around aimlessly". It's the opposite. Exploratory testing is an approach where <strong>design, execution and learning happen at the same time</strong> — each result you observe guides the next step. It's discipline, not chaos. And it is precisely the kind of testing that automation can't do: using your head in real time.</p>
 
-              <div class="post-tags"><span class="tag">Teste exploratório</span><span class="tag">Session-based</span><span class="tag">Heurísticas</span><span class="tag">SFDPOT</span><span class="tag">QA</span></div>
+              <h2>Scripted vs exploratory</h2>
+              <p>In scripted testing, someone designs the cases up front and someone else executes them later — thinking and acting are separated in time. In exploratory testing, they are simultaneous:</p>
+              <pre><code>  SCRIPTED:     think  →  write case  →  (later)  →  execute
+                (the test only does what was anticipated)
+
+  EXPLORATORY:  think + execute + learn   (in a loop, at the same time)
+                   ▲                    │
+                   └──── what I observed guides the next step ────┘</code></pre>
+              <p>The two are complementary. Scripted testing (and automation) guarantees repeatable coverage of the expected; exploratory testing finds the <em>unexpected</em> — the bug nobody imagined when writing the cases.</p>
+
+              <blockquote>Automation verifies what you already know how to ask. Exploratory testing discovers the questions you haven't asked yet.</blockquote>
+
+              <h2>The problem: how do you manage something so free?</h2>
+              <p>If exploratory testing has no script, how do you plan, measure and report? The answer is <strong>Session-Based Test Management</strong> (SBTM), created by James and Jonathan Bach. It provides structure without killing freedom, through three ideas:</p>
+              <ul>
+                <li><strong>Charter (mission statement):</strong> a short sentence that defines the session's focus — what to explore and to what end. E.g.: <em>"Explore file upload focusing on invalid formats and sizes."</em></li>
+                <li><strong>Time-boxed session:</strong> an uninterrupted, timed block (typically 60–90 min) dedicated to one charter.</li>
+                <li><strong>Notes and debrief:</strong> a record of what was tested, bugs, questions and ideas — followed by a quick conversation with the team.</li>
+              </ul>
+              <p>This makes exploratory testing reportable: you can say "I ran 3 sessions on checkout, found 2 bugs and 4 business-rule questions" — a concrete metric for a creative activity.</p>
+
+              <h2>Heuristics: what guides the investigation</h2>
+              <p>Exploratory testing isn't random because the tester uses <strong>heuristics</strong> — mental shortcuts that point to where defects usually are. Two widely used ones:</p>
+              <pre><code>SFDPOT (James Bach) — "tour" the product by dimensions:
+  Structure   what the product IS (files, code, hardware)
+  Function    what it DOES (features, calculations, error handling)
+  Data        what it PROCESSES (inputs, outputs, large/empty data)
+  Platform    what it DEPENDS ON (OS, browser, dependencies)
+  Operations  how it is USED (usage profiles, environments)
+  Time        how TIME affects it (timeouts, time zones, concurrency)</code></pre>
+              <pre><code>RCRCRC (regression) — where to look when time is short:
+  Recent      what changed recently
+  Core        the product's essential functions
+  Risk        the highest-risk areas
+  Configuration  configuration-sensitive items
+  Repaired    what was fixed recently
+  Chronic     what keeps breaking</code></pre>
+              <p>Heuristics turn "testing for the sake of it" into "testing with hypotheses" — you attack the system from angles where experience says bugs hide.</p>
+
+              <h2>Where this fits in the strategy</h2>
+              <p>In the <a href="piramide-de-testes.html">Agile Testing quadrants</a>, exploratory testing is the heart of Q3 (tests that critique the product from the business perspective). It doesn't replace the automation at the base of the pyramid — it combines with it: automation covers repetitive regression and frees the human's time for the investigation that only a human does well.</p>
+
+              <h2>Conclusion</h2>
+              <p>Exploratory testing is critical thinking applied in real time, and session-based testing is what makes it manageable and reportable. Mastering charters, time-boxed sessions and heuristics like SFDPOT and RCRCRC is what distinguishes the QA who "tests the screen" from the one who <em>investigates the product</em> — and it's where the bugs no script predicted show up.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Exploratory testing">Teste exploratório</span><span class="tag" data-en="Session-based">Session-based</span><span class="tag" data-en="Heuristics">Heurísticas</span><span class="tag" data-en="SFDPOT">SFDPOT</span><span class="tag" data-en="QA">QA</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pirâmide de testes e os quadrantes ágeis</span></a>
-                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">A arte do bug report</span></a>
-                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Técnicas de design de teste: cobrir mais com menos casos</span></a>
-                <a class="rel-card" href="testes-de-acessibilidade.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</span></a>
+                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="The test pyramid and the agile quadrants">Pirâmide de testes e os quadrantes ágeis</span></a>
+                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="The art of the bug report">A arte do bug report</span></a>
+                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="Test design techniques: covering more with fewer cases">Técnicas de design de teste: cobrir mais com menos casos</span></a>
+                <a class="rel-card" href="testes-de-acessibilidade.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="Accessibility testing: what automation catches and what it never will">Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -164,7 +215,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -175,6 +226,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

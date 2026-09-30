@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Clean Code: what I bring to my day to day as a QA - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Clean Code: o que levo para o dia a dia de QA - Diogo Gomes</title>
   <meta content="Código de teste também é código: os princípios do livro de Robert C. Martin aplicados à automação." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Clean Code no dia a dia de QA", "datePublished": "2026-05-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/clean-code-qa.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Código de teste também é código: os princípios do livro de Robert C. Martin aplicados à automação.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Leituras</h2>
+          <h2 data-en="Reading">Leituras</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Leituras</li>
+            <li data-en="Reading">Leituras</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-book-bookmark"></i> Leituras</span>
-              <h1>Clean Code: o que levo para o dia a dia de QA</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-book-bookmark"></i> <span data-en="Reading">Leituras</span></span>
+              <h1 data-en="Clean Code: what I bring to my day to day as a QA">Clean Code: o que levo para o dia a dia de QA</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="May 10, 2026">10 de Maio, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>"Clean Code", de Robert C. Martin, é leitura quase obrigatória entre desenvolvedores — mas tem muito a oferecer também para quem vive de qualidade. Afinal, <strong>código de teste é código</strong>, e merece o mesmo cuidado do código de produção.</p>
 
               <h2>Princípios que levo para o QA</h2>
@@ -110,16 +113,40 @@
 
               <h2>Conclusão</h2>
               <p>Tratar a suíte de testes com o mesmo rigor do código de produção é o que separa uma automação que dura de uma que vira lenda urbana de "não mexa que quebra". Clean Code dá o vocabulário para fazer isso bem.</p>
-              <div class="post-tags"><span class="tag">Clean Code</span><span class="tag">Leituras</span><span class="tag">Boas práticas</span></div>
+              </div>
+<div data-lang="en">
+              <p>"Clean Code" by Robert C. Martin is almost required reading among developers, but it has plenty to offer to those who live for quality, too. After all, <strong>test code is code</strong>, and it deserves the same care as production code.</p>
+
+              <h2>Principles I bring to QA</h2>
+              <ul>
+                <li><strong>Intention-revealing names:</strong> <code>deveRejeitarCupomExpirado()</code> says more than <code>teste3()</code>.</li>
+                <li><strong>Small, focused functions:</strong> a test verifies one behavior, not ten.</li>
+                <li><strong>No duplication:</strong> repeated setup becomes a fixture; repeated logic becomes a helper.</li>
+                <li><strong>Tests as documentation:</strong> reading the suite, anyone can understand what the system does.</li>
+              </ul>
+
+              <h2>Test code rots too</h2>
+              <p>Neglected suites accumulate brittle, slow, and unreadable tests, until nobody trusts them anymore. Applying Clean Code principles to automation is what keeps the suite an asset rather than a liability.</p>
+
+              <blockquote>"The only way to go fast is to go well." The book's line holds as true for the product as for the tests that protect it.</blockquote>
+
+              <h2>Beyond the book</h2>
+              <p>Clean Code is not a rigid rulebook: some of its advice has aged and deserves a critical read. But the spirit (clarity, intent, and respect for whoever reads the code later) is timeless and transformative for how I write automation.</p>
+
+              <h2>Conclusion</h2>
+              <p>Treating the test suite with the same rigor as production code is what separates automation that lasts from an urban legend of "don't touch it, it'll break". Clean Code gives you the vocabulary to do that well.</p>
+
+</div>
+<div class="post-tags"><span class="tag">Clean Code</span><span class="tag" data-en="Reading">Leituras</span><span class="tag" data-en="Best practices">Boas práticas</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="naked-statistics-summary.html"><span class="rel-cat"><i class="bx bx-book-reader"></i> Leituras</span><span class="rel-title">Resumo do livro &quot;Naked Statistics&quot;</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="naked-statistics-summary.html"><span class="rel-cat"><i class="bx bx-book-reader"></i> <span data-en="Reading">Leituras</span></span><span class="rel-title" data-en="Book summary: &quot;Naked Statistics&quot;">Resumo do livro &quot;Naked Statistics&quot;</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -136,7 +163,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -147,6 +174,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Front-end architecture: componentization, design systems and monorepos - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Arquitetura de front-end: componentização, design system e monorepo - Diogo Gomes</title>
   <meta content="Como manter um front-end grande sem virar caos: componentes reutilizáveis, design system, organização de pastas e o trade-off do monorepo." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Arquitetura de front-end: componentização, design system e monorepo", "datePublished": "2026-06-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/arquitetura-frontend.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como manter um front-end grande sem virar caos: componentes reutilizáveis, design system, organização de pastas e o trade-off do monorepo.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Front-end · Sênior</h2>
+          <h2 data-en="Front-end · Senior">Front-end · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Front-end</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-sitemap"></i> Front-end · Sênior</span>
-              <h1>Arquitetura de front-end: componentização, design system e monorepo</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 10 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-sitemap"></i> <span data-en="Front-end · Senior">Front-end · Sênior</span></span>
+              <h1 data-en="Front-end architecture: componentization, design systems and monorepos">Arquitetura de front-end: componentização, design system e monorepo</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 10, 2026">10 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="3 min read">3 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Num app pequeno, qualquer estrutura funciona. O problema aparece quando o time cresce, as telas se multiplicam e cada mudança parece quebrar três coisas distantes. Arquitetura de front-end é o conjunto de decisões que mantém um app grande compreensível, consistente e barato de evoluir — e é o que se espera de um sênior conduzir.</p>
 
 <h2>Componentização: do átomo à página</h2>
@@ -139,16 +143,68 @@
 
 <h2>Conclusão</h2>
 <p>Arquitetura de front-end é gerir acoplamento: peças pequenas, fronteiras claras, estado segmentado e visual centralizado em tokens. Decisões como monorepo são trade-offs, não verdades. Com a estrutura sólida, a próxima conversa de sênior é entregar isso <a href="web-performance-core-vitals.html">rápido para o usuário</a>.</p>
-              <div class="post-tags"><span class="tag">Arquitetura</span><span class="tag">Design system</span><span class="tag">Sênior</span></div>
+</div>
+<div data-lang="en">
+<p>In a small app, any structure works. The problem shows up when the team grows, screens multiply and every change seems to break three distant things. Front-end architecture is the set of decisions that keeps a large app understandable, consistent and cheap to evolve — and it's what a senior is expected to lead.</p>
+
+<h2>Componentization: from atom to page</h2>
+<p>The foundation of everything is breaking the UI into reusable pieces. <strong>Atomic design</strong> offers a useful vocabulary: <strong>atoms</strong> (button, input), <strong>molecules</strong> (search field = input + button), <strong>organisms</strong> (a complete header), <strong>templates</strong> and <strong>pages</strong>. It's not dogma — it's a way of thinking about composition: small, dumb pieces at the bottom, orchestrating pieces on top.</p>
+
+<blockquote>A good component does one thing and doesn't know where it will be used. The moment it "knows" the screen that contains it, it has become coupling disguised as reuse.</blockquote>
+
+<h2>Design system and design tokens</h2>
+<p>A <strong>design system</strong> is the shared library of components + usage rules that ensures buttons, colors and spacing are the same across the whole product. At its heart are <strong>design tokens</strong>: named variables for design values (<code>--color-primary</code>, <code>--space-md</code>). Changing the entire brand becomes changing tokens, not hunting hex codes through the codebase.</p>
+
+<pre><code>:root {
+  --color-primary: #4f46e5;
+  --space-md: 16px;
+}
+.btn { background: var(--color-primary); padding: var(--space-md); }</code></pre>
+
+<h2>Organize by feature, not by type</h2>
+<p>Many projects collapse by organizing by file <em>type</em> (one giant folder of components, another of hooks, another of utils). At scale, organize by <strong>feature</strong>: everything that belongs to "checkout" — components, state, API calls, tests — lives together. That way you read a feature in one place, and deleting it means deleting a folder.</p>
+
+<pre><code>src/
+  features/
+    checkout/   (components, hooks, api, tests)
+    perfil/
+  shared/       (design system, generic utils)</code></pre>
+
+<h2>Choosing state management</h2>
+<p>There is no "best" — there's the one that fits the <em>nature</em> of the data. Server state (API data) calls for caching tools like React Query. Local UI state stays in the component. Global client state (theme, session) calls for Context or a lightweight store. The typical mistake of the novice senior is throwing everything into a giant Redux. Separate by type of state and the complexity plummets.</p>
+
+<h2>Module boundaries</h2>
+<p>What keeps a large app healthy are clear <strong>boundaries</strong>: each feature exposes a public API (an <code>index</code>) and hides the rest. Other features import only what was exposed. Like apartments in a building — you use the common hallway, you don't walk through your neighbor's living room. This lets you refactor the inside of a module without breaking the world.</p>
+
+<h2>The monorepo trade-off</h2>
+<p>A monorepo means keeping several packages/apps in a single repository. It has real advantages, but real costs too:</p>
+
+<div class="table-wrap"><table><thead><tr><th>Advantages</th><th>Costs</th></tr></thead><tbody><tr><td>Easy shared code</td><td>More complex build tooling</td></tr><tr><td>Atomic refactoring (one PR)</td><td>CI gets slow without smart caching</td></tr><tr><td>Single version, no drift</td><td>Large repository, more governance</td></tr></tbody></table></div>
+
+<p>The decision is contextual: small teams gain little and pay for the tooling; organizations with lots of shared code gain a lot. Senior interviews often ask you to defend exactly this choice — and what's expected isn't the "right" answer, it's the reasoning about trade-offs.</p>
+
+<h2>How to structure a large app, in short</h2>
+<ul>
+<li>Small, decoupled components, composed from the bottom up.</li>
+<li>Design system + tokens as the single source of visual truth.</li>
+<li>Organize by feature, with explicit module boundaries.</li>
+<li>State segmented by type (server, UI, global).</li>
+<li>Monorepo only when the sharing gains outweigh the tooling cost.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Front-end architecture is about managing coupling: small pieces, clear boundaries, segmented state and visuals centralized in tokens. Decisions like monorepo are trade-offs, not truths. With a solid structure, the next senior conversation is delivering it <a href="web-performance-core-vitals.html">fast to the user</a>.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Architecture">Arquitetura</span><span class="tag" data-en="Design system">Design system</span><span class="tag" data-en="Senior">Sênior</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
-                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">CSS sem medo: box model, flexbox e grid</span></a>
-                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="CSS without fear: box model, flexbox and grid">CSS sem medo: box model, flexbox e grid</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Essential JavaScript: types, scope and the DOM">JavaScript essencial: tipos, escopo e o DOM</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to track">Voltar à trilha</span></a>
             </div>
 
           </div>
@@ -165,7 +221,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +232,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

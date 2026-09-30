@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Playwright in practice: modern E2E testing - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Playwright na prática: testes E2E modernos - Diogo Gomes</title>
   <meta content="Auto-wait, multi-browser, trace viewer e execução paralela — por que o Playwright virou meu padrão para testes end-to-end." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Playwright na prática: testes E2E modernos", "datePublished": "2026-06-18", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/playwright-testes-e2e.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Auto-wait, multi-browser, trace viewer e execução paralela — por que o Playwright virou meu padrão para testes end-to-end.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Automação</h2>
+          <h2 data-en="Automation">Automação</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Automação</li>
+            <li data-en="Automation">Automação</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-globe"></i> Automação</span>
-              <h1>Playwright na prática: testes E2E modernos</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 18 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 2 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span>
+              <h1 data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 18, 2026">18 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="2 min read">2 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Depois de anos automatizando com Selenium, migrar parte das suítes para o <strong>Playwright</strong> mudou a forma como o time encara testes end-to-end. Não é só uma ferramenta nova — é uma forma mais estável e rápida de validar o comportamento real da aplicação.</p>
 
               <h2>Por que Playwright?</h2>
@@ -126,17 +129,57 @@ test('usuário faz login com sucesso', async ({ page }) =&gt; {
 
               <h2>Conclusão</h2>
               <p>Playwright não substitui testes unitários nem de integração; ele coroa a pirâmide validando os fluxos críticos do ponto de vista do usuário. Combinado a um bom pipeline de CI, dá ao time a confiança de entregar mais rápido sem medo de regressões.</p>
-              <div class="post-tags"><span class="tag">Playwright</span><span class="tag">E2E</span><span class="tag">Automação</span><span class="tag">JavaScript</span></div>
+              </div>
+<div data-lang="en">
+              <p>After years of automating with Selenium, migrating part of the suites to <strong>Playwright</strong> changed how the team approaches end-to-end tests. It's not just a new tool; it's a more stable and faster way to validate the real behavior of the application.</p>
+
+              <h2>Why Playwright?</h2>
+              <p>The big differentiator is <em>auto-waiting</em>: Playwright automatically waits for the element to be visible, enabled, and stable before interacting. That eliminates a good share of <code>sleep()</code> calls and the "flaky" tests that so undermine confidence in the suite.</p>
+              <ul>
+                <li><strong>Real multi-browser:</strong> Chromium, Firefox, and WebKit with the same API.</li>
+                <li><strong>Parallel execution</strong> by default, with isolation per browser context.</li>
+                <li><strong>Trace Viewer:</strong> records every step with screenshots, DOM, and network, so debugging a CI failure becomes trivial.</li>
+                <li><strong>Auto-wait and web-first assertions</strong> that drastically reduce flakiness.</li>
+              </ul>
+
+              <h2>A test in practice</h2>
+              <pre><code>import { test, expect } from '@playwright/test';
+
+test('user logs in successfully', async ({ page }) => {
+  await page.goto('/login');
+  await page.getByLabel('Email').fill('qa@example.com');
+  await page.getByLabel('Password').fill('s3cure-p4ss');
+  await page.getByRole('button', { name: 'Sign in' }).click();
+
+  await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+});</code></pre>
+              <p>Notice the use of <code>getByRole</code> and <code>getByLabel</code>: accessibility-based locators, more resilient to layout changes than brittle CSS selectors.</p>
+
+              <h2>Best practices I adopted</h2>
+              <ul>
+                <li>Use the <strong>Page Object Model</strong> to encapsulate screens and reduce duplication.</li>
+                <li>Prefer accessible locators (<code>getByRole</code>, <code>getByText</code>) over long XPaths.</li>
+                <li>Run with <code>--trace on-first-retry</code> to capture evidence only when something fails.</li>
+                <li>Isolate test data and use fixtures for setup/teardown.</li>
+              </ul>
+
+              <blockquote>A good E2E test isn't the one that covers everything; it's the one that fails only when the product has really broken.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Playwright doesn't replace unit or integration tests; it crowns the pyramid by validating the critical flows from the user's point of view. Combined with a good CI pipeline, it gives the team the confidence to ship faster without fearing regressions.</p>
+
+</div>
+<div class="post-tags"><span class="tag">Playwright</span><span class="tag">E2E</span><span class="tag" data-en="Automation">Automação</span><span class="tag">JavaScript</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
-                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">CI/CD para QA: testes no coração do pipeline</span></a>
-                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">Testes flaky: o veneno do seu pipeline</span></a>
-                <a class="rel-card" href="testes-mobile-appium.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Testes mobile com Appium: o que muda quando o alvo é um app</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title" data-en="CI/CD for QA: tests at the heart of the pipeline">CI/CD para QA: testes no coração do pipeline</span></a>
+                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title" data-en="Flaky tests: the poison in your pipeline">Testes flaky: o veneno do seu pipeline</span></a>
+                <a class="rel-card" href="testes-mobile-appium.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Mobile testing with Appium: what changes when the target is an app">Testes mobile com Appium: o que muda quando o alvo é um app</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -153,7 +196,7 @@ test('usuário faz login com sucesso', async ({ page }) =&gt; {
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -164,6 +207,7 @@ test('usuário faz login com sucesso', async ({ page }) =&gt; {
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

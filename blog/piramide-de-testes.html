@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="The test pyramid and the agile testing quadrants - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Pirâmide de testes e os quadrantes ágeis - Diogo Gomes</title>
   <meta content="Onde cada tipo de teste vive, por que a pirâmide importa, o que é o anti-pattern do cone de sorvete e como os quadrantes de Agile Testing organizam a estratégia." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Pirâmide de testes e os quadrantes ágeis", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/piramide-de-testes.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Onde cada tipo de teste vive, o anti-pattern do cone de sorvete e como os quadrantes de Agile Testing organizam a estratégia.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -85,11 +87,12 @@
 
             <div class="post-hero">
               <span class="post-cat"><i class="bx bx-bulb"></i> QA</span>
-              <h1>Pirâmide de testes e os quadrantes ágeis</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+              <h1 data-en="The test pyramid and the agile testing quadrants">Pirâmide de testes e os quadrantes ágeis</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 22, 2026">22 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="7 min read">7 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>"Como você estrutura uma estratégia de testes?" é a pergunta que separa quem sabe automatizar de quem sabe <em>onde</em> automatizar. A resposta passa por dois modelos mentais que todo QA usa para distribuir esforço: a <strong>pirâmide de testes</strong> (quanto de cada nível) e os <strong>quadrantes de Agile Testing</strong> (o que mais falta cobrir).</p>
 
               <h2>A pirâmide de testes</h2>
@@ -154,16 +157,83 @@
               <h2>Conclusão</h2>
               <p>Saber recitar "pirâmide de testes" é fácil; saber diagnosticar um cone de sorvete no seu próprio pipeline e identificar qual quadrante está descoberto é o que demonstra senioridade. São dois mapas que, usados juntos, transformam "vamos testar bastante" numa estratégia de qualidade com lugar definido para cada tipo de teste.</p>
 
-              <div class="post-tags"><span class="tag">Pirâmide de testes</span><span class="tag">Quadrantes ágeis</span><span class="tag">Estratégia</span><span class="tag">Agile Testing</span><span class="tag">Fundamentos</span></div>
+              </div>
+<div data-lang="en">
+              <p>"How do you structure a testing strategy?" is the question that separates people who know how to automate from people who know <em>where</em> to automate. The answer goes through two mental models every QA uses to distribute effort: the <strong>test pyramid</strong> (how much of each level) and the <strong>Agile Testing quadrants</strong> (what is still missing).</p>
+
+              <h2>The test pyramid</h2>
+              <p>Proposed by Mike Cohn, the pyramid says that the <em>quantity</em> of tests should be inversely proportional to their <em>cost and slowness</em>. A big cheap base, a small expensive top:</p>
+              <pre><code>                 ╱╲
+                ╱ E2E╲          few · slow · expensive · brittle
+               ╱──────╲         (critical end-to-end flows)
+              ╱ Integ.  ╲       some · medium
+             ╱────────────╲     (modules/services talking)
+            ╱     Unit      ╲   many · fast · cheap · stable
+           ╱──────────────────╲ (isolated business rules)
+
+   ← slower / more expensive / less isolated at the top
+   ← faster / cheaper / more isolated at the bottom</code></pre>
+              <ul>
+                <li><strong>Unit (base):</strong> run in milliseconds and point to exactly where it broke. This is where the <a href="testes-unitarios.html">bulk of the coverage</a> should be.</li>
+                <li><strong>Integration (middle):</strong> verify that parts talk to each other: database, API, services. Slower, but they catch what unit tests can't see.</li>
+                <li><strong>E2E (top):</strong> simulate the user across the whole system. They give the most confidence, but they're slow, expensive to maintain, and the first to become <a href="testes-flaky.html">flaky</a>. Reserve them for the flows that <em>cannot</em> fail.</li>
+              </ul>
+
+              <h2>The anti-patterns: ice cream cone and hourglass</h2>
+              <p>When the pyramid flips, the team feels it firsthand. Recognizing these shapes is half the way to fixing the strategy:</p>
+              <div class="table-wrap">
+              <table>
+                <thead><tr><th>Shape</th><th>What it looks like</th><th>Symptom</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Ice cream cone</strong></td><td>Lots of E2E and manual tests at the top, almost no unit tests at the base</td><td>Slow CI, brittle suite, feedback that takes hours, and nobody trusts the green</td></tr>
+                  <tr><td><strong>Hourglass</strong></td><td>Lots of unit and lots of E2E tests, but an empty middle (integration)</td><td>Integration bugs slip through to E2E, where they're expensive to diagnose</td></tr>
+                </tbody>
+              </table>
+              </div>
+              <p>Worth mentioning is Kent C. Dodds' <strong>testing trophy</strong>, popular in front-end: it fattens the integration layer because, in UIs, that's where the best return on confidence per cost lies. The pyramid and the trophy don't contradict each other; both say "don't depend on E2E for everything". The ideal shape depends on your context.</p>
+
+              <h2>The Agile Testing quadrants</h2>
+              <p>The pyramid answers "how much of each level", but not "am I testing the right things?". That's what the <strong>quadrants</strong> are for (Brian Marick, popularized by Lisa Crispin and Janet Gregory). They cross two axes: <em>business × technology</em> and <em>supporting the team × critiquing the product</em>.</p>
+              <pre><code>             SUPPORT THE TEAM        │        CRITIQUE THE PRODUCT
+                (guide the dev)      │         (evaluate the finished thing)
+        ┌─────────────────────────┬─┴─┬─────────────────────────┐
+  BUSINESS│  Q2  (business/support) │   │  Q3  (business/critique)│
+  FACING  │  examples, prototypes,  │   │  exploratory testing,   │
+          │  BDD/ATDD scenarios     │   │  usability, UAT         │
+        ├─────────────────────────┼───┼─────────────────────────┤
+  TECH    │  Q1  (technical/support)│   │  Q4  (technical/critique)│
+  FACING  │  unit tests,            │   │  performance, load,     │
+          │  integration, TDD       │   │  security, resilience   │
+        └─────────────────────────┴───┴─────────────────────────┘
+            automated                  manual / specialized
+            (Q1 and Q2)               tools (Q3 and Q4)</code></pre>
+              <ul>
+                <li><strong>Q1 — technical, supports the team:</strong> unit and integration tests. The base of the pyramid, tied to <a href="tdd-na-pratica.html">TDD</a>.</li>
+                <li><strong>Q2 — business, supports the team:</strong> examples and scenarios that define "done" before coding. This is the territory of <a href="bdd-atdd-tdd.html">BDD/ATDD</a>.</li>
+                <li><strong>Q3 — business, critiques the product:</strong> exploratory testing, usability, user acceptance. A human eye on the finished product.</li>
+                <li><strong>Q4 — technical, critiques the product:</strong> performance, load, security. Quality attributes that functional automation doesn't cover.</li>
+              </ul>
+              <p>Teams tend to live in Q1+Q2 and forget Q3 and Q4, and that's exactly where the problems the customer notices first leak out: slowness, confusing screens, failures under load.</p>
+
+              <blockquote>The pyramid tells you whether the distribution of effort is healthy; the quadrants tell you whether there's a kind of quality nobody is looking at. One is about <em>quantity</em>, the other about <em>coverage</em>.</blockquote>
+
+              <h2>Using both together day to day</h2>
+              <p>In practice: the pyramid guides <em>where</em> to write automation (push cases down whenever possible, since what can be tested at the unit level doesn't need E2E). The quadrants guide the planning conversation: "we have Q1 and Q2 covered, but when was the last time we ran a load test (Q4) or an exploratory session (Q3)?". Together, they avoid both the slow, brittle suite and the blind spot that only shows up in production.</p>
+
+              <h2>Conclusion</h2>
+              <p>Reciting "test pyramid" is easy; diagnosing an ice cream cone in your own pipeline and identifying which quadrant is uncovered is what shows seniority. They are two maps that, used together, turn "let's test a lot" into a quality strategy with a defined place for each type of test.</p>
+
+</div>
+<div class="post-tags"><span class="tag" data-en="Test pyramid">Pirâmide de testes</span><span class="tag" data-en="Agile quadrants">Quadrantes ágeis</span><span class="tag" data-en="Strategy">Estratégia</span><span class="tag">Agile Testing</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Testes unitários: a base da pirâmide</span></a>
-                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Técnicas de design de teste: cobrir mais com menos casos</span></a>
-                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
+                <a class="rel-card" href="testes-unitarios.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title" data-en="Unit tests: the base of the pyramid">Testes unitários: a base da pirâmide</span></a>
+                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title" data-en="Test design techniques: covering more with fewer cases">Técnicas de design de teste: cobrir mais com menos casos</span></a>
+                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title" data-en="BDD, ATDD, and TDD: what each acronym solves">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -180,7 +250,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -191,6 +261,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Git beyond the commit: branches, merge, and workflows - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Git além do commit: branches, merge e fluxos de trabalho - Diogo Gomes</title>
   <meta content="Merge vs rebase, o que é um conflito e os fluxos (trunk-based, GitFlow) que organizam o trabalho de um time inteiro." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Git além do commit: branches, merge e fluxos de trabalho", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/git-fluxos.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Merge vs rebase, o que é um conflito e os fluxos (trunk-based, GitFlow) que organizam o trabalho de um time inteiro.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>DevOps · Júnior</h2>
+          <h2 data-en="DevOps · Junior">DevOps · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">DevOps</a></li>
-            <li>Júnior</li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,20 +87,27 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-git-branch"></i> DevOps · Júnior</span>
-              <h1>Git além do commit: branches, merge e fluxos de trabalho</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-git-branch&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-git-branch"></i> DevOps · Júnior</span>
+              <h1 data-en="Git beyond the commit: branches, merge, and workflows">Git além do commit: branches, merge e fluxos de trabalho</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 22, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Saber dar <code>git commit</code> e <code>git push</code> é o começo, mas o trabalho real começa quando várias pessoas mexem no mesmo código ao mesmo tempo. É aí que branches, merge, rebase e fluxos de trabalho entram em cena. Entender essas peças evita conflitos dolorosos e mantém o histórico do projeto limpo e compreensível.</p>
 
 <h2>Commit e branch: a base</h2>
 <p>Um <strong>commit</strong> é uma fotografia do código em um momento. Uma <strong>branch</strong> é uma linha de desenvolvimento independente — uma forma de trabalhar numa funcionalidade sem afetar o código estável. Criar uma branch é barato e rápido, e essa é justamente a graça do Git.</p>
+</div>
+<div data-lang="en">
+<p>Knowing how to run <code>git commit</code> and <code>git push</code> is just the beginning; the real work starts when several people touch the same code at the same time. That is where branches, merge, rebase and workflows come into play. Understanding these pieces avoids painful conflicts and keeps the project history clean and easy to follow.</p>
+<h2>Commit and branch: the basics</h2>
+<p>A <strong>commit</strong> is a snapshot of the code at a moment in time. A <strong>branch</strong> is an independent line of development — a way to work on a feature without affecting the stable code. Creating a branch is cheap and fast, and that is precisely the beauty of Git.</p>
+</div>
 <pre><code>git switch -c feature/login   # cria e entra na branch
 git add .
 git commit -m "adiciona tela de login"</code></pre>
-
+<div data-lang="pt">
 <h2>Merge vs rebase</h2>
 <p>Os dois servem para juntar o trabalho de uma branch na outra, mas de formas diferentes. O <strong>merge</strong> cria um commit de junção e preserva o histórico real. O <strong>rebase</strong> reescreve os commits da sua branch como se tivessem nascido a partir do topo da outra, gerando um histórico linear. É comum em entrevista pedir para explicar a diferença e quando usar cada um.</p>
 <div class="table-wrap"><table><thead><tr><th>Aspecto</th><th>Merge</th><th>Rebase</th></tr></thead><tbody><tr><td>Histórico</td><td>Preserva (com commit de merge)</td><td>Reescreve (linear)</td></tr><tr><td>Rastreabilidade</td><td>Mostra quando algo foi integrado</td><td>Histórico mais limpo, perde o "quando"</td></tr><tr><td>Risco</td><td>Seguro em branches compartilhadas</td><td>Perigoso em branches já publicadas</td></tr><tr><td>Uso típico</td><td>Trazer feature para a main</td><td>Atualizar sua branch local antes do PR</td></tr></tbody></table></div>
@@ -105,13 +115,22 @@ git commit -m "adiciona tela de login"</code></pre>
 
 <h2>O que é um conflito</h2>
 <p>Um conflito acontece quando duas branches alteraram a mesma linha de um arquivo de formas diferentes. O Git não sabe qual versão é a certa e pede que você decida. Não é um erro — é uma situação normal que você resolve editando o arquivo e marcando como resolvido.</p>
+</div>
+<div data-lang="en">
+<h2>Merge vs rebase</h2>
+<p>Both are used to bring the work of one branch into another, but in different ways. <strong>Merge</strong> creates a merge commit and preserves the real history. <strong>Rebase</strong> rewrites your branch's commits as if they had been created on top of the other branch, producing a linear history. Interviewers often ask you to explain the difference and when to use each one.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Merge</th><th>Rebase</th></tr></thead><tbody><tr><td>History</td><td>Preserved (with a merge commit)</td><td>Rewritten (linear)</td></tr><tr><td>Traceability</td><td>Shows when something was integrated</td><td>Cleaner history, loses the "when"</td></tr><tr><td>Risk</td><td>Safe on shared branches</td><td>Dangerous on already-published branches</td></tr><tr><td>Typical use</td><td>Bringing a feature into main</td><td>Updating your local branch before the PR</td></tr></tbody></table></div>
+<blockquote>The golden rule: never rebase a branch other people are already using. Rebase rewrites history, and rewriting shared history breaks your teammates' work.</blockquote>
+<h2>What is a conflict</h2>
+<p>A conflict happens when two branches changed the same line of a file in different ways. Git doesn't know which version is right and asks you to decide. It's not an error — it's a normal situation that you resolve by editing the file and marking it as resolved.</p>
+</div>
 <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 porta = 8080
 =======
 porta = 3000
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/config
 # escolha uma versão, apague os marcadores, git add e commit</code></pre>
-
+<div data-lang="pt">
 <h2>Trabalhando com o remoto</h2>
 <p>O repositório remoto (ex. GitHub) é a cópia compartilhada. Três comandos formam o vocabulário básico:</p>
 <ul>
@@ -121,9 +140,21 @@ porta = 3000
 </ul>
 
 <h2>Diagrama de branches</h2>
+</div>
+<div data-lang="en">
+<h2>Working with the remote</h2>
+<p>The remote repository (e.g. GitHub) is the shared copy. Three commands make up the basic vocabulary:</p>
+<ul>
+  <li><strong>push</strong> — sends your commits to the remote.</li>
+  <li><strong>pull</strong> — fetches and merges the remote's changes right away.</li>
+  <li><strong>fetch</strong> — fetches the changes without merging (you decide later).</li>
+</ul>
+<h2>Branch diagram</h2>
+</div>
 <pre><code>main    A---B---C-------F   (F = merge)
                  \     /
 feature           D---E</code></pre>
+<div data-lang="pt">
 <p>A branch <code>feature</code> nasceu de <code>B</code>, recebeu os commits <code>D</code> e <code>E</code>, e foi integrada em <code>F</code> via merge.</p>
 
 <h2>Fluxos de trabalho</h2>
@@ -136,16 +167,30 @@ feature           D---E</code></pre>
 
 <h2>Conclusão</h2>
 <p>Git é a memória do projeto e a forma como o time colabora. Entender merge vs rebase, saber resolver conflitos sem pânico e conhecer os fluxos de trabalho são habilidades que você usa todos os dias. Um histórico limpo e um fluxo bem definido tornam o trabalho de todos — incluindo o <a href="ci-cd-basico.html">pipeline de CI/CD</a> — muito mais previsível.</p>
-              <div class="post-tags"><span class="tag">Git</span><span class="tag">Versionamento</span><span class="tag">Fundamentos</span></div>
+              
+</div>
+<div data-lang="en">
+<p>The <code>feature</code> branch was created from <code>B</code>, received commits <code>D</code> and <code>E</code>, and was integrated into <code>F</code> via merge.</p>
+<h2>Workflows</h2>
+<p>Knowing the commands isn't enough: teams adopt an agreed-upon <em>workflow</em>. The three most common:</p>
+<ul>
+  <li><strong>Feature branch + Pull Request</strong> — each task on its own branch, reviewed via PR before entering main. The standard for most teams.</li>
+  <li><strong>Trunk-based</strong> — everyone integrates often into a single main branch, and branches live for hours, not days. Favors continuous <a href="ci-cd-basico.html">CI/CD</a>.</li>
+  <li><strong>GitFlow</strong> — separate branches for develop, release and hotfix. Robust but heavy; good for versioned releases.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Git is the project's memory and the way the team collaborates. Understanding merge vs rebase, knowing how to resolve conflicts without panic and knowing the workflows are skills you use every day. A clean history and a well-defined workflow make everyone's work — including the <a href="ci-cd-basico.html">CI/CD pipeline</a> — far more predictable.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Git">Git</span><span class="tag" data-en="Version control">Versionamento</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
-                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
-                <a class="rel-card" href="containers-docker.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Pleno</span><span class="rel-title">Containers e Docker: por que 'funciona na minha máquina' acabou</span></a>
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Linux and the terminal: the bare minimum every DevOps engineer masters">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="CI/CD in practice: from commit to automatic deploy">CI/CD na prática: do commit ao deploy automático</span></a>
+                <a class="rel-card" href="containers-docker.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Mid-level"><i class="bx bx-infinite"></i> DevOps · Pleno</span><span class="rel-title" data-en="Containers and Docker: why &#x27;it works on my machine&#x27; is over">Containers e Docker: por que 'funciona na minha máquina' acabou</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -162,7 +207,7 @@ feature           D---E</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -173,6 +218,7 @@ feature           D---E</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

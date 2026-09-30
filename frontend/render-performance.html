@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Rendering and performance: reflow, repaint and the critical path - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Renderização e performance: reflow, repaint e o caminho crítico - Diogo Gomes</title>
   <meta content="Como o navegador transforma HTML/CSS/JS em pixels, o que é reflow vs repaint e por que seu app trava — com o que fazer a respeito." name="description">
@@ -27,18 +28,20 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Renderização e performance: reflow, repaint e o caminho crítico", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/render-performance.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como o navegador transforma HTML/CSS/JS em pixels, o que é reflow vs repaint e por que seu app trava — com o que fazer a respeito.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +71,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Front-end · Pleno</h2>
+          <h2 data-en="Front-end · Mid-level">Front-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Front-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +87,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-slider"></i> Front-end · Pleno</span>
-              <h1>Renderização e performance: reflow, repaint e o caminho crítico</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 13 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-slider"></i> <span data-en="Front-end · Mid-level">Front-end · Pleno</span></span>
+              <h1 data-en="Rendering and performance: reflow, repaint and the critical path">Renderização e performance: reflow, repaint e o caminho crítico</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 13, 2026">13 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="3 min read">3 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>"Por que essa página trava quando rolo a lista?" Quase sempre a resposta está em como o navegador transforma seu HTML e CSS em pixels — o <strong>caminho crítico de renderização</strong>. Entender reflow e repaint é o que separa quem só faz a tela aparecer de quem faz a tela aparecer <em>rápido</em>.</p>
 
 <h2>O caminho crítico de renderização</h2>
@@ -139,16 +143,68 @@ itens.forEach((el, i) =&gt; el.style.height = alturas[i] + 10 + 'px');</code></p
 
 <h2>Conclusão</h2>
 <p>O navegador segue DOM → CSSOM → layout → paint → composite, e cada mudança pode custar um reflow (caro) ou um repaint (mais barato). Agrupe leituras e escritas, anime no composite e virtualize listas. Esse cuidado local é a base para a visão mais ampla de <a href="web-performance-core-vitals.html">Core Web Vitals</a>.</p>
-              <div class="post-tags"><span class="tag">Performance</span><span class="tag">Renderização</span><span class="tag">Navegador</span></div>
+</div>
+<div data-lang="en">
+<p>"Why does this page lag when I scroll the list?" Almost always the answer lies in how the browser turns your HTML and CSS into pixels — the <strong>critical rendering path</strong>. Understanding reflow and repaint is what separates those who just make the screen appear from those who make it appear <em>fast</em>.</p>
+
+<h2>The critical rendering path</h2>
+<p>To draw a pixel, the browser follows an assembly line of steps:</p>
+<pre><code>HTML  → DOM ┐
+            ├→ Render Tree → Layout → Paint → Composite
+CSS   → CSSOM┘</code></pre>
+<p>The <strong>DOM</strong> (structure) and the <strong>CSSOM</strong> (styles) combine into the <strong>render tree</strong> (what is visible and how). <strong>Layout</strong> calculates the position and size of each element, <strong>Paint</strong> fills in the pixels (color, text, shadow) and <strong>Composite</strong> stacks the layers on screen.</p>
+
+<h2>Reflow vs repaint</h2>
+<p>When something changes, the browser doesn't redo everything. There are two levels of rework:</p>
+<ul>
+<li><strong>Reflow (layout):</strong> recalculating geometry — position and size. Expensive, because it can affect neighboring elements and even the entire page.</li>
+<li><strong>Repaint:</strong> redrawing pixels without touching geometry — changing a background color, for example. Cheaper than reflow.</li>
+</ul>
+<p>Analogy: reflow is redrawing the house's floor plan (it moves walls); repaint is just repainting a wall that already exists.</p>
+
+<div class="table-wrap"><table><thead><tr><th></th><th>Reflow (layout)</th><th>Repaint</th></tr></thead><tbody><tr><td>Recalculates geometry?</td><td>Yes</td><td>No</td></tr><tr><td>Cost</td><td>High</td><td>Medium</td></tr><tr><td>Triggered by</td><td>width, top, font-size, add/remove node</td><td>color, background, visibility</td></tr></tbody></table></div>
+
+<h2>What triggers reflow</h2>
+<p>Changing dimensions, position, font, adding or removing elements, resizing the window — everything forces reflow. And there's a treacherous detail: <em>reading</em> certain properties (like <code>offsetHeight</code>, <code>getBoundingClientRect</code>) forces the browser to do a reflow <em>right then</em> to give you the up-to-date value.</p>
+
+<h2>Layout thrashing: the silent villain</h2>
+<p><strong>Layout thrashing</strong> happens when you interleave reads and writes in a loop, forcing repeated reflow. The browser wanted to batch the changes, but each read forces it to recalculate immediately.</p>
+
+<pre><code>// BAD: alternating read and write → reflow on every iteration
+for (const el of itens) {
+  el.style.height = el.offsetHeight + 10 + 'px';
+}
+
+// GOOD: read everything, then write everything
+const alturas = itens.map(el =&gt; el.offsetHeight);
+itens.forEach((el, i) =&gt; el.style.height = alturas[i] + 10 + 'px');</code></pre>
+
+<h2>What to do in practice</h2>
+<ul>
+<li><strong>Batch reads and writes:</strong> read all measurements, then apply all changes.</li>
+<li><strong>Animate with <code>transform</code> and <code>opacity</code>:</strong> they run at the composite step, with no reflow or repaint.</li>
+<li><strong>Avoid forcing synchronous layout:</strong> don't read <code>offsetTop</code> right after writing a style.</li>
+<li><strong>Virtualize long lists:</strong> render only what's visible (windowing) instead of 10,000 rows.</li>
+<li><strong>Use <code>will-change</code> sparingly</strong> to promote animated elements to their own layers.</li>
+</ul>
+
+<blockquote>Fast rendering rarely comes from "making the JS faster" — it comes from asking the browser for less layout work.</blockquote>
+
+<p>Interviews commonly ask you to explain the difference between reflow and repaint, or why animating <code>transform</code> is better than animating <code>top</code>. Day to day, it shows up when a large list stutters on scroll or an animation gets janky.</p>
+
+<h2>Conclusion</h2>
+<p>The browser follows DOM → CSSOM → layout → paint → composite, and each change can cost a reflow (expensive) or a repaint (cheaper). Batch reads and writes, animate at the composite step and virtualize lists. This local care is the basis for the broader view of <a href="web-performance-core-vitals.html">Core Web Vitals</a>.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Performance">Performance</span><span class="tag" data-en="Rendering">Renderização</span><span class="tag" data-en="Browser">Navegador</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
-                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">CSS sem medo: box model, flexbox e grid</span></a>
-                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="CSS without fear: box model, flexbox and grid">CSS sem medo: box model, flexbox e grid</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Essential JavaScript: types, scope and the DOM">JavaScript essencial: tipos, escopo e o DOM</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to track">Voltar à trilha</span></a>
             </div>
 
           </div>
@@ -165,7 +221,7 @@ itens.forEach((el, i) =&gt; el.style.height = alturas[i] + 10 + 'px');</code></p
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +232,7 @@ itens.forEach((el, i) =&gt; el.style.height = alturas[i] + 10 + 'px');</code></p
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

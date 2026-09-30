@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Smoke, sanity, regression and retest: the types that get mixed up - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Smoke, sanity, regressão e retest: os tipos que se confundem - Diogo Gomes</title>
   <meta content="Smoke, sanity, regressão, retest e confirmação: o que cada termo significa, quando rodar cada um e por que eles vivem sendo trocados." name="description">
@@ -28,17 +29,18 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/i18n.css" rel="stylesheet">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Smoke, sanity, regressão e retest: os tipos que se confundem", "datePublished": "2026-06-21", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/tipos-de-teste.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O que cada termo significa, quando rodar cada um e por que eles vivem sendo trocados.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
@@ -68,11 +70,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testes</h2>
+          <h2 data-en="Tests">Testes</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Testes</li>
+            <li data-en="Tests">Testes</li>
           </ol>
         </div>
       </div>
@@ -84,12 +86,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
-              <h1>Smoke, sanity, regressão e retest: os tipos que se confundem</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 21 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 6 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span>
+              <h1 data-en="Smoke, sanity, regression and retest: the types that get mixed up">Smoke, sanity, regressão e retest: os tipos que se confundem</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 21, 2026">21 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="6 min read">6 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>"Qual a diferença entre smoke e sanity?" e "retest é a mesma coisa que regressão?" são perguntas que parecem decoreba, mas têm um propósito prático: cada um desses tipos responde a uma pergunta diferente sobre a build, e rodar o errado na hora errada custa tempo. Saber distinguir é o que organiza a rotina de quem testa todo dia.</p>
 
               <h2>O mapa rápido</h2>
@@ -138,17 +141,67 @@
 
               <h2>Conclusão</h2>
               <p>Não são sinônimos nem detalhe acadêmico: smoke decide se vale testar, sanity foca o ponto mexido, retest confirma a correção e regressão protege o resto. Usar o termo certo deixa claro para o time <em>o que</em> foi verificado — e isso é metade da comunicação de qualidade.</p>
+</div>
+<div data-lang="en">
+<p>"What's the difference between smoke and sanity?" and "is retest the same as regression?" seem like rote-memorization questions, but they have a practical purpose: each of these types answers a different question about the build, and running the wrong one at the wrong time costs time. Knowing how to tell them apart is what organizes the routine of anyone who tests every day.</p>
 
-              <div class="post-tags"><span class="tag">Smoke</span><span class="tag">Sanity</span><span class="tag">Regressão</span><span class="tag">Retest</span><span class="tag">Fundamentos</span></div>
+              <h2>The quick map</h2>
+              <pre><code>New build arrived
+       │
+       ├── Is it worth testing?               → SMOKE   (broad and shallow)
+       │
+       ├── Is that specific area OK?          → SANITY  (narrow and deep)
+       │
+   A bug was fixed?
+       │
+       ├── Is the bug really gone?            → RETEST  (same case, same steps)
+       │
+       └── Did the fix break something else?  → REGRESSION (the surroundings and the rest)</code></pre>
+
+              <h2>Smoke test — "does the build come up?"</h2>
+              <p>The name comes from electronics: you powered up the board and, if smoke came out, there was no point continuing. The smoke test is a <strong>broad and shallow</strong> set of checks on the most critical flows: does the application start? Does login work? Does the home page load? If the smoke test fails, the build is rejected <em>before</em> spending effort on deeper tests.</p>
+              <p>It's the pipeline's first gate — it runs automated on every deploy, in minutes. A red smoke test means "no point continuing".</p>
+
+              <h2>Sanity test — "does this specific part make sense?"</h2>
+              <p>Sanity is the opposite in shape: <strong>narrow and deep</strong>. After a targeted change (a fix, a rule tweak), you verify <em>only</em> that functionality in detail, without sweeping the whole system. It's a quick rationality check: "they touched the shipping calculation — is shipping still coherent?".</p>
+              <blockquote>Smoke is wide and shallow (many areas, superficially). Sanity is narrow and deep (one area, thoroughly). Both are quick "is it worth going on?" checks, but in opposite directions.</blockquote>
+
+              <h2>Retest (confirmation testing) — "is the bug gone?"</h2>
+              <p>When a defect is fixed, the retest runs <strong>exactly the same case</strong> that failed, with the same steps and data, to confirm it now passes. It's targeted and deterministic: either that specific bug is gone, or it isn't. Without a retest, you close a bug on trust.</p>
+
+              <h2>Regression — "did the fix break the rest?"</h2>
+              <p>Every change has potential side effects. <strong>Regression</strong> testing reruns a set of <em>already existing</em> cases around the change (and ideally across the system) to make sure what used to work still works. It's the type that grows the most over time and the main candidate for automation — a manual regression suite quickly becomes a bottleneck.</p>
+              <p>The classic confusion: <strong>retest</strong> confirms the fix of bug X; <strong>regression</strong> checks that fixing X didn't break Y and Z. They go together, but answer different questions.</p>
+
+              <h2>Side by side</h2>
+              <div class="table-wrap">
+              <table>
+                <thead><tr><th>Type</th><th>Question</th><th>Scope</th><th>When</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Smoke</strong></td><td>Is the build stable enough to test?</td><td>Broad, superficial</td><td>On every build/deploy</td></tr>
+                  <tr><td><strong>Sanity</strong></td><td>Is this specific area coherent?</td><td>Narrow, deep</td><td>After a targeted change</td></tr>
+                  <tr><td><strong>Retest</strong></td><td>Is the fixed bug gone?</td><td>The case that failed</td><td>After a fix</td></tr>
+                  <tr><td><strong>Regression</strong></td><td>Does what worked still work?</td><td>Existing cases around it</td><td>After any change</td></tr>
+                </tbody>
+              </table>
+              </div>
+
+              <h2>How this shows up in the pipeline</h2>
+              <p>In practice they fit into an order: <strong>smoke</strong> runs first and blocks broken builds cheaply; if it passes, automated <strong>regression</strong> covers the surroundings; <strong>sanity</strong> and <strong>retest</strong> come in when there's a specific fix to validate. Mapping each one to the right moment avoids both the waste of running the whole suite for a trivial change and the risk of releasing without checking side effects.</p>
+
+              <h2>Conclusion</h2>
+              <p>They are neither synonyms nor an academic detail: smoke decides whether testing is worthwhile, sanity focuses on the spot that was touched, retest confirms the fix and regression protects the rest. Using the right term makes it clear to the team <em>what</em> was verified — and that's half of quality communication.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Smoke">Smoke</span><span class="tag" data-en="Sanity">Sanity</span><span class="tag" data-en="Regression">Regressão</span><span class="tag" data-en="Retest">Retest</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pirâmide de testes e os quadrantes ágeis</span></a>
-                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">CI/CD para QA: testes no coração do pipeline</span></a>
-                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Técnicas de design de teste: cobrir mais com menos casos</span></a>
+                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="The test pyramid and the agile quadrants">Pirâmide de testes e os quadrantes ágeis</span></a>
+                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> <span data-en="CI/CD">CI/CD</span></span><span class="rel-title" data-en="CI/CD for QA: tests at the heart of the pipeline">CI/CD para QA: testes no coração do pipeline</span></a>
+                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="Test design techniques: covering more with fewer cases">Técnicas de design de teste: cobrir mais com menos casos</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -165,7 +218,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -176,6 +229,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
