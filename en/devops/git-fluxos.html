@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /devops/git-fluxos.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/devops/git-fluxos.html" rel="canonical"/>
+<link href="https://diogomes.github.io/devops/git-fluxos.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/devops/git-fluxos.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/devops/git-fluxos.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Git beyond the commit: branches, merge, and workflows - Diogo Gomes</title>
+<meta content="Merge vs rebase, what a conflict is, and the workflows (trunk-based, GitFlow) that organize an entire team's work." name="description"/>
+<meta content="DevOps, Júnior, Git, Versionamento, Fundamentos, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Git beyond the commit: branches, merge, and workflows" property="og:title"/>
+<meta content="Merge vs rebase, what a conflict is, and the workflows (trunk-based, GitFlow) that organize an entire team's work." property="og:description"/>
+<meta content="https://diogomes.github.io/en/devops/git-fluxos.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-git-fluxos-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-git-fluxos-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../devops/feed.xml" rel="alternate" title="DevOps — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Git além do commit: branches, merge e fluxos de trabalho", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/git-fluxos.html", "image": "https://diogomes.github.io/assets/img/og/devops-git-fluxos.png", "description": "Merge vs rebase, o que é um conflito e os fluxos (trunk-based, GitFlow) que organizam o trabalho de um time inteiro.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>DevOps · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">DevOps</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-git-branch"></i> DevOps · Junior</span>
+<h1>Git beyond the commit: branches, merge, and workflows</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 22, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Knowing how to run <code>git commit</code> and <code>git push</code> is just the beginning; the real work starts when several people touch the same code at the same time. That is where branches, merge, rebase and workflows come into play. Understanding these pieces avoids painful conflicts and keeps the project history clean and easy to follow.</p>
+<h2>Commit and branch: the basics</h2>
+<p>A <strong>commit</strong> is a snapshot of the code at a moment in time. A <strong>branch</strong> is an independent line of development — a way to work on a feature without affecting the stable code. Creating a branch is cheap and fast, and that is precisely the beauty of Git.</p>
+</div>
+<pre><code>git switch -c feature/login   # cria e entra na branch
+git add .
+git commit -m "adiciona tela de login"</code></pre>
+
+<div>
+<h2>Merge vs rebase</h2>
+<p>Both are used to bring the work of one branch into another, but in different ways. <strong>Merge</strong> creates a merge commit and preserves the real history. <strong>Rebase</strong> rewrites your branch's commits as if they had been created on top of the other branch, producing a linear history. Interviewers often ask you to explain the difference and when to use each one.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Merge</th><th>Rebase</th></tr></thead><tbody><tr><td>History</td><td>Preserved (with a merge commit)</td><td>Rewritten (linear)</td></tr><tr><td>Traceability</td><td>Shows when something was integrated</td><td>Cleaner history, loses the "when"</td></tr><tr><td>Risk</td><td>Safe on shared branches</td><td>Dangerous on already-published branches</td></tr><tr><td>Typical use</td><td>Bringing a feature into main</td><td>Updating your local branch before the PR</td></tr></tbody></table></div>
+<blockquote>The golden rule: never rebase a branch other people are already using. Rebase rewrites history, and rewriting shared history breaks your teammates' work.</blockquote>
+<h2>What is a conflict</h2>
+<p>A conflict happens when two branches changed the same line of a file in different ways. Git doesn't know which version is right and asks you to decide. It's not an error — it's a normal situation that you resolve by editing the file and marking it as resolved.</p>
+</div>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+porta = 8080
+=======
+porta = 3000
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/config
+# escolha uma versão, apague os marcadores, git add e commit</code></pre>
+
+<div>
+<h2>Working with the remote</h2>
+<p>The remote repository (e.g. GitHub) is the shared copy. Three commands make up the basic vocabulary:</p>
+<ul>
+<li><strong>push</strong> — sends your commits to the remote.</li>
+<li><strong>pull</strong> — fetches and merges the remote's changes right away.</li>
+<li><strong>fetch</strong> — fetches the changes without merging (you decide later).</li>
+</ul>
+<h2>Branch diagram</h2>
+</div>
+<pre><code>main    A---B---C-------F   (F = merge)
+                 \     /
+feature           D---E</code></pre>
+
+<div>
+<p>The <code>feature</code> branch was created from <code>B</code>, received commits <code>D</code> and <code>E</code>, and was integrated into <code>F</code> via merge.</p>
+<h2>Workflows</h2>
+<p>Knowing the commands isn't enough: teams adopt an agreed-upon <em>workflow</em>. The three most common:</p>
+<ul>
+<li><strong>Feature branch + Pull Request</strong> — each task on its own branch, reviewed via PR before entering main. The standard for most teams.</li>
+<li><strong>Trunk-based</strong> — everyone integrates often into a single main branch, and branches live for hours, not days. Favors continuous <a href="ci-cd-basico.html">CI/CD</a>.</li>
+<li><strong>GitFlow</strong> — separate branches for develop, release and hotfix. Robust but heavy; good for versioned releases.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Git is the project's memory and the way the team collaborates. Understanding merge vs rebase, knowing how to resolve conflicts without panic and knowing the workflows are skills you use every day. A clean history and a well-defined workflow make everyone's work — including the <a href="ci-cd-basico.html">CI/CD pipeline</a> — far more predictable.</p>
+</div>
+<div class="post-tags"><span class="tag">Git</span><span class="tag">Version control</span><span class="tag">Fundamentals</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Linux and the terminal: the bare minimum every DevOps engineer masters</span></a>
+<a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">CI/CD in practice: from commit to automatic deploy</span></a>
+<a class="rel-card" href="containers-docker.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Mid-level</span><span class="rel-title">Containers and Docker: why 'it works on my machine' is over</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="DevSecOps: secrets, least privilege, and security shift-left - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/devops/seguranca-devsecops.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/seguranca-devsecops.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/seguranca-devsecops.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/seguranca-devsecops.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>DevSecOps: segredos, least privilege e shift-left de segurança - Diogo Gomes</title>
   <meta content="Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início." name="description">
   <meta content="DevOps, Sênior, DevSecOps, Segurança, Sênior, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="DevSecOps: segredos, least privilege e shift-left de segurança">
-  <meta property="og:description" content="Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início.">
+  <meta property="og:title" content="DevSecOps: segredos, least privilege e shift-left de segurança" data-en-content="DevSecOps: secrets, least privilege, and security shift-left">
+  <meta property="og:description" content="Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início." data-en-content="Security is no longer a final step. Secrets management, least privilege, pipeline scanning and the culture of bringing security to the start.">
   <meta property="og:url" content="https://diogomes.github.io/devops/seguranca-devsecops.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/devops-seguranca-devsecops.png" data-en-content="https://diogomes.github.io/assets/img/og/devops-seguranca-devsecops-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/devops-seguranca-devsecops.png" data-en-content="https://diogomes.github.io/assets/img/og/devops-seguranca-devsecops-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="DevOps — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DevSecOps: segredos, least privilege e shift-left de segurança", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/seguranca-devsecops.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DevSecOps: segredos, least privilege e shift-left de segurança", "datePublished": "2026-06-06", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/seguranca-devsecops.html", "image": "https://diogomes.github.io/assets/img/og/devops-seguranca-devsecops.png", "description": "Segurança deixou de ser etapa final. Gestão de segredos, menor privilégio, scan no pipeline e a cultura de levar segurança para o início.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>DevOps · Sênior</h2>
+          <h2 data-en="DevOps · Senior">DevOps · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">DevOps</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-lock-alt"></i> DevOps · Sênior</span>
-              <h1>DevSecOps: segredos, least privilege e shift-left de segurança</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-lock-alt&quot;&gt;&lt;/i&gt; DevOps · Senior"><i class="bx bx-lock-alt"></i> DevOps · Sênior</span>
+              <h1 data-en="DevSecOps: secrets, least privilege, and security shift-left">DevSecOps: segredos, least privilege e shift-left de segurança</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 6, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 6 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Durante muito tempo, segurança era a etapa final: o software ficava pronto, um time separado fazia uma auditoria e, na véspera do deploy, apontava problemas caros de consertar. DevSecOps inverte isso. A ideia é trazer segurança para o começo e distribuí-la por todo o processo, tornando-a responsabilidade de todos — não um portão no fim do caminho. Para um DevOps sênior, isso deixou de ser opcional.</p>
 
 <h2>Shift-left de segurança</h2>
@@ -98,23 +111,40 @@
 
 <h2>Gestão de segredos</h2>
 <p>Senhas, tokens e chaves de API <strong>nunca</strong> devem ir para o Git — nem em arquivos de configuração, nem "temporariamente". Uma vez no histórico, lá ficam para sempre. A solução é um <strong>cofre de segredos</strong> (vault), de onde a aplicação busca as credenciais em tempo de execução, com acesso auditado e rotação automática.</p>
+</div>
+<div data-lang="en">
+<p>For a long time, security was the final step: the software was done, a separate team ran an audit and, on the eve of the deploy, pointed out problems that were expensive to fix. DevSecOps flips that. The idea is to bring security to the beginning and spread it across the whole process, making it everyone's responsibility — not a gate at the end of the road. For a senior DevOps engineer, this is no longer optional.</p>
+<h2>Shift-left security</h2>
+<p>"Shift-left" means moving security concerns to the <em>left</em> of the timeline — closer to when the code is written. The earlier a problem is found, the cheaper it is to fix. A leaked secret caught in a <a href="git-fluxos.html">commit</a> costs seconds; the same secret discovered in production costs an incident.</p>
+<blockquote>Security isn't a stamp at the end of the conveyor belt; it's a property built at every step. The further left you catch the problem, the cheaper and less painful it is to fix.</blockquote>
+<h2>Secrets management</h2>
+<p>Passwords, tokens and API keys should <strong>never</strong> go into Git — not in config files, not "temporarily". Once in the history, they stay there forever. The solution is a <strong>secrets vault</strong>, from which the application fetches credentials at runtime, with audited access and automatic rotation.</p>
+</div>
 <pre><code># ERRADO — segredo no código, versionado para sempre
 db_password = "p@ssw0rd123"
 
 # CERTO — referência a um segredo guardado no cofre
 db_password = vault.read("secret/prod/db").password</code></pre>
-
+<div data-lang="pt">
 <h2>Menor privilégio (least privilege)</h2>
 <p>O princípio do menor privilégio diz que cada usuário, serviço ou processo deve ter <em>apenas</em> as permissões de que precisa, nada além. Na prática, isso se faz com <strong>IAM</strong> (Identity and Access Management): em vez de dar acesso de administrador "para facilitar", você concede o mínimo. Assim, se uma credencial vaza, o estrago fica contido.</p>
 
 <h2>Scan no pipeline: SAST e DAST</h2>
 <p>O <a href="ci-cd-basico.html">pipeline de CI/CD</a> é o lugar ideal para automatizar verificações de segurança a cada mudança. Três tipos aparecem com frequência:</p>
 <div class="table-wrap"><table><thead><tr><th>Técnica</th><th>O que analisa</th><th>Quando roda</th></tr></thead><tbody><tr><td>SAST</td><td>O código-fonte parado</td><td>No build</td></tr><tr><td>DAST</td><td>A aplicação em execução</td><td>Em ambiente de teste</td></tr><tr><td>Scan de imagem</td><td>Vulnerabilidades nas dependências da imagem</td><td>Após o build do container</td></tr></tbody></table></div>
+</div>
+<div data-lang="en">
+<h2>Least privilege</h2>
+<p>The principle of least privilege says that every user, service or process should have <em>only</em> the permissions it needs, nothing more. In practice, this is done with <strong>IAM</strong> (Identity and Access Management): instead of granting admin access "to make things easier", you grant the minimum. That way, if a credential leaks, the damage is contained.</p>
+<h2>Pipeline scanning: SAST and DAST</h2>
+<p>The <a href="ci-cd-basico.html">CI/CD pipeline</a> is the ideal place to automate security checks on every change. Three types appear frequently:</p>
+<div class="table-wrap"><table><thead><tr><th>Technique</th><th>What it analyzes</th><th>When it runs</th></tr></thead><tbody><tr><td>SAST</td><td>The static source code</td><td>At build</td></tr><tr><td>DAST</td><td>The running application</td><td>In a test environment</td></tr><tr><td>Image scan</td><td>Vulnerabilities in the image's dependencies</td><td>After the container build</td></tr></tbody></table></div>
+</div>
 <pre><code>steps:
   - run: trivy image minha-app:1.2   # scan de vulnerabilidades
   - run: gitleaks detect             # procura segredos vazados
   - run: semgrep --config auto       # análise estática (SAST)</code></pre>
-
+<div data-lang="pt">
 <h2>Segurança da cadeia de suprimentos</h2>
 <p>Software moderno é montado com centenas de dependências de terceiros — e cada uma é uma porta de entrada potencial. Ataques de <strong>supply chain</strong> exploram exatamente isso: comprometem uma biblioteca popular para atingir todos que a usam. Defender-se envolve fixar versões, verificar a procedência dos pacotes e manter um inventário do que você usa (SBOM).</p>
 
@@ -123,16 +153,26 @@ db_password = vault.read("secret/prod/db").password</code></pre>
 
 <h2>Conclusão</h2>
 <p>DevSecOps é segurança integrada, contínua e compartilhada. Trazer as verificações para a esquerda, manter segredos fora do Git, aplicar menor privilégio, automatizar scans no pipeline e cuidar da cadeia de suprimentos são práticas concretas que, somadas a uma cultura onde todos se importam, tornam o sistema resiliente por construção. É o que distingue um DevOps sênior maduro.</p>
-              <div class="post-tags"><span class="tag">DevSecOps</span><span class="tag">Segurança</span><span class="tag">Sênior</span></div>
+              
+</div>
+<div data-lang="en">
+<h2>Supply chain security</h2>
+<p>Modern software is assembled from hundreds of third-party dependencies — and each one is a potential entry point. <strong>Supply chain</strong> attacks exploit exactly that: they compromise a popular library to reach everyone who uses it. Defending against them involves pinning versions, verifying package provenance and keeping an inventory of what you use (SBOM).</p>
+<h2>Culture: everyone's responsibility</h2>
+<p>The hardest part of DevSecOps isn't the tooling, it's the culture. Security stops being "the security team's problem" and becomes a quality criterion that every developer and operator carries. Day to day, it shows up in code reviews that look for risks, in architecture choices that assume things will fail, and in treating a security alert as naturally as you treat a bug.</p>
+<h2>Conclusion</h2>
+<p>DevSecOps is security that is integrated, continuous and shared. Shifting checks left, keeping secrets out of Git, applying least privilege, automating scans in the pipeline and looking after the supply chain are concrete practices that, combined with a culture where everyone cares, make the system resilient by design. That is what sets a mature senior DevOps engineer apart.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="DevSecOps">DevSecOps</span><span class="tag" data-en="Security">Segurança</span><span class="tag" data-en="Senior">Sênior</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Linux e terminal: o mínimo que todo DevOps domina</span></a>
-                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">Git além do commit: branches, merge e fluxos de trabalho</span></a>
-                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title">CI/CD na prática: do commit ao deploy automático</span></a>
+                <a class="rel-card" href="linux-terminal.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Linux and the terminal: the bare minimum every DevOps engineer masters">Linux e terminal: o mínimo que todo DevOps domina</span></a>
+                <a class="rel-card" href="git-fluxos.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="Git beyond the commit: branches, merge, and workflows">Git além do commit: branches, merge e fluxos de trabalho</span></a>
+                <a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-infinite&quot;&gt;&lt;/i&gt; DevOps · Junior"><i class="bx bx-infinite"></i> DevOps · Júnior</span><span class="rel-title" data-en="CI/CD in practice: from commit to automatic deploy">CI/CD na prática: do commit ao deploy automático</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -149,7 +189,7 @@ db_password = vault.read("secret/prod/db").password</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -160,6 +200,8 @@ db_password = vault.read("secret/prod/db").password</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

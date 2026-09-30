@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Web accessibility (a11y): ARIA, focus and contrast in practice - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/frontend/acessibilidade-web.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/acessibilidade-web.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/acessibilidade-web.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/acessibilidade-web.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Acessibilidade web (a11y): ARIA, foco e contraste na prática - Diogo Gomes</title>
   <meta content="Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença." name="description">
   <meta content="Front-end, Pleno, Acessibilidade, a11y, Front-end, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Acessibilidade web (a11y): ARIA, foco e contraste na prática">
-  <meta property="og:description" content="Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença.">
+  <meta property="og:title" content="Acessibilidade web (a11y): ARIA, foco e contraste na prática" data-en-content="Web accessibility (a11y): ARIA, focus and contrast in practice">
+  <meta property="og:description" content="Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença." data-en-content="Accessibility is the front end's responsibility, not optional. ARIA in the right measure, keyboard focus, contrast and what really makes a difference.">
   <meta property="og:url" content="https://diogomes.github.io/frontend/acessibilidade-web.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/frontend-acessibilidade-web.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-acessibilidade-web-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/frontend-acessibilidade-web.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-acessibilidade-web-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Acessibilidade web (a11y): ARIA, foco e contraste na prática", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/acessibilidade-web.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Acessibilidade web (a11y): ARIA, foco e contraste na prática", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/acessibilidade-web.html", "image": "https://diogomes.github.io/assets/img/og/frontend-acessibilidade-web.png", "description": "Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Front-end · Pleno</h2>
+          <h2 data-en="Front-end · Mid-level">Front-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Front-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-accessibility"></i> Front-end · Pleno</span>
-              <h1>Acessibilidade web (a11y): ARIA, foco e contraste na prática</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 4 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-accessibility"></i> <span data-en="Front-end · Mid-level">Front-end · Pleno</span></span>
+              <h1 data-en="Web accessibility (a11y): ARIA, focus and contrast in practice">Acessibilidade web (a11y): ARIA, foco e contraste na prática</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 25, 2026">25 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="4 min read">4 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Acessibilidade não é um "extra" que o time de design pede no fim do projeto — é parte de fazer o front funcionar para todo mundo, inclusive quem navega só pelo teclado, usa leitor de tela ou enxerga pouco contraste. Saber tornar uma interface acessível, e entender que isso é responsabilidade de quem escreve o HTML e o CSS, é esperado de um front pleno.</p>
 
 <h2>Por que a11y é responsabilidade do front</h2>
@@ -131,16 +144,60 @@
 
 <h2>Conclusão</h2>
 <p>Acessibilidade começa com HTML semântico, usa ARIA só quando o nativo não basta, garante navegação por teclado com foco visível e gerenciado, e respeita contraste, tamanho de alvo e texto alternativo. Mire no nível AA da WCAG. Não é trabalho a mais no fim do projeto: é fazer o front cumprir o que sempre foi seu papel — funcionar para todas as pessoas.</p>
-              <div class="post-tags"><span class="tag">Acessibilidade</span><span class="tag">a11y</span><span class="tag">Front-end</span></div>
+</div>
+<div data-lang="en">
+<p>Accessibility is not an "extra" the design team asks for at the end of the project — it is part of making the front end work for everyone, including people who navigate only by keyboard, use a screen reader or have low contrast vision. Knowing how to make an interface accessible, and understanding that this is the responsibility of whoever writes the HTML and CSS, is expected of a mid-level front-end developer.</p>
+
+<h2>Why a11y is the front end's responsibility</h2>
+<p>The "a11y" suffix is just "accessibility" with the 11 middle letters abbreviated. The core idea: the browser exposes your page's structure to assistive technologies through an <em>accessibility tree</em>, built from your HTML. If you use <code>&lt;div onclick&gt;</code> instead of <code>&lt;button&gt;</code>, the screen reader doesn't announce "button", the keyboard can't focus it and Enter doesn't fire it. What you write <em>is</em> the accessibility. On top of that, in many countries it is a legal requirement.</p>
+
+<h2>Semantic HTML is the foundation</h2>
+<p>Before any ARIA, use the right tag. <code>&lt;button&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> already come with role, focus and keyboard behavior for free. A <code>&lt;button&gt;</code> is focusable, announced as a button and activated by Enter and Space without a single line of JavaScript. This connects directly to <a href="html-semantico.html">semantic HTML</a>: 90% of accessibility is just using the correct markup.</p>
+
+<h2>When (and when NOT) to use ARIA</h2>
+<p>ARIA is a set of attributes (<code>role</code>, <code>aria-label</code>, <code>aria-expanded</code>...) that <em>complements</em> semantics when HTML isn't enough — for example, a custom component such as a <em>combobox</em>. The first rule of ARIA, though, is: <strong>don't use ARIA if a native HTML element solves it</strong>. Misapplied ARIA announces the wrong things and breaks what used to work. <code>role="button"</code> on a <code>&lt;div&gt;</code> forces you to reimplement focus and keyboard handling by hand — use <code>&lt;button&gt;</code>.</p>
+
+<h2>A button, before and after</h2>
+<pre><code>&lt;!-- Before: inaccessible --&gt;
+&lt;div class="btn" onclick="salvar()"&gt;Salvar&lt;/div&gt;
+
+&lt;!-- After: accessible, no extra JS --&gt;
+&lt;button type="button" onclick="salvar()"&gt;Salvar&lt;/button&gt;
+
+&lt;!-- Icon-only button needs a name --&gt;
+&lt;button aria-label="Fechar"&gt;&lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;&lt;/button&gt;</code></pre>
+<p>The <code>&lt;div&gt;</code> doesn't get focus via Tab, doesn't respond to Enter and is announced as "Salvar" without saying it's clickable. The <code>&lt;button&gt;</code> solves all of that for free. The decorative icon gets <code>aria-hidden="true"</code> so it doesn't clutter the screen reader, and the button gets a name via <code>aria-label</code>.</p>
+
+<h2>Keyboard and focus management</h2>
+<p>Many people navigate only with Tab. Three things matter: <strong>focus must be visible</strong> (never remove the <code>outline</code> without putting something in its place), the <strong>focus order</strong> should follow the visual reading order (naturally solved by DOM order) and <strong>modals must trap focus</strong>. When opening a modal, move focus inside it, keep Tab cycling within it and return focus to the originating element on close — otherwise the user "loses" where they were.</p>
+
+<h2>Contrast, target size and alternative text</h2>
+<p>Light gray text on white looks nice and is unreadable for many people. <strong>WCAG</strong> requires a minimum contrast of <strong>4.5:1</strong> for normal text (level AA). Clickable targets must have enough area (around 44×44px) for people with limited motor precision or using touch. And every image that carries information needs a descriptive <code>alt</code>; purely decorative images get <code>alt=""</code> so they are ignored. Keeping target size and not triggering layout reloads also helps <a href="render-performance.html">rendering</a> and general usability.</p>
+
+<h2>Screen readers and WCAG levels</h2>
+<p>A screen reader reads the page aloud, moving through the accessibility tree — which is why order and labels matter so much. The <strong>WCAG</strong> guidelines define three conformance levels:</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>What it covers</th></tr></thead><tbody>
+<tr><td>A</td><td>Essential minimum (e.g., keyboard works)</td></tr>
+<tr><td>AA</td><td>Practical target for most projects (4.5:1 contrast)</td></tr>
+<tr><td>AAA</td><td>Strictest, not always feasible for everything</td></tr>
+</tbody></table></div>
+<p>In practice, aim for <strong>AA</strong> — it's the standard required by most laws and contracts.</p>
+
+<blockquote>The best way to test accessibility is to put the mouse away: navigate your screen using only Tab and Enter. If you can't reach or activate something, nobody who depends on the keyboard can either.</blockquote>
+
+<h2>Conclusion</h2>
+<p>Accessibility starts with semantic HTML, uses ARIA only when native elements aren't enough, ensures keyboard navigation with visible, managed focus, and respects contrast, target size and alternative text. Aim for WCAG level AA. It's not extra work at the end of the project: it's making the front end do what it has always been meant to do — work for all people.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Accessibility">Acessibilidade</span><span class="tag" data-en="a11y">a11y</span><span class="tag" data-en="Front-end">Front-end</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
-                <a class="rel-card" href="seguranca-frontend.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Sênior</span><span class="rel-title">Segurança no front-end: XSS, CSRF e CORS sem mistério</span></a>
-                <a class="rel-card" href="render-performance.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Pleno</span><span class="rel-title">Renderização e performance: reflow, repaint e o caminho crítico</span></a>
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="seguranca-frontend.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Senior">Front-end · Sênior</span></span><span class="rel-title" data-en="Front-end security: XSS, CSRF and CORS demystified">Segurança no front-end: XSS, CSRF e CORS sem mistério</span></a>
+                <a class="rel-card" href="render-performance.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Mid-level">Front-end · Pleno</span></span><span class="rel-title" data-en="Rendering and performance: reflow, repaint and the critical path">Renderização e performance: reflow, repaint e o caminho crítico</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to track">Voltar à trilha</span></a>
             </div>
 
           </div>
@@ -157,7 +214,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -168,6 +225,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

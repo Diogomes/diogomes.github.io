@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Authentication vs Authorization: sessions, JWT and OAuth - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/autenticacao-autorizacao.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Autenticação vs Autorização: sessions, JWT e OAuth - Diogo Gomes</title>
   <meta content="Quem é você (autenticação) e o que você pode fazer (autorização). Sessions, tokens JWT e OAuth explicados sem mistério." name="description">
   <meta content="Back-end, Pleno, Auth, JWT, Segurança, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Autenticação vs Autorização: sessions, JWT e OAuth">
-  <meta property="og:description" content="Quem é você (autenticação) e o que você pode fazer (autorização). Sessions, tokens JWT e OAuth explicados sem mistério.">
+  <meta property="og:title" content="Autenticação vs Autorização: sessions, JWT e OAuth" data-en-content="Authentication vs Authorization: sessions, JWT and OAuth">
+  <meta property="og:description" content="Quem é você (autenticação) e o que você pode fazer (autorização). Sessions, tokens JWT e OAuth explicados sem mistério." data-en-content="Who you are (authentication) and what you can do (authorization). Sessions, JWT tokens and OAuth explained without the mystery.">
   <meta property="og:url" content="https://diogomes.github.io/backend/autenticacao-autorizacao.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/backend-autenticacao-autorizacao.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-autenticacao-autorizacao-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/backend-autenticacao-autorizacao.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-autenticacao-autorizacao-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Autenticação vs Autorização: sessions, JWT e OAuth", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/autenticacao-autorizacao.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Quem é você (autenticação) e o que você pode fazer (autorização). Sessions, tokens JWT e OAuth explicados sem mistério.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Autenticação vs Autorização: sessions, JWT e OAuth", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/autenticacao-autorizacao.html", "image": "https://diogomes.github.io/assets/img/og/backend-autenticacao-autorizacao.png", "description": "Quem é você (autenticação) e o que você pode fazer (autorização). Sessions, tokens JWT e OAuth explicados sem mistério.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Pleno</h2>
+          <h2 data-en="Back-end · Mid-level">Back-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-lock-alt"></i> Back-end · Pleno</span>
-              <h1>Autenticação vs Autorização: sessions, JWT e OAuth</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 17 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-lock-alt&quot;&gt;&lt;/i&gt; Back-end · Mid-level"><i class="bx bx-lock-alt"></i> Back-end · Pleno</span>
+              <h1 data-en="Authentication vs Authorization: sessions, JWT and OAuth">Autenticação vs Autorização: sessions, JWT e OAuth</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 17, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 17 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Autenticação e autorização são confundidas o tempo todo, mas resolvem problemas diferentes. Como dev pleno, você precisa não só saber a diferença, mas escolher entre sessões e tokens, entender a estrutura de um JWT e explicar onde OAuth2 entra. Esses temas aparecem em quase toda entrevista de back-end.</p>
 
 <h2>Authn vs Authz</h2>
@@ -132,16 +145,61 @@ signature -&gt; HMAC(base64(header) + "." + base64(payload), SEGREDO)</code></pr
 
 <h2>Conclusão</h2>
 <p>Authn e authz são camadas distintas e complementares. Sessões oferecem controle fácil de revogação; JWTs oferecem statelessness e escala. OAuth2 cuida do acesso delegado. Saber quando usar cada um, e os cuidados de segurança de cada escolha, é exatamente o que se espera de um pleno.</p>
-              <div class="post-tags"><span class="tag">Auth</span><span class="tag">JWT</span><span class="tag">Segurança</span></div>
+</div>
+<div data-lang="en">
+<p>Authentication and authorization get mixed up all the time, but they solve different problems. As a mid-level dev, you need not only to know the difference, but to choose between sessions and tokens, understand the structure of a JWT and explain where OAuth2 fits in. These topics come up in almost every back-end interview.</p>
+
+<h2>Authn vs Authz</h2>
+<p><strong>Authentication</strong> (authn) answers "who are you?". <strong>Authorization</strong> (authz) answers "what are you allowed to do?". The analogy: authentication is showing your ID at a building's front desk; authorization is the badge that says which floors you can go up to. You have to prove who you are before finding out what you can access — authn first, then authz.</p>
+
+<h2>Session with a cookie</h2>
+<p>In the session model, the user logs in, the server creates a session and stores its state (in memory, a database or Redis). It returns a <strong>cookie</strong> with a session ID. On every request, the browser sends the cookie, and the server looks up the matching session:</p>
+<pre><code>login OK -&gt; server stores session abc123 { userId: 7 }
+        -&gt; Set-Cookie: session=abc123
+
+request -&gt; Cookie: session=abc123
+        -&gt; server looks up abc123, knows it's user 7</code></pre>
+<p>The key point: the state lives on the <strong>server</strong>. This makes revoking access easy, but requires every server to share wherever the session is stored.</p>
+
+<h2>JWT tokens</h2>
+<p>With <strong>JWT</strong> (JSON Web Token), the server keeps no state. At login it generates a <em>signed</em> token containing the user's data, and the client sends it with every request (usually in the <code>Authorization: Bearer ...</code> header). The server only verifies the signature — it doesn't need to look anything up. That's why JWT is <strong>stateless</strong>, which fits REST APIs and scales well horizontally.</p>
+
+<h2>The structure of a JWT</h2>
+<p>A JWT has three parts separated by dots: <code>header.payload.signature</code>.</p>
+<pre><code>header    -&gt; { "alg": "HS256", "typ": "JWT" }
+payload   -&gt; { "sub": 7, "role": "admin", "exp": 1735689600 }
+signature -&gt; HMAC(base64(header) + "." + base64(payload), SECRET)</code></pre>
+<p>Header and payload are just <strong>base64, not encryption</strong> — anyone can read them. The signature guarantees the content hasn't been tampered with, because only whoever has the secret can generate it. Hence the golden rule: <strong>never put secrets in the payload</strong> (passwords, sensitive data), since it's readable.</p>
+
+<h2>Session vs JWT</h2>
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Session (cookie)</th><th>JWT (token)</th></tr></thead><tbody>
+<tr><td>State</td><td>On the server (stateful)</td><td>In the token (stateless)</td></tr>
+<tr><td>Horizontal scaling</td><td>Needs a shared store</td><td>Natural, no store</td></tr>
+<tr><td>Revocation</td><td>Easy (delete the session)</td><td>Hard (token is valid until it expires)</td></tr>
+<tr><td>Size sent</td><td>Small (just the ID)</td><td>Larger (carries the data)</td></tr>
+</tbody></table></div>
+
+<h2>OAuth2: delegated authorization</h2>
+<p>OAuth2 solves a different problem: letting an app access your data on another service <em>without handing over your password</em>. It's what happens with "sign in with Google". You're redirected to Google, authenticate there, and Google gives the app a token that authorizes only what you consented to. The app never sees your password. Important: OAuth2 is about <strong>delegated authorization</strong>, not about login — even though it's the foundation of social login flows.</p>
+
+<blockquote>Authentication proves who you are; authorization decides what you can do. A session keeps state on the server; a JWT carries state in the token. Confusing these pairs is the most common mistake in the field.</blockquote>
+
+<h2>Security notes</h2>
+<p>Points that are always worth mentioning: set a <strong>short expiration</strong> on tokens (the <code>exp</code> claim) and use <em>refresh tokens</em> to renew them; always use HTTPS; mark cookies as <code>HttpOnly</code> and <code>Secure</code>; and remember that revoking a JWT before its time is a real problem — which is why long-lived tokens are risky.</p>
+
+<h2>Conclusion</h2>
+<p>Authn and authz are distinct, complementary layers. Sessions offer easy revocation; JWTs offer statelessness and scale. OAuth2 handles delegated access. Knowing when to use each one, and the security caveats of each choice, is exactly what's expected of a mid-level engineer.</p>
+</div>
+              <div class="post-tags"><span class="tag">Auth</span><span class="tag">JWT</span><span class="tag" data-en="Security">Segurança</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
-                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
-                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">SQL essencial: CRUD, JOIN e transações</span></a>
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="How the web works: HTTP, request and response">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="REST APIs: what makes an API RESTful">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="sql-essencial.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="Essential SQL: CRUD, JOIN and transactions">SQL essencial: CRUD, JOIN e transações</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -158,7 +216,7 @@ signature -&gt; HMAC(base64(header) + "." + base64(payload), SEGREDO)</code></pr
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -169,6 +227,8 @@ signature -&gt; HMAC(base64(header) + "." + base64(payload), SEGREDO)</code></pr
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

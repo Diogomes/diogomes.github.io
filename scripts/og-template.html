@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>OG template</title>
+<!-- Template 1200x630 usado por scripts/og-images.mjs (window.render({...})) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Open+Sans:wght@600;700&display=block" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #0a1f3c;
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    position: relative;
+  }
+  .accent { position: absolute; left: 0; top: 0; bottom: 0; width: 14px; background: #149ddd; }
+  .ring {
+    position: absolute; right: -170px; top: -170px;
+    width: 520px; height: 520px; border-radius: 50%;
+    border: 70px solid #0e2a52;
+  }
+  .ring.small { right: 120px; top: auto; bottom: -120px; width: 220px; height: 220px; border-width: 30px; border-color: #0c2548; }
+  .wrap {
+    position: absolute; inset: 0;
+    padding: 64px 84px 56px 90px;
+    display: flex; flex-direction: column;
+  }
+  .top { display: flex; align-items: center; gap: 16px; }
+  .cat {
+    display: inline-block;
+    padding: 9px 22px;
+    border-radius: 50px;
+    background: #10375f;
+    border: 2px solid #149ddd;
+    color: #5cc6f5;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .kind { color: #7fa6c9; font-weight: 600; font-size: 22px; letter-spacing: 1px; text-transform: uppercase; }
+  .title-box { flex: 1; display: flex; align-items: center; min-height: 0; }
+  #title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 76px;
+    line-height: 1.12;
+    letter-spacing: -1px;
+    max-width: 1000px;
+    overflow-wrap: break-word;
+  }
+  .foot { display: flex; align-items: center; gap: 18px; font-size: 26px; }
+  .foot img { width: 64px; height: 64px; border-radius: 50%; border: 3px solid #149ddd; object-fit: cover; }
+  .foot b { font-family: "Poppins", sans-serif; font-weight: 600; color: #fff; }
+  .foot .dot { color: #149ddd; font-weight: 700; }
+  .foot .site { color: #9fc6e6; }
+</style>
+</head>
+<body>
+  <div class="ring"></div>
+  <div class="ring small"></div>
+  <div class="accent"></div>
+  <div class="wrap">
+    <div class="top"><span class="cat" id="cat">Categoria</span><span class="kind" id="kind">Blog</span></div>
+    <div class="title-box"><h1 id="title">Título do artigo</h1></div>
+    <div class="foot"><img src="../assets/img/DIo.jpeg" alt=""><b>Diogo Gomes</b><span class="dot">·</span><span class="site">diogomes.github.io</span></div>
+  </div>
+<script>
+  window.render = async function (d) {
+    document.documentElement.lang = d.lang === 'en' ? 'en' : 'pt-br';
+    document.getElementById('cat').textContent = d.cat;
+    document.getElementById('kind').textContent = d.kind || '';
+    var el = document.getElementById('title');
+    el.textContent = d.title;
+    await document.fonts.ready;
+    var box = el.parentElement, size = 76;
+    el.style.fontSize = size + 'px';
+    while (size > 40 && el.scrollHeight > box.clientHeight) {
+      size -= 2;
+      el.style.fontSize = size + 'px';
+    }
+    var img = document.querySelector('.foot img');
+    if (!img.complete) await new Promise(function (r) { img.onload = img.onerror = r; });
+    return size;
+  };
+</script>
+</body>
+</html>

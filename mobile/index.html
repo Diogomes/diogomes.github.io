@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Mobile — Diogo Gomes | track by level (junior, mid-level, senior)">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/mobile/index.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/index.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/index.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Mobile — Diogo Gomes | trilha por nível (júnior, pleno, sênior)</title>
@@ -30,20 +35,22 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/quiz.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Mobile — Diogo Gomes">
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -60,6 +67,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -72,174 +80,174 @@
 
         <div class="section-title">
           <h2>Mobile</h2>
-          <p class="blog-intro">O que um desenvolvedor mobile precisa dominar em cada fase da carreira. Do ciclo de vida de uma tela à arquitetura testável e à publicação nas lojas — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
+          <p class="blog-intro" data-en="What a mobile developer needs to master at each stage of their career. From the lifecycle of a screen to testable architecture and publishing to the stores — the concepts that come up in technical interviews and in day-to-day work, explained plainly. Filter by level below.">O que um desenvolvedor mobile precisa dominar em cada fase da carreira. Do ciclo de vida de uma tela à arquitetura testável e à publicação nas lojas — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
         </div>
 
         <div class="blog-search" data-aos="fade-up">
           <i class="bx bx-search"></i>
-          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha">
+          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha" data-en-placeholder="Search the track…" data-en-aria-label="Search the track">
         </div>
 
         <div class="row" data-aos="fade-up">
           <div class="col-12 d-flex justify-content-center">
             <ul id="blog-filters" class="blog-filters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".lvl-junior">Júnior</li>
-              <li data-filter=".lvl-pleno">Pleno</li>
-              <li data-filter=".lvl-senior">Sênior</li>
+              <li data-filter="*" class="filter-active" data-en="All">Todos</li>
+              <li data-filter=".lvl-junior" data-en="Junior">Júnior</li>
+              <li data-filter=".lvl-pleno" data-en="Mid-level">Pleno</li>
+              <li data-filter=".lvl-senior" data-en="Senior">Sênior</li>
             </ul>
           </div>
         </div>
 
         <div class="blog-tools" data-aos="fade-up">
-          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> Assinar via RSS</a>
+          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> <span data-en="Subscribe via RSS">Assinar via RSS</span></a>
         </div>
 
-        <p id="blog-no-results" class="blog-no-results">Nenhum artigo encontrado para sua busca.</p>
+        <p id="blog-no-results" class="blog-no-results" data-en="No articles found for your search.">Nenhum artigo encontrado para sua busca.</p>
 
         <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-mobile"></i> Júnior</span>
+                <span class="post-cat"><i class="bx bx-mobile"></i> <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span>
                 <i class="bx bx-mobile post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="ciclo-de-vida-app.html">Ciclo de vida de um app: estados, telas e o básico que muda tudo</a></h3>
-                <p>Foreground, background, encerrado: os estados de um app e por que ignorar o ciclo de vida causa os bugs mais comuns do mobile.</p>
+                <h3><a href="ciclo-de-vida-app.html" data-en="App lifecycle: states, screens and the basics that change everything">Ciclo de vida de um app: estados, telas e o básico que muda tudo</a></h3>
+                <p data-en="Foreground, background, terminated: the states of an app and why ignoring the lifecycle causes the most common mobile bugs.">Foreground, background, encerrado: os estados de um app e por que ignorar o ciclo de vida causa os bugs mais comuns do mobile.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 24 Jun, 2026</span>
-                <a href="ciclo-de-vida-app.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">24 Jun, 2026</span><span data-lang="en">Jun 24, 2026</span></span>
+                <a href="ciclo-de-vida-app.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-navigation"></i> Júnior</span>
+                <span class="post-cat"><i class="bx bx-navigation"></i> <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span>
                 <i class="bx bx-navigation post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="navegacao-mobile.html">Navegação em apps: stack, tabs e deep links</a></h3>
-                <p>Como o usuário anda pelo app: pilha de telas, abas, o botão voltar e deep links que abrem a tela certa a partir de um link.</p>
+                <h3><a href="navegacao-mobile.html" data-en="Navigation in apps: stack, tabs and deep links">Navegação em apps: stack, tabs e deep links</a></h3>
+                <p data-en="How the user moves through the app: screen stack, tabs, the back button and deep links that open the right screen from a link.">Como o usuário anda pelo app: pilha de telas, abas, o botão voltar e deep links que abrem a tela certa a partir de um link.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 22 Jun, 2026</span>
-                <a href="navegacao-mobile.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">22 Jun, 2026</span><span data-lang="en">Jun 22, 2026</span></span>
+                <a href="navegacao-mobile.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-mobile-alt"></i> Júnior</span>
+                <span class="post-cat"><i class="bx bx-mobile-alt"></i> <span data-lang="pt">Júnior</span><span data-lang="en">Junior</span></span>
                 <i class="bx bx-mobile-alt post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="layout-responsivo-mobile.html">Layout que se adapta: densidade, safe areas e telas diferentes</a></h3>
-                <p>Pixels não são pixels. Densidade de tela (dp/pt), safe areas (notch), e como fazer uma UI que funciona do celular pequeno ao tablet.</p>
+                <h3><a href="layout-responsivo-mobile.html" data-en="Layouts that adapt: density, safe areas and different screens">Layout que se adapta: densidade, safe areas e telas diferentes</a></h3>
+                <p data-en="Pixels are not pixels. Screen density (dp/pt), safe areas (notch), and how to build a UI that works from small phones to tablets.">Pixels não são pixels. Densidade de tela (dp/pt), safe areas (notch), e como fazer uma UI que funciona do celular pequeno ao tablet.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 20 Jun, 2026</span>
-                <a href="layout-responsivo-mobile.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">20 Jun, 2026</span><span data-lang="en">Jun 20, 2026</span></span>
+                <a href="layout-responsivo-mobile.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-layer"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-layer"></i> <span data-lang="pt">Pleno</span><span data-lang="en">Mid-level</span></span>
                 <i class="bx bx-layer post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="estado-dados-mobile.html">Estado e dados no mobile: do local ao gerenciamento global</a></h3>
-                <p>Estado de tela vs estado do app, cache local, banco no dispositivo e quando partir para uma solução de estado global.</p>
+                <h3><a href="estado-dados-mobile.html" data-en="State and data on mobile: from local to global management">Estado e dados no mobile: do local ao gerenciamento global</a></h3>
+                <p data-en="Screen state vs app state, local cache, on-device database and when to reach for a global state solution.">Estado de tela vs estado do app, cache local, banco no dispositivo e quando partir para uma solução de estado global.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 17 Jun, 2026</span>
-                <a href="estado-dados-mobile.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">17 Jun, 2026</span><span data-lang="en">Jun 17, 2026</span></span>
+                <a href="estado-dados-mobile.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-wifi-off"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-wifi-off"></i> <span data-lang="pt">Pleno</span><span data-lang="en">Mid-level</span></span>
                 <i class="bx bx-wifi-off post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="offline-sync.html">Offline-first e sincronização: o app que funciona sem rede</a></h3>
-                <p>Conexão é instável. Como guardar localmente, enfileirar mudanças e sincronizar depois — resolvendo conflitos sem perder dados.</p>
+                <h3><a href="offline-sync.html" data-en="Offline-first and sync: the app that works without a network">Offline-first e sincronização: o app que funciona sem rede</a></h3>
+                <p data-en="Connectivity is unreliable. How to store data locally, queue changes and sync later — resolving conflicts without losing data.">Conexão é instável. Como guardar localmente, enfileirar mudanças e sincronizar depois — resolvendo conflitos sem perder dados.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 15 Jun, 2026</span>
-                <a href="offline-sync.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">15 Jun, 2026</span><span data-lang="en">Jun 15, 2026</span></span>
+                <a href="offline-sync.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-pulse"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-pulse"></i> <span data-lang="pt">Pleno</span><span data-lang="en">Mid-level</span></span>
                 <i class="bx bx-pulse post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="performance-mobile.html">Performance mobile: jank, listas e consumo de bateria</a></h3>
-                <p>60fps ou o usuário sente. O que causa &#x27;jank&#x27;, como listas longas devem ser feitas e por que rede e bateria são orçamento, não infinito.</p>
+                <h3><a href="performance-mobile.html" data-en="Mobile performance: jank, lists and battery usage">Performance mobile: jank, listas e consumo de bateria</a></h3>
+                <p data-en="60fps or the user feels it. What causes jank, how long lists should be built, and why network and battery are a budget, not infinite.">60fps ou o usuário sente. O que causa &#x27;jank&#x27;, como listas longas devem ser feitas e por que rede e bateria são orçamento, não infinito.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 13 Jun, 2026</span>
-                <a href="performance-mobile.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">13 Jun, 2026</span><span data-lang="en">Jun 13, 2026</span></span>
+                <a href="performance-mobile.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-sitemap"></i> Sênior</span>
+                <span class="post-cat"><i class="bx bx-sitemap"></i> <span data-lang="pt">Sênior</span><span data-lang="en">Senior</span></span>
                 <i class="bx bx-sitemap post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="arquitetura-mobile.html">Arquitetura mobile: MVVM, camadas e testabilidade</a></h3>
-                <p>Separar UI, lógica e dados para um app que cresce sem virar caos. MVVM/MVI, camadas e por que isso torna o código testável.</p>
+                <h3><a href="arquitetura-mobile.html" data-en="Mobile architecture: MVVM, layers and testability">Arquitetura mobile: MVVM, camadas e testabilidade</a></h3>
+                <p data-en="Separating UI, logic and data for an app that grows without turning into chaos. MVVM/MVI, layers and why this makes code testable.">Separar UI, lógica e dados para um app que cresce sem virar caos. MVVM/MVI, camadas e por que isso torna o código testável.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 10 Jun, 2026</span>
-                <a href="arquitetura-mobile.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">10 Jun, 2026</span><span data-lang="en">Jun 10, 2026</span></span>
+                <a href="arquitetura-mobile.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-bell"></i> Sênior</span>
+                <span class="post-cat"><i class="bx bx-bell"></i> <span data-lang="pt">Sênior</span><span data-lang="en">Senior</span></span>
                 <i class="bx bx-bell post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="push-notificacoes.html">Push notifications: como funcionam de ponta a ponta</a></h3>
-                <p>Do seu servidor ao aparelho do usuário: tokens, APNs/FCM, payload e por que entrega de push nunca é 100% garantida.</p>
+                <h3><a href="push-notificacoes.html" data-en="Push notifications: how they work end to end">Push notifications: como funcionam de ponta a ponta</a></h3>
+                <p data-en="From your server to the user's device: tokens, APNs/FCM, payload and why push delivery is never 100% guaranteed.">Do seu servidor ao aparelho do usuário: tokens, APNs/FCM, payload e por que entrega de push nunca é 100% garantida.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 08 Jun, 2026</span>
-                <a href="push-notificacoes.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">08 Jun, 2026</span><span data-lang="en">Jun 8, 2026</span></span>
+                <a href="push-notificacoes.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-cloud-upload"></i> Sênior</span>
+                <span class="post-cat"><i class="bx bx-cloud-upload"></i> <span data-lang="pt">Sênior</span><span data-lang="en">Senior</span></span>
                 <i class="bx bx-cloud-upload post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="publicacao-lojas.html">Publicação nas lojas: build, assinatura, review e versionamento</a></h3>
-                <p>O caminho até a loja: build de release, assinatura de código, processo de review e como versionar para não quebrar quem já instalou.</p>
+                <h3><a href="publicacao-lojas.html" data-en="Publishing to the stores: build, signing, review and versioning">Publicação nas lojas: build, assinatura, review e versionamento</a></h3>
+                <p data-en="The road to the store: release build, code signing, the review process and how to version so you don't break existing installs.">O caminho até a loja: build de release, assinatura de código, processo de review e como versionar para não quebrar quem já instalou.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 06 Jun, 2026</span>
-                <a href="publicacao-lojas.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-lang="pt">06 Jun, 2026</span><span data-lang="en">Jun 6, 2026</span></span>
+                <a href="publicacao-lojas.html" class="post-read"><span data-lang="pt">Ler</span><span data-lang="en">Read</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -257,17 +265,23 @@
           <div class="self-assess-grid"></div>
         </div>
 
+        <div class="track-quiz" data-track-quiz data-track="mobile" data-aos="fade-up">
+          <h3 class="track-quiz-title"><i class="bx bx-help-circle" aria-hidden="true"></i> <span data-en="Quiz: test what you learned">Quiz: teste o que aprendeu</span></h3>
+          <p class="track-quiz-intro" data-en="Four questions per level, with an explanation and the article that covers each topic. Ace a level and you can mark it in the self-assessment above.">Quatro perguntas por nível, com explicação e o artigo que cobre cada assunto. Gabaritou um nível? Dá para marcá-lo na autoavaliação acima.</p>
+          <div class="track-quiz-body"></div>
+        </div>
+
       </div>
     </section></main>
 
   <footer id="footer">
     <div class="container">
       <div class="copyright">&copy; Copyright <strong><span>Diogo N Gomes</span></strong></div>
-      <div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+      <div class="credits"><span data-lang="pt">Designed by</span><span data-lang="en">Designed by</span> <a href="../index.html">Diogo Gomes</a></div>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -278,6 +292,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

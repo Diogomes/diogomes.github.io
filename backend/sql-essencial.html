@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Essential SQL: CRUD, JOIN and transactions - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/backend/sql-essencial.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/sql-essencial.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/sql-essencial.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/sql-essencial.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>SQL essencial: CRUD, JOIN e transações - Diogo Gomes</title>
   <meta content="Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor)." name="description">
   <meta content="Back-end, Júnior, SQL, Banco de dados, Fundamentos, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="SQL essencial: CRUD, JOIN e transações">
-  <meta property="og:description" content="Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor).">
+  <meta property="og:title" content="SQL essencial: CRUD, JOIN e transações" data-en-content="Essential SQL: CRUD, JOIN and transactions">
+  <meta property="og:description" content="Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor)." data-en-content="How to talk to a relational database: the four operations, the types of JOIN and why transactions exist (ACID without the pain).">
   <meta property="og:url" content="https://diogomes.github.io/backend/sql-essencial.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/backend-sql-essencial.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-sql-essencial-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/backend-sql-essencial.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-sql-essencial-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SQL essencial: CRUD, JOIN e transações", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/sql-essencial.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor).", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SQL essencial: CRUD, JOIN e transações", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/sql-essencial.html", "image": "https://diogomes.github.io/assets/img/og/backend-sql-essencial.png", "description": "Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor).", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Júnior</h2>
+          <h2 data-en="Back-end · Junior">Back-end · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Júnior</li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-data"></i> Back-end · Júnior</span>
-              <h1>SQL essencial: CRUD, JOIN e transações</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-data&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-data"></i> Back-end · Júnior</span>
+              <h1 data-en="Essential SQL: CRUD, JOIN and transactions">SQL essencial: CRUD, JOIN e transações</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 20, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 3 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 20 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Quase todo sistema back-end guarda dados em um banco relacional, e a linguagem para conversar com ele é o SQL. Saber montar um CRUD, entender JOINs e ter noção de transações é conhecimento que você usa todos os dias — e que invariavelmente aparece em entrevistas técnicas.</p>
 
 <h2>Tabelas e linhas: o modelo relacional</h2>
@@ -137,16 +150,66 @@ COMMIT;  -- se algo falhar antes, faz ROLLBACK</code></pre>
 
 <h2>Conclusão</h2>
 <p>SQL é uma habilidade que rende juros: CRUD com WHERE para o dia a dia, JOINs para conectar dados, transações para garantir integridade e índices para performance. Domine esses quatro pilares e você cobre a esmagadora maioria das tarefas de banco — e das perguntas de entrevista.</p>
-              <div class="post-tags"><span class="tag">SQL</span><span class="tag">Banco de dados</span><span class="tag">Fundamentos</span></div>
+</div>
+<div data-lang="en">
+<p>Almost every back-end system stores data in a relational database, and the language for talking to it is SQL. Knowing how to build a CRUD, understanding JOINs and having a grasp of transactions is knowledge you use every day — and one that invariably shows up in technical interviews.</p>
+
+<h2>Tables and rows: the relational model</h2>
+<p>A relational database organizes data into <strong>tables</strong>, like spreadsheets. Each table has columns (fields) and rows (records). A <code>users</code> table has columns such as <code>id</code>, <code>name</code>, <code>email</code>, and each user is a row. The <code>id</code> is usually the <strong>primary key</strong>: it uniquely identifies each row.</p>
+
+<h2>CRUD: the four operations</h2>
+<p>CRUD stands for Create, Read, Update, Delete — and each one maps to a SQL command:</p>
+<pre><code>-- Create
+INSERT INTO users (name, email)
+VALUES ('Ana', 'ana@example.com');
+
+-- Read
+SELECT id, name FROM users WHERE id = 1;
+
+-- Update
+UPDATE users SET name = 'Ana Paula' WHERE id = 1;
+
+-- Delete
+DELETE FROM users WHERE id = 1;</code></pre>
+<p>The <strong>WHERE</strong> clause is critical: it filters which rows the operation affects. An <code>UPDATE</code> or <code>DELETE</code> without a WHERE hits the entire table — a dangerous, classic mistake.</p>
+
+<h2>JOIN: combining tables</h2>
+<p>Related data lives in separate tables. Imagine <code>users</code> and <code>orders</code>, where each order has a <code>user_id</code>. To list the user's name along with their orders, we use a JOIN:</p>
+<pre><code>SELECT u.name, o.amount
+FROM users u
+INNER JOIN orders o ON o.user_id = u.id;</code></pre>
+<p><strong>INNER JOIN</strong> returns only the rows that match on both sides (users who have orders). <strong>LEFT JOIN</strong> returns all users, even without orders — in that case the order columns come back as NULL. In interviews you're often asked to explain the difference:</p>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Returns</th><th>Typical use</th></tr></thead><tbody>
+<tr><td>INNER JOIN</td><td>Only rows that match on both sides</td><td>Users who placed orders</td></tr>
+<tr><td>LEFT JOIN</td><td>All from the left + matches from the right</td><td>All users, with or without orders</td></tr>
+</tbody></table></div>
+
+<h2>Transactions and ACID</h2>
+<p>A <strong>transaction</strong> groups several commands as a single unit: either everything happens, or nothing does. The classic example is transferring money — debiting one account and crediting another have to happen together:</p>
+<pre><code>BEGIN;
+  UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+  UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;  -- if anything fails before this, it does a ROLLBACK</code></pre>
+<p>A transaction's guarantees boil down to the acronym <strong>ACID</strong>: <strong>A</strong>tomicity (all or nothing), <strong>C</strong>onsistency (the database ends up in a valid state), <strong>I</strong>solation (concurrent transactions don't interfere with each other) and <strong>D</strong>urability (after the commit, data persists even if the power goes out).</p>
+
+<blockquote>WHERE defines the reach of your operation and transactions define the reach of your safety. Forgetting either one is where incidents are born.</blockquote>
+
+<h2>Indexes: why some queries fly</h2>
+<p>An <strong>index</strong> is like a book's index: instead of reading page by page, you go straight to the spot. Without an index, searching <code>WHERE email = 'ana@example.com'</code> forces the database to scan the entire table (a <em>full scan</em>). With an index on the <code>email</code> column, the lookup is nearly instant. The cost: indexes take up space and make writes slightly slower, so you don't index everything.</p>
+
+<h2>Conclusion</h2>
+<p>SQL is a skill that pays compound interest: CRUD with WHERE for day-to-day work, JOINs to connect data, transactions to guarantee integrity and indexes for performance. Master these four pillars and you cover the vast majority of database tasks — and interview questions.</p>
+</div>
+              <div class="post-tags"><span class="tag">SQL</span><span class="tag" data-en="Databases">Banco de dados</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">Como a web funciona: HTTP, request e response</span></a>
-                <a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title">APIs REST: o que torna uma API RESTful</span></a>
-                <a class="rel-card" href="autenticacao-autorizacao.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Pleno</span><span class="rel-title">Autenticação vs Autorização: sessions, JWT e OAuth</span></a>
+                <a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="How the web works: HTTP, request and response">Como a web funciona: HTTP, request e response</span></a>
+                <a class="rel-card" href="apis-rest.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Junior"><i class="bx bx-server"></i> Back-end · Júnior</span><span class="rel-title" data-en="REST APIs: what makes an API RESTful">APIs REST: o que torna uma API RESTful</span></a>
+                <a class="rel-card" href="autenticacao-autorizacao.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Mid-level"><i class="bx bx-server"></i> Back-end · Pleno</span><span class="rel-title" data-en="Authentication vs Authorization: sessions, JWT and OAuth">Autenticação vs Autorização: sessions, JWT e OAuth</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -163,7 +226,7 @@ COMMIT;  -- se algo falhar antes, faz ROLLBACK</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -174,6 +237,8 @@ COMMIT;  -- se algo falhar antes, faz ROLLBACK</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

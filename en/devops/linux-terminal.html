@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /devops/linux-terminal.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/devops/linux-terminal.html" rel="canonical"/>
+<link href="https://diogomes.github.io/devops/linux-terminal.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/devops/linux-terminal.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/devops/linux-terminal.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Linux and the terminal: the bare minimum every DevOps engineer masters - Diogo Gomes</title>
+<meta content="Permissions, processes, pipes and environment variables. The terminal isn't nostalgia — it's where infrastructure work happens." name="description"/>
+<meta content="DevOps, Júnior, Linux, Terminal, Fundamentos, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Linux and the terminal: the bare minimum every DevOps engineer masters" property="og:title"/>
+<meta content="Permissions, processes, pipes and environment variables. The terminal isn't nostalgia — it's where infrastructure work happens." property="og:description"/>
+<meta content="https://diogomes.github.io/en/devops/linux-terminal.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-linux-terminal-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-linux-terminal-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../devops/feed.xml" rel="alternate" title="DevOps — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Linux e terminal: o mínimo que todo DevOps domina", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/linux-terminal.html", "image": "https://diogomes.github.io/assets/img/og/devops-linux-terminal.png", "description": "Permissões, processos, pipes e variáveis de ambiente. O terminal não é nostalgia — é onde o trabalho de infraestrutura acontece.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>DevOps · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">DevOps</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-terminal"></i> DevOps · Junior</span>
+<h1>Linux and the terminal: the bare minimum every DevOps engineer masters</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 24, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Almost everything in the DevOps world happens on Linux servers, and the way in to those servers is the terminal. Mastering the command line isn't a technical curiosity: it's the tool you use to inspect, fix and automate systems every day. People who are comfortable in the terminal work faster and better understand what's going on beneath graphical interfaces.</p>
+<h2>Why the terminal is where the work happens</h2>
+<p>Production servers rarely have a graphical interface: you log in over SSH and all you have is the shell. Scripts, CI/CD pipelines and containers also run terminal commands. Learning to find your way around there is what separates those who depend on tutorials from those who solve problems on their own.</p>
+<h2>File hierarchy (the essentials)</h2>
+<p>Linux organizes everything starting from the root <code>/</code>. You don't need to memorize it all, but a few directories show up all the time:</p>
+<ul>
+<li><strong>/etc</strong> — system and service configuration files.</li>
+<li><strong>/var/log</strong> — logs (the first place to look when investigating problems).</li>
+<li><strong>/home</strong> — user directories.</li>
+<li><strong>/usr/bin</strong> and <strong>/bin</strong> — executables.</li>
+</ul>
+<h2>Permissions: rwx, owner and group</h2>
+<p>Every file has <strong>read (r)</strong>, <strong>write (w)</strong> and <strong>execute (x)</strong> permissions, split into three groups: owner, group and others. Interviewers often ask you to explain what <code>chmod 755</code> means — so it's worth understanding the numeric logic (r=4, w=2, x=1).</p>
+</div>
+<pre><code>ls -l script.sh
+# -rwxr-xr-x 1 deploy devops 512 jun 25 10:00 script.sh
+
+chmod 750 script.sh        # dono: rwx, grupo: r-x, outros: nada
+chown deploy:devops script.sh   # muda dono e grupo</code></pre>
+
+<div>
+<h2>Processes: viewing and terminating</h2>
+<p>In day-to-day work this comes up when a service hangs or uses too much CPU. You list the processes, identify the PID and, if needed, terminate it.</p>
+</div>
+<pre><code>ps aux | grep nginx     # encontra o processo
+top                     # uso de CPU/memória ao vivo
+kill 4821               # pede para o processo terminar (SIGTERM)
+kill -9 4821            # força o encerramento (SIGKILL)</code></pre>
+
+<div>
+<h2>Pipes and redirection</h2>
+<p>This is the Unix philosophy: small programs that do one thing well, connected to each other. The pipe <code>|</code> sends the output of one command to the input of the next. <code>&gt;</code> writes to a file (overwriting) and <code>&gt;&gt;</code> appends to the end.</p>
+</div>
+<pre><code>cat /var/log/app.log | grep ERROR | wc -l   # conta linhas com ERROR
+ls -l &gt; lista.txt                            # salva a saída
+echo "deploy ok" &gt;&gt; historico.log           # acrescenta ao arquivo</code></pre>
+
+<div>
+<blockquote>Think of the terminal as an assembly line: each command is a station that receives something, transforms it and passes it along. The power isn't in one giant command, but in combining simple ones.</blockquote>
+<h2>Environment variables</h2>
+<p>Environment variables configure how programs behave without changing code — used all the time for passwords, URLs and flags in containers and pipelines.</p>
+</div>
+<pre><code>export ENV=producao        # define a variável
+echo $ENV                  # lê o valor
+printenv | grep PATH       # lista variáveis e filtra</code></pre>
+
+<div>
+<h2>Package manager</h2>
+<p>Software on Linux is installed through package managers, which handle dependencies and updates. The command varies by distribution:</p>
+<div class="table-wrap"><table><thead><tr><th>Distribution</th><th>Manager</th><th>Install</th></tr></thead><tbody><tr><td>Debian/Ubuntu</td><td>apt</td><td><code>apt install git</code></td></tr><tr><td>RHEL/Fedora</td><td>dnf</td><td><code>dnf install git</code></td></tr><tr><td>Alpine</td><td>apk</td><td><code>apk add git</code></td></tr></tbody></table></div>
+<h2>Conclusion</h2>
+<p>The terminal is the foundational skill that supports everything else: <a href="git-fluxos.html">Git</a>, <a href="ci-cd-basico.html">CI/CD</a>, <a href="containers-docker.html">containers</a> and server operations. You don't need to memorize everything — you need to understand the logic and know where to look. With permissions, processes, pipes and variables at your fingertips, you can already handle most of a junior DevOps engineer's daily work.</p>
+</div>
+<div class="post-tags"><span class="tag">Linux</span><span class="tag">Terminal</span><span class="tag">Fundamentals</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Git beyond the commit: branches, merge, and workflows</span></a>
+<a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">CI/CD in practice: from commit to automatic deploy</span></a>
+<a class="rel-card" href="containers-docker.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Mid-level</span><span class="rel-title">Containers and Docker: why 'it works on my machine' is over</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

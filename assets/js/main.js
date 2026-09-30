@@ -46,85 +46,23 @@
     var btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Alternar tema claro/escuro');
-    btn.title = 'Alternar tema claro/escuro';
+    function setLabel() {
+      var label = document.documentElement.lang === 'en' ? 'Toggle light/dark theme' : 'Alternar tema claro/escuro';
+      btn.setAttribute('aria-label', label);
+      btn.title = label;
+    }
     function setIcon() {
       var dark = document.documentElement.classList.contains('dark-theme');
-      btn.innerHTML = dark ? '<i class="bx bx-sun"></i>' : '<i class="bx bx-moon"></i>';
+      btn.innerHTML = dark ? '<i class="bx bx-sun" aria-hidden="true"></i>' : '<i class="bx bx-moon" aria-hidden="true"></i>';
+      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
     }
+    setLabel();
     setIcon();
+    document.addEventListener('dg:lang', setLabel);
     btn.addEventListener('click', function () {
       var dark = document.documentElement.classList.toggle('dark-theme');
       try { localStorage.setItem('dg-theme', dark ? 'dark' : 'light'); } catch (e) {}
       setIcon();
-    });
-    document.body.appendChild(btn);
-  })();
-
-  /**
-   * i18n — PT (padrão no HTML) / EN (dicionário)
-   */
-  (function () {
-    var EN = {
-      'nav.home': 'Home', 'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills',
-      'nav.portfolio': 'Portfolio', 'nav.contact': 'Contact', 'nav.projects': 'Projects',
-      'nav.game': 'Game', 'nav.blog': 'Blog',
-      'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps',
-      'nav.dados': 'Data', 'nav.mobile': 'Mobile', 'nav.tracks': 'Tracks',
-      'hero.iam': "I'm",
-      'about.h2': 'About',
-      'about.intro': 'I like technology and how it can help us solve problems.',
-      'about.h3': 'Quality Engineer & Developer',
-      'about.lead': 'Ensuring product quality from the standpoint of code accessibility and value generation for the customer.',
-      'about.role.l': 'Role:', 'about.role.v': 'Quality Engineer @ Liferay',
-      'about.site.l': 'Website:', 'about.city.l': 'City:', 'about.city.v': 'Recife, Pernambuco',
-      'about.edu.l': 'Education:', 'about.edu.v': "CS · Master's",
-      'about.email.l': 'E-mail:', 'about.focus.l': 'Focus:', 'about.focus.v': 'QA · Automation · Game Dev',
-      'skills.h2': 'Skills',
-      'skills.intro': 'Experience in end-to-end test automation in Java, JavaScript and Python, with BDD/TDD/ATDD and CI/CD. Below are the main tools and technologies I use.',
-      'resume.h2': 'Resume',
-      'resume.intro': 'Quality Engineer at Liferay for 5+ years, working on LATAM/EMEA-scale projects — from planning and running manual and automated tests to mentoring QAs. End-to-end automation with Selenium, Playwright, Cypress and Appium (Java, JavaScript, Python), aligned with BDD, TDD, ATDD and Scrum. A scientific background (MSc in Biomedical Engineering) brings a rigorous, investigative way of thinking about quality. Currently deepening functional programming and game development in personal projects.',
-      'portfolio.h2': 'Portfolio',
-      'portfolio.intro': "A selection of projects, games and tutorials I've produced. Click play to watch each item's video.",
-      'tracks.h2': 'Study tracks',
-      'tracks.intro': 'Blogs by field and seniority level — what to understand at each stage of your career, for technical interviews and day-to-day work.',
-      'assess.title': 'Self-assessment: where are you?',
-      'assess.intro': 'Check what you already master. Your progress is saved in this browser only.',
-      'assess.reset': 'Reset',
-      'contact.h2': 'Contact', 'contact.location': 'Location:', 'contact.email': 'Email:', 'contact.call': 'Call:',
-      'footer.credits': 'Designed by'
-    };
-    var nodes = [].slice.call(document.querySelectorAll('[data-i18n]'));
-    nodes.forEach(function (el) { el.setAttribute('data-pt', el.innerHTML); });
-    var TYPED_EN = 'Quality Engineer, Developer, Game Dev, Teacher';
-    var typedEl = document.querySelector('.typed');
-    var typedPt = typedEl ? typedEl.getAttribute('data-typed-items') : null;
-    function apply(lang) {
-      nodes.forEach(function (el) {
-        var k = el.getAttribute('data-i18n');
-        if (lang === 'en' && EN[k] != null) el.innerHTML = EN[k];
-        else el.innerHTML = el.getAttribute('data-pt');
-      });
-      if (typedEl) {
-        typedEl.setAttribute('data-typed-items', lang === 'en' ? TYPED_EN : typedPt);
-        if (window.__initTyped) window.__initTyped();
-      }
-      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-br');
-    }
-    var lang = 'pt';
-    try { lang = localStorage.getItem('dg-lang') || 'pt'; } catch (e) {}
-    if (lang === 'en') apply('en');
-
-    var btn = document.createElement('button');
-    btn.className = 'lang-toggle';
-    btn.type = 'button';
-    btn.setAttribute('aria-label', 'Mudar idioma / change language');
-    function setLabel() { btn.textContent = (lang === 'en') ? 'PT' : 'EN'; }
-    setLabel();
-    btn.addEventListener('click', function () {
-      lang = (lang === 'en') ? 'pt' : 'en';
-      try { localStorage.setItem('dg-lang', lang); } catch (e) {}
-      apply(lang); setLabel();
     });
     document.body.appendChild(btn);
   })();
@@ -137,7 +75,7 @@
     var host = document.querySelector('[data-self-assess]');
     if (!host) return;
     var track = host.getAttribute('data-track');
-    var LEVELS = [['junior', 'Júnior'], ['pleno', 'Pleno'], ['senior', 'Sênior']];
+    var LEVELS = [['junior', 'Júnior', 'Junior'], ['pleno', 'Pleno', 'Mid-level'], ['senior', 'Sênior', 'Senior']];
     var DATA = {
       backend: {
         junior: ['Explicar o ciclo request/response do HTTP', 'Diferenciar GET/POST/PUT/DELETE e status codes', 'Modelar tabelas e escrever JOINs em SQL', 'Entender o que é uma API REST', 'Saber o que é uma transação (ACID)'],
@@ -165,7 +103,35 @@
         senior: ['Aplicar arquitetura testável (MVVM/MVI)', 'Implementar push notifications ponta a ponta', 'Publicar nas lojas (assinatura, review)', 'Versionar sem quebrar quem já instalou', 'Fazer rollout gradual']
       }
     };
+    var DATA_EN = {
+      backend: {
+        junior: ['Explain the HTTP request/response cycle', 'Tell GET/POST/PUT/DELETE and status codes apart', 'Model tables and write SQL JOINs', 'Understand what a REST API is', 'Know what a transaction is (ACID)'],
+        pleno: ['Tell authentication from authorization (JWT/OAuth)', 'Spot and fix the N+1 problem', 'Apply caching (cache-aside) and think about invalidation', 'Handle errors, logs and per-environment config', 'Write unit and integration tests'],
+        senior: ['Scale stateless services horizontally', 'Explain the CAP theorem and eventual consistency', 'Design idempotency, retries and circuit breakers', 'Weigh monolith vs microservices', 'Think in observability and SLOs']
+      },
+      frontend: {
+        junior: ['Write semantic, accessible HTML', 'Master the box model, flexbox and grid', 'Understand types, scope and closures in JS', 'Manipulate the DOM and events', 'Tell == from ==='],
+        pleno: ['Explain the event loop (macro/microtasks)', 'Manage state and unidirectional data flow', 'Apply "lifting state up" and derived state', 'Understand reflow vs repaint', 'Optimize list rendering'],
+        senior: ['Structure component architecture and a design system', 'Optimize Core Web Vitals (LCP/CLS/INP)', 'Apply code splitting and lazy loading', 'Mitigate XSS and CSRF and understand CORS', 'Weigh monorepo trade-offs']
+      },
+      devops: {
+        junior: ['Navigate the Linux terminal (permissions, processes, pipes)', 'Use Git: branches, merge/rebase, resolving conflicts', 'Understand CI vs CD and a basic pipeline', 'Work with environment variables', 'Read and interpret build logs'],
+        pleno: ['Build Docker images and understand layers', 'Provision with infrastructure as code (Terraform)', 'Tell apart the 3 pillars of observability', 'Set up pipelines with stages and artifacts', 'Tell a container from a VM'],
+        senior: ['Operate Kubernetes (pods, deployments, services)', 'Design for high availability (multi-AZ)', 'Apply least privilege and secrets management', 'Bring security into the pipeline (shift-left)', 'Balance cost and reliability']
+      },
+      dados: {
+        junior: ['Model tables, keys and relationships', 'Write aggregations, GROUP BY and subqueries', 'Apply normalization (1NF/2NF/3NF)', 'Understand primary and foreign keys', 'Know when to denormalize'],
+        pleno: ['Use indexes and read an execution plan', 'Model facts/dimensions (star schema)', 'Build idempotent ETL/ELT pipelines', 'Tell OLTP from OLAP', 'Ensure data quality'],
+        senior: ['Pick the right kind of NoSQL', 'Apply partitioning and sharding', 'Design streaming pipelines (Kafka)', 'Understand delivery semantics (exactly-once)', 'Choose a partition key that avoids hotspots']
+      },
+      mobile: {
+        junior: ['Understand the app and screen lifecycle', 'Implement navigation (stack, tabs, deep links)', 'Build responsive layouts (dp, safe areas)', 'Save and restore screen state', 'Handle the back button'],
+        pleno: ['Choose where to keep state and local data', 'Implement offline-first and sync', 'Resolve sync conflicts', 'Optimize performance (60fps, lists)', 'Treat battery and network as finite resources'],
+        senior: ['Apply a testable architecture (MVVM/MVI)', 'Implement push notifications end to end', 'Publish to the stores (signing, review)', 'Version without breaking existing installs', 'Do gradual rollouts']
+      }
+    };
     var data = DATA[track];
+    var dataEn = DATA_EN[track] || {};
     if (!data) return;
 
     var KEY = 'dg-assess-' + track;
@@ -179,7 +145,7 @@
       var col = document.createElement('div');
       col.className = 'self-assess-col lvl-' + key;
       var h = document.createElement('h4');
-      h.textContent = lv[1];
+      h.innerHTML = '<span data-lang="pt">' + lv[1] + '</span><span data-lang="en">' + lv[2] + '</span>';
       col.appendChild(h);
       items.forEach(function (text, i) {
         total++;
@@ -196,7 +162,14 @@
           update();
         });
         var span = document.createElement('span');
-        span.textContent = text;
+        var spanPt = document.createElement('span');
+        spanPt.setAttribute('data-lang', 'pt');
+        spanPt.textContent = text;
+        var spanEn = document.createElement('span');
+        spanEn.setAttribute('data-lang', 'en');
+        spanEn.textContent = (dataEn[key] || [])[i] || text;
+        span.appendChild(spanPt);
+        span.appendChild(spanEn);
         lab.appendChild(cb);
         lab.appendChild(span);
         col.appendChild(lab);
@@ -586,7 +559,7 @@
       if (p.length === 3) return `${p[2]}/${p[1]}/${p[0]}`;
       return esc(d);
     };
-    fetch('assets/comments.json', { cache: 'no-store' })
+    fetch('/assets/comments.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : [])
       .then(items => {
         const empty = select('#comments-empty');

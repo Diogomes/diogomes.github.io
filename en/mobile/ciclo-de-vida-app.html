@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /mobile/ciclo-de-vida-app.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/mobile/ciclo-de-vida-app.html" rel="canonical"/>
+<link href="https://diogomes.github.io/mobile/ciclo-de-vida-app.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/mobile/ciclo-de-vida-app.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/mobile/ciclo-de-vida-app.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>App lifecycle: states, screens and the basics that change everything - Diogo Gomes</title>
+<meta content="Foreground, background, terminated: the states of an app and why ignoring the lifecycle causes the most common mobile bugs." name="description"/>
+<meta content="Mobile, Júnior, Ciclo de vida, Mobile, Fundamentos, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="App lifecycle: states, screens and the basics that change everything" property="og:title"/>
+<meta content="Foreground, background, terminated: the states of an app and why ignoring the lifecycle causes the most common mobile bugs." property="og:description"/>
+<meta content="https://diogomes.github.io/en/mobile/ciclo-de-vida-app.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/mobile-ciclo-de-vida-app-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/mobile-ciclo-de-vida-app-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../mobile/feed.xml" rel="alternate" title="Mobile — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Ciclo de vida de um app: estados, telas e o básico que muda tudo", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/ciclo-de-vida-app.html", "image": "https://diogomes.github.io/assets/img/og/mobile-ciclo-de-vida-app.png", "description": "Foreground, background, encerrado: os estados de um app e por que ignorar o ciclo de vida causa os bugs mais comuns do mobile.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Mobile · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Mobile</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-mobile"></i> Mobile · <span>Junior</span></span>
+<h1>App lifecycle: states, screens and the basics that change everything</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 24, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Every app lives on a rollercoaster of states: sometimes it is right in front of you receiving taps, sometimes it gets pushed to the back when a call comes in, and sometimes it is simply killed by the system to free up memory. Understanding this lifecycle is the first step toward writing apps that don't lose data or crash when the user switches screens. It is knowledge you use every day, and it comes up in the very first technical conversations.</p>
+<h2>The states of an app</h2>
+<p>Regardless of iOS, Android, React Native or Flutter, an app moves between a few fundamental states. The naming changes, but the idea is the same.</p>
+<ul>
+<li><strong>Foreground (active)</strong>: the app is visible and receiving touch events. This is where everything "happens".</li>
+<li><strong>Background</strong>: the user left (pressed home, opened another app), but your app is still alive in memory. You have little time and limited resources here.</li>
+<li><strong>Suspended (inactive)</strong>: still in memory, but not executing code. A "frozen pause" state.</li>
+<li><strong>Terminated</strong>: the process was destroyed. When the user returns, the app starts from scratch.</li>
+</ul>
+<h2>State diagram</h2>
+<pre><code>   [Not started]
+        |
+        v
+   [Foreground] &lt;----+
+     |    ^          |
+ (leave)|  |(return)  |
+     v    |          |
+   [Background]      |
+     |                |
+ (OS frees memory)   |
+     v                |
+   [Terminated] ------+ (starts from scratch)</code></pre>
+<h2>What happens when the user leaves and comes back</h2>
+<p>Picture the app as a person reading a book. When someone interrupts them, they can put in a bookmark (save state) or just slam the book shut. If the operating system decides to "kill" the app in the background to give memory to another one, the user expects to pick up where they left off when they return — not start over.</p>
+<p>The critical point: coming back from <em>background</em> (app alive) is different from coming back from <em>terminated</em> (app dead). In the first case your in-memory state still exists; in the second, it doesn't. Treating both as the same is a source of bugs.</p>
+<h2>Saving and restoring state</h2>
+<p>Each platform offers hooks so you can persist what you need before memory is lost: Android has <code>onSaveInstanceState</code>, iOS has state restoration, and frameworks like Flutter have their own equivalents. The rule is to save the minimum needed to rebuild the screen: typed text, scroll position, selected item.</p>
+<pre><code>// pseudo-code when going to background
+onSaveState(bundle) {
+  bundle.put("draft", textField.value)
+  bundle.put("scrollY", list.position)
+}
+
+onRestore(bundle) {
+  textField.value = bundle.get("draft")
+}</code></pre>
+<h2>Why this matters: rotation and killed apps</h2>
+<p>On Android, rotating the screen <strong>recreates the entire screen</strong> by default — technically it is the same "die and be reborn" mechanism. If you didn't save state, the half-filled form vanishes. Interviewers often ask you to explain exactly what happens when the screen rotates and how to avoid losing data — the expected answer hinges on understanding this lifecycle.</p>
+<h2>Common bugs from ignoring the lifecycle</h2>
+<ul>
+<li><strong>Resource leaks</strong>: registering a listener or opening the camera in the foreground and forgetting to release it in the background.</li>
+<li><strong>Zombie timers and requests</strong>: continuing to update the UI of a screen that is no longer visible.</li>
+<li><strong>State lost on rotation</strong>: the classic form that resets when you turn the phone.</li>
+<li><strong>Assuming the app never dies</strong>: keeping data only in memory and losing everything when the OS reclaims resources.</li>
+</ul>
+<blockquote>The operating system owns the memory, not your app. Program expecting to be interrupted and terminated at any moment — whoever assumes this writes robust apps.</blockquote>
+<h2>Conclusion</h2>
+<p>The lifecycle defines when your code runs and when your data survives. Mastering the states (foreground, background, suspended, terminated), knowing the difference between returning alive and being reborn from scratch, and saving/restoring the essentials is the foundation everything else rests on — including <a href="navegacao-mobile.html">navigation between screens</a>.</p>
+</div>
+<div class="post-tags"><span class="tag">Lifecycle</span><span class="tag">Mobile</span><span class="tag">Fundamentals</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">Navigation in apps: stack, tabs and deep links</span></a>
+<a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">Layouts that adapt: density, safe areas and different screens</span></a>
+<a class="rel-card" href="estado-dados-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Mid-level</span></span><span class="rel-title">State and data on mobile: from local to global management</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

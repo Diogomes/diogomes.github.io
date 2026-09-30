@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Test data management: the invisible bottleneck of automation - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/gestao-dados-de-teste.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Gestão de dados de teste: o gargalo invisível da automação - Diogo Gomes</title>
   <meta content="A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste — fixtures, factories, seed e a regra de cada teste cuidar do próprio estado." name="description">
   <meta content="Testes, Dados de teste, Test data, Fixtures, Factory, Seed, Isolamento, QA, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Gestão de dados de teste: o gargalo invisível da automação">
-  <meta property="og:description" content="A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável.">
+  <meta property="og:title" content="Gestão de dados de teste: o gargalo invisível da automação" data-en-content="Test data management: the invisible bottleneck of automation">
+  <meta property="og:description" content="A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável." data-en-content="Most flaky tests don't fail because of logic, but because of data. Fixtures, factories, isolation, and the rule that each test owns its own state.">
   <meta property="og:url" content="https://diogomes.github.io/blog/gestao-dados-de-teste.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gestão de dados de teste: o gargalo invisível da automação", "datePublished": "2026-06-30", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gestao-dados-de-teste.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gestão de dados de teste: o gargalo invisível da automação", "datePublished": "2026-06-30", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gestao-dados-de-teste.html", "image": "https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste.png", "description": "A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testes</h2>
+          <h2 data-en="Testing">Testes</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Testes</li>
+            <li data-en="Testing">Testes</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-data"></i> Testes</span>
-              <h1>Gestão de dados de teste: o gargalo invisível da automação</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 30 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-data"></i> <span data-en="Testing">Testes</span></span>
+              <h1 data-en="Test data management: the invisible bottleneck of automation">Gestão de dados de teste: o gargalo invisível da automação</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 30, 2026">30 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="5 min read">5 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Pergunte a qualquer pessoa que mantém uma suíte de automação qual a maior causa de teste instável, e a resposta raramente é "a lógica do teste". Quase sempre é <em>dado</em>: o usuário que outro teste apagou, o cupom que já foi usado, o registro que existia ontem e hoje não. Escrever a asserção é a parte fácil; garantir que o sistema está no estado certo <em>antes</em> dela rodar é o trabalho de verdade — e o mais negligenciado.</p>
 
 <h2>Por que dado é tão difícil quanto a lógica</h2>
@@ -129,16 +142,59 @@ afterEach:  removerUsuario(usuario)   // não deixa lixo para trás</code></pre>
 
 <h2>Conclusão</h2>
 <p>Dado de teste é o gargalo invisível: ele não aparece na asserção, mas é onde a maioria das suítes apodrece. Prefira <em>factories</em> sob demanda a seed global, faça cada teste criar e limpar o próprio estado com identificadores únicos, prepare o cenário pela API em vez da tela, e mantenha o ambiente limpo com transação, reset ou containers efêmeros. Resolva o dado e você elimina a maior fatia dos <a href="testes-flaky.html">testes flaky</a> de uma vez.</p>
-              <div class="post-tags"><span class="tag">Dados de teste</span><span class="tag">Fixtures</span><span class="tag">Factory</span><span class="tag">Isolamento</span></div>
+              </div>
+<div data-lang="en">
+<p>Ask anyone who maintains an automation suite what the biggest cause of unstable tests is, and the answer is rarely "the test logic". It's almost always <em>data</em>: the user another test deleted, the coupon that was already used, the record that existed yesterday and is gone today. Writing the assertion is the easy part; making sure the system is in the right state <em>before</em> it runs is the real work, and the most neglected.</p>
+
+<h2>Why data is as hard as logic</h2>
+<p>A test is only reliable if the state it depends on is predictable. The problem is that data has three natural enemies: it <strong>changes</strong> (someone edited the record), it <strong>disappears</strong> (it was deleted), and it <strong>collides</strong> (two tests touch the same record at the same time). When a green test suddenly turns red "without anyone touching anything", the culprit is almost always the data, and this is one of the biggest sources of <a href="testes-flaky.html">flaky tests</a>.</p>
+
+<h2>Where data comes from: the four strategies</h2>
+<p>There are four ways to put the system in the required state, from most fragile to most robust:</p>
+<div class="table-wrap"><table><thead><tr><th>Strategy</th><th>What it looks like</th><th>Problem / when to use</th></tr></thead><tbody>
+<tr><td><strong>Production data</strong></td><td>(Masked) copy of the real database</td><td>Realistic, but unstable and risky (privacy laws); avoid depending on it</td></tr>
+<tr><td><strong>Shared seed</strong></td><td>Fixed data loaded once for everyone</td><td>Convenient, but becomes "global state" that tests corrupt for each other</td></tr>
+<tr><td><strong>Fixture</strong></td><td>Predefined set per test/scenario</td><td>Good for static read-only data</td></tr>
+<tr><td><strong>Factory (on demand)</strong></td><td>The test creates what it needs on the spot, with unique data</td><td>The most robust for data the test modifies</td></tr>
+</tbody></table></div>
+<p>The modern trend is clear: <em>less global seed, more factory</em>. Instead of "these 50 users exist for everyone", each test creates its own user at the start, with a unique identifier. Nobody steps on anyone's toes.</p>
+
+<h2>The golden rule: each test takes care of its own state</h2>
+<p>The principle that solves most problems: a test should <strong>create what it needs</strong>, <strong>use it</strong>, and <strong>clean up afterwards</strong>, without depending on anything another test did. This guarantees the independence that lets you run tests in any order and in parallel.</p>
+<pre><code>// Pattern: arrange → act → assert → cleanup
+beforeEach: user = createUser({ email: `test+${uuid()}@ex.com` })
+test:       login(user); buy(product)
+            expect(order).toBe("confirmed")
+afterEach:  deleteUser(user)   // leaves no trash behind</code></pre>
+<p>The <code>uuid()</code> in the email is the detail that avoids collisions: even running 10 copies of the test in parallel, each one has its own unique user. And the <em>cleanup</em> in <code>afterEach</code> keeps today's failure from becoming the orphaned data that breaks tomorrow's test.</p>
+<blockquote>A test that depends on data it didn't create is a time bomb. It works until the day that record changes, and then you lose an afternoon chasing a "bug" that was never in the code.</blockquote>
+
+<h2>Create through the API, not the UI</h2>
+<p>To prepare state, prefer the cheapest and most stable route. If your checkout test needs a user with products in the cart, <em>don't</em> automate the whole sign-up and navigation through the screen just to get there. Create the user and the cart directly through <a href="testes-de-api.html">API</a> calls (or straight in the database) in the setup, and reserve the UI for what you actually want to test. It's faster, and the preparation doesn't break when the sign-up screen changes. Heavy setup through the UI is one of the most common recipes for a slow, brittle suite.</p>
+
+<h2>How to keep the environment clean</h2>
+<p>Even with each test cleaning up after itself, the test database accumulates dirt over time. Three approaches, from strongest to most practical:</p>
+<ul>
+<li><strong>Rolled-back transaction</strong>: run the test inside a transaction and <em>rollback</em> at the end. Perfect, instant cleanup, but it only works for tests that hit the same database directly, not across the network.</li>
+<li><strong>Reset between runs</strong>: recreate the schema or reload a clean snapshot before the suite. Guarantees a known starting point on every run.</li>
+<li><strong>Explicit cleanup</strong>: <code>afterEach</code>/<code>afterAll</code> deletes what it created. More work, but it's what works in end-to-end E2E tests.</li>
+</ul>
+<p>Ephemeral containers (spinning up a Docker database just for a <a href="cicd-para-qa.html">pipeline</a> run and destroying it at the end) combine the best of both worlds: an isolated environment, clean by construction, discarded when done.</p>
+
+<h2>Conclusion</h2>
+<p>Test data is the invisible bottleneck: it doesn't show up in the assertion, but it's where most suites rot. Prefer on-demand <em>factories</em> to a global seed, make each test create and clean up its own state with unique identifiers, prepare the scenario through the API instead of the UI, and keep the environment clean with transactions, resets, or ephemeral containers. Solve the data and you eliminate the biggest slice of <a href="testes-flaky.html">flaky tests</a> in one go.</p>
+
+</div>
+<div class="post-tags"><span class="tag" data-en="Test data">Dados de teste</span><span class="tag">Fixtures</span><span class="tag">Factory</span><span class="tag" data-en="Isolation">Isolamento</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">Testes flaky: o veneno do seu pipeline</span></a>
-                <a class="rel-card" href="testes-de-api.html"><span class="rel-cat"><i class="bx bx-server"></i> API</span><span class="rel-title">Testes de API: o nível que dá mais retorno</span></a>
-                <a class="rel-card" href="test-doubles.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Test doubles: mocks, stubs, fakes e spies</span></a>
+                <a class="rel-card" href="testes-flaky.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title" data-en="Flaky tests: the poison in your pipeline">Testes flaky: o veneno do seu pipeline</span></a>
+                <a class="rel-card" href="testes-de-api.html"><span class="rel-cat"><i class="bx bx-server"></i> API</span><span class="rel-title" data-en="API testing: from Postman to automation">Testes de API: o nível que dá mais retorno</span></a>
+                <a class="rel-card" href="test-doubles.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title" data-en="Test doubles: mock, stub, spy, fake, and dummy">Test doubles: mocks, stubs, fakes e spies</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -155,7 +211,7 @@ afterEach:  removerUsuario(usuario)   // não deixa lixo para trás</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -166,6 +222,8 @@ afterEach:  removerUsuario(usuario)   // não deixa lixo para trás</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

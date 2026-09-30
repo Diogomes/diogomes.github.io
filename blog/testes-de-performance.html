@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Performance testing: load, stress and the numbers that matter - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/testes-de-performance.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-performance.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-performance.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-performance.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Testes de performance: carga, estresse e os números que importam - Diogo Gomes</title>
   <meta content="Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro — com um plano mínimo no JMeter." name="description">
   <meta content="Testes, Performance, Carga, JMeter, Percentil, Throughput, QA, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Testes de performance: carga, estresse e os números que importam">
-  <meta property="og:description" content="Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro.">
+  <meta property="og:title" content="Testes de performance: carga, estresse e os números que importam" data-en-content="Performance testing: load, stress and the numbers that matter">
+  <meta property="og:description" content="Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro." data-en-content="Working is not the same as holding up. Load, stress, soak, and spike, plus the metrics that really matter (percentiles, throughput, and error rate) with a minimal JMeter plan.">
   <meta property="og:url" content="https://diogomes.github.io/blog/testes-de-performance.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-testes-de-performance.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-de-performance-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-testes-de-performance.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-de-performance-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de performance: carga, estresse e os números que importam", "datePublished": "2026-06-26", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-performance.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de performance: carga, estresse e os números que importam", "datePublished": "2026-06-26", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-performance.html", "image": "https://diogomes.github.io/assets/img/og/blog-testes-de-performance.png", "description": "Funciona não é o mesmo que aguenta. Carga, estresse, soak e spike, e as métricas que realmente importam — percentis, throughput e taxa de erro.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testes</h2>
+          <h2 data-en="Tests">Testes</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Testes</li>
+            <li data-en="Tests">Testes</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-tachometer"></i> Testes</span>
-              <h1>Testes de performance: carga, estresse e os números que importam</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 26 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 5 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-tachometer"></i> <span data-en="Tests">Testes</span></span>
+              <h1 data-en="Performance testing: load, stress and the numbers that matter">Testes de performance: carga, estresse e os números que importam</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 26, 2026">26 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="5 min read">5 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Um sistema que passa em todos os testes funcionais ainda pode cair na primeira promoção da Black Friday. "Funciona" responde se o resultado está certo para <em>um</em> usuário; "aguenta" responde se ele continua certo, e rápido, para <em>milhares ao mesmo tempo</em>. Teste de performance é a disciplina que mede essa segunda pergunta — e quase sempre é deixada para a véspera do lançamento, quando já é tarde para mudar a arquitetura.</p>
 
 <h2>Performance funcional não é performance sob carga</h2>
@@ -148,16 +161,77 @@
 
 <h2>Conclusão</h2>
 <p>Teste de performance responde à pergunta que o teste funcional não faz: o sistema continua correto e rápido sob carga real? Escolha o tipo certo (carga para validar o esperado, estresse para achar o limite, soak para o vazamento, spike para o susto), reporte percentis em vez de médias, ache o joelho da curva e ancore tudo num SLO definido antes de começar. Feito cedo e dentro do <a href="cicd-para-qa.html">pipeline</a>, ele troca a surpresa da véspera de lançamento por um número que você acompanha o tempo todo.</p>
-              <div class="post-tags"><span class="tag">Performance</span><span class="tag">Carga</span><span class="tag">JMeter</span><span class="tag">Percentil</span></div>
+</div>
+<div data-lang="en">
+<p>A system that passes every functional test can still go down on the first Black Friday promotion. "It works" answers whether the result is right for <em>one</em> user; "it holds up" answers whether it stays right, and fast, for <em>thousands at the same time</em>. Performance testing is the discipline that measures that second question — and it is almost always left for the eve of launch, when it's too late to change the architecture.</p>
+
+<h2>Functional performance is not performance under load</h2>
+<p>Opening the page and getting a response in 200&nbsp;ms says little. What matters is how that number behaves when 500 people open the same page in the same second. Systems degrade non-linearly: doubling the load rarely doubles the response time — at some point a queue fills up, a connection pool runs dry and latency falls off a cliff. Performance testing exists to find that cliff <em>before</em> the user does.</p>
+
+<h2>The four types you need to tell apart</h2>
+<p>"Performance testing" is an umbrella term. Underneath it are different questions, and each type of test answers one:</p>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Question it answers</th><th>What the load profile looks like</th></tr></thead><tbody>
+<tr><td><strong>Load</strong></td><td>Does it handle the expected load with acceptable times?</td><td>Ramps up to the expected peak and holds</td></tr>
+<tr><td><strong>Stress</strong></td><td>Where is the limit and how does it break?</td><td>Goes beyond the expected until it fails</td></tr>
+<tr><td><strong>Soak (endurance)</strong></td><td>Does it degrade over time? (memory leak)</td><td>Moderate load for hours</td></tr>
+<tr><td><strong>Spike</strong></td><td>Does it survive a sudden peak and recover?</td><td>Abrupt jump and drop</td></tr>
+</tbody></table></div>
+<p>The common mistake is running only the load test and declaring victory. It's the stress test that reveals <em>how</em> the system dies — with a clean "service unavailable" error or by hanging everything until timeout? — and the soak test that catches the memory leak that only shows up in the third hour of production.</p>
+
+<h2>The metrics that matter (and the one that misleads)</h2>
+<p>The metric that appears most on dashboards is the one that says the least: the <strong>average</strong> response time. The average hides the worst cases. If 95 requests respond in 100&nbsp;ms and 5 take 10&nbsp;seconds, the average comes out around ~600&nbsp;ms — a number nobody actually experienced. What matters are the <strong>percentiles</strong>.</p>
+<p>The 95th percentile (p95) is the time below which 95% of requests fell. Saying "p95 = 800&nbsp;ms" means 1 in 20 users waited <em>longer</em> than that. At scale, the tail (p99, p99.9) is where your angriest customers live — and since each page makes dozens of calls, the chance of a user landing in the tail on <em>at least one</em> of them is high.</p>
+<div class="table-wrap"><table><thead><tr><th>Metric</th><th>What it measures</th></tr></thead><tbody>
+<tr><td>Latency p50 / p95 / p99</td><td>Typical and tail response time</td></tr>
+<tr><td>Throughput (req/s)</td><td>How many requests the system completes per second</td></tr>
+<tr><td>Error rate (%)</td><td>Fraction of responses that failed or timed out</td></tr>
+<tr><td>Concurrent users</td><td>How many clients are active at the same time</td></tr>
+</tbody></table></div>
+<blockquote>Report percentiles, never the average. The average is the metric that makes a system look healthy while 5% of your users are staring at a frozen screen.</blockquote>
+
+<h2>The typical shape of a result</h2>
+<p>When you ramp up the load gradually, the chart almost always has the same shape: throughput grows along with the load while latency stays flat — until the <em>knee of the curve</em>, the point where the system saturates. From there on, more load brings no more throughput; it only stacks up latency and, soon after, errors.</p>
+<pre><code>  response
+  time
+     │                                   ╱  ← latency shoots up
+     │                                  ╱     (saturated)
+     │                            _____╱
+     │       knee of the curve ___╱
+     │  ___________________╱
+     │ '
+     └────────────────────────────────────▶ concurrent users
+                          ▲
+                  usable capacity
+</code></pre>
+<p>The goal of the test is to locate that knee and make sure it sits <em>above</em> your expected traffic peak, with headroom. Usable capacity isn't where the system breaks — it's where it still responds within your latency agreement.</p>
+
+<h2>A minimal JMeter plan</h2>
+<p>JMeter is the classic tool for this: open-source, built around test plans. The minimal anatomy is a <strong>Thread Group</strong> (defines how many virtual users and over how long they join — the <em>ramp-up</em>), one or more <strong>Samplers</strong> (the HTTP requests) and the <strong>Listeners</strong> that collect the results.</p>
+<pre><code>Test Plan
+└─ Thread Group        (100 users, ramp-up 30s, loop 10x)
+   ├─ HTTP Request     GET /api/produtos
+   ├─ HTTP Request     POST /api/carrinho
+   ├─ Assertion        status == 200 &amp;&amp; time &lt; 1s
+   └─ Listener         Summary Report (p90/p95, throughput, %error)</code></pre>
+<p>A detail that separates an honest test from number theater: the <strong>ramp-up</strong>. Throwing 100 users in at the same instant measures an artificial spike; bringing in 100 over 30 seconds mimics real arrival and shows the degradation happening. And run the load from a machine with network and CPU to spare — if the bottleneck is your own load generator, you're measuring the laptop, not the server.</p>
+<p>In practice, the test runs in <em>non-GUI</em> mode (JMeter's graphical interface consumes too many resources to generate serious load) and becomes a pipeline step, which ties directly into <a href="cicd-para-qa.html">testing in CI/CD</a> — a nightly job that fails the build if p95 regresses.</p>
+
+<h2>Define the criterion before you run</h2>
+<p>A performance test without a target number is just pretty chart generation. Before ramping up the load, write the acceptance criterion as an <em>SLO</em>: something like "p95 under 500&nbsp;ms and error rate under 0.1% with 200 concurrent users". With that defined, the result stops being "I found the system kind of slow" and becomes an objective verdict — pass or fail. It's the same logic as a good <a href="bug-report.html">bug report</a>: without the expected result, there's no defect, only opinion.</p>
+
+<h2>Conclusion</h2>
+<p>Performance testing answers the question functional testing doesn't: does the system stay correct and fast under real load? Pick the right type (load to validate the expected, stress to find the limit, soak for the leak, spike for the scare), report percentiles instead of averages, find the knee of the curve and anchor everything in an SLO defined before you start. Done early and inside the <a href="cicd-para-qa.html">pipeline</a>, it swaps the surprise on the eve of launch for a number you track all along.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Performance">Performance</span><span class="tag" data-en="Load">Carga</span><span class="tag" data-en="JMeter">JMeter</span><span class="tag" data-en="Percentile">Percentil</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">CI/CD para QA: testes no coração do pipeline</span></a>
-                <a class="rel-card" href="testes-de-api.html"><span class="rel-cat"><i class="bx bx-server"></i> API</span><span class="rel-title">Testes de API: o nível que dá mais retorno</span></a>
-                <a class="rel-card" href="tipos-de-teste.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Smoke, sanity, regressão e retest: os tipos que se confundem</span></a>
+                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> <span data-en="CI/CD">CI/CD</span></span><span class="rel-title" data-en="CI/CD for QA: tests at the heart of the pipeline">CI/CD para QA: testes no coração do pipeline</span></a>
+                <a class="rel-card" href="testes-de-api.html"><span class="rel-cat"><i class="bx bx-server"></i> <span data-en="API">API</span></span><span class="rel-title" data-en="API testing: the level with the best return">Testes de API: o nível que dá mais retorno</span></a>
+                <a class="rel-card" href="tipos-de-teste.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="Smoke, sanity, regression and retest: the types that get mixed up">Smoke, sanity, regressão e retest: os tipos que se confundem</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -174,7 +248,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -185,6 +259,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

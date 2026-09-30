@@ -6,33 +6,127 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  html-and-links:
-    name: HTML + links
+  static:
+    name: Estático (HTML, geradores, links)
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validar HTML (W3C)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Dependências Python
+        run: pip install beautifulsoup4
+
+      - name: Estrutura do HTML (tags, ids duplicados)
+        run: python3 scripts/check_html.py
+
+      - name: Versão EN em dia com as páginas PT
+        run: python3 scripts/build_en.py --check
+
+      - name: Índice de busca em dia
+        run: python3 scripts/build_search_index.py --check
+
+      # Links internos: offline, contra os arquivos do próprio commit (links absolutos para
+      # diogomes.github.io são remapeados para o disco). Bloqueante.
+      - name: Links internos (lychee --offline)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          lycheeVersion: v0.24.2
+          fail: true
+          args: >-
+            --offline
+            --no-progress
+            --root-dir ${{ github.workspace }}
+            --index-files index.html
+            --remap '^https://diogomes\.github\.io/(.*)$ file://${{ github.workspace }}/$1'
+            --exclude-path assets/vendor
+            --exclude-path node_modules
+            './**/*.html'
+
+      # Links externos: NÃO bloqueante. Sites de terceiros oscilam (rate limit, bloqueio de bots,
+      # indisponibilidade momentânea) e não devem travar um PR; o relatório fica no log do job.
+      - name: Links externos (informativo)
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          lycheeVersion: v0.24.2
+          fail: true
+          args: >-
+            --no-progress
+            --max-retries 2
+            --timeout 20
+            --accept '200..=299,403,429'
+            --root-dir ${{ github.workspace }}
+            --index-files index.html
+            --remap '^https://diogomes\.github\.io/(.*)$ file://${{ github.workspace }}/$1'
+            --exclude 'linkedin\.com'
+            --exclude 'formsubmit\.co'
+            --exclude 'fonts\.(googleapis|gstatic)\.com'
+            --exclude-path assets/vendor
+            --exclude-path node_modules
+            './**/*.html'
+
+      # Validador W3C: NÃO bloqueante. O template de origem (iPortfolio/BootstrapMade) tem avisos
+      # legados de markup que não afetam o funcionamento; a estrutura é garantida por check_html.py.
+      - name: Validador HTML (W3C, informativo)
         continue-on-error: true
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
           root: .
-          blacklist: assets/vendor
+          blacklist: assets/vendor node_modules
 
-      - name: Checar links quebrados
-        continue-on-error: true
-        uses: lycheeverse/lychee-action@v2
+  e2e:
+    name: E2E (Playwright + axe + visual)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      # Imagem oficial, na MESMA versão do @playwright/test do package.json: mesmos navegadores
+      # e fontes em que as baselines visuais (tests/__screenshots__) foram geradas.
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --ipc=host
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar a suíte
+        run: npx playwright test
+
+      - name: Resumo no job
+        if: ${{ always() }}
+        run: node scripts/playwright-summary.mjs test-results/results.json >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publicar relatório HTML
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
         with:
-          args: >-
-            --no-progress
-            --exclude-mail
-            --exclude-path assets/vendor
-            "./**/*.html"
-          fail: false
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Publicar traces e diffs das falhas
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7
 
   lighthouse:
-    name: Lighthouse (perf/SEO/a11y)
+    # NÃO bloqueante: mede o site já publicado (master), não o código do PR.
+    name: Lighthouse (perf/SEO/a11y do site publicado)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

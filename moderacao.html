@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Moderation · private panel">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/moderacao.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/moderacao.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/moderacao.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/moderacao.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="robots" content="noindex, nofollow">
   <title>Moderação · painel privado</title>
@@ -10,46 +15,47 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:400,600,700,800|Poppins:500,600,700" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/css/dashboard.css" rel="stylesheet">
+  <link href="assets/css/i18n.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="wrap">
 
     <div class="top">
-      <h1><i class="bx bx-shield-quarter"></i> Moderação</h1>
+      <h1><i class="bx bx-shield-quarter"></i> <span data-lang="pt">Moderação</span><span data-lang="en">Moderation</span></h1>
       <div class="actions">
-        <button class="btn ghost" id="m-reload"><i class="bx bx-refresh"></i> Recarregar</button>
+        <button class="btn ghost" id="m-reload"><i class="bx bx-refresh"></i> <span data-lang="pt">Recarregar</span><span data-lang="en">Reload</span></button>
         <a class="btn ghost" href="analytics.html"><i class="bx bx-line-chart"></i> Analytics</a>
       </div>
     </div>
-    <p class="sub">Painel privado (noindex, fora do menu). Aqui você decide o que é publicado na página de projetos.</p>
+    <p class="sub" data-en="Private panel (noindex, not in the menu). Here you decide what gets published on the projects page.">Painel privado (noindex, fora do menu). Aqui você decide o que é publicado na página de projetos.</p>
 
     <!-- Cartões -->
     <div class="stats" style="grid-template-columns:repeat(2,1fr);">
-      <div class="stat c2"><div class="ic"><i class="bx bx-check-circle"></i></div><div class="num" id="m-count">0</div><div class="lbl">Comentários publicados</div></div>
-      <div class="stat c1"><div class="ic"><i class="bx bx-envelope"></i></div><div class="num" style="font-size:18px;line-height:1.3;margin-top:6px;">no seu e-mail</div><div class="lbl">Comentários pendentes chegam por e-mail (FormSubmit)</div></div>
+      <div class="stat c2"><div class="ic"><i class="bx bx-check-circle"></i></div><div class="num" id="m-count">0</div><div class="lbl" data-en="Published comments">Comentários publicados</div></div>
+      <div class="stat c1"><div class="ic"><i class="bx bx-envelope"></i></div><div class="num" style="font-size:18px;line-height:1.3;margin-top:6px;" data-en="in your inbox">no seu e-mail</div><div class="lbl" data-en="Pending comments arrive by email (FormSubmit)">Comentários pendentes chegam por e-mail (FormSubmit)</div></div>
     </div>
 
     <div class="panel">
-      <h2><i class="bx bx-info-circle"></i> Como funciona</h2>
+      <h2><i class="bx bx-info-circle"></i> <span data-lang="pt">Como funciona</span><span data-lang="en">How it works</span></h2>
       <ol class="setup-steps">
-        <li>Um visitante envia o comentário pelo formulário → ele chega no seu <strong>e-mail</strong> (via FormSubmit), passando por captcha.</li>
-        <li>Para publicar, preencha o comentário abaixo e clique em <strong>Adicionar à lista</strong>.</li>
-        <li>Clique em <strong>Baixar comments.json</strong> (ou Copiar) e substitua <code>assets/comments.json</code> no repositório.</li>
-        <li>Commit/push. Só os comentários desta lista aparecem publicamente.</li>
+        <li data-en="A visitor submits a comment through the form → it lands in your &lt;strong&gt;email&lt;/strong&gt; (via FormSubmit), after passing a captcha.">Um visitante envia o comentário pelo formulário → ele chega no seu <strong>e-mail</strong> (via FormSubmit), passando por captcha.</li>
+        <li data-en="To publish, fill in the comment below and click &lt;strong&gt;Add to list&lt;/strong&gt;.">Para publicar, preencha o comentário abaixo e clique em <strong>Adicionar à lista</strong>.</li>
+        <li data-en="Click &lt;strong&gt;Download comments.json&lt;/strong&gt; (or Copy) and replace &lt;code&gt;assets/comments.json&lt;/code&gt; in the repository.">Clique em <strong>Baixar comments.json</strong> (ou Copiar) e substitua <code>assets/comments.json</code> no repositório.</li>
+        <li data-en="Commit/push. Only the comments in this list appear publicly.">Commit/push. Só os comentários desta lista aparecem publicamente.</li>
       </ol>
     </div>
 
     <div class="panel">
-      <h2><i class="bx bx-plus-circle"></i> Adicionar comentário aprovado</h2>
-      <p class="desc">Copie do e-mail e cole aqui o que você decidir publicar.</p>
+      <h2><i class="bx bx-plus-circle"></i> <span data-lang="pt">Adicionar comentário aprovado</span><span data-lang="en">Add approved comment</span></h2>
+      <p class="desc" data-en="Copy from the email and paste here whatever you decide to publish.">Copie do e-mail e cole aqui o que você decidir publicar.</p>
       <div class="form-grid">
         <div>
-          <label for="m-name">Nome</label>
-          <input type="text" id="m-name" placeholder="Nome de quem comentou">
+          <label for="m-name" data-en="Name">Nome</label>
+          <input type="text" id="m-name" placeholder="Nome de quem comentou" data-en-placeholder="Commenter's name">
         </div>
         <div>
-          <label for="m-project">Projeto</label>
+          <label for="m-project" data-en="Project">Projeto</label>
           <select id="m-project">
             <option>PokéWorld Online</option>
             <option>Gigaverse3D learnCode: Java</option>
@@ -59,30 +65,30 @@
           </select>
         </div>
         <div class="full">
-          <label for="m-message">Comentário</label>
-          <textarea id="m-message" rows="3" placeholder="Texto do comentário"></textarea>
+          <label for="m-message" data-en="Comment">Comentário</label>
+          <textarea id="m-message" rows="3" placeholder="Texto do comentário" data-en-placeholder="Comment text"></textarea>
         </div>
         <div>
-          <label for="m-date">Data</label>
+          <label for="m-date" data-en="Date">Data</label>
           <input type="date" id="m-date">
         </div>
       </div>
       <div class="row-actions">
-        <button class="btn green" id="m-add"><i class="bx bx-plus"></i> Adicionar à lista</button>
+        <button class="btn green" id="m-add"><i class="bx bx-plus"></i> <span data-lang="pt">Adicionar à lista</span><span data-lang="en">Add to list</span></button>
       </div>
     </div>
 
     <div class="panel">
-      <h2><i class="bx bx-list-ul"></i> Comentários publicados</h2>
+      <h2><i class="bx bx-list-ul"></i> <span data-lang="pt">Comentários publicados</span><span data-lang="en">Published comments</span></h2>
       <ul class="list" id="m-list"></ul>
     </div>
 
     <div class="panel">
-      <h2><i class="bx bx-code-block"></i> Arquivo <code>assets/comments.json</code></h2>
-      <p class="desc">Copie ou baixe e substitua o arquivo no repositório.</p>
+      <h2><i class="bx bx-code-block"></i> <span data-lang="pt">Arquivo</span><span data-lang="en">File</span> <code>assets/comments.json</code></h2>
+      <p class="desc" data-en="Copy or download it and replace the file in the repository.">Copie ou baixe e substitua o arquivo no repositório.</p>
       <div class="row-actions">
-        <button class="btn primary" id="m-download"><i class="bx bx-download"></i> Baixar comments.json</button>
-        <button class="btn ghost" id="m-copy"><i class="bx bx-copy"></i> Copiar JSON</button>
+        <button class="btn primary" id="m-download"><i class="bx bx-download"></i> <span data-lang="pt">Baixar comments.json</span><span data-lang="en">Download comments.json</span></button>
+        <button class="btn ghost" id="m-copy"><i class="bx bx-copy"></i> <span data-lang="pt">Copiar JSON</span><span data-lang="en">Copy JSON</span></button>
       </div>
       <textarea class="json-box" id="m-json" readonly></textarea>
     </div>
@@ -91,6 +97,7 @@
 
   <script>
     (function () {
+      var t = function (pt, en) { return document.documentElement.lang === 'en' ? en : pt; };
       var data = [];
       var listEl = document.getElementById('m-list');
       var jsonEl = document.getElementById('m-json');
@@ -101,23 +108,24 @@
           return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
         });
       }
+      function sp(pt, en) { return '<span data-lang="pt">' + pt + '</span><span data-lang="en">' + en + '</span>'; }
       function render() {
         countEl.textContent = data.length;
         if (!data.length) {
-          listEl.innerHTML = '<li style="border:none;color:#6f8298;">Nenhum comentário na lista.</li>';
+          listEl.innerHTML = '<li style="border:none;color:#6f8298;">' + sp('Nenhum comentário na lista.', 'No comments in the list.') + '</li>';
         } else {
           listEl.innerHTML = data.map(function (c, i) {
             return '<li><div class="mi-body"><strong>' + esc(c.name) + '</strong>'
               + (c.project ? ' <span class="mi-proj">· ' + esc(c.project) + '</span>' : '')
               + '<p>' + esc(c.message) + '</p>'
               + (c.date ? '<p class="mi-date">' + esc(c.date) + '</p>' : '')
-              + '</div><button class="btn danger" data-i="' + i + '"><i class="bx bx-trash"></i> Remover</button></li>';
+              + '</div><button class="btn danger" data-i="' + i + '"><i class="bx bx-trash"></i> ' + sp('Remover', 'Remove') + '</button></li>';
           }).join('');
         }
         jsonEl.value = JSON.stringify(data, null, 2);
       }
       function load() {
-        fetch('assets/comments.json', { cache: 'no-store' })
+        fetch('/assets/comments.json', { cache: 'no-store' })
           .then(function (r) { return r.ok ? r.json() : []; })
           .then(function (items) { data = Array.isArray(items) ? items : []; render(); })
           .catch(function () { data = []; render(); });
@@ -129,7 +137,7 @@
       document.getElementById('m-add').addEventListener('click', function () {
         var name = document.getElementById('m-name').value.trim();
         var message = document.getElementById('m-message').value.trim();
-        if (!name || !message) { alert('Preencha pelo menos nome e comentário.'); return; }
+        if (!name || !message) { alert(t('Preencha pelo menos nome e comentário.', 'Fill in at least name and comment.')); return; }
         data.unshift({
           name: name,
           project: document.getElementById('m-project').value,
@@ -144,7 +152,7 @@
       listEl.addEventListener('click', function (e) {
         var btn = e.target.closest('button[data-i]');
         if (!btn) return;
-        if (confirm('Remover este comentário da lista?')) {
+        if (confirm(t('Remover este comentário da lista?', 'Remove this comment from the list?'))) {
           data.splice(parseInt(btn.getAttribute('data-i'), 10), 1);
           render();
         }
@@ -165,7 +173,7 @@
         jsonEl.select();
         navigator.clipboard.writeText(jsonEl.value).then(function () {
           var b = document.getElementById('m-copy');
-          var t = b.innerHTML; b.innerHTML = '<i class="bx bx-check"></i> Copiado!';
+          var t = b.innerHTML; b.innerHTML = '<i class="bx bx-check"></i> ' + sp('Copiado!', 'Copied!');
           setTimeout(function () { b.innerHTML = t; }, 1500);
         }).catch(function () { document.execCommand('copy'); });
       });
@@ -173,6 +181,7 @@
       load();
     })();
   </script>
+  <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

@@ -1,323 +1,1148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://diogomes.github.io/</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/projects.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/index.html</loc>
-    <lastmod>2026-06-30</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/gestao-dados-de-teste.html</loc>
-    <lastmod>2026-06-30</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/visual-regression-testing.html</loc>
-    <lastmod>2026-06-29</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/testes-de-acessibilidade.html</loc>
-    <lastmod>2026-06-28</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/testes-mobile-appium.html</loc>
-    <lastmod>2026-06-27</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/testes-de-performance.html</loc>
-    <lastmod>2026-06-26</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/bdd-atdd-tdd.html</loc>
-    <lastmod>2026-06-25</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/gherkin-given-when-then.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/tecnicas-design-de-teste.html</loc>
-    <lastmod>2026-06-23</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/piramide-de-testes.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/tipos-de-teste.html</loc>
-    <lastmod>2026-06-21</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/test-doubles.html</loc>
-    <lastmod>2026-06-19</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/teste-exploratorio.html</loc>
-    <lastmod>2026-06-13</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/bug-report.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/cicd-para-qa.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/clean-code-qa.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/contract-testing.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/naked-statistics-summary.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/page-object-model.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/pensamentos-qa.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/playwright-testes-e2e.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/tdd-na-pratica.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/testes-de-api.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/testes-flaky.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/blog/testes-unitarios.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/backend/index.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/index.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/index.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/backend/como-a-web-funciona.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://diogomes.github.io/backend/apis-rest.html</loc>
     <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/apis-rest.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/apis-rest.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/apis-rest.html"/>
   </url>
   <url>
-    <loc>https://diogomes.github.io/backend/sql-essencial.html</loc>
-    <lastmod>2026-06-20</lastmod>
+    <loc>https://diogomes.github.io/en/backend/apis-rest.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/apis-rest.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/apis-rest.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/apis-rest.html"/>
   </url>
   <url>
     <loc>https://diogomes.github.io/backend/autenticacao-autorizacao.html</loc>
     <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/autenticacao-autorizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html"/>
   </url>
   <url>
-    <loc>https://diogomes.github.io/backend/problema-n-mais-1.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://diogomes.github.io/en/backend/autenticacao-autorizacao.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/autenticacao-autorizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/autenticacao-autorizacao.html"/>
   </url>
   <url>
     <loc>https://diogomes.github.io/backend/cache-backend.html</loc>
     <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/cache-backend.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/cache-backend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/cache-backend.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/cache-backend.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/cache-backend.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/cache-backend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/cache-backend.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/backend/como-a-web-funciona.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/como-a-web-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/como-a-web-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/como-a-web-funciona.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/como-a-web-funciona.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/como-a-web-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/como-a-web-funciona.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/como-a-web-funciona.html"/>
   </url>
   <url>
     <loc>https://diogomes.github.io/backend/escalabilidade.html</loc>
     <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/escalabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/escalabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/escalabilidade.html"/>
   </url>
   <url>
-    <loc>https://diogomes.github.io/backend/teorema-cap.html</loc>
-    <lastmod>2026-06-08</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/backend/resiliencia.html</loc>
-    <lastmod>2026-06-06</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/html-semantico.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/css-box-model-layout.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/javascript-essencial.html</loc>
-    <lastmod>2026-06-20</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/event-loop.html</loc>
-    <lastmod>2026-06-17</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/estado-componentes.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/render-performance.html</loc>
-    <lastmod>2026-06-13</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/arquitetura-frontend.html</loc>
+    <loc>https://diogomes.github.io/en/backend/escalabilidade.html</loc>
     <lastmod>2026-06-10</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/web-performance-core-vitals.html</loc>
-    <lastmod>2026-06-08</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/frontend/seguranca-frontend.html</loc>
-    <lastmod>2026-06-06</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/linux-terminal.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/git-fluxos.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/ci-cd-basico.html</loc>
-    <lastmod>2026-06-20</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/containers-docker.html</loc>
-    <lastmod>2026-06-17</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/infra-como-codigo.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/observabilidade.html</loc>
-    <lastmod>2026-06-13</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/kubernetes.html</loc>
-    <lastmod>2026-06-10</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/arquitetura-cloud.html</loc>
-    <lastmod>2026-06-08</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/devops/seguranca-devsecops.html</loc>
-    <lastmod>2026-06-06</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/index.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/index.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/modelagem-relacional.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/consultas-sql.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/normalizacao.html</loc>
-    <lastmod>2026-06-20</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/indices-performance.html</loc>
-    <lastmod>2026-06-17</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/modelagem-dimensional.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/etl-pipelines.html</loc>
-    <lastmod>2026-06-13</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/nosql.html</loc>
-    <lastmod>2026-06-10</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/particionamento-sharding.html</loc>
-    <lastmod>2026-06-08</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/dados/streaming-dados.html</loc>
-    <lastmod>2026-06-06</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/ciclo-de-vida-app.html</loc>
-    <lastmod>2026-06-24</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/navegacao-mobile.html</loc>
-    <lastmod>2026-06-22</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/layout-responsivo-mobile.html</loc>
-    <lastmod>2026-06-20</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/estado-dados-mobile.html</loc>
-    <lastmod>2026-06-17</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/offline-sync.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/performance-mobile.html</loc>
-    <lastmod>2026-06-13</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/arquitetura-mobile.html</loc>
-    <lastmod>2026-06-10</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/push-notificacoes.html</loc>
-    <lastmod>2026-06-08</lastmod>
-  </url>
-  <url>
-    <loc>https://diogomes.github.io/mobile/publicacao-lojas.html</loc>
-    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/escalabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/escalabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/escalabilidade.html"/>
   </url>
   <url>
     <loc>https://diogomes.github.io/backend/filas-mensageria.html</loc>
     <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/filas-mensageria.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/filas-mensageria.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/filas-mensageria.html"/>
   </url>
   <url>
-    <loc>https://diogomes.github.io/frontend/acessibilidade-web.html</loc>
+    <loc>https://diogomes.github.io/en/backend/filas-mensageria.html</loc>
     <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/filas-mensageria.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/filas-mensageria.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/filas-mensageria.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/backend/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/backend/problema-n-mais-1.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/problema-n-mais-1.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/problema-n-mais-1.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/problema-n-mais-1.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/problema-n-mais-1.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/problema-n-mais-1.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/problema-n-mais-1.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/problema-n-mais-1.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/backend/resiliencia.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/resiliencia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/resiliencia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/resiliencia.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/resiliencia.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/resiliencia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/resiliencia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/resiliencia.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/backend/sql-essencial.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/sql-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/sql-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/sql-essencial.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/sql-essencial.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/sql-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/sql-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/sql-essencial.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/backend/teorema-cap.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/teorema-cap.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/teorema-cap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/teorema-cap.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/backend/teorema-cap.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/teorema-cap.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/teorema-cap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/teorema-cap.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/bdd-atdd-tdd.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/bdd-atdd-tdd.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/bdd-atdd-tdd.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/bdd-atdd-tdd.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/bdd-atdd-tdd.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/bdd-atdd-tdd.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/bdd-atdd-tdd.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/bdd-atdd-tdd.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/bug-report.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/bug-report.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/bug-report.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/bug-report.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/bug-report.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/bug-report.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/bug-report.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/bug-report.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/cicd-para-qa.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/cicd-para-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/cicd-para-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/cicd-para-qa.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/cicd-para-qa.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/cicd-para-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/cicd-para-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/cicd-para-qa.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/clean-code-qa.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/clean-code-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/clean-code-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/clean-code-qa.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/clean-code-qa.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/clean-code-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/clean-code-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/clean-code-qa.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/contract-testing.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/contract-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/contract-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/contract-testing.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/contract-testing.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/contract-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/contract-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/contract-testing.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/gestao-dados-de-teste.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/gestao-dados-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/gestao-dados-de-teste.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/gestao-dados-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/gestao-dados-de-teste.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/gherkin-given-when-then.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/gherkin-given-when-then.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/gherkin-given-when-then.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/gherkin-given-when-then.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/gherkin-given-when-then.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/gherkin-given-when-then.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/gherkin-given-when-then.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/gherkin-given-when-then.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/index.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/index.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/naked-statistics-summary.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/naked-statistics-summary.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/naked-statistics-summary.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/naked-statistics-summary.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/naked-statistics-summary.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/naked-statistics-summary.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/naked-statistics-summary.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/naked-statistics-summary.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/page-object-model.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/page-object-model.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/page-object-model.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/page-object-model.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/page-object-model.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/page-object-model.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/page-object-model.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/page-object-model.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/pensamentos-qa.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/pensamentos-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/pensamentos-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/pensamentos-qa.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/pensamentos-qa.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/pensamentos-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/pensamentos-qa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/pensamentos-qa.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/piramide-de-testes.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/piramide-de-testes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/piramide-de-testes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/piramide-de-testes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/piramide-de-testes.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/piramide-de-testes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/piramide-de-testes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/piramide-de-testes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/playwright-testes-e2e.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/playwright-testes-e2e.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/playwright-testes-e2e.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/playwright-testes-e2e.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/playwright-testes-e2e.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/playwright-testes-e2e.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/playwright-testes-e2e.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/playwright-testes-e2e.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/tdd-na-pratica.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tdd-na-pratica.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tdd-na-pratica.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tdd-na-pratica.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/tdd-na-pratica.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tdd-na-pratica.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tdd-na-pratica.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tdd-na-pratica.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/tecnicas-design-de-teste.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tecnicas-design-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/tecnicas-design-de-teste.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tecnicas-design-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/test-doubles.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/test-doubles.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/test-doubles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/test-doubles.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/test-doubles.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/test-doubles.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/test-doubles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/test-doubles.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/teste-exploratorio.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/teste-exploratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/teste-exploratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/teste-exploratorio.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/teste-exploratorio.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/teste-exploratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/teste-exploratorio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/teste-exploratorio.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/testes-de-acessibilidade.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-acessibilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-acessibilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-acessibilidade.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/testes-de-acessibilidade.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-acessibilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-acessibilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-acessibilidade.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/testes-de-api.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-api.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-api.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-api.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/testes-de-api.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-api.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-api.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-api.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/testes-de-performance.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-performance.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/testes-de-performance.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-performance.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/testes-flaky.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-flaky.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-flaky.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-flaky.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/testes-flaky.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-flaky.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-flaky.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-flaky.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/testes-mobile-appium.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-mobile-appium.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-mobile-appium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-mobile-appium.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/testes-mobile-appium.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-mobile-appium.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-mobile-appium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-mobile-appium.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/testes-unitarios.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-unitarios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-unitarios.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-unitarios.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/testes-unitarios.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-unitarios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-unitarios.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-unitarios.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/tipos-de-teste.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tipos-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tipos-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tipos-de-teste.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/tipos-de-teste.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tipos-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tipos-de-teste.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tipos-de-teste.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/blog/visual-regression-testing.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/visual-regression-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/visual-regression-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/visual-regression-testing.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/blog/visual-regression-testing.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/visual-regression-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/visual-regression-testing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/visual-regression-testing.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/consultas-sql.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/consultas-sql.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/consultas-sql.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/consultas-sql.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/consultas-sql.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/consultas-sql.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/consultas-sql.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/consultas-sql.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/etl-pipelines.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/etl-pipelines.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/etl-pipelines.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/etl-pipelines.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/etl-pipelines.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/etl-pipelines.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/etl-pipelines.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/etl-pipelines.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/indices-performance.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/indices-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/indices-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/indices-performance.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/indices-performance.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/indices-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/indices-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/indices-performance.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/modelagem-dimensional.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/modelagem-dimensional.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/modelagem-dimensional.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/modelagem-dimensional.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/modelagem-dimensional.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/modelagem-dimensional.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/modelagem-dimensional.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/modelagem-dimensional.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/modelagem-relacional.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/modelagem-relacional.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/modelagem-relacional.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/modelagem-relacional.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/modelagem-relacional.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/modelagem-relacional.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/modelagem-relacional.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/modelagem-relacional.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/normalizacao.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/normalizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/normalizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/normalizacao.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/normalizacao.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/normalizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/normalizacao.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/normalizacao.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/nosql.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/nosql.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/nosql.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/nosql.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/nosql.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/nosql.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/nosql.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/nosql.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/particionamento-sharding.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/particionamento-sharding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/particionamento-sharding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/particionamento-sharding.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/particionamento-sharding.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/particionamento-sharding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/particionamento-sharding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/particionamento-sharding.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/dados/streaming-dados.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/streaming-dados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/streaming-dados.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/streaming-dados.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/dados/streaming-dados.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/dados/streaming-dados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/dados/streaming-dados.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/dados/streaming-dados.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/arquitetura-cloud.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/arquitetura-cloud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/arquitetura-cloud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/arquitetura-cloud.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/arquitetura-cloud.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/arquitetura-cloud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/arquitetura-cloud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/arquitetura-cloud.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/ci-cd-basico.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/ci-cd-basico.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/ci-cd-basico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/ci-cd-basico.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/ci-cd-basico.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/ci-cd-basico.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/ci-cd-basico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/ci-cd-basico.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/containers-docker.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/containers-docker.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/containers-docker.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/containers-docker.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/containers-docker.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/containers-docker.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/containers-docker.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/containers-docker.html"/>
   </url>
   <url>
     <loc>https://diogomes.github.io/devops/estrategias-deploy.html</loc>
     <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/estrategias-deploy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/estrategias-deploy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/estrategias-deploy.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/estrategias-deploy.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/estrategias-deploy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/estrategias-deploy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/estrategias-deploy.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/git-fluxos.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/git-fluxos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/git-fluxos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/git-fluxos.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/git-fluxos.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/git-fluxos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/git-fluxos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/git-fluxos.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/infra-como-codigo.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/infra-como-codigo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/infra-como-codigo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/infra-como-codigo.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/infra-como-codigo.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/infra-como-codigo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/infra-como-codigo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/infra-como-codigo.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/kubernetes.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/kubernetes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/kubernetes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/kubernetes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/kubernetes.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/kubernetes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/kubernetes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/kubernetes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/linux-terminal.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/linux-terminal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/linux-terminal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/linux-terminal.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/linux-terminal.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/linux-terminal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/linux-terminal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/linux-terminal.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/observabilidade.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/observabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/observabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/observabilidade.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/observabilidade.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/observabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/observabilidade.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/observabilidade.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/devops/seguranca-devsecops.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/seguranca-devsecops.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/seguranca-devsecops.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/seguranca-devsecops.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/devops/seguranca-devsecops.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/devops/seguranca-devsecops.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/devops/seguranca-devsecops.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/devops/seguranca-devsecops.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/acessibilidade-web.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/acessibilidade-web.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/acessibilidade-web.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/acessibilidade-web.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/acessibilidade-web.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/acessibilidade-web.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/acessibilidade-web.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/acessibilidade-web.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/arquitetura-frontend.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/arquitetura-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/arquitetura-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/arquitetura-frontend.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/arquitetura-frontend.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/arquitetura-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/arquitetura-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/arquitetura-frontend.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/css-box-model-layout.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/css-box-model-layout.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/css-box-model-layout.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/css-box-model-layout.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/css-box-model-layout.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/css-box-model-layout.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/css-box-model-layout.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/css-box-model-layout.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/estado-componentes.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/estado-componentes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/estado-componentes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/estado-componentes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/estado-componentes.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/estado-componentes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/estado-componentes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/estado-componentes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/event-loop.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/event-loop.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/event-loop.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/event-loop.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/event-loop.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/event-loop.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/event-loop.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/event-loop.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/html-semantico.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/html-semantico.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/html-semantico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/html-semantico.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/html-semantico.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/html-semantico.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/html-semantico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/html-semantico.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/javascript-essencial.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/javascript-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/javascript-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/javascript-essencial.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/javascript-essencial.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/javascript-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/javascript-essencial.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/javascript-essencial.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/render-performance.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/render-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/render-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/render-performance.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/render-performance.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/render-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/render-performance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/render-performance.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/seguranca-frontend.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/seguranca-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/seguranca-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/seguranca-frontend.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/seguranca-frontend.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/seguranca-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/seguranca-frontend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/seguranca-frontend.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/frontend/web-performance-core-vitals.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/web-performance-core-vitals.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/frontend/web-performance-core-vitals.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/web-performance-core-vitals.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/arquitetura-mobile.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/arquitetura-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/arquitetura-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/arquitetura-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/arquitetura-mobile.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/arquitetura-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/arquitetura-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/arquitetura-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/ciclo-de-vida-app.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/ciclo-de-vida-app.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/ciclo-de-vida-app.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/ciclo-de-vida-app.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/ciclo-de-vida-app.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/ciclo-de-vida-app.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/ciclo-de-vida-app.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/ciclo-de-vida-app.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/estado-dados-mobile.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/estado-dados-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/estado-dados-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/estado-dados-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/estado-dados-mobile.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/estado-dados-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/estado-dados-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/estado-dados-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/index.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/index.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/layout-responsivo-mobile.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/layout-responsivo-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/layout-responsivo-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/layout-responsivo-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/layout-responsivo-mobile.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/layout-responsivo-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/layout-responsivo-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/layout-responsivo-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/navegacao-mobile.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/navegacao-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/navegacao-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/navegacao-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/navegacao-mobile.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/navegacao-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/navegacao-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/navegacao-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/offline-sync.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/offline-sync.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/offline-sync.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/offline-sync.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/offline-sync.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/offline-sync.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/offline-sync.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/offline-sync.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/performance-mobile.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/performance-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/performance-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/performance-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/performance-mobile.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/performance-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/performance-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/performance-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/publicacao-lojas.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/publicacao-lojas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/publicacao-lojas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/publicacao-lojas.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/publicacao-lojas.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/publicacao-lojas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/publicacao-lojas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/publicacao-lojas.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/mobile/push-notificacoes.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/push-notificacoes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/push-notificacoes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/push-notificacoes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/mobile/push-notificacoes.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/mobile/push-notificacoes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/mobile/push-notificacoes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/mobile/push-notificacoes.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/pokeworld.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/pokeworld.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/pokeworld.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/pokeworld.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/pokeworld.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/pokeworld.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/pokeworld.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/pokeworld.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/projects.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/projects.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/projects.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/projects.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/search.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/search.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/search.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/search.html"/>
+  </url>
+  <url>
+    <loc>https://diogomes.github.io/en/search.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/search.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/search.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/search.html"/>
   </url>
 </urlset>

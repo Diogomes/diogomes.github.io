@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Queues and messaging: asynchronous processing and decoupling - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/backend/filas-mensageria.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/backend/filas-mensageria.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/backend/filas-mensageria.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/backend/filas-mensageria.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Filas e mensageria: processamento assíncrono e desacoplamento - Diogo Gomes</title>
   <meta content="Não trave a requisição esperando: como filas e mensageria desacoplam serviços, absorvem picos de carga e tornam o processamento assíncrono confiável." name="description">
   <meta content="Back-end, Pleno, Mensageria, Filas, Arquitetura, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Filas e mensageria: processamento assíncrono e desacoplamento">
-  <meta property="og:description" content="Não trave a requisição esperando: como filas e mensageria desacoplam serviços, absorvem picos de carga e tornam o processamento assíncrono confiável.">
+  <meta property="og:title" content="Filas e mensageria: processamento assíncrono e desacoplamento" data-en-content="Queues and messaging: asynchronous processing and decoupling">
+  <meta property="og:description" content="Não trave a requisição esperando: como filas e mensageria desacoplam serviços, absorvem picos de carga e tornam o processamento assíncrono confiável." data-en-content="Don't block the request waiting: how queues and messaging decouple services, absorb load spikes and make asynchronous processing reliable.">
   <meta property="og:url" content="https://diogomes.github.io/backend/filas-mensageria.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/backend-filas-mensageria.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-filas-mensageria-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/backend-filas-mensageria.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-filas-mensageria-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Filas e mensageria: processamento assíncrono e desacoplamento", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/filas-mensageria.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Não trave a requisição esperando: como filas e mensageria desacoplam serviços, absorvem picos de carga e tornam o processamento assíncrono confiável.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Filas e mensageria: processamento assíncrono e desacoplamento", "datePublished": "2026-06-25", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/filas-mensageria.html", "image": "https://diogomes.github.io/assets/img/og/backend-filas-mensageria.png", "description": "Não trave a requisição esperando: como filas e mensageria desacoplam serviços, absorvem picos de carga e tornam o processamento assíncrono confiável.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Back-end · Pleno</h2>
+          <h2 data-en="Back-end · Mid-level">Back-end · Pleno</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Back-end</a></li>
-            <li>Pleno</li>
+            <li data-en="Mid-level">Pleno</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-conversation"></i> Back-end · Pleno</span>
-              <h1>Filas e mensageria: processamento assíncrono e desacoplamento</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 4 min de leitura</div>
+              <span class="post-cat" data-en="&lt;i class=&quot;bx bx-conversation&quot;&gt;&lt;/i&gt; Back-end · Mid-level"><i class="bx bx-conversation"></i> Back-end · Pleno</span>
+              <h1 data-en="Queues and messaging: asynchronous processing and decoupling">Filas e mensageria: processamento assíncrono e desacoplamento</h1>
+              <div class="post-meta" data-en="&lt;i class=&quot;bi bi-person&quot;&gt;&lt;/i&gt; Diogo Gomes &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-clock&quot;&gt;&lt;/i&gt; Jun 25, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; &lt;i class=&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt; 4 min read"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 25 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 4 min de leitura</div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Quando um usuário clica em "finalizar pedido", ele não deveria esperar o e-mail de confirmação ser enviado, a nota fiscal ser gerada e o estoque do fornecedor ser notificado — tudo dentro daquela única request. Processamento assíncrono com filas é a forma de tirar esse peso da request e deixar o sistema responsivo e desacoplado. Entender produtor, consumidor e entrega confiável é esperado de um dev pleno.</p>
 
 <h2>Por que processar de forma assíncrona</h2>
@@ -138,16 +151,67 @@ on fila.receive("pedidos.criados") as msg:
 
 <h2>Conclusão</h2>
 <p>Filas tiram trabalho pesado da request, amortecem picos e desacoplam serviços para que a falha de um não derrube os outros. O preço é pensar em entrega (ack e DLQ), ordenação e idempotência. Combinadas com <a href="cache-backend.html">cache</a>, <a href="escalabilidade.html">escalabilidade</a> e <a href="resiliencia.html">resiliência</a>, a mensageria é o que permite sistemas crescerem sem que cada parte precise esperar pela outra.</p>
-              <div class="post-tags"><span class="tag">Mensageria</span><span class="tag">Filas</span><span class="tag">Arquitetura</span></div>
+</div>
+<div data-lang="en">
+<p>When a user clicks "place order", they shouldn't have to wait for the confirmation email to be sent, the invoice to be generated and the supplier's inventory to be notified — all inside that single request. Asynchronous processing with queues is how you take that weight off the request and keep the system responsive and decoupled. Understanding producer, consumer and reliable delivery is expected of a mid-level dev.</p>
+
+<h2>Why process asynchronously</h2>
+<p>An HTTP request that does five things takes as long as all five added together — and if the third one fails, the user gets an error even though the order was saved. The idea behind async is simple: the request does only the essentials (saving the order) and <em>publishes</em> the rest as tasks to be done later. The user gets a response in milliseconds; the heavy work happens in the background.</p>
+<p>The analogy: in a restaurant, the waiter doesn't cook your dish in front of you. He writes down the order (<em>publishes</em>), pins the ticket to the counter (<em>queue</em>) and the kitchen pulls tickets at its own pace (<em>consumer</em>). The waiter immediately goes back to serving other tables.</p>
+
+<h2>Producer and consumer</h2>
+<p>The <strong>producer</strong> is whoever creates the message and puts it on the queue. The <strong>consumer</strong> is whoever takes the message off and processes it. They don't know each other and don't need to be online at the same time: the producer publishes and moves on; the consumer processes when it can. The queue (run by a <em>broker</em> such as RabbitMQ, SQS or Kafka) sits in the middle, holding the messages.</p>
+<pre><code>// Producer (inside the request)
+order = saveOrder(data)
+queue.publish("orders.created", { id: order.id })
+respond(202, "order received")
+
+// Consumer (separate process)
+on queue.receive("orders.created") as msg:
+    sendEmail(msg.id)
+    msg.ack()        // confirms processing</code></pre>
+
+<h2>The message's path</h2>
+<pre><code>  Producer          Queue (broker)         Consumer
+ ┌────────┐ publish ┌──────────────┐  pull ┌──────────┐
+ │ request│ ───────▶ │ [m3][m2][m1] │ ────▶ │ process  │
+ └────────┘          └──────────────┘       └────┬─────┘
+                          ▲   buffer              │ ack
+                          └───────────────────────┘</code></pre>
+<p>The queue works as a <em>buffer</em>: if a thousand orders arrive in a spike, they pile up and the consumers drain them at their own pace, without taking the system down. This smooths out spikes and connects directly with <a href="escalabilidade.html">scalability</a> — just spin up more consumers to process faster.</p>
+
+<h2>Queue vs topic (pub/sub)</h2>
+<p>In a traditional <strong>queue</strong>, each message is delivered to <em>one</em> consumer — multiple consumers share the work. In the <strong>pub/sub</strong> pattern (topic), each message is delivered to <em>all</em> interested subscribers. The difference changes the design of the system:</p>
+<div class="table-wrap"><table><thead><tr><th>Model</th><th>Delivery</th><th>Typical use</th></tr></thead><tbody>
+<tr><td>Queue</td><td>1 message → 1 consumer</td><td>Distributing work (work queue)</td></tr>
+<tr><td>Topic (pub/sub)</td><td>1 message → N subscribers</td><td>Notifying events to several services</td></tr>
+</tbody></table></div>
+<p>"Order created" as an event on a topic lets inventory, billing and email react independently — each with its own subscription.</p>
+
+<h2>What changes when you decouple services</h2>
+<p>Without a queue, the orders service calls the email service directly; if email goes down, orders breaks too. With the queue in the middle, the producer only depends on the broker. The consumer can be offline and the messages just wait — when it comes back, it processes the backlog. This decoupling is a central piece of <a href="resiliencia.html">resilience</a>: one service's failure stops taking down the others.</p>
+
+<h2>Delivery, reprocessing and dead-letter</h2>
+<p>Since the consumer can fail halfway through processing, it only confirms the message with an <strong>ack</strong> after finishing. Without an ack, the broker assumes something went wrong and <em>redelivers</em> the message. This guarantees nothing gets lost — but it means the same message may arrive more than once (<em>at-least-once</em> delivery). A message that fails repeatedly goes to a <strong>dead-letter queue (DLQ)</strong>: a separate queue for manual inspection, preventing a "poison message" from blocking the consumer forever.</p>
+
+<h2>Ordering and idempotency</h2>
+<p>Two classic pitfalls. First: queues generally do <em>not</em> guarantee global ordering; if order matters, use a partition key or accept reordering. Second, and more important: since the same message can be delivered twice, the consumer needs to be <strong>idempotent</strong> — processing the same message N times must have the same effect as processing it once. In practice, this becomes "check whether the email was already sent for this order before sending it".</p>
+
+<blockquote>The queue promises to deliver the message at least once — it's up to the consumer not to mess everything up when it arrives twice. Idempotency isn't a detail: it's what separates a robust messaging system from one that sends the email three times.</blockquote>
+
+<h2>Conclusion</h2>
+<p>Queues take heavy work off the request, smooth out spikes and decouple services so that one's failure doesn't bring down the others. The price is having to think about delivery (ack and DLQ), ordering and idempotency. Combined with <a href="cache-backend.html">caching</a>, <a href="escalabilidade.html">scalability</a> and <a href="resiliencia.html">resilience</a>, messaging is what lets systems grow without every part having to wait for the others.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Messaging">Mensageria</span><span class="tag" data-en="Queues">Filas</span><span class="tag" data-en="Architecture">Arquitetura</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="cache-backend.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Pleno</span><span class="rel-title">Cache no back-end: quando usar e como invalidar</span></a>
-                <a class="rel-card" href="escalabilidade.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Sênior</span><span class="rel-title">Escalabilidade: vertical, horizontal e load balancing</span></a>
-                <a class="rel-card" href="resiliencia.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Sênior</span><span class="rel-title">Resiliência: idempotência, retries e circuit breaker</span></a>
+                <a class="rel-card" href="cache-backend.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Mid-level"><i class="bx bx-server"></i> Back-end · Pleno</span><span class="rel-title" data-en="Backend caching: when to use it and how to invalidate">Cache no back-end: quando usar e como invalidar</span></a>
+                <a class="rel-card" href="escalabilidade.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Senior"><i class="bx bx-server"></i> Back-end · Sênior</span><span class="rel-title" data-en="Scalability: vertical, horizontal and load balancing">Escalabilidade: vertical, horizontal e load balancing</span></a>
+                <a class="rel-card" href="resiliencia.html"><span class="rel-cat" data-en="&lt;i class=&quot;bx bx-server&quot;&gt;&lt;/i&gt; Back-end · Senior"><i class="bx bx-server"></i> Back-end · Sênior</span><span class="rel-title" data-en="Resilience: idempotency, retries and circuit breaker">Resiliência: idempotência, retries e circuit breaker</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back" data-en="&lt;i class=&quot;bx bx-left-arrow-alt&quot;&gt;&lt;/i&gt; Back to track"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
             </div>
 
           </div>
@@ -164,7 +228,7 @@ on fila.receive("pedidos.criados") as msg:
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -175,6 +239,8 @@ on fila.receive("pedidos.criados") as msg:
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

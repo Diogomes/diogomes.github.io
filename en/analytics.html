@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /analytics.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/analytics.html" rel="canonical"/>
+<link href="https://diogomes.github.io/analytics.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/analytics.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/analytics.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Analytics · private panel</title>
+<link href="../assets/img/icon.jpg" rel="icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:400,600,700,800|Poppins:500,600,700" rel="stylesheet"/>
+<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../assets/css/dashboard.css" rel="stylesheet"/>
+<link href="../assets/css/i18n.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="wrap">
+<div class="top">
+<h1><i class="bx bx-line-chart"></i> Analytics</h1>
+<div class="actions">
+<button class="btn ghost" id="refresh"><i class="bx bx-refresh"></i> <span>Refresh</span></button>
+<a class="btn ghost" href="moderacao.html"><i class="bx bx-shield-quarter"></i> <span>Moderation</span></a>
+<a class="btn primary" href="https://diogomes.goatcounter.com" rel="noopener" target="_blank"><i class="bx bx-link-external"></i> <span>Full dashboard</span></a>
+</div>
+</div>
+<p class="sub"><span>Private panel (noindex, not in the menu). Live data from GoatCounter — no cookies.</span>
+<span class="updated" id="updated"></span>
+</p>
+<!-- Cartões -->
+<div class="stats">
+<div class="stat c1"><div class="ic"><i class="bx bx-show"></i></div><div class="num" id="s-total">0</div><div class="lbl">Visits (total)</div></div>
+<div class="stat c2"><div class="ic"><i class="bx bx-user"></i></div><div class="num" id="s-unique">0</div><div class="lbl">Unique visitors</div></div>
+<div class="stat c3"><div class="ic"><i class="bx bx-play-circle"></i></div><div class="num" id="s-videos">0</div><div class="lbl">Video clicks</div></div>
+<div class="stat c4"><div class="ic"><i class="bx bx-message-rounded-dots"></i></div><div class="num" id="s-comments">0</div><div class="lbl">Comments sent</div></div>
+</div>
+<div class="grid">
+<div class="panel">
+<h2><i class="bx bx-file"></i> <span>Most viewed pages</span></h2>
+<p class="desc">Views per page (total / unique).</p>
+<div class="bars" id="pages"><p class="empty">Loading…</p></div>
+</div>
+<div class="panel">
+<h2><i class="bx bx-movie-play"></i> <span>Most clicked videos</span></h2>
+<p class="desc">Clicks on "Watch the video" and on the portfolio plays.</p>
+<div class="bars" id="videos"><p class="empty">Loading…</p></div>
+</div>
+</div>
+<!-- Origem & audiência (precisa de token) -->
+<h3 class="section-h"><i class="bx bx-world"></i> <span>Traffic sources &amp; audience</span></h3>
+<div class="panel full-panel" id="audience-setup" style="display:none;">
+<h2><i class="bx bx-key"></i> <span>Enable the traffic source and audience charts</span></h2>
+<p class="desc">Country, referrers, browser, system and device only come through GoatCounter's authenticated API. To show them here, generate a read token:</p>
+<ol class="setup-steps">
+<li>In GoatCounter: <strong>Settings → Password, API, etc. → API tokens → Create</strong> (check only <em>“Read statistics”</em>).</li>
+<li>Paste the token into <code>assets/js/dashboard-config.js</code> (the <code>token</code> field).</li>
+<li>Commit/push — the charts below will start loading.</li>
+</ol>
+<p class="warn">⚠️ Since this page is public (even with <code>noindex</code>), the token is visible in the source code. Use a <strong>read-only</strong> token. The data exposed would only be your traffic statistics.</p>
+<a class="btn primary" href="https://diogomes.goatcounter.com" rel="noopener" target="_blank"><i class="bx bx-link-external"></i> <span>Open full dashboard</span></a>
+</div>
+<div class="grid grid-3" id="audience" style="display:none;">
+<div class="panel"><h2><i class="bx bx-map"></i> <span>Countries</span></h2><div class="bars" id="locations"><p class="empty">Loading…</p></div></div>
+<div class="panel"><h2><i class="bx bx-link"></i> Referrers</h2><div class="bars" id="referrers"><p class="empty">Loading…</p></div></div>
+<div class="panel"><h2><i class="bx bx-globe"></i> <span>Browsers</span></h2><div class="bars" id="browsers"><p class="empty">Loading…</p></div></div>
+<div class="panel"><h2><i class="bx bx-desktop"></i> <span>Systems</span></h2><div class="bars" id="systems"><p class="empty">Loading…</p></div></div>
+<div class="panel"><h2><i class="bx bx-devices"></i> <span>Devices</span></h2><div class="bars" id="sizes"><p class="empty">Loading…</p></div></div>
+<div class="panel full-panel"><h2><i class="bx bx-detail"></i> <span>More details</span></h2><p class="desc">Daily timeline and more breakdowns are in the full dashboard.</p><a class="btn primary" href="https://diogomes.goatcounter.com" rel="noopener" target="_blank"><i class="bx bx-link-external"></i> <span>Open full dashboard</span></a></div>
+</div>
+</div>
+<script src="../assets/js/dashboard-config.js"></script>
+<script>
+    (function () {
+      var t = function (pt, en) { return document.documentElement.lang === 'en' ? en : pt; };
+      var sp = function (pt, en) { return '<span data-lang="pt">' + pt + '</span><span data-lang="en">' + en + '</span>'; };
+      var NAMES_EN = {
+        'Home (raiz)': 'Home (root)', 'Projetos': 'Projects', 'Blog (índice)': 'Blog (index)',
+        'Post · Testes unitários': 'Post · Unit tests', 'Post · Testes de API': 'Post · API testing',
+        'Post · Testes flaky': 'Post · Flaky tests', 'Obrigado (pós-comentário)': 'Thank you (after comment)',
+        'Tutorial (vídeo)': 'Tutorial (video)', 'Post · Pensamentos QA': 'Post · QA thoughts',
+        '(desconhecido)': '(unknown)'
+      };
+      function nm(n) { return NAMES_EN[n] ? sp(n, NAMES_EN[n]) : n; }
+      var CFG = window.DASH_CONFIG || { code: 'diogomes', token: '' };
+      var CODE = CFG.code, TOKEN = CFG.token;
+      var counterBase = 'https://' + CODE + '.goatcounter.com/counter/';
+      var apiBase = 'https://' + CODE + '.goatcounter.com/api/v0/stats/';
+      var SINCE = '2020-01-01'; // intervalo => resposta sem cache e exata
+
+      var PAGES = [
+        { p: '/', name: 'Home (raiz)', i: 'bx-home' },
+        { p: '/index.html', name: 'Home', i: 'bx-home' },
+        { p: '/projects.html', name: 'Projetos', i: 'bx-code-block' },
+        { p: '/blog/index.html', name: 'Blog (índice)', i: 'bx-notepad' },
+        { p: '/blog/playwright-testes-e2e.html', name: 'Post · Playwright', i: 'bx-news' },
+        { p: '/blog/cicd-para-qa.html', name: 'Post · CI/CD', i: 'bx-news' },
+        { p: '/blog/pensamentos-qa.html', name: 'Post · Pensamentos QA', i: 'bx-news' },
+        { p: '/blog/testes-unitarios.html', name: 'Post · Testes unitários', i: 'bx-news' },
+        { p: '/blog/testes-de-api.html', name: 'Post · Testes de API', i: 'bx-news' },
+        { p: '/blog/naked-statistics-summary.html', name: 'Post · Naked Statistics', i: 'bx-news' },
+        { p: '/blog/page-object-model.html', name: 'Post · Page Object Model', i: 'bx-news' },
+        { p: '/blog/testes-flaky.html', name: 'Post · Testes flaky', i: 'bx-news' },
+        { p: '/blog/bug-report.html', name: 'Post · Bug report', i: 'bx-news' },
+        { p: '/blog/tdd-na-pratica.html', name: 'Post · TDD', i: 'bx-news' },
+        { p: '/blog/contract-testing.html', name: 'Post · Contract testing', i: 'bx-news' },
+        { p: '/blog/clean-code-qa.html', name: 'Post · Clean Code', i: 'bx-news' },
+        { p: '/obrigado.html', name: 'Obrigado (pós-comentário)', i: 'bx-check-circle' }
+      ];
+      var VIDEOS = [
+        { id: '91QffN5rcNU', name: 'PokéWorld Online', i: 'bx-joystick' },
+        { id: 'JEZ9l6sROQQ', name: 'learnCode: Java', i: 'bx-coffee' },
+        { id: 'RMwZSuFpPAo', name: 'learnCode: Python', i: 'bxl-python' },
+        { id: '1eoXhpoSfcg', name: 'learnCode: Testes', i: 'bx-test-tube' },
+        { id: 'j8QtacoUimQ', name: 'Tutorial (vídeo)', i: 'bx-movie' }
+      ];
+
+      function num(s) { return parseInt(String(s == null ? 0 : s).replace(/[^0-9]/g, ''), 10) || 0; }
+      function gc(path) {
+        return fetch(counterBase + encodeURIComponent(path) + '.json?start=' + SINCE, { mode: 'cors', cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : {}; })
+          .then(function (d) { return { count: num(d.count), unique: num(d.count_unique) }; })
+          .catch(function () { return { count: 0, unique: 0 }; });
+      }
+      function api(path) {
+        if (!TOKEN) return Promise.resolve(null);
+        return fetch(apiBase + path + '?start=' + SINCE, { headers: { 'Authorization': 'Bearer ' + TOKEN } })
+          .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+      }
+      function animateNum(el, to) {
+        var t0 = null, dur = 800;
+        requestAnimationFrame(function step(ts) {
+          if (!t0) t0 = ts;
+          var k = Math.min(1, (ts - t0) / dur);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString(t('pt-BR', 'en-US'));
+          if (k < 1) requestAnimationFrame(step);
+        });
+      }
+      function bars(elId, rows, isEvent) {
+        var el = document.getElementById(elId);
+        var data = rows.filter(function (r) { return r.count > 0; }).sort(function (a, b) { return b.count - a.count; });
+        if (!data.length) { el.innerHTML = '<p class="empty">' + sp('Ainda sem dados.', 'No data yet.') + '</p>'; return; }
+        var max = data[0].count || 1;
+        el.innerHTML = data.map(function (r) {
+          return '<div class="bar' + (isEvent ? ' ev' : '') + '">'
+            + '<div class="bar-head"><span class="name">' + (r.i ? '<i class="bx ' + r.i + '"></i>' : '') + nm(r.name) + '</span>'
+            + '<span class="v">' + r.count.toLocaleString(t('pt-BR', 'en-US')) + (r.unique != null ? ' <small>/ ' + r.unique.toLocaleString(t('pt-BR', 'en-US')) + '</small>' : '') + '</span></div>'
+            + '<div class="track"><div class="fill"></div></div></div>';
+        }).join('');
+        var fills = el.querySelectorAll('.fill');
+        data.forEach(function (r, idx) {
+          setTimeout(function () { if (fills[idx]) fills[idx].style.width = Math.round((r.count / max) * 100) + '%'; }, 60 + idx * 55);
+        });
+      }
+      function apiRows(json) {
+        if (!json || !json.stats) return [];
+        return json.stats.map(function (s) { return { name: s.name || s.id || '(desconhecido)', count: num(s.count) }; });
+      }
+
+      function loadCounter() {
+        return Promise.all([
+          gc('TOTAL'), gc('evento/comentario-enviado'),
+          Promise.all(PAGES.map(function (pg) { return gc(pg.p).then(function (d) { return { name: pg.name, i: pg.i, count: d.count, unique: d.unique }; }); })),
+          Promise.all(VIDEOS.map(function (v) { return gc('evento/video/' + v.id).then(function (d) { return { name: v.name, i: v.i, count: d.count }; }); }))
+        ]).then(function (res) {
+          var total = res[0], comment = res[1], pages = res[2], videos = res[3];
+          animateNum(document.getElementById('s-total'), total.count);
+          animateNum(document.getElementById('s-unique'), total.unique);
+          animateNum(document.getElementById('s-videos'), videos.reduce(function (s, v) { return s + v.count; }, 0));
+          animateNum(document.getElementById('s-comments'), comment.count);
+          bars('pages', pages, false);
+          bars('videos', videos, true);
+        });
+      }
+      function loadAudience() {
+        if (!TOKEN) { document.getElementById('audience-setup').style.display = 'block'; return Promise.resolve(); }
+        document.getElementById('audience').style.display = 'grid';
+        return Promise.all([
+          api('locations').then(function (j) { bars('locations', apiRows(j)); }),
+          api('toprefs').then(function (j) { bars('referrers', apiRows(j)); }),
+          api('browsers').then(function (j) { bars('browsers', apiRows(j)); }),
+          api('systems').then(function (j) { bars('systems', apiRows(j)); }),
+          api('sizes').then(function (j) { bars('sizes', apiRows(j)); })
+        ]);
+      }
+      function load() {
+        document.getElementById('updated').textContent = t('atualizando…', 'updating…');
+        Promise.all([loadCounter(), loadAudience()]).then(function () {
+          var n = new Date();
+          document.getElementById('updated').textContent = t('atualizado às ', 'updated at ') + n.toLocaleTimeString(t('pt-BR', 'en-US'), { hour: '2-digit', minute: '2-digit' });
+        });
+      }
+      document.getElementById('refresh').addEventListener('click', load);
+      load();
+    })();
+  </script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

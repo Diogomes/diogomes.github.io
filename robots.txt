@@ -3,6 +3,8 @@ Allow: /
 Disallow: /moderacao.html
 Disallow: /analytics.html
 Disallow: /obrigado.html
-Disallow: /forms/
+Disallow: /en/moderacao.html
+Disallow: /en/analytics.html
+Disallow: /en/obrigado.html
 
 Sitemap: https://diogomes.github.io/sitemap.xml

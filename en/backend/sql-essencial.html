@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /backend/sql-essencial.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/backend/sql-essencial.html" rel="canonical"/>
+<link href="https://diogomes.github.io/backend/sql-essencial.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/backend/sql-essencial.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/backend/sql-essencial.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Essential SQL: CRUD, JOIN and transactions - Diogo Gomes</title>
+<meta content="How to talk to a relational database: the four operations, the types of JOIN and why transactions exist (ACID without the pain)." name="description"/>
+<meta content="Back-end, Júnior, SQL, Banco de dados, Fundamentos, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Essential SQL: CRUD, JOIN and transactions" property="og:title"/>
+<meta content="How to talk to a relational database: the four operations, the types of JOIN and why transactions exist (ACID without the pain)." property="og:description"/>
+<meta content="https://diogomes.github.io/en/backend/sql-essencial.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-sql-essencial-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-sql-essencial-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../backend/feed.xml" rel="alternate" title="Back-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SQL essencial: CRUD, JOIN e transações", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/sql-essencial.html", "image": "https://diogomes.github.io/assets/img/og/backend-sql-essencial.png", "description": "Como conversar com um banco relacional: as quatro operações, os tipos de JOIN e por que transações existem (ACID sem dor).", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Back-end · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Back-end</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-data"></i> Back-end · Junior</span>
+<h1>Essential SQL: CRUD, JOIN and transactions</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 20, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Almost every back-end system stores data in a relational database, and the language for talking to it is SQL. Knowing how to build a CRUD, understanding JOINs and having a grasp of transactions is knowledge you use every day — and one that invariably shows up in technical interviews.</p>
+<h2>Tables and rows: the relational model</h2>
+<p>A relational database organizes data into <strong>tables</strong>, like spreadsheets. Each table has columns (fields) and rows (records). A <code>users</code> table has columns such as <code>id</code>, <code>name</code>, <code>email</code>, and each user is a row. The <code>id</code> is usually the <strong>primary key</strong>: it uniquely identifies each row.</p>
+<h2>CRUD: the four operations</h2>
+<p>CRUD stands for Create, Read, Update, Delete — and each one maps to a SQL command:</p>
+<pre><code>-- Create
+INSERT INTO users (name, email)
+VALUES ('Ana', 'ana@example.com');
+
+-- Read
+SELECT id, name FROM users WHERE id = 1;
+
+-- Update
+UPDATE users SET name = 'Ana Paula' WHERE id = 1;
+
+-- Delete
+DELETE FROM users WHERE id = 1;</code></pre>
+<p>The <strong>WHERE</strong> clause is critical: it filters which rows the operation affects. An <code>UPDATE</code> or <code>DELETE</code> without a WHERE hits the entire table — a dangerous, classic mistake.</p>
+<h2>JOIN: combining tables</h2>
+<p>Related data lives in separate tables. Imagine <code>users</code> and <code>orders</code>, where each order has a <code>user_id</code>. To list the user's name along with their orders, we use a JOIN:</p>
+<pre><code>SELECT u.name, o.amount
+FROM users u
+INNER JOIN orders o ON o.user_id = u.id;</code></pre>
+<p><strong>INNER JOIN</strong> returns only the rows that match on both sides (users who have orders). <strong>LEFT JOIN</strong> returns all users, even without orders — in that case the order columns come back as NULL. In interviews you're often asked to explain the difference:</p>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Returns</th><th>Typical use</th></tr></thead><tbody>
+<tr><td>INNER JOIN</td><td>Only rows that match on both sides</td><td>Users who placed orders</td></tr>
+<tr><td>LEFT JOIN</td><td>All from the left + matches from the right</td><td>All users, with or without orders</td></tr>
+</tbody></table></div>
+<h2>Transactions and ACID</h2>
+<p>A <strong>transaction</strong> groups several commands as a single unit: either everything happens, or nothing does. The classic example is transferring money — debiting one account and crediting another have to happen together:</p>
+<pre><code>BEGIN;
+  UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+  UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;  -- if anything fails before this, it does a ROLLBACK</code></pre>
+<p>A transaction's guarantees boil down to the acronym <strong>ACID</strong>: <strong>A</strong>tomicity (all or nothing), <strong>C</strong>onsistency (the database ends up in a valid state), <strong>I</strong>solation (concurrent transactions don't interfere with each other) and <strong>D</strong>urability (after the commit, data persists even if the power goes out).</p>
+<blockquote>WHERE defines the reach of your operation and transactions define the reach of your safety. Forgetting either one is where incidents are born.</blockquote>
+<h2>Indexes: why some queries fly</h2>
+<p>An <strong>index</strong> is like a book's index: instead of reading page by page, you go straight to the spot. Without an index, searching <code>WHERE email = 'ana@example.com'</code> forces the database to scan the entire table (a <em>full scan</em>). With an index on the <code>email</code> column, the lookup is nearly instant. The cost: indexes take up space and make writes slightly slower, so you don't index everything.</p>
+<h2>Conclusion</h2>
+<p>SQL is a skill that pays compound interest: CRUD with WHERE for day-to-day work, JOINs to connect data, transactions to guarantee integrity and indexes for performance. Master these four pillars and you cover the vast majority of database tasks — and interview questions.</p>
+</div>
+<div class="post-tags"><span class="tag">SQL</span><span class="tag">Databases</span><span class="tag">Fundamentals</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">How the web works: HTTP, request and response</span></a>
+<a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">REST APIs: what makes an API RESTful</span></a>
+<a class="rel-card" href="autenticacao-autorizacao.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Mid-level</span><span class="rel-title">Authentication vs Authorization: sessions, JWT and OAuth</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

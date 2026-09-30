@@ -1,0 +1,22 @@
+{
+  "name": "diogomes.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfólio estático de Diogo Gomes — suíte de testes E2E, acessibilidade e regressão visual.",
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "test:visual:docker": "docker run --rm --ipc=host -v \"$PWD\":/work -w /work -e CI=1 mcr.microsoft.com/playwright:v1.63.0-noble npx playwright test --project=visual",
+    "test:visual:update": "docker run --rm --ipc=host -v \"$PWD\":/work -w /work -e CI=1 mcr.microsoft.com/playwright:v1.63.0-noble npx playwright test --project=visual --update-snapshots",
+    "report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diogomes/diogomes.github.io.git"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0"
+  }
+}

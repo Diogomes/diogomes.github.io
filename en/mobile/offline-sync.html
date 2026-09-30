@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /mobile/offline-sync.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/mobile/offline-sync.html" rel="canonical"/>
+<link href="https://diogomes.github.io/mobile/offline-sync.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/mobile/offline-sync.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/mobile/offline-sync.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offline-first and sync: the app that works without a network - Diogo Gomes</title>
+<meta content="Connectivity is unreliable. How to store data locally, queue changes and sync later — resolving conflicts without losing data." name="description"/>
+<meta content="Mobile, Pleno, Offline, Sincronização, Mobile, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Offline-first and sync: the app that works without a network" property="og:title"/>
+<meta content="Connectivity is unreliable. How to store data locally, queue changes and sync later — resolving conflicts without losing data." property="og:description"/>
+<meta content="https://diogomes.github.io/en/mobile/offline-sync.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/mobile-offline-sync-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/mobile-offline-sync-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../mobile/feed.xml" rel="alternate" title="Mobile — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Offline-first e sincronização: o app que funciona sem rede", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/offline-sync.html", "image": "https://diogomes.github.io/assets/img/og/mobile-offline-sync.png", "description": "Conexão é instável. Como guardar localmente, enfileirar mudanças e sincronizar depois — resolvendo conflitos sem perder dados.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Mobile · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Mobile</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-wifi-off"></i> Mobile · <span>Mid-level</span></span>
+<h1>Offline-first and sync: the app that works without a network</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 15, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Mobile connections drop in elevators, on the subway, out in the countryside. An app that only works with a perfect network frustrates the user at the worst possible moment. The <strong>offline-first</strong> strategy flips the logic: the app operates on local data and treats the network as a luxury that syncs whenever it shows up. Modeling this well — with a pending queue and conflict resolution — is a classic mid-level skill.</p>
+<h2>Why offline-first</h2>
+<p>Instead of "try fetching from the network; if it fails, show an error", offline-first says "read and write locally; the network is just a background detail". The user stays productive on the plane, and when the connection returns, everything sorts itself out. The gain isn't only offline: even online, reading from local storage is instant, with no loading screens.</p>
+<h2>Read and write locally first</h2>
+<p>The local database (see <a href="estado-dados-mobile.html">state and data on mobile</a>) becomes the <em>immediate</em> source of truth for the UI. When the user creates an item, it shows up right away — saved locally — without waiting for the server. The network comes in later, in the background.</p>
+<p>The analogy: it's like jotting down orders in a notebook during the day and typing everything into the system at night. The service (UI) never stops waiting for the central system.</p>
+<h2>The pending operations queue</h2>
+<p>Every write that hasn't reached the server yet goes into a <strong>pending queue</strong> persisted locally. "Create order 42", "mark task as done", "delete note". The queue survives the app being closed and is processed in order when there's a network.</p>
+<pre><code>queue = [
+  { op: "create", type: "order", id: "tmp-1", data: {...} },
+  { op: "update", type: "task", id: 7, field: "done" }
+]
+// when the network returns: send one by one, remove on confirmation</code></pre>
+<h2>Offline → sync flow diagram</h2>
+<pre><code>  [ User acts ]
+        |
+        v
+  [ Write to local database ]  --&gt; UI updates RIGHT AWAY
+        |
+        v
+  [ Enqueue pending op ]
+        |
+   (no network) ... wait ...
+        |
+   (network returns)
+        v
+  [ Send queue to server ] --&gt; success? remove from queue
+        |                       conflict? resolve
+        v
+  [ Server confirms / returns state ]</code></pre>
+<h2>Syncing when the network returns</h2>
+<p>You observe connectivity and trigger sync on reconnect (and, ideally, periodically). Sync is bidirectional: it sends your pending operations and downloads what changed on the server since last time (delta sync, using a timestamp or cursor).</p>
+<h2>Conflict resolution</h2>
+<p>The hard problem: you edited a record offline and someone else edited the same record on the server. Who wins?</p>
+<div class="table-wrap"><table><thead><tr><th>Strategy</th><th>How it works</th><th>Risk</th></tr></thead><tbody>
+<tr><td>Last-write-wins</td><td>The most recent write (by timestamp) overwrites</td><td>Silently loses the other edit</td></tr>
+<tr><td>Field-level merge</td><td>Combines changes to different fields</td><td>Complex; conflicting fields still need a decision</td></tr>
+<tr><td>Resolve with the user</td><td>Shows the versions and asks</td><td>UX friction; only for critical cases</td></tr>
+</tbody></table></div>
+<p>Interviewers often ask you to explain last-write-wins and when it does <em>not</em> fit — for example, a financial balance, where blindly overwriting loses money.</p>
+<h2>Request idempotency</h2>
+<p>Since the queue may resend an operation (the network dropped right as the response was coming), the server must tolerate receiving the same thing twice without duplicating it. The solution is <strong>idempotency</strong>: each operation carries a unique identifier (idempotency key) and the server ignores repeats.</p>
+<pre><code>POST /orders
+Idempotency-Key: tmp-1-abc
+// resending with the same key does not create 2 orders</code></pre>
+<blockquote>Treat the network as something that can fail at any moment, including after processing but before responding. Idempotency and a persisted queue are what make sync reliable, not optional.</blockquote>
+<h2>Conclusion</h2>
+<p>Offline-first means local first, network later: write to the database, enqueue the pending operation, sync on reconnect and resolve conflicts with a conscious strategy. Add idempotency to survive resends, and you deliver an app that works in the elevator and sorts itself out when the signal returns.</p>
+</div>
+<div class="post-tags"><span class="tag">Offline</span><span class="tag">Sync</span><span class="tag">Mobile</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">App lifecycle: states, screens and the basics that change everything</span></a>
+<a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">Navigation in apps: stack, tabs and deep links</span></a>
+<a class="rel-card" href="layout-responsivo-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">Layouts that adapt: density, safe areas and different screens</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

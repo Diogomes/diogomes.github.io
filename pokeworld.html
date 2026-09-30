@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="PokéWorld Online — 3D MMO · Gigaverse3D">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/pokeworld.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/pokeworld.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/pokeworld.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/pokeworld.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>PokéWorld Online — MMO 3D · Gigaverse3D</title>
@@ -26,19 +31,19 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/i18n.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -55,6 +60,7 @@
           <li><a href="projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="pokeworld.html" class="nav-link active"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,7 +74,7 @@
           <h2>PokéWorld Online</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projetos</a></li>
+            <li><a href="projects.html" data-en="Projects">Projetos</a></li>
             <li>PokéWorld Online</li>
           </ol>
         </div>
@@ -80,17 +86,17 @@
       <div class="container">
         <div class="row align-items-center gy-4">
           <div class="col-lg-6" data-aos="fade-right">
-            <span class="game-badge"><span class="pulse"></span> MMO de captura · 3D · Gigaverse3D</span>
+            <span class="game-badge"><span class="pulse"></span> <span data-lang="pt">MMO de captura · 3D · Gigaverse3D</span><span data-lang="en">Creature-catching MMO · 3D · Gigaverse3D</span></span>
             <h2 class="game-title">PokéWorld Online</h2>
-            <p class="game-subtitle"><em>(título provisório)</em> — do servidor ao mundo</p>
-            <p class="game-lead">
+            <p class="game-subtitle" data-en="&lt;em&gt;(working title)&lt;/em&gt; — from server to world"><em>(título provisório)</em> — do servidor ao mundo</p>
+            <p class="game-lead" data-en="Open-world 3D creature-catching MMO with a stylized &quot;clay/toy&quot; diorama world and an &lt;strong&gt;authoritative server&lt;/strong&gt;: a persistent world, synchronized in real time across multiple players and validated against cheating. Creatures and lore are original IP.">
               MMO open-world de captura de criaturas em 3D, com mundo estilizado em diorama "clay/toy" e
               <strong>servidor autoritativo</strong>: mundo persistente, sincronizado em tempo real entre
               vários jogadores e validado contra trapaça. Criaturas e lore são IP original.
             </p>
             <div class="game-stats">
-              <div class="stat"><span class="num">20</span><span class="label">Criaturas 3D</span></div>
-              <div class="stat"><span class="num">10 Hz</span><span class="label">Sync do mundo</span></div>
+              <div class="stat"><span class="num">20</span><span class="label" data-en="3D creatures">Criaturas 3D</span></div>
+              <div class="stat"><span class="num">10 Hz</span><span class="label" data-en="World sync">Sync do mundo</span></div>
               <div class="stat"><span class="num">3D</span><span class="label">Open World</span></div>
             </div>
             <div class="tech-stack">
@@ -103,8 +109,8 @@
               <span class="tech-chip"><i class="bx bxl-docker"></i> Docker</span>
             </div>
             <div class="d-flex flex-wrap gap-3">
-              <a href="https://youtu.be/91QffN5rcNU" target="_blank" rel="noopener" class="btn-game"><i class="bx bxl-youtube"></i> Assistir ao devlog</a>
-              <a href="projects.html" class="btn-game outline"><i class="bx bx-arrow-back"></i> Voltar aos projetos</a>
+              <a href="https://youtu.be/91QffN5rcNU" target="_blank" rel="noopener" class="btn-game"><i class="bx bxl-youtube"></i> <span data-lang="pt">Assistir ao devlog</span><span data-lang="en">Watch the devlog</span></a>
+              <a href="projects.html" class="btn-game outline"><i class="bx bx-arrow-back"></i> <span data-lang="pt">Voltar aos projetos</span><span data-lang="en">Back to projects</span></a>
             </div>
           </div>
           <div class="col-lg-6" data-aos="fade-left">
@@ -117,33 +123,33 @@
 
         <!-- Funcionalidades -->
         <div class="game-features">
-          <h3 class="features-heading">O que o jogo já tem</h3>
-          <p class="features-sub">Sistemas reais, todos procedurais em código.</p>
+          <h3 class="features-heading" data-en="What the game already has">O que o jogo já tem</h3>
+          <p class="features-sub" data-en="Real systems, all procedural in code.">Sistemas reais, todos procedurais em código.</p>
           <div class="row gy-4">
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in"><div class="feature-card"><div class="feature-icon"><i class="bx bx-map-alt"></i></div><h4>Mundo 3D explorável</h4><p>Vários mapas conectados por portais e trilhas, cidades, Centro Pokémon, Loja e Ginásios com líderes e insígnias.</p></div></div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100"><div class="feature-card"><div class="feature-icon"><i class="bx bx-shield-quarter"></i></div><h4>Batalhas 3D em tempo real</h4><p>Atacar, golpe especial (carrega SP), esquiva com dash e captura com Pokébola.</p></div></div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200"><div class="feature-card"><div class="feature-icon"><i class="bx bx-dna"></i></div><h4>20 criaturas com evolução</h4><p>Criaturas 3D com níveis, XP e evolução reais; lore e identidade próprias.</p></div></div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in"><div class="feature-card"><div class="feature-icon"><i class="bx bx-cloud-rain"></i></div><h4>Ciclo dia/noite e clima</h4><p>Chuva, névoa, neve e seca, mais ciclo dia/noite que influenciam os encontros.</p></div></div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100"><div class="feature-card"><div class="feature-icon"><i class="bx bx-group"></i></div><h4>Multiplayer em tempo real</h4><p>Jogadores se veem no mesmo mapa; chat, perfil de treinador, minimapa e mapa-múndi.</p></div></div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200"><div class="feature-card"><div class="feature-icon"><i class="bx bx-server"></i></div><h4>Servidor autoritativo</h4><p>Movimento, colisões, encontros e captura validados e persistidos no servidor a 10 Hz. Save/load completo.</p></div></div>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in"><div class="feature-card"><div class="feature-icon"><i class="bx bx-map-alt"></i></div><h4 data-en="Explorable 3D world">Mundo 3D explorável</h4><p data-en="Multiple maps connected by portals and trails, cities, Pokémon Center, Shop and Gyms with leaders and badges.">Vários mapas conectados por portais e trilhas, cidades, Centro Pokémon, Loja e Ginásios com líderes e insígnias.</p></div></div>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100"><div class="feature-card"><div class="feature-icon"><i class="bx bx-shield-quarter"></i></div><h4 data-en="Real-time 3D battles">Batalhas 3D em tempo real</h4><p data-en="Attack, special move (charges SP), dash dodge and capture with a Pokéball.">Atacar, golpe especial (carrega SP), esquiva com dash e captura com Pokébola.</p></div></div>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200"><div class="feature-card"><div class="feature-icon"><i class="bx bx-dna"></i></div><h4 data-en="20 creatures with evolution">20 criaturas com evolução</h4><p data-en="3D creatures with real levels, XP and evolution; their own lore and identity.">Criaturas 3D com níveis, XP e evolução reais; lore e identidade próprias.</p></div></div>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in"><div class="feature-card"><div class="feature-icon"><i class="bx bx-cloud-rain"></i></div><h4 data-en="Day/night cycle and weather">Ciclo dia/noite e clima</h4><p data-en="Rain, fog, snow and drought, plus a day/night cycle that influence encounters.">Chuva, névoa, neve e seca, mais ciclo dia/noite que influenciam os encontros.</p></div></div>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100"><div class="feature-card"><div class="feature-icon"><i class="bx bx-group"></i></div><h4 data-en="Real-time multiplayer">Multiplayer em tempo real</h4><p data-en="Players see each other on the same map; chat, trainer profile, minimap and world map.">Jogadores se veem no mesmo mapa; chat, perfil de treinador, minimapa e mapa-múndi.</p></div></div>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200"><div class="feature-card"><div class="feature-icon"><i class="bx bx-server"></i></div><h4 data-en="Authoritative server">Servidor autoritativo</h4><p data-en="Movement, collisions, encounters and capture validated and persisted on the server at 10 Hz. Full save/load.">Movimento, colisões, encontros e captura validados e persistidos no servidor a 10 Hz. Save/load completo.</p></div></div>
           </div>
         </div>
 
         <!-- Showcase + devlog -->
         <div class="row gy-4 mt-2 align-items-start">
           <div class="col-lg-7" data-aos="fade-up">
-            <h3 class="features-heading" style="text-align:left;">O mundo</h3>
-            <p class="features-sub" style="text-align:left;">Diorama estilizado, criaturas e lore de IP original.</p>
-            <div class="game-showcase"><img src="assets/img/portfolio/video/pokeworld.jpg" alt="Cena do mundo 3D de PokéWorld Online"></div>
+            <h3 class="features-heading" style="text-align:left;" data-en="The world">O mundo</h3>
+            <p class="features-sub" style="text-align:left;" data-en="Stylized diorama, original-IP creatures and lore.">Diorama estilizado, criaturas e lore de IP original.</p>
+            <div class="game-showcase"><img src="assets/img/portfolio/video/pokeworld.jpg" alt="Cena do mundo 3D de PokéWorld Online" data-en-alt="Scene from the PokéWorld Online 3D world"></div>
           </div>
           <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="features-heading" style="text-align:left;">Devlog — marcos</h3>
-            <p class="features-sub" style="text-align:left;">A parte difícil de um MMO, de pé.</p>
+            <h3 class="features-heading" style="text-align:left;" data-en="Devlog — milestones">Devlog — marcos</h3>
+            <p class="features-sub" style="text-align:left;" data-en="The hard part of an MMO, up and running.">A parte difícil de um MMO, de pé.</p>
             <div class="devlog">
-              <div class="dl-item"><span class="dl-tag">Servidor</span><h4>Backend autoritativo</h4><p>Spring Boot + WebSocket, PostgreSQL (Flyway) e Redis, orquestrados com Docker. O cliente só renderiza e envia intenções.</p></div>
-              <div class="dl-item"><span class="dl-tag">Mundo</span><h4>Open-world 3D em diorama</h4><p>Câmera de diorama, HUD e sistemas todos procedurais em Godot 4.4 com C#.</p></div>
-              <div class="dl-item"><span class="dl-tag">Gameplay</span><h4>Batalhas e captura</h4><p>Combate 3D em tempo real, 20 criaturas com evolução, ginásios e insígnias.</p></div>
-              <div class="dl-item"><span class="dl-tag">Online</span><h4>Multiplayer sincronizado</h4><p>Estado do mundo transmitido a 10 Hz; jogadores se veem em tempo real. Eventos sazonais e missões.</p></div>
+              <div class="dl-item"><span class="dl-tag" data-en="Server">Servidor</span><h4 data-en="Authoritative backend">Backend autoritativo</h4><p data-en="Spring Boot + WebSocket, PostgreSQL (Flyway) and Redis, orchestrated with Docker. The client only renders and sends intents.">Spring Boot + WebSocket, PostgreSQL (Flyway) e Redis, orquestrados com Docker. O cliente só renderiza e envia intenções.</p></div>
+              <div class="dl-item"><span class="dl-tag" data-en="World">Mundo</span><h4 data-en="Diorama-style 3D open world">Open-world 3D em diorama</h4><p data-en="Diorama camera, HUD and systems, all procedural, in Godot 4.4 with C#.">Câmera de diorama, HUD e sistemas todos procedurais em Godot 4.4 com C#.</p></div>
+              <div class="dl-item"><span class="dl-tag">Gameplay</span><h4 data-en="Battles and capture">Batalhas e captura</h4><p data-en="Real-time 3D combat, 20 creatures with evolution, gyms and badges.">Combate 3D em tempo real, 20 criaturas com evolução, ginásios e insígnias.</p></div>
+              <div class="dl-item"><span class="dl-tag">Online</span><h4 data-en="Synchronized multiplayer">Multiplayer sincronizado</h4><p data-en="World state broadcast at 10 Hz; players see each other in real time. Seasonal events and quests.">Estado do mundo transmitido a 10 Hz; jogadores se veem em tempo real. Eventos sazonais e missões.</p></div>
             </div>
           </div>
         </div>
@@ -160,7 +166,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -171,6 +177,7 @@
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 

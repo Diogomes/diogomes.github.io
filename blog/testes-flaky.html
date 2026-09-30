@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Flaky tests: the poison in your pipeline - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/testes-flaky.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-flaky.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-flaky.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-flaky.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Testes flaky: o veneno do seu pipeline - Diogo Gomes</title>
   <meta content="De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI." name="description">
   <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Testes flaky: o veneno do seu pipeline">
-  <meta property="og:description" content="De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.">
+  <meta property="og:title" content="Testes flaky: o veneno do seu pipeline" data-en-content="Flaky tests: the poison in your pipeline">
+  <meta property="og:description" content="De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI." data-en-content="Where flakiness comes from and how to fight it before the team loses trust in a green CI.">
   <meta property="og:url" content="https://diogomes.github.io/blog/testes-flaky.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-testes-flaky.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-flaky-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-testes-flaky.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-flaky-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,20 +37,21 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes flaky: o veneno do seu pipeline", "datePublished": "2026-06-12", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-flaky.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes flaky: o veneno do seu pipeline", "datePublished": "2026-06-12", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-flaky.html", "image": "https://diogomes.github.io/assets/img/og/blog-testes-flaky.png", "description": "De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +68,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +79,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>CI/CD</h2>
+          <h2 data-en="CI/CD">CI/CD</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>CI/CD</li>
+            <li data-en="CI/CD">CI/CD</li>
           </ol>
         </div>
       </div>
@@ -84,12 +95,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-bug"></i> CI/CD</span>
-              <h1>Testes flaky: o veneno do seu pipeline</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 12 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-bug"></i> <span data-en="CI/CD">CI/CD</span></span>
+              <h1 data-en="Flaky tests: the poison in your pipeline">Testes flaky: o veneno do seu pipeline</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 12, 2026">12 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Não existe nada que destrua a confiança num pipeline mais rápido que um <strong>teste flaky</strong>: aquele que passa numa execução e falha na seguinte, sem nada ter mudado. Quando o time começa a clicar em "re-run" por reflexo, o CI virou decoração.</p>
 
               <h2>De onde vem a flakiness</h2>
@@ -115,17 +127,45 @@ npx playwright test suspeito.spec.ts --repeat-each=20</code></pre>
 
               <h2>Conclusão</h2>
               <p>Flakiness é dívida técnica de qualidade. Tratá-la com a mesma seriedade de um bug de produção é o que mantém o pipeline como uma fonte de verdade — e não como um obstáculo a ser contornado.</p>
-              <div class="post-tags"><span class="tag">Flaky tests</span><span class="tag">CI/CD</span><span class="tag">Estabilidade</span></div>
+</div>
+<div data-lang="en">
+<p>Nothing destroys trust in a pipeline faster than a <strong>flaky test</strong>: one that passes on one run and fails on the next, with nothing having changed. When the team starts clicking "re-run" by reflex, CI has become decoration.</p>
+
+              <h2>Where flakiness comes from</h2>
+              <ul>
+                <li><strong>Timing:</strong> fixed <code>sleep</code> instead of waiting for a condition; race conditions.</li>
+                <li><strong>Shared state:</strong> tests that depend on order or on data left behind by another test.</li>
+                <li><strong>Environment:</strong> network, clock, time zone, competing resources in CI.</li>
+                <li><strong>Uncontrolled randomness:</strong> random data without a seed.</li>
+              </ul>
+
+              <h2>How to fight it</h2>
+              <ol>
+                <li><strong>Wait for a condition, not for time.</strong> Use auto-wait / web-first assertions instead of <code>sleep(3000)</code>.</li>
+                <li><strong>Isolate state.</strong> Each test creates and cleans up its own data; no order dependencies.</li>
+                <li><strong>Make time deterministic.</strong> Freeze the clock and fix randomness seeds.</li>
+                <li><strong>Quarantine.</strong> Mark the flaky test, take it out of the gate and open a ticket — don't let it "train" the team to ignore failures.</li>
+              </ol>
+
+              <pre><code># Detect flakiness by running the same test many times
+npx playwright test suspeito.spec.ts --repeat-each=20</code></pre>
+
+              <blockquote>A flaky test is worse than no test: it costs time and, little by little, teaches the team not to trust green.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Flakiness is quality technical debt. Treating it with the same seriousness as a production bug is what keeps the pipeline a source of truth — and not an obstacle to be worked around.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Flaky tests">Flaky tests</span><span class="tag" data-en="CI/CD">CI/CD</span><span class="tag" data-en="Stability">Estabilidade</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> CI/CD</span><span class="rel-title">CI/CD para QA: testes no coração do pipeline</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
-                <a class="rel-card" href="visual-regression-testing.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Visual regression testing: quando o teste passa mas a tela está quebrada</span></a>
+                <a class="rel-card" href="cicd-para-qa.html"><span class="rel-cat"><i class="bx bx-infinite"></i> <span data-en="CI/CD">CI/CD</span></span><span class="rel-title" data-en="CI/CD for QA: tests at the heart of the pipeline">CI/CD para QA: testes no coração do pipeline</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E tests">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="visual-regression-testing.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Visual regression testing: when the test passes but the screen is broken">Visual regression testing: quando o teste passa mas a tela está quebrada</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -142,7 +182,7 @@ npx playwright test suspeito.spec.ts --repeat-each=20</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -153,6 +193,8 @@ npx playwright test suspeito.spec.ts --repeat-each=20</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

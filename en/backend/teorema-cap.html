@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /backend/teorema-cap.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/backend/teorema-cap.html" rel="canonical"/>
+<link href="https://diogomes.github.io/backend/teorema-cap.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/backend/teorema-cap.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/backend/teorema-cap.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAP theorem and eventual consistency - Diogo Gomes</title>
+<meta content="Why distributed systems force you to choose between consistency and availability when the network fails — explained with examples." name="description"/>
+<meta content="Back-end, Sênior, CAP, Distribuídos, Arquitetura, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="CAP theorem and eventual consistency" property="og:title"/>
+<meta content="Why distributed systems force you to choose between consistency and availability when the network fails — explained with examples." property="og:description"/>
+<meta content="https://diogomes.github.io/en/backend/teorema-cap.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-teorema-cap-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-teorema-cap-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../backend/feed.xml" rel="alternate" title="Back-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Teorema CAP e consistência eventual", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/teorema-cap.html", "image": "https://diogomes.github.io/assets/img/og/backend-teorema-cap.png", "description": "Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Back-end · Senior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Back-end</a></li>
+<li>Senior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-cube"></i> Back-end · Senior</span>
+<h1>CAP theorem and eventual consistency</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 8, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>The CAP theorem is where a lot of people get stuck in system design interviews — usually because they explain it wrong. It doesn't say "pick 2 out of 3" in an absolute way; it says something subtler about what happens when the network fails. Truly understanding it changes how you design distributed systems.</p>
+<h2>What C, A and P are</h2>
+<p>The CAP theorem deals with three properties of a distributed system:</p>
+<ul>
+<li><strong>C — Consistency:</strong> every read sees the most recent write. All nodes agree on the current value.</li>
+<li><strong>A — Availability:</strong> every request receives a response (not an error), even if it isn't the most up to date.</li>
+<li><strong>P — Partition Tolerance:</strong> the system keeps working even when the network between nodes fails and they can't communicate.</li>
+</ul>
+<h2>Partitions are inevitable</h2>
+<p>Here is the correct interpretation: in a real distributed system, <strong>network partitions will happen</strong> — cables get cut, latency spikes, nodes become isolated. You can't "give up" P, because P isn't a choice, it's reality. So the theorem becomes: <strong>when there's a partition, you choose between C and A</strong>. Outside of partitions, you can have both.</p>
+<p>The analogy: two bank tellers who lose contact with each other. If a customer wants to withdraw money, the teller has two options. Refuse until they reconnect and confirm the balance (chooses C — consistent, but unavailable). Or allow the withdrawal with the balance they know (chooses A — available, but risks inconsistency). You can't have both during the failure.</p>
+<h2>CP vs AP in practice</h2>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Prioritizes</th><th>During a partition</th><th>Example use</th></tr></thead><tbody>
+<tr><td>CP</td><td>Consistency</td><td>Refuses/blocks rather than give a wrong answer</td><td>Banking, inventory, payments</td></tr>
+<tr><td>AP</td><td>Availability</td><td>Responds even with possibly stale data</td><td>Social feed, likes, timeline</td></tr>
+</tbody></table></div>
+<p>The choice depends on the domain. In a payments system, showing a wrong balance is unacceptable — you choose <strong>CP</strong>. In a social feed, seeing a like a few seconds late hurts no one — you choose <strong>AP</strong>, prioritizing that the screen always loads.</p>
+<h2>Strong vs eventual consistency</h2>
+<p>This leads to two consistency models. <strong>Strong consistency</strong>: after a write, every read sees the new value immediately — the intuitive behavior, but expensive in distributed systems. <strong>Eventual consistency</strong>: replicas converge to the same value "eventually", and may diverge for a short period. AP systems embrace eventual consistency.</p>
+<pre><code>// Eventual consistency in action:
+write("profile.name", "Ana")  // on node 1
+
+read("profile.name") on node 2 -&gt; "João" (old value, hasn't propagated yet)
+... 200ms later ...
+read("profile.name") on node 2 -&gt; "Ana"  (converged)</code></pre>
+<blockquote>CAP is not "pick 2 out of 3". It's this: since partitions are inevitable, when the network fails you'll choose between answering consistently or answering availably. Outside of a failure, you can have both.</blockquote>
+<h2>Beyond CAP: PACELC</h2>
+<p>CAP only talks about what happens <em>during</em> a partition, and that's where it's worth mentioning <strong>PACELC</strong>: during a partition (P) you choose between A and C; but even without a partition (Else, E), there's a trade-off between Latency (L) and Consistency (C) — keeping everything strongly consistent costs response time. PACELC is CAP completed with the everyday, normal-operation part.</p>
+<h2>Conclusion</h2>
+<p>The CAP theorem is a lens for deciding how your system behaves under network failure. It's not about arbitrarily picking two pillars: it's about understanding that the partition calls the shots, and that the real decision is between consistency and availability at the moment of failure — and between consistency and latency the rest of the time. That decision is inseparable from how you think about <a href="escalabilidade.html">scalability</a>.</p>
+</div>
+<div class="post-tags"><span class="tag">CAP</span><span class="tag">Distributed</span><span class="tag">Architecture</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">How the web works: HTTP, request and response</span></a>
+<a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">REST APIs: what makes an API RESTful</span></a>
+<a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">Essential SQL: CRUD, JOIN and transactions</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

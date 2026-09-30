@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /backend/problema-n-mais-1.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/backend/problema-n-mais-1.html" rel="canonical"/>
+<link href="https://diogomes.github.io/backend/problema-n-mais-1.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/backend/problema-n-mais-1.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/backend/problema-n-mais-1.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The N+1 problem: how the ORM betrays you - Diogo Gomes</title>
+<meta content="The hidden query that multiplies database access and tanks performance — how to spot it and fix it with eager loading." name="description"/>
+<meta content="Back-end, Pleno, ORM, Performance, Banco de dados, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="The N+1 problem: how the ORM betrays you" property="og:title"/>
+<meta content="The hidden query that multiplies database access and tanks performance — how to spot it and fix it with eager loading." property="og:description"/>
+<meta content="https://diogomes.github.io/en/backend/problema-n-mais-1.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-problema-n-mais-1-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-problema-n-mais-1-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../backend/feed.xml" rel="alternate" title="Back-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O problema N+1: como o ORM te trai", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/problema-n-mais-1.html", "image": "https://diogomes.github.io/assets/img/og/backend-problema-n-mais-1.png", "description": "A consulta escondida que multiplica o acesso ao banco e derruba a performance — como identificar e resolver com eager loading.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Back-end · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Back-end</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-bug"></i> Back-end · Mid-level</span>
+<h1>The N+1 problem: how the ORM betrays you</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 15, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>The N+1 problem is one of the most common performance traps in the back-end, and the sneakiest part is that the code looks perfect. It comes from the convenience of ORMs and only shows up when data volume grows. Knowing how to spot and fix it is expected of any mid-level dev.</p>
+<h2>What the N+1 problem is</h2>
+<p>The name describes exactly what happens: you run <strong>1 query</strong> to fetch a list of items, and then <strong>N queries</strong> — one per item — to fetch related data. If you list 100 orders and fetch the customer for each one, that's 1 + 100 = 101 queries where two would do.</p>
+<h2>How the ORM betrays you</h2>
+<p>ORMs (Object-Relational Mappers) let you access relations as if they were ordinary attributes. The catch is that each access can trigger a hidden query — so-called <em>lazy loading</em>:</p>
+<pre><code>orders = Order.all()            // 1 query: SELECT * FROM orders
+
+for order in orders:
+    print(order.customer.name)  // N queries! each .customer
+                                // fires SELECT * FROM customers WHERE id = ?</code></pre>
+<p>The code is clean and readable — that's the betrayal. Nothing visually indicates that <code>order.customer</code> is hitting the database on every iteration. With 10 orders you won't even notice; with 10 thousand, the page grinds to a halt.</p>
+<h2>How to detect it</h2>
+<p>The most direct way is to <strong>turn on the ORM's query log</strong> in your development environment. If you see dozens of nearly identical SELECTs varying only by ID, you've found an N+1:</p>
+<pre><code>SELECT * FROM orders;
+SELECT * FROM customers WHERE id = 1;
+SELECT * FROM customers WHERE id = 2;
+SELECT * FROM customers WHERE id = 3;
+... (repeats N times)</code></pre>
+<p>Day to day, this shows up when an endpoint that used to be fast starts degrading as the database grows. APM tools and the query log itself are your allies.</p>
+<h2>How to fix it: eager loading</h2>
+<p>The fix is to tell the ORM up front that you'll need the relation. This is <strong>eager loading</strong>, which the ORM translates into a JOIN or a second batched query:</p>
+<pre><code>// Before (N+1):
+orders = Order.all()
+
+// After (eager loading):
+orders = Order.all().include('customer')
+
+// The ORM generates something like:
+// SELECT * FROM orders;
+// SELECT * FROM customers WHERE id IN (1, 2, 3, ...);  // just 1 query</code></pre>
+<h2>Before and after: the impact</h2>
+<div class="table-wrap"><table><thead><tr><th>Scenario</th><th>Queries (100 items)</th><th>Result</th></tr></thead><tbody>
+<tr><td>Lazy loading (N+1)</td><td>101</td><td>Slow, scales poorly</td></tr>
+<tr><td>Eager loading (JOIN or IN)</td><td>1 or 2</td><td>Fast and constant</td></tr>
+</tbody></table></div>
+<p>The difference isn't just speed: N+1 gets worse <strong>linearly</strong> with the number of items, while eager loading keeps the cost practically constant. It's the difference between an endpoint that can handle growth and one that becomes a bottleneck.</p>
+<blockquote>N+1 isn't an ORM bug — it's the ORM doing exactly what you asked without you noticing. The fix is to make your intent explicit: say up front that you'll need the relation.</blockquote>
+<h2>When to accept it, and caveats</h2>
+<p>Not every loop that accesses a relation is a problem: if the list has 2 items, N+1 is irrelevant. On the other hand, excessive eager loading (loading relations you don't use) also wastes resources. The balance is to load what you'll actually use, in batches. This topic ties in directly with <a href="cache-backend.html">caching in the back-end</a>, another performance lever.</p>
+<h2>Conclusion</h2>
+<p>The N+1 problem is the perfect example of how convenient abstractions hide costs. Learn to read the query log, recognize the pattern of repeated SELECTs and use eager loading to collapse N queries into one. It's one of those pieces of knowledge that, once learned, you start seeing everywhere.</p>
+</div>
+<div class="post-tags"><span class="tag">ORM</span><span class="tag">Performance</span><span class="tag">Databases</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">How the web works: HTTP, request and response</span></a>
+<a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">REST APIs: what makes an API RESTful</span></a>
+<a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">Essential SQL: CRUD, JOIN and transactions</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

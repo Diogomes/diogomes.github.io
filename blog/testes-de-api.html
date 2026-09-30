@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="API testing: from Postman to automation - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/testes-de-api.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/testes-de-api.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/testes-de-api.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/testes-de-api.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Testes de API: do Postman à automação - Diogo Gomes</title>
   <meta content="Contratos, status, schema validation e como levar suas coleções do Postman para o CI com Newman." name="description">
   <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Testes de API: do Postman à automação">
-  <meta property="og:description" content="Contratos, status, schema validation e como levar suas coleções do Postman para o CI com Newman.">
+  <meta property="og:title" content="Testes de API: do Postman à automação" data-en-content="API testing: from Postman to automation">
+  <meta property="og:description" content="Contratos, status, schema validation e como levar suas coleções do Postman para o CI com Newman." data-en-content="Contracts, status codes, schema validation, and how to bring your Postman collections into the pipeline with Newman.">
   <meta property="og:url" content="https://diogomes.github.io/blog/testes-de-api.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-testes-de-api.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-de-api-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-testes-de-api.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-de-api-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,20 +37,21 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de API: do Postman à automação", "datePublished": "2026-05-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-api.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Contratos, status, schema validation e como levar suas coleções do Postman para o CI com Newman.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de API: do Postman à automação", "datePublished": "2026-05-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-api.html", "image": "https://diogomes.github.io/assets/img/og/blog-testes-de-api.png", "description": "Contratos, status, schema validation e como levar suas coleções do Postman para o CI com Newman.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +68,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +79,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>API</h2>
+          <h2 data-en="API">API</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>API</li>
+            <li data-en="API">API</li>
           </ol>
         </div>
       </div>
@@ -84,12 +95,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-transfer-alt"></i> API</span>
-              <h1>Testes de API: do Postman à automação</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 17 de Maio, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-transfer-alt"></i> <span data-en="API">API</span></span>
+              <h1 data-en="API testing: from Postman to automation">Testes de API: do Postman à automação</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="May 17, 2026">17 de Maio, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Boa parte dos bugs críticos não aparece na tela — aparece no <strong>contrato entre serviços</strong>. Por isso testes de API são tão valiosos: são mais rápidos e estáveis que E2E, e cobrem a lógica de negócio direto na fonte.</p>
 
               <h2>O que validar numa API</h2>
@@ -123,17 +135,53 @@ pm.test("retorna o id do recurso criado", () =&gt; {
 
               <h2>Conclusão</h2>
               <p>Validar contratos, status, schema e regras de negócio na camada de API pega cedo os problemas que mais doem em produção. Levar essas coleções para o CI com Newman fecha o ciclo: feedback rápido, automático e confiável.</p>
-              <div class="post-tags"><span class="tag">API</span><span class="tag">Postman</span><span class="tag">Newman</span><span class="tag">REST</span></div>
+</div>
+<div data-lang="en">
+<p>A good share of critical bugs don't show up on the screen — they show up in the <strong>contract between services</strong>. That's why API tests are so valuable: they're faster and more stable than E2E, and they cover business logic right at the source.</p>
+
+              <h2>What to validate in an API</h2>
+              <ul>
+                <li><strong>Status codes:</strong> 200, 201, 400, 401, 404, 422... each one tells a story.</li>
+                <li><strong>Payload schema:</strong> are the fields, types and required flags correct?</li>
+                <li><strong>Business rules:</strong> does the response reflect the expected behavior?</li>
+                <li><strong>Error cases:</strong> do invalid inputs return clear messages?</li>
+                <li><strong>Security:</strong> do protected endpoints require authentication?</li>
+              </ul>
+
+              <h2>From Postman to automation</h2>
+              <p>Postman is great for exploring the API manually, but the real value comes when these checks go into the pipeline. Each request can have JavaScript tests:</p>
+              <pre><code>pm.test("status is 201", () =&gt; {
+    pm.response.to.have.status(201);
+});
+
+pm.test("returns the id of the created resource", () =&gt; {
+    const body = pm.response.json();
+    pm.expect(body).to.have.property("id");
+    pm.expect(body.email).to.eql("qa@exemplo.com");
+});</code></pre>
+
+              <h2>Running in CI with Newman</h2>
+              <p><strong>Newman</strong> is Postman's command-line runner. With it, the same collection you use to explore becomes a pipeline job:</p>
+              <pre><code>newman run colecao.json -e ambiente.json \
+  --reporters cli,junit \
+  --reporter-junit-export resultados.xml</code></pre>
+
+              <blockquote>API testing is the sweet spot of the pyramid: it covers real logic, without the fragility of the UI.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Validating contracts, status codes, schema and business rules at the API layer catches early the problems that hurt most in production. Bringing these collections to CI with Newman closes the loop: fast, automatic and reliable feedback.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="API">API</span><span class="tag" data-en="Postman">Postman</span><span class="tag" data-en="Newman">Newman</span><span class="tag" data-en="REST">REST</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="contract-testing.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> API</span><span class="rel-title">Contract testing entre serviços</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
-                <a class="rel-card" href="gestao-dados-de-teste.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">Gestão de dados de teste: o gargalo invisível da automação</span></a>
+                <a class="rel-card" href="contract-testing.html"><span class="rel-cat"><i class="bx bx-transfer-alt"></i> <span data-en="API">API</span></span><span class="rel-title" data-en="Contract testing between services">Contract testing entre serviços</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E tests">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="gestao-dados-de-teste.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="Test data management: automation's invisible bottleneck">Gestão de dados de teste: o gargalo invisível da automação</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -150,7 +198,7 @@ pm.test("retorna o id do recurso criado", () =&gt; {
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -161,6 +209,8 @@ pm.test("retorna o id do recurso criado", () =&gt; {
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

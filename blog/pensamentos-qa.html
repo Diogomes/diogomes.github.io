@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Thoughts on QA: quality belongs to everyone - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/pensamentos-qa.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/pensamentos-qa.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/pensamentos-qa.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/pensamentos-qa.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Pensamentos sobre QA: qualidade é de todos - Diogo Gomes</title>
   <meta content="Shift-left, prevenção e o papel do QA moderno como facilitador de qualidade no time." name="description">
   <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Pensamentos sobre QA: qualidade é de todos">
-  <meta property="og:description" content="Shift-left, prevenção e o papel do QA moderno como facilitador de qualidade no time.">
+  <meta property="og:title" content="Pensamentos sobre QA: qualidade é de todos" data-en-content="Thoughts on QA: quality belongs to everyone">
+  <meta property="og:description" content="Shift-left, prevenção e o papel do QA moderno como facilitador de qualidade no time." data-en-content="QA is not a phase or a department; it's a culture. Reflections on shift-left, prevention, and the role of the modern QA.">
   <meta property="og:url" content="https://diogomes.github.io/blog/pensamentos-qa.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-pensamentos-qa.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-pensamentos-qa-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-pensamentos-qa.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-pensamentos-qa-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,20 +37,21 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Pensamentos sobre QA: qualidade é de todos", "datePublished": "2026-06-02", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/pensamentos-qa.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Shift-left, prevenção e o papel do QA moderno como facilitador de qualidade no time.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Pensamentos sobre QA: qualidade é de todos", "datePublished": "2026-06-02", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/pensamentos-qa.html", "image": "https://diogomes.github.io/assets/img/og/blog-pensamentos-qa.png", "description": "Shift-left, prevenção e o papel do QA moderno como facilitador de qualidade no time.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +68,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -85,11 +96,12 @@
 
             <div class="post-hero">
               <span class="post-cat"><i class="bx bx-bulb"></i> QA</span>
-              <h1>Pensamentos sobre QA: qualidade é de todos</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 02 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 1 min de leitura</div>
+              <h1 data-en="Thoughts on QA: quality belongs to everyone">Pensamentos sobre QA: qualidade é de todos</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 2, 2026">02 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="1 min read">1 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Por muito tempo o QA foi visto como "a fase de testes" — aquele momento, no fim do projeto, em que alguém tenta quebrar o que os devs construíram. Essa visão está ultrapassada. <strong>Qualidade não é uma etapa; é uma responsabilidade de todo o time.</strong></p>
 
               <h2>Shift-left: qualidade desde o início</h2>
@@ -114,16 +126,44 @@
 
               <h2>Conclusão</h2>
               <p>Minha base científica me ensinou a pensar de forma investigativa e rigorosa — e é assim que encaro qualidade: como uma cultura de perguntas, evidências e prevenção, distribuída por todo o time.</p>
-              <div class="post-tags"><span class="tag">QA</span><span class="tag">Shift-left</span><span class="tag">Cultura</span><span class="tag">Qualidade</span></div>
+              </div>
+<div data-lang="en">
+              <p>For a long time, QA was seen as "the testing phase": that moment at the end of the project when someone tries to break what the devs built. That view is outdated. <strong>Quality is not a stage; it's the responsibility of the whole team.</strong></p>
+
+              <h2>Shift-left: quality from the start</h2>
+              <p>The earlier a defect is found, the cheaper it is to fix. Moving quality "to the left" of the cycle means QA taking part in refinement, questioning ambiguous requirements, and helping define acceptance criteria <em>before</em> a single line of code is written.</p>
+
+              <h2>Preventing &gt; finding</h2>
+              <p>Finding bugs is good. Keeping them from existing is better. A good QA creates value by:</p>
+              <ul>
+                <li>Clarifying business rules and exposing edge cases during planning.</li>
+                <li>Promoting testability in the design of the solution.</li>
+                <li>Building a network of automated tests that protects the team from regressions.</li>
+                <li>Fostering a culture where <strong>quality belongs to everyone</strong>: devs test, POs think in criteria, QA orchestrates.</li>
+              </ul>
+
+              <blockquote>The best bug is the one that never came to exist because the right question was asked at the right time.</blockquote>
+
+              <h2>QA as a facilitator</h2>
+              <p>The modern QA is less a "gatekeeper" and more a quality facilitator. Instead of being solely responsible for testing, they empower the team: teaching testing best practices, building tools, and giving visibility into risks.</p>
+
+              <h2>The metric that matters</h2>
+              <p>Counting bugs found is a misleading metric; it rewards the scenario where lots of bugs reach QA. I prefer to track <strong>defects that escape to production</strong>, feedback time, and suite stability. Those are signs of the health of the process, not of individual heroics.</p>
+
+              <h2>Conclusion</h2>
+              <p>My scientific background taught me to think in an investigative and rigorous way, and that's how I see quality: as a culture of questions, evidence, and prevention, spread across the whole team.</p>
+
+</div>
+<div class="post-tags"><span class="tag">QA</span><span class="tag">Shift-left</span><span class="tag" data-en="Culture">Cultura</span><span class="tag" data-en="Quality">Qualidade</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">A arte do bug report</span></a>
-                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Playwright na prática: testes E2E modernos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title" data-en="The art of the bug report">A arte do bug report</span></a>
+                <a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Playwright in practice: modern E2E testing">Playwright na prática: testes E2E modernos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -140,7 +180,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -151,6 +191,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

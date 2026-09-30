@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /dados/nosql.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/dados/nosql.html" rel="canonical"/>
+<link href="https://diogomes.github.io/dados/nosql.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/dados/nosql.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/dados/nosql.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NoSQL: document, key-value, column and graph — when to use each - Diogo Gomes</title>
+<meta content="The four types of NoSQL database, what each one solves, and why 'NoSQL is faster' is the wrong answer in an interview." name="description"/>
+<meta content="Dados, Sênior, NoSQL, Bancos, Arquitetura, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="NoSQL: document, key-value, column and graph — when to use each" property="og:title"/>
+<meta content="The four types of NoSQL database, what each one solves, and why 'NoSQL is faster' is the wrong answer in an interview." property="og:description"/>
+<meta content="https://diogomes.github.io/en/dados/nosql.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/dados-nosql-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/dados-nosql-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../dados/feed.xml" rel="alternate" title="Data — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "NoSQL: documento, chave-valor, coluna e grafo — quando usar cada um", "datePublished": "2026-06-10", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/nosql.html", "image": "https://diogomes.github.io/assets/img/og/dados-nosql.png", "description": "Os quatro tipos de banco NoSQL, o que cada um resolve, e por que 'NoSQL é mais rápido' é a resposta errada numa entrevista.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Data · Senior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Data</a></li>
+<li>Senior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-data"></i> Data · Senior</span>
+<h1>NoSQL: document, key-value, column and graph — when to use each</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 10, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>At some point in your career you'll hear "let's use NoSQL because it's faster". That sentence, on its own, is a red flag. NoSQL isn't a faster database — it's a family of databases that give up certain guarantees to gain others. Knowing how to choose among the types, and when <em>not</em> to use them, is a senior-level skill.</p>
+<h2>The four main types</h2>
+<p>"NoSQL" covers very different data models. The four most common:</p>
+<ul>
+<li><strong>Document</strong> (MongoDB) — stores nested JSON objects. Each document is self-contained. Good when data has a variable shape: product catalogs, user profiles.</li>
+<li><strong>Key-value</strong> (Redis, DynamoDB) — a giant dictionary: you give a key, you get a value. Simple and extremely fast. Ideal for caching and sessions.</li>
+<li><strong>Wide-column</strong> (Cassandra, HBase) — column-oriented, optimized for writing and reading huge volumes by key. Good for time series and large-scale IoT data.</li>
+<li><strong>Graph</strong> (Neo4j) — models entities and the relationships between them as nodes and edges. Shines in social networks, fraud detection, recommendations — where the relationship is the data.</li>
+</ul>
+<h2>When NoSQL makes sense</h2>
+<p>Two legitimate reasons pull you toward NoSQL:</p>
+<ul>
+<li><strong>Horizontal scaling</strong> — many of these databases were designed to distribute data across many machines with ease, something we'll see in <a href="particionamento-sharding.html">partitioning and sharding</a>.</li>
+<li><strong>Flexible schema</strong> — when the structure of the data varies or changes quickly, not having a rigid schema speeds up development.</li>
+</ul>
+<h2>The trade-off: consistency and joins</h2>
+<p>None of this is free. By distributing and loosening structure, many NoSQL systems relax consistency: they adopt <strong>eventual consistency</strong>, where a write takes a little while to show up on all replicas. You read and may see an "old" value for a few moments. On top of that, most of them don't do <a href="consultas-sql.html">JOINs</a> — you model the data already joined (denormalized) or join it in the application.</p>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Data model</th><th>Typical use case</th></tr></thead><tbody>
+<tr><td>Document</td><td>Nested JSON</td><td>Catalog, variable profiles</td></tr>
+<tr><td>Key-value</td><td>Dictionary</td><td>Cache, session</td></tr>
+<tr><td>Wide-column</td><td>Columns per key</td><td>Time series, IoT at scale</td></tr>
+<tr><td>Graph</td><td>Nodes and edges</td><td>Networks, fraud, recommendation</td></tr>
+</tbody></table></div>
+<h2>Why "it's faster" is wrong</h2>
+<p>A NoSQL database can be faster <em>for a specific access pattern it was modeled for</em>. A key-value store reads by key in microseconds — but ask it for "all customers in São Paulo who spent more than X" and it struggles, because it wasn't built for that. A relational database, with the right <a href="indices-performance.html">index</a>, answers that same question with elegance. Speed isn't a property of the database; it's a consequence of the fit between the model and the query pattern.</p>
+<blockquote>The right question is never "is SQL or NoSQL faster?", but "what's my access pattern, and which data model serves it best without charging me for guarantees I need to keep?".</blockquote>
+<h2>Choosing in practice</h2>
+<p>Start with the questions the system will answer. Always accessed by a known key? Key-value. Data shaped like a network with lots of relationships? Graph. Heterogeneous documents read whole? Document. Need multi-table transactions with strong consistency and ad hoc queries? A relational database is probably still the best choice — and it's fine to admit that.</p>
+<p>In interviews they often ask "when would you use NoSQL instead of a relational database?", and the strong answer cites scale and flexibility <em>and</em> acknowledges the cost in consistency and joins. Day to day, this shows up when the team has to pick the technology for a new feature and the hype pushes toward the wrong decision.</p>
+<h2>Conclusion</h2>
+<p>NoSQL is a spread of four models — document, key-value, wide-column and graph — each strong at one access pattern. It pays off in horizontal scale and schema flexibility, but charges you in consistency and the absence of joins. Choosing well means matching the model to the problem, never following the speed myth.</p>
+</div>
+<div class="post-tags"><span class="tag">NoSQL</span><span class="tag">Databases</span><span class="tag">Architecture</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">Relational modeling: tables, keys and relationships</span></a>
+<a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">SQL beyond the basics: aggregations, GROUP BY and subqueries</span></a>
+<a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">Normalization: 1NF, 2NF and 3NF without memorizing</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

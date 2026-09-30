@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Gherkin and Given-When-Then: specification that becomes a test - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/gherkin-given-when-then.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/gherkin-given-when-then.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/gherkin-given-when-then.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/gherkin-given-when-then.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Gherkin e Given-When-Then: especificação que vira teste - Diogo Gomes</title>
   <meta content="A linguagem que negócio e automação leem igual. Sintaxe do Gherkin, step definitions, Scenario Outline e os anti-patterns que tornam cenários frágeis." name="description">
   <meta content="Gherkin, BDD, Cucumber, Given When Then, QA, automação, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Gherkin e Given-When-Then: especificação que vira teste">
-  <meta property="og:description" content="A linguagem que negócio e automação leem igual. Sintaxe, step definitions e os anti-patterns que tornam cenários frágeis.">
+  <meta property="og:title" content="Gherkin e Given-When-Then: especificação que vira teste" data-en-content="Gherkin and Given-When-Then: specification that becomes a test">
+  <meta property="og:description" content="A linguagem que negócio e automação leem igual. Sintaxe, step definitions e os anti-patterns que tornam cenários frágeis." data-en-content="The language business and automation read the same way. Syntax, Scenario Outline, step definitions, and the anti-patterns that make scenarios brittle.">
   <meta property="og:url" content="https://diogomes.github.io/blog/gherkin-given-when-then.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-gherkin-given-when-then.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-gherkin-given-when-then-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-gherkin-given-when-then.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-gherkin-given-when-then-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,20 +37,21 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gherkin e Given-When-Then: especificação que vira teste", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gherkin-given-when-then.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A linguagem que negócio e automação leem igual. Sintaxe, step definitions e os anti-patterns que tornam cenários frágeis.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gherkin e Given-When-Then: especificação que vira teste", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gherkin-given-when-then.html", "image": "https://diogomes.github.io/assets/img/og/blog-gherkin-given-when-then.png", "description": "A linguagem que negócio e automação leem igual. Sintaxe, step definitions e os anti-patterns que tornam cenários frágeis.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +68,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +79,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testes</h2>
+          <h2 data-en="Testing">Testes</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>Testes</li>
+            <li data-en="Testing">Testes</li>
           </ol>
         </div>
       </div>
@@ -84,12 +95,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-cube"></i> Testes</span>
-              <h1>Gherkin e Given-When-Then: especificação que vira teste</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 24 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 7 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-cube"></i> <span data-en="Testing">Testes</span></span>
+              <h1 data-en="Gherkin and Given-When-Then: specification that becomes a test">Gherkin e Given-When-Then: especificação que vira teste</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 24, 2026">24 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="7 min read">7 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Gherkin é a linguagem por trás do BDD: um conjunto pequeno de palavras-chave que deixa um cenário de teste <strong>legível por qualquer pessoa</strong> — do Product Owner ao desenvolvedor — e, ao mesmo tempo, <strong>executável</strong> por ferramentas como Cucumber, Behave (Python), SpecFlow (.NET) ou Behat (PHP). É o ponto onde a especificação e o teste viram o mesmo documento.</p>
 
               <h2>As palavras-chave</h2>
@@ -180,16 +192,109 @@ Then('o total cobrado deve ser {float} reais', async function (esperado) {
               <h2>Conclusão</h2>
               <p>Gherkin é simples de propósito: a restrição de vocabulário é o que mantém o cenário legível para todos e estável no tempo. Dominar <code>Given-When-Then</code>, <code>Background</code> e <code>Scenario Outline</code> — e saber escrever de forma declarativa — é o que transforma uma suíte de BDD em documentação viva em vez de mais um conjunto de testes frágeis.</p>
 
-              <div class="post-tags"><span class="tag">Gherkin</span><span class="tag">BDD</span><span class="tag">Cucumber</span><span class="tag">Given-When-Then</span><span class="tag">Automação</span></div>
+              </div>
+<div data-lang="en">
+              <p>Gherkin is the language behind BDD: a small set of keywords that makes a test scenario <strong>readable by anyone</strong>, from the Product Owner to the developer, and at the same time <strong>executable</strong> by tools like Cucumber, Behave (Python), SpecFlow (.NET), or Behat (PHP). It's the point where the specification and the test become the same document.</p>
+
+              <h2>The keywords</h2>
+              <p>The whole grammar fits in a few words. The rest is free text that <em>you</em> choose:</p>
+              <ul>
+                <li><strong>Feature</strong> — the grouping; describes a capability of the system.</li>
+                <li><strong>Scenario</strong> — a concrete example of behavior.</li>
+                <li><strong>Given</strong> — the context / precondition. The world <em>before</em> the action.</li>
+                <li><strong>When</strong> — the action that triggers the behavior. <em>Just one per scenario</em>, ideally.</li>
+                <li><strong>Then</strong> — the observable outcome that gets verified.</li>
+                <li><strong>And / But</strong> — chain steps of the same type, keeping the reading fluid.</li>
+              </ul>
+
+              <h2>The Given-When-Then structure</h2>
+              <p>The heart of Gherkin is separating <strong>context → action → outcome</strong>. This triad forces the author to think about behavior, not screens:</p>
+              <pre><code># language: en
+Feature: User authentication
+
+  Scenario: Login with valid credentials
+    Given I am on the login page
+    And I have an account with the email "ana@example.com"
+    When I enter the correct credentials
+    Then I should see the dashboard
+    And I should see the greeting "Hello, Ana"</code></pre>
+              <blockquote>Golden rule: <strong>Given</strong> has no action, <strong>When</strong> is a single action, <strong>Then</strong> has no side effects, it only verifies. If a scenario has three "When"s, it's probably three scenarios in disguise.</blockquote>
+
+              <h2>Background: the context that repeats</h2>
+              <p>When several scenarios share the same <code>Given</code>s, the <code>Background</code> avoids repetition; it runs before each scenario in the file:</p>
+              <pre><code>  Background:
+    Given I am logged in as an administrator
+    And a product "Notebook" exists in the catalog</code></pre>
+
+              <h2>Scenario Outline: one scenario, lots of data</h2>
+              <p>To test the same rule with several inputs (the classic case of equivalence partitioning and boundary values), use the <strong>Scenario Outline</strong> with an <code>Examples</code> table:</p>
+              <pre><code>  Scenario Outline: Discount by order value
+    Given a cart with &lt;value&gt; dollars
+    When the customer checks out
+    Then the total charged should be &lt;total&gt; dollars
+
+    Examples:
+      | value | total |
+      | 100   | 100   |
+      | 101   | 90.9  |
+      | 150   | 135   |</code></pre>
+              <p>Each row of the table becomes an independent scenario. It's the cleanest way to cover boundaries (the <code>100</code> that gets no discount and the <code>101</code> that does) without copy and paste.</p>
+
+              <h2>From text to code: step definitions</h2>
+              <p>Gherkin alone tests nothing; it gets "glued" to the system by <strong>step definitions</strong>: functions that match each step by expression and run the actual automation. In Cucumber with JavaScript:</p>
+              <pre><code>const { Given, When, Then } = require('@cucumber/cucumber');
+const { expect } = require('@playwright/test');
+
+Given('a cart with {int} dollars', async function (value) {
+  this.cart = createCart(value);
+});
+
+When('the customer checks out', async function () {
+  this.total = this.cart.checkout();
+});
+
+Then('the total charged should be {float} dollars', async function (expected) {
+  expect(this.total).toBeCloseTo(expected, 2);
+});</code></pre>
+              <p>Notice that the same step <code>a cart with {int} dollars</code> serves every row of the <code>Examples</code>. Well-written steps are <strong>reusable</strong>, and that's BDD's maintenance payoff.</p>
+
+              <h2>Declarative &gt; imperative</h2>
+              <p>The most common mistake is writing <em>imperative</em> scenarios that describe every click. They break with every screen tweak and nobody on the business side can read them:</p>
+              <div class="table-wrap">
+              <table>
+                <thead><tr><th>Imperative (brittle)</th><th>Declarative (robust)</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>When I fill in the "email" field with "ana@x.com"<br>And I fill in the "password" field with "123"<br>And I click the "#btn-login" button</td>
+                    <td>When I log in with valid credentials</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <p>The "how to fill in the form" belongs to the step definition (and to the <a href="page-object-model.html">Page Object</a>), not to Gherkin. The scenario describes the <em>intent</em>.</p>
+
+              <h2>Anti-patterns to watch for</h2>
+              <ul>
+                <li><strong>Soap-opera scenario:</strong> ten steps covering an entire flow. One scenario = one behavior.</li>
+                <li><strong>UI detail in the Then:</strong> verifying a button's color or CSS. Verify a business outcome.</li>
+                <li><strong>Coupling between scenarios:</strong> scenario 2 depending on the state left by scenario 1. Each one must be independent.</li>
+                <li><strong>Gherkin without conversation:</strong> writing the <code>.feature</code> files alone, after the implementation. That's just a dressed-up report, and you lose the discovery value of <a href="bdd-atdd-tdd.html">BDD</a>.</li>
+              </ul>
+
+              <h2>Conclusion</h2>
+              <p>Gherkin is simple on purpose: the vocabulary restriction is what keeps the scenario readable for everyone and stable over time. Mastering <code>Given-When-Then</code>, <code>Background</code>, and <code>Scenario Outline</code>, and knowing how to write declaratively, is what turns a BDD suite into living documentation instead of one more set of brittle tests.</p>
+
+</div>
+<div class="post-tags"><span class="tag">Gherkin</span><span class="tag">BDD</span><span class="tag">Cucumber</span><span class="tag">Given-When-Then</span><span class="tag" data-en="Automation">Automação</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
-                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Técnicas de design de teste: cobrir mais com menos casos</span></a>
-                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> Automação</span><span class="rel-title">Page Object Model: uma suíte E2E que escala</span></a>
+                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title" data-en="BDD, ATDD, and TDD: what each acronym solves">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
+                <a class="rel-card" href="tecnicas-design-de-teste.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title" data-en="Test design techniques: covering more with fewer cases">Técnicas de design de teste: cobrir mais com menos casos</span></a>
+                <a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span data-en="Automation">Automação</span></span><span class="rel-title" data-en="Page Object Model: an E2E suite that scales">Page Object Model: uma suíte E2E que escala</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -206,7 +311,7 @@ Then('o total cobrado deve ser {float} reais', async function (esperado) {
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -217,6 +322,8 @@ Then('o total cobrado deve ser {float} reais', async function (esperado) {
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

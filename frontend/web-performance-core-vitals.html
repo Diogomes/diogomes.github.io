@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Web performance: Core Web Vitals, lazy loading and bundle size - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/web-performance-core-vitals.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/web-performance-core-vitals.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Web performance: Core Web Vitals, lazy loading e bundle - Diogo Gomes</title>
   <meta content="LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido." name="description">
   <meta content="Front-end, Sênior, Performance, Core Web Vitals, Sênior, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Web performance: Core Web Vitals, lazy loading e bundle">
-  <meta property="og:description" content="LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.">
+  <meta property="og:title" content="Web performance: Core Web Vitals, lazy loading e bundle" data-en-content="Web performance: Core Web Vitals, lazy loading and bundle size">
+  <meta property="og:description" content="LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido." data-en-content="LCP, CLS, INP: the metrics Google measures and users feel. Code splitting, lazy loading and trimming the bundle to load fast.">
   <meta property="og:url" content="https://diogomes.github.io/frontend/web-performance-core-vitals.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Web performance: Core Web Vitals, lazy loading e bundle", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/web-performance-core-vitals.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Web performance: Core Web Vitals, lazy loading e bundle", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/web-performance-core-vitals.html", "image": "https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals.png", "description": "LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Front-end · Sênior</h2>
+          <h2 data-en="Front-end · Senior">Front-end · Sênior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Front-end</a></li>
-            <li>Sênior</li>
+            <li data-en="Senior">Sênior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> Front-end · Sênior</span>
-              <h1>Web performance: Core Web Vitals, lazy loading e bundle</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 8 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> <span data-en="Front-end · Senior">Front-end · Sênior</span></span>
+              <h1 data-en="Web performance: Core Web Vitals, lazy loading and bundle size">Web performance: Core Web Vitals, lazy loading e bundle</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 8, 2026">8 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="3 min read">3 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>Performance deixou de ser "achismo" e virou métrica medível e até fator de ranqueamento no Google. Os <strong>Core Web Vitals</strong> são o padrão da indústria para responder "esse site é bom de usar?". Saber o que cada um mede, por que piora e como corrigir é parte central do trabalho de sênior.</p>
 
 <h2>As três métricas</h2>
@@ -130,16 +143,59 @@ const Grafico = lazy(() =&gt; import('./Grafico'));</code></pre>
 
 <h2>Conclusão</h2>
 <p>LCP cuida do conteúdo aparecer, CLS da estabilidade visual e INP da responsividade. As alavancas são quase sempre as mesmas: enviar menos (splitting, lazy, imagens otimizadas) e cuidar da percepção. Performance é experiência — e, com ela e a <a href="arquitetura-frontend.html">arquitetura</a> sob controle, falta proteger o usuário com <a href="seguranca-frontend.html">segurança</a>.</p>
-              <div class="post-tags"><span class="tag">Performance</span><span class="tag">Core Web Vitals</span><span class="tag">Sênior</span></div>
+</div>
+<div data-lang="en">
+<p>Performance stopped being guesswork and became a measurable metric — even a ranking factor on Google. The <strong>Core Web Vitals</strong> are the industry standard for answering "is this site good to use?". Knowing what each one measures, why it gets worse and how to fix it is a central part of a senior's job.</p>
+
+<h2>The three metrics</h2>
+<p>The current Core Web Vitals measure three distinct experiences: how fast the main content appears, how stable the layout is and how responsive the site is to interaction.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Metric</th><th>What it measures</th><th>"Good" target</th></tr></thead><tbody><tr><td><strong>LCP</strong></td><td>Time until the largest visible element paints</td><td>≤ 2.5 s</td></tr><tr><td><strong>CLS</strong></td><td>How much the layout "jumps" without warning</td><td>≤ 0.1</td></tr><tr><td><strong>INP</strong></td><td>Latency of the response to interactions</td><td>≤ 200 ms</td></tr></tbody></table></div>
+
+<h2>LCP: does the main content appear fast?</h2>
+<p><strong>Largest Contentful Paint</strong> marks when the largest element (usually the hero image or a text block) is rendered. Common causes of bad LCP: slow server, CSS/JS blocking rendering, huge images. Fixes: prioritize the critical resource (<code>fetchpriority="high"</code>), use a CDN, compress images and avoid fonts that block text.</p>
+
+<h2>CLS: does the layout stay put?</h2>
+<p><strong>Cumulative Layout Shift</strong> measures visual jumping — that moment when you go to click a button and an ad pushes everything down. The classic causes: images without reserved dimensions, fonts that change size when loading, content injected above what was already there. Fix: always reserve space (<code>width</code>/<code>height</code> or <code>aspect-ratio</code> on images).</p>
+
+<pre><code>&lt;!-- Reserves space → no jump --&gt;
+&lt;img src="foto.jpg" width="800" height="600" alt="..."&gt;</code></pre>
+
+<h2>INP: does the site respond to touch?</h2>
+<p><strong>Interaction to Next Paint</strong> measures how long it takes between the click and the screen responding. Bad INP is almost always heavy JavaScript blocking the main thread — which connects directly to <a href="render-performance.html">rendering and the critical path</a>. Fix: break up long tasks, defer non-urgent work and avoid expensive click handlers.</p>
+
+<h2>Loading less: splitting, lazy loading and images</h2>
+<p>The biggest performance lever is simply <strong>sending less code and fewer bytes</strong>:</p>
+<ul>
+<li><strong>Code splitting:</strong> split the bundle by route, loading only what's needed for the current screen.</li>
+<li><strong>Lazy loading:</strong> defer what's off-screen — <code>loading="lazy"</code> on images, dynamic <code>import()</code> for components.</li>
+<li><strong>Images:</strong> modern formats (WebP/AVIF), responsive sizes (<code>srcset</code>), compression.</li>
+</ul>
+
+<pre><code>// Loads the component only when it's used
+const Grafico = lazy(() =&gt; import('./Grafico'));</code></pre>
+
+<h2>Bundle analysis and perceived performance</h2>
+<p>A <strong>bundle analyzer</strong> shows what's fattening your package — often a heavy library imported in full for a single use. Cutting that usually yields more than any micro-optimization.</p>
+<p>And then there's <strong>perceived performance</strong>: users feel speed, they don't measure milliseconds. Skeletons instead of spinners, showing partial content, instant feedback on click — it all makes the site <em>feel</em> faster even when the numbers are similar.</p>
+
+<blockquote>The optimization that pays off most is almost never making the code smarter — it's not shipping the code the user doesn't need right now.</blockquote>
+
+<p>Senior interviews commonly ask you to name the Core Web Vitals, their thresholds and how you'd attack a bad LCP. Day to day, it shows up when Lighthouse lights up red or the product team complains that "the site takes a while to show up".</p>
+
+<h2>Conclusion</h2>
+<p>LCP covers content appearing, CLS visual stability and INP responsiveness. The levers are almost always the same: send less (splitting, lazy loading, optimized images) and take care of perception. Performance is experience — and, with it and the <a href="arquitetura-frontend.html">architecture</a> under control, what remains is protecting the user with <a href="seguranca-frontend.html">security</a>.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="Performance">Performance</span><span class="tag" data-en="Core Web Vitals">Core Web Vitals</span><span class="tag" data-en="Senior">Sênior</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
-                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">CSS sem medo: box model, flexbox e grid</span></a>
-                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="CSS without fear: box model, flexbox and grid">CSS sem medo: box model, flexbox e grid</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Essential JavaScript: types, scope and the DOM">JavaScript essencial: tipos, escopo e o DOM</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to track">Voltar à trilha</span></a>
             </div>
 
           </div>
@@ -156,7 +212,7 @@ const Grafico = lazy(() =&gt; import('./Grafico'));</code></pre>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -167,6 +223,8 @@ const Grafico = lazy(() =&gt; import('./Grafico'));</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

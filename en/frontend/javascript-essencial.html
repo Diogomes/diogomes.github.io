@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /frontend/javascript-essencial.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/frontend/javascript-essencial.html" rel="canonical"/>
+<link href="https://diogomes.github.io/frontend/javascript-essencial.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/frontend/javascript-essencial.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/frontend/javascript-essencial.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Essential JavaScript: types, scope and the DOM - Diogo Gomes</title>
+<meta content="The fundamentals behind every framework: types and coercion, var/let/const, closures and how JavaScript talks to the page." name="description"/>
+<meta content="Front-end, Júnior, JavaScript, DOM, Fundamentos, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Essential JavaScript: types, scope and the DOM" property="og:title"/>
+<meta content="The fundamentals behind every framework: types and coercion, var/let/const, closures and how JavaScript talks to the page." property="og:description"/>
+<meta content="https://diogomes.github.io/en/frontend/javascript-essencial.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/frontend-javascript-essencial-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/frontend-javascript-essencial-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../frontend/feed.xml" rel="alternate" title="Front-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "JavaScript essencial: tipos, escopo e o DOM", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/javascript-essencial.html", "image": "https://diogomes.github.io/assets/img/og/frontend-javascript-essencial.png", "description": "Os fundamentos que sustentam qualquer framework: tipos e coerção, var/let/const, closures e como o JavaScript fala com a página.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Front-end · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Front-end</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-code-curly"></i> <span>Front-end · Junior</span></span>
+<h1>Essential JavaScript: types, scope and the DOM</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 20, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>JavaScript is the language that brings the page to life, but it has traps that catch every beginner: why is <code>0 == ''</code> true? Why does a variable "leak" out of its block? Mastering types, scope and the DOM is what turns code that works by accident into code you understand.</p>
+<h2>Types: primitives vs reference</h2>
+<p><strong>Primitive</strong> values (number, string, boolean, null, undefined, symbol, bigint) are copied by value. Objects, arrays and functions, on the other hand, are handled by <strong>reference</strong>: the variable holds an address, not the content. Think of a primitive as a written note; copying it means rewriting it. An object is a house address; copying the variable just means jotting down the same address — both point to the same house.</p>
+<pre><code>let a = 1; let b = a; b = 2;
+// a is still 1 (value copy)
+
+let o = { n: 1 }; let p = o; p.n = 2;
+// o.n is now 2 (same reference)</code></pre>
+<h2>== vs === and coercion</h2>
+<p><code>==</code> performs <strong>coercion</strong>: it tries to convert the types before comparing, producing surprises like <code>0 == ''</code> or <code>null == undefined</code> being <code>true</code>. <code>===</code> compares value <em>and</em> type, with no conversion. The golden rule: <strong>always use <code>===</code></strong>.</p>
+<pre><code>0 == '';        // true  (coercion!)
+0 === '';       // false (different types)
+'5' == 5;       // true
+'5' === 5;      // false</code></pre>
+<h2>var, let, const: scope and hoisting</h2>
+<p><code>let</code> and <code>const</code> are <strong>block</strong>-scoped (they live between <code>{ }</code>); <code>var</code> is <strong>function</strong>-scoped and "leaks". <strong>Hoisting</strong> is JS "lifting" declarations to the top of the scope: <code>var</code> is hoisted as <code>undefined</code>, while <code>let</code>/<code>const</code> sit in a "temporal dead zone" and throw an error if accessed before the declaration. Prefer <code>const</code>, use <code>let</code> when you need to reassign, and avoid <code>var</code>.</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>var</th><th>let</th><th>const</th></tr></thead><tbody><tr><td>Scope</td><td>Function</td><td>Block</td><td>Block</td></tr><tr><td>Reassignable</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Hoisting</td><td>undefined</td><td>Dead zone</td><td>Dead zone</td></tr></tbody></table></div>
+<h2>Closures: the function that remembers</h2>
+<p>A <strong>closure</strong> happens when a function "remembers" the variables from the scope where it was created, even after that scope has finished. It's like a backpack the function carries with its environment inside.</p>
+<pre><code>function contador() {
+  let n = 0;
+  return () =&gt; ++n;
+}
+const c = contador();
+c(); // 1
+c(); // 2  (remembers n)</code></pre>
+<h2>The DOM: the page as a tree</h2>
+<p>The <strong>DOM</strong> (Document Object Model) is the representation of your HTML page as a tree of objects that JavaScript can read and change. Each tag becomes a node; you select nodes and change text, classes, attributes. It's not the HTML itself — it's the live version of it in the browser's memory.</p>
+<pre><code>const btn = document.querySelector('#salvar');
+btn.textContent = 'Salvar agora';</code></pre>
+<h2>Events: reacting to the user</h2>
+<p>The user clicks, types, scrolls — and JS reacts through <strong>events</strong>. You register a "listener" and it fires when the event happens.</p>
+<pre><code>btn.addEventListener('click', () =&gt; {
+  console.log('cliquei!');
+});</code></pre>
+<blockquote>Types, scope and closures aren't academic curiosities: they are exactly what explains the most common bugs for people just starting out.</blockquote>
+<p>Interviews commonly ask you to predict the output of a <code>==</code> comparison, explain what a closure is or tell value from reference. Day to day, it shows up when an array "changes by itself" (it was the same reference) or a <code>setTimeout</code> inside a loop prints the wrong number.</p>
+<h2>Conclusion</h2>
+<p>Understanding that primitives copy and objects reference, always comparing with <code>===</code>, respecting block scope and seeing the DOM as a tree — that's the foundation of JS. With closures in your pocket, you're ready for the step that confuses even experienced people: the <a href="event-loop.html">event loop</a>.</p>
+</div>
+<div class="post-tags"><span class="tag">JavaScript</span><span class="tag">DOM</span><span class="tag">Fundamentals</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">Semantic HTML and accessibility: the foundation that separates amateurs from professionals</span></a>
+<a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">CSS without fear: box model, flexbox and grid</span></a>
+<a class="rel-card" href="event-loop.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Mid-level</span></span><span class="rel-title">The event loop: how JavaScript does async without freezing</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /devops/arquitetura-cloud.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/devops/arquitetura-cloud.html" rel="canonical"/>
+<link href="https://diogomes.github.io/devops/arquitetura-cloud.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/devops/arquitetura-cloud.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/devops/arquitetura-cloud.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cloud architecture: high availability and the cost of downtime - Diogo Gomes</title>
+<meta content="Regions, availability zones, redundancy and the trade-off between reliability and cost. Designing so that one machine failing doesn't take the system down." name="description"/>
+<meta content="DevOps, Sênior, Cloud, Alta disponibilidade, Arquitetura, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Cloud architecture: high availability and the cost of downtime" property="og:title"/>
+<meta content="Regions, availability zones, redundancy and the trade-off between reliability and cost. Designing so that one machine failing doesn't take the system down." property="og:description"/>
+<meta content="https://diogomes.github.io/en/devops/arquitetura-cloud.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-arquitetura-cloud-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-arquitetura-cloud-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../devops/feed.xml" rel="alternate" title="DevOps — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Arquitetura na nuvem: alta disponibilidade e o custo do downtime", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/arquitetura-cloud.html", "image": "https://diogomes.github.io/assets/img/og/devops-arquitetura-cloud.png", "description": "Regiões, zonas de disponibilidade, redundância e o trade-off entre confiabilidade e custo. Projetar para que a falha de uma máquina não derrube o sistema.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>DevOps · Senior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">DevOps</a></li>
+<li>Senior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-cloud"></i> DevOps · Senior</span>
+<h1>Cloud architecture: high availability and the cost of downtime</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 8, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Every machine fails sooner or later. A disk dies, an entire availability zone of a data center loses power, a cable gets cut. The question that defines a good cloud architect isn't "how do I prevent anything from breaking?" — it's "how do I make sure that when something breaks, the user doesn't even notice?". Designing for failure is the essence of high availability, and understanding the cost of downtime is what justifies the effort.</p>
+<h2>Region vs availability zone</h2>
+<p>Every cloud organizes its data centers at two scales, and mixing them up is a classic interview mistake. A <strong>region</strong> is a geographic area (e.g. São Paulo). Within each region there are several <strong>availability zones (AZs)</strong> — physically separate data centers with independent power and networking, but connected by fast links. AZs isolate local failures; regions isolate geographic disasters.</p>
+<div class="table-wrap"><table><thead><tr><th>Concept</th><th>Scale</th><th>Protects against</th></tr></thead><tbody><tr><td>Zone (AZ)</td><td>Data center</td><td>Local power/hardware failure</td></tr><tr><td>Region</td><td>Geography</td><td>Regional disaster (flood, earthquake)</td></tr></tbody></table></div>
+<h2>Single point of failure</h2>
+<p>A <strong>single point of failure</strong> (SPOF) is any component that, on its own, takes down the entire system if it breaks. A single database server, a single load balancer, a single AZ. Good architecture is, in large part, the exercise of hunting down and eliminating SPOFs through redundancy.</p>
+<blockquote>If the answer to "what happens if this machine dies?" is "the system goes down", you've found a single point of failure. The architecture work is making the answer always be "another one takes over".</blockquote>
+<h2>Redundancy and multi-AZ</h2>
+<p>The basic defense is having copies in different zones. Spreading your replicas across multiple AZs means the loss of an entire data center doesn't take the service down — traffic simply goes to the zones that are still standing. Orchestrators like <a href="kubernetes.html">Kubernetes</a> make this easier by distributing replicas across zones.</p>
+</div>
+<pre><code>          Load Balancer (multi-AZ)
+          /                    \
+      AZ-a                      AZ-b
+   [app][app]                [app][app]
+   [réplica DB]  ←sync→       [réplica DB]
+   Se AZ-a cai, AZ-b atende sozinha</code></pre>
+
+<div>
+<h2>RTO and RPO</h2>
+<p>To talk about disaster recovery precisely, two numbers matter:</p>
+<ul>
+<li><strong>RTO</strong> (Recovery Time Objective) — how long you can be offline. How fast do you need to be back?</li>
+<li><strong>RPO</strong> (Recovery Point Objective) — how much data you can lose. Backups from when?</li>
+</ul>
+<p>An RTO/RPO of minutes is expensive; of hours, cheap. The business decides what it's worth.</p>
+<h2>The reliability vs cost trade-off</h2>
+<p>High availability isn't free. Each additional nine of uptime (from 99.9% to 99.99%) costs exponentially more in redundancy and complexity. The senior architect's role is to size this to the business value: a payment system justifies multi-region; an internal blog doesn't. Calculating the <strong>cost of downtime</strong> (revenue lost per minute) is what anchors this decision.</p>
+<h2>Managed services</h2>
+<p>Whenever possible, prefer <strong>managed services</strong> (databases, queues, load balancers that the cloud operates for you). They come with multi-AZ redundancy, backups and automatic failover built in — you buy proven reliability instead of reinventing it, and you also reduce the team's operational load.</p>
+<h2>Conclusion</h2>
+<p>Architecting for the cloud means assuming failure will happen and designing the system to survive it. Spread across AZs, eliminate single points of failure, define RTO/RPO according to the business and consciously balance reliability against cost. Combined with <a href="infra-como-codigo.html">infrastructure as code</a> and <a href="observabilidade.html">observability</a>, this way of thinking is what's expected of a senior DevOps engineer.</p>
+</div>
+<div class="post-tags"><span class="tag">Cloud</span><span class="tag">High availability</span><span class="tag">Architecture</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Linux and the terminal: the bare minimum every DevOps engineer masters</span></a>
+<a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Git beyond the commit: branches, merge, and workflows</span></a>
+<a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">CI/CD in practice: from commit to automatic deploy</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

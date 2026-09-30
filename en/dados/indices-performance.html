@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /dados/indices-performance.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/dados/indices-performance.html" rel="canonical"/>
+<link href="https://diogomes.github.io/dados/indices-performance.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/dados/indices-performance.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/dados/indices-performance.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Indexes and performance: why your query is slow - Diogo Gomes</title>
+<meta content="How an index works (the book index analogy), B-tree, when it helps, when it hurts and how to read an execution plan." name="description"/>
+<meta content="Dados, Pleno, Índices, Performance, SQL, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Indexes and performance: why your query is slow" property="og:title"/>
+<meta content="How an index works (the book index analogy), B-tree, when it helps, when it hurts and how to read an execution plan." property="og:description"/>
+<meta content="https://diogomes.github.io/en/dados/indices-performance.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/dados-indices-performance-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/dados-indices-performance-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../dados/feed.xml" rel="alternate" title="Data — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Índices e performance: por que sua query está lenta", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/indices-performance.html", "image": "https://diogomes.github.io/assets/img/og/dados-indices-performance.png", "description": "Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Data · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Data</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> Data · Mid-level</span>
+<h1>Indexes and performance: why your query is slow</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 17, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Your query worked perfectly with a thousand records, and now, with ten million, it takes thirty seconds. Almost always the explanation lies in indexes — or the lack of them. Understanding indexes is what turns a mid-level professional into someone who writes queries that scale.</p>
+<h2>The book index analogy</h2>
+<p>Imagine looking for the word "transaction" in an 800-page book with no index: you read page by page, from start to finish. With the index at the back of the book, you go straight there: "transaction ... p. 412". A <strong>database index</strong> does exactly that — it's a separate structure that maps values to the location of rows, avoiding a scan of the whole table.</p>
+<h2>B-tree: the structure behind it</h2>
+<p>Most indexes use a <strong>B-tree</strong> (balanced tree). You don't need to implement one, but the idea matters: values are kept sorted in a tree, and the database finds any of them by descending just a few levels — instead of N rows, it makes about log(N) comparisons. That's why an index turns a search over millions of rows into just a handful of steps.</p>
+<h2>What an index speeds up</h2>
+<p>Indexes help whenever the database needs to <em>locate</em> or <em>sort</em> data:</p>
+<ul>
+<li><strong>WHERE</strong> — filtering by an indexed column.</li>
+<li><strong>JOIN</strong> — matching rows between tables by the join column.</li>
+<li><strong>ORDER BY</strong> — the data in the index is already sorted.</li>
+</ul>
+<p>That's why foreign keys and heavily filtered columns are natural candidates for an index.</p>
+<h2>The cost: slower writes</h2>
+<p>An index isn't free magic. Each index is a structure that has to be updated on every <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code>. More indexes mean slower writes and more disk space.</p>
+<div class="table-wrap"><table><thead><tr><th>Operation</th><th>Without index</th><th>With index</th></tr></thead><tbody>
+<tr><td>Read (WHERE/JOIN)</td><td>Slow (scans everything)</td><td>Fast</td></tr>
+<tr><td>Write (INSERT/UPDATE)</td><td>Fast</td><td>Slower (updates the index)</td></tr>
+<tr><td>Disk space</td><td>Smaller</td><td>Larger</td></tr>
+</tbody></table></div>
+<p>The decision to index is always a balance between reads and writes.</p>
+<h2>Composite index and column order</h2>
+<p>A <strong>composite index</strong> covers several columns together, and <strong>order matters</strong>. Think of a phone book sorted by (last name, first name): it works for searching by last name, or by last name + first name, but it's useless for searching by first name alone. The rule is the "leftmost prefix": the index <code>(a, b)</code> helps with filters on <code>a</code> or on <code>a and b</code>, but not on <code>b</code> alone.</p>
+<h2>Reading the execution plan (EXPLAIN)</h2>
+<p>To find out what the database is really doing, use <code>EXPLAIN</code>. It reveals whether the query uses the index (<em>index scan</em>) or scans the whole table (<em>full table scan / seq scan</em>) — the villain of slow queries.</p>
+<pre><code>EXPLAIN SELECT * FROM pedidos WHERE cliente_id = 42;
+
+-- Without an index:
+-- Seq Scan on pedidos  (cost=0.00..18234 rows=1)
+
+-- After CREATE INDEX idx_cli ON pedidos(cliente_id):
+-- Index Scan using idx_cli  (cost=0.42..8.44 rows=1)</code></pre>
+<p>The drop in estimated cost shows the gain. When you see "Seq Scan" on a large table filtered by a column, it's the classic sign of a missing index.</p>
+<blockquote>An index isn't "the more, the better". It's "which column do I filter on so often that it's worth paying the write cost?". Whoever answers that by reading EXPLAIN, rather than guessing, truly optimizes.</blockquote>
+<p>In interviews they often hand you a slow query and ask you to diagnose it — the expected answer starts with "I'd run EXPLAIN to see if there's a full scan". Day to day, this shows up every time a report that used to be instant starts to hang as the table grows.</p>
+<h2>Conclusion</h2>
+<p>Indexes speed up reads at the cost of slower writes; B-trees explain why they're so efficient; column order defines what a composite index covers; and <code>EXPLAIN</code> is your X-ray for telling a full scan from an index scan. With that, "my query is slow" stops being a mystery and becomes an objective diagnosis.</p>
+</div>
+<div class="post-tags"><span class="tag">Indexes</span><span class="tag">Performance</span><span class="tag">SQL</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">Relational modeling: tables, keys and relationships</span></a>
+<a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">SQL beyond the basics: aggregations, GROUP BY and subqueries</span></a>
+<a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">Normalization: 1NF, 2NF and 3NF without memorizing</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

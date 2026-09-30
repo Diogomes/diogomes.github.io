@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /backend/cache-backend.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/backend/cache-backend.html" rel="canonical"/>
+<link href="https://diogomes.github.io/backend/cache-backend.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/backend/cache-backend.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/backend/cache-backend.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Backend caching: when to use it and how to invalidate - Diogo Gomes</title>
+<meta content="Caching speeds everything up — until it becomes a source of bugs. Cache-aside, TTL and why cache invalidation is one of the hard problems in computing." name="description"/>
+<meta content="Back-end, Pleno, Cache, Redis, Performance, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Backend caching: when to use it and how to invalidate" property="og:title"/>
+<meta content="Caching speeds everything up — until it becomes a source of bugs. Cache-aside, TTL and why cache invalidation is one of the hard problems in computing." property="og:description"/>
+<meta content="https://diogomes.github.io/en/backend/cache-backend.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-cache-backend-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/backend-cache-backend-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../../backend/feed.xml" rel="alternate" title="Back-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Cache no back-end: quando usar e como invalidar", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/cache-backend.html", "image": "https://diogomes.github.io/assets/img/og/backend-cache-backend.png", "description": "Cache acelera tudo — até virar fonte de bug. Cache-aside, TTL e por que invalidar cache é um dos problemas difíceis da computação.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Back-end · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Back-end</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-memory-card"></i> Back-end · Mid-level</span>
+<h1>Backend caching: when to use it and how to invalidate</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 13, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Caching is one of the most powerful tools for making a system fast — and one of the easiest to get wrong. The famous line "the two hardest things in computer science are naming things and cache invalidation" exists for a reason. Knowing when to cache, how to invalidate and when <em>not</em> to cache is expected of a mid-level dev.</p>
+<h2>Why cache</h2>
+<p>Caching means storing the result of an expensive operation so you can reuse it later instead of redoing it. The operation might be a heavy query, a call to another API or a slow computation. The analogy: instead of going to the store every time you want milk, you keep some in the fridge. The cost is that the milk in the fridge can go bad — and that's where all the complexity lives.</p>
+<h2>The cache-aside pattern</h2>
+<p>The most common pattern is <strong>cache-aside</strong> (also called lazy loading): the application looks at the cache first; if the data is there (<em>hit</em>), it uses it; if not (<em>miss</em>), it fetches from the source, stores it in the cache and returns it.</p>
+<pre><code>function getProduct(id):
+    value = cache.get("product:" + id)
+    if value != null:
+        return value              // cache hit
+    value = db.query(id)          // cache miss
+    cache.set("product:" + id, value, ttl=300)
+    return value</code></pre>
+<p>The upside: only what is actually requested gets cached. The downside: the first access to each item is always slow (the initial miss).</p>
+<h2>TTL and expiration</h2>
+<p>The <strong>TTL</strong> (Time To Live) defines how long a value stays in the cache before it expires automatically. It's the simplest way to avoid data staying stale forever. A short TTL keeps data fresher but reduces hit rate; a long TTL gets more reuse but risks serving old data. Choosing the TTL is balancing <strong>freshness</strong> against <strong>performance</strong>.</p>
+<h2>Write strategies</h2>
+<p>Cache-aside deals with reads. When data <em>changes</em>, there are write strategies. The most direct is <strong>write-through</strong>: when writing, you update the database and the cache together, keeping them in sync. Other options include invalidating the key on write (letting the next read reload it). What matters is having an answer to "what happens to the cache when the data changes?".</p>
+<h2>Why invalidation is hard</h2>
+<p>Cached data is a copy, and copies go <strong>stale</strong> when the source changes. You have to decide when to discard them — and getting it wrong in either direction hurts: invalidating too much throws away the benefit of the cache; invalidating too little serves wrong data. Worse: invalidating the right key, at the right moment, everywhere it exists, is genuinely hard in distributed systems.</p>
+<blockquote>Caching is easy; the hard part is knowing exactly when to throw away the stored data. Every "why is it showing the old value?" bug is an invalidation problem.</blockquote>
+<h2>Where the cache lives</h2>
+<div class="table-wrap"><table><thead><tr><th>Location</th><th>Speed</th><th>Shared?</th></tr></thead><tbody>
+<tr><td>Process memory</td><td>Extremely high</td><td>No (only that server)</td></tr>
+<tr><td>Redis / Memcached</td><td>Very high</td><td>Yes (across servers)</td></tr>
+<tr><td>CDN</td><td>High (close to the user)</td><td>Yes (public/static content)</td></tr>
+</tbody></table></div>
+<p>Local in-memory cache is the fastest but doesn't scale across instances — which is why <strong>Redis</strong> is so widely used: a shared cache that all instances query. This connects with <a href="escalabilidade.html">scalability</a>, since stateless services usually delegate state to an external cache.</p>
+<h2>When NOT to cache</h2>
+<p>Caching isn't free. Avoid it when: the data changes on every access (the cache never hits), it requires absolute accuracy (bank balance, critical inventory), or it's rarely read (not worth the complexity). Day to day, caching too early is a common source of subtle bugs — measure first, cache later.</p>
+<h2>Conclusion</h2>
+<p>Caching trades freshness for speed. Master the cache-aside pattern, set deliberate TTLs, have an invalidation strategy and learn to recognize the cases where caching brings more problems than benefits. It's a huge performance lever — as long as you respect the hard part.</p>
+</div>
+<div class="post-tags"><span class="tag">Cache</span><span class="tag">Redis</span><span class="tag">Performance</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="como-a-web-funciona.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">How the web works: HTTP, request and response</span></a>
+<a class="rel-card" href="apis-rest.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">REST APIs: what makes an API RESTful</span></a>
+<a class="rel-card" href="sql-essencial.html"><span class="rel-cat"><i class="bx bx-server"></i> Back-end · Junior</span><span class="rel-title">Essential SQL: CRUD, JOIN and transactions</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

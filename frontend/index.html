@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Front-end — Diogo Gomes | track by level (junior, mid-level, senior)">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/frontend/index.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/index.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/index.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Front-end — Diogo Gomes | trilha por nível (júnior, pleno, sênior)</title>
@@ -30,20 +35,22 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/quiz.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -60,6 +67,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -72,46 +80,46 @@
 
         <div class="section-title">
           <h2>Front-end</h2>
-          <p class="blog-intro">O que um front-end precisa dominar em cada fase da carreira. Da marcação semântica ao Core Web Vitals e arquitetura de componentes — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
+          <p class="blog-intro" data-en="What a front-end developer needs to master at each stage of their career. From semantic markup to Core Web Vitals and component architecture — the concepts that come up in technical interviews and in everyday work, explained directly. Filter by level below.">O que um front-end precisa dominar em cada fase da carreira. Da marcação semântica ao Core Web Vitals e arquitetura de componentes — os conceitos que aparecem nas entrevistas técnicas e no trabalho de todo dia, explicados de forma direta. Filtre por nível abaixo.</p>
         </div>
 
         <div class="blog-search" data-aos="fade-up">
           <i class="bx bx-search"></i>
-          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha">
+          <input type="search" id="blog-search" placeholder="Buscar na trilha…" aria-label="Buscar na trilha" data-en-placeholder="Search the track…" data-en-aria-label="Search the track">
         </div>
 
         <div class="row" data-aos="fade-up">
           <div class="col-12 d-flex justify-content-center">
             <ul id="blog-filters" class="blog-filters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".lvl-junior">Júnior</li>
-              <li data-filter=".lvl-pleno">Pleno</li>
-              <li data-filter=".lvl-senior">Sênior</li>
+              <li data-filter="*" class="filter-active" data-en="All">Todos</li>
+              <li data-filter=".lvl-junior" data-en="Junior">Júnior</li>
+              <li data-filter=".lvl-pleno" data-en="Mid-level">Pleno</li>
+              <li data-filter=".lvl-senior" data-en="Senior">Sênior</li>
             </ul>
           </div>
         </div>
 
         <div class="blog-tools" data-aos="fade-up">
-          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> Assinar via RSS</a>
+          <a class="rss-link" href="feed.xml"><i class="bx bx-rss"></i> <span data-en="Subscribe via RSS">Assinar via RSS</span></a>
         </div>
 
-        <p id="blog-no-results" class="blog-no-results">Nenhum artigo encontrado para sua busca.</p>
+        <p id="blog-no-results" class="blog-no-results" data-en="No articles found for your search.">Nenhum artigo encontrado para sua busca.</p>
 
         <div class="row gy-4 blog-container" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-accessibility"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-accessibility"></i> <span data-en="Mid-level">Pleno</span></span>
                 <i class="bx bx-accessibility post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="acessibilidade-web.html">Acessibilidade web (a11y): ARIA, foco e contraste na prática</a></h3>
-                <p>Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença.</p>
+                <h3><a href="acessibilidade-web.html" data-en="Web accessibility (a11y): ARIA, focus and contrast in practice">Acessibilidade web (a11y): ARIA, foco e contraste na prática</a></h3>
+                <p data-en="Accessibility is the front end&#x27;s responsibility, not optional. ARIA in the right measure, keyboard focus, contrast and what really makes a difference.">Acessibilidade é responsabilidade do front, não opcional. ARIA na medida certa, foco por teclado, contraste e o que realmente faz diferença.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 25 Jun, 2026</span>
-                <a href="acessibilidade-web.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 25, 2026">25 Jun, 2026</span></span>
+                <a href="acessibilidade-web.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -119,16 +127,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-window"></i> Júnior</span>
+                <span class="post-cat"><i class="bx bx-window"></i> <span data-en="Junior">Júnior</span></span>
                 <i class="bx bx-window post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="html-semantico.html">HTML semântico e acessibilidade: a base que separa amador de profissional</a></h3>
-                <p>Usar a tag certa não é detalhe: é SEO, acessibilidade e manutenção. O que é HTML semântico e por que empilhar div para tudo te prejudica.</p>
+                <h3><a href="html-semantico.html" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</a></h3>
+                <p data-en="Using the right tag isn&#x27;t a detail: it&#x27;s SEO, accessibility and maintainability. What semantic HTML is and why stacking divs for everything hurts you.">Usar a tag certa não é detalhe: é SEO, acessibilidade e manutenção. O que é HTML semântico e por que empilhar div para tudo te prejudica.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 24 Jun, 2026</span>
-                <a href="html-semantico.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 24, 2026">24 Jun, 2026</span></span>
+                <a href="html-semantico.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -136,16 +144,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-paint"></i> Júnior</span>
+                <span class="post-cat"><i class="bx bx-paint"></i> <span data-en="Junior">Júnior</span></span>
                 <i class="bx bx-paint post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="css-box-model-layout.html">CSS sem medo: box model, flexbox e grid</a></h3>
-                <p>Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.</p>
+                <h3><a href="css-box-model-layout.html" data-en="CSS without fear: box model, flexbox and grid">CSS sem medo: box model, flexbox e grid</a></h3>
+                <p data-en="Why elements have the size they have and how to position them. The box model and the two layout systems that solve 95% of cases.">Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 22 Jun, 2026</span>
-                <a href="css-box-model-layout.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 22, 2026">22 Jun, 2026</span></span>
+                <a href="css-box-model-layout.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -153,16 +161,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-junior">
             <article class="post-card">
               <div class="post-card-top lvl-junior">
-                <span class="post-cat"><i class="bx bx-code-curly"></i> Júnior</span>
+                <span class="post-cat"><i class="bx bx-code-curly"></i> <span data-en="Junior">Júnior</span></span>
                 <i class="bx bx-code-curly post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="javascript-essencial.html">JavaScript essencial: tipos, escopo e o DOM</a></h3>
-                <p>Os fundamentos que sustentam qualquer framework: tipos e coerção, var/let/const, closures e como o JavaScript fala com a página.</p>
+                <h3><a href="javascript-essencial.html" data-en="Essential JavaScript: types, scope and the DOM">JavaScript essencial: tipos, escopo e o DOM</a></h3>
+                <p data-en="The fundamentals behind every framework: types and coercion, var/let/const, closures and how JavaScript talks to the page.">Os fundamentos que sustentam qualquer framework: tipos e coerção, var/let/const, closures e como o JavaScript fala com a página.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 20 Jun, 2026</span>
-                <a href="javascript-essencial.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 20, 2026">20 Jun, 2026</span></span>
+                <a href="javascript-essencial.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -170,16 +178,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-cog"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-cog"></i> <span data-en="Mid-level">Pleno</span></span>
                 <i class="bx bx-cog post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="event-loop.html">O event loop: como o JavaScript faz async sem travar</a></h3>
-                <p>Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.</p>
+                <h3><a href="event-loop.html" data-en="The event loop: how JavaScript does async without freezing">O event loop: como o JavaScript faz async sem travar</a></h3>
+                <p data-en="Single-threaded but non-blocking? Call stack, Web APIs, task queue and microtasks — the interview question that separates mid-level from junior.">Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 17 Jun, 2026</span>
-                <a href="event-loop.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 17, 2026">17 Jun, 2026</span></span>
+                <a href="event-loop.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -187,16 +195,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-layer"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-layer"></i> <span data-en="Mid-level">Pleno</span></span>
                 <i class="bx bx-layer post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="estado-componentes.html">Estado em front-end: props, state e quando subir o estado</a></h3>
-                <p>O que é estado, a diferença entre props e state, fluxo de dados unidirecional e o famoso &#x27;lifting state up&#x27; sem decoreba.</p>
+                <h3><a href="estado-componentes.html" data-en="State in front-end: props, state and when to lift it up">Estado em front-end: props, state e quando subir o estado</a></h3>
+                <p data-en="What state is, the difference between props and state, unidirectional data flow and the famous &#x27;lifting state up&#x27; without memorizing.">O que é estado, a diferença entre props e state, fluxo de dados unidirecional e o famoso &#x27;lifting state up&#x27; sem decoreba.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 15 Jun, 2026</span>
-                <a href="estado-componentes.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 15, 2026">15 Jun, 2026</span></span>
+                <a href="estado-componentes.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -204,16 +212,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-pleno">
             <article class="post-card">
               <div class="post-card-top lvl-pleno">
-                <span class="post-cat"><i class="bx bx-slider"></i> Pleno</span>
+                <span class="post-cat"><i class="bx bx-slider"></i> <span data-en="Mid-level">Pleno</span></span>
                 <i class="bx bx-slider post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="render-performance.html">Renderização e performance: reflow, repaint e o caminho crítico</a></h3>
-                <p>Como o navegador transforma HTML/CSS/JS em pixels, o que é reflow vs repaint e por que seu app trava — com o que fazer a respeito.</p>
+                <h3><a href="render-performance.html" data-en="Rendering and performance: reflow, repaint and the critical path">Renderização e performance: reflow, repaint e o caminho crítico</a></h3>
+                <p data-en="How the browser turns HTML/CSS/JS into pixels, what reflow vs repaint is and why your app lags — and what to do about it.">Como o navegador transforma HTML/CSS/JS em pixels, o que é reflow vs repaint e por que seu app trava — com o que fazer a respeito.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 13 Jun, 2026</span>
-                <a href="render-performance.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 13, 2026">13 Jun, 2026</span></span>
+                <a href="render-performance.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -221,16 +229,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-sitemap"></i> Sênior</span>
+                <span class="post-cat"><i class="bx bx-sitemap"></i> <span data-en="Senior">Sênior</span></span>
                 <i class="bx bx-sitemap post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="arquitetura-frontend.html">Arquitetura de front-end: componentização, design system e monorepo</a></h3>
-                <p>Como manter um front-end grande sem virar caos: componentes reutilizáveis, design system, organização de pastas e o trade-off do monorepo.</p>
+                <h3><a href="arquitetura-frontend.html" data-en="Front-end architecture: componentization, design systems and monorepos">Arquitetura de front-end: componentização, design system e monorepo</a></h3>
+                <p data-en="How to keep a large front end from turning into chaos: reusable components, design system, folder organization and the monorepo trade-off.">Como manter um front-end grande sem virar caos: componentes reutilizáveis, design system, organização de pastas e o trade-off do monorepo.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 10 Jun, 2026</span>
-                <a href="arquitetura-frontend.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 10, 2026">10 Jun, 2026</span></span>
+                <a href="arquitetura-frontend.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -238,16 +246,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> Sênior</span>
+                <span class="post-cat"><i class="bx bx-bar-chart-alt-2"></i> <span data-en="Senior">Sênior</span></span>
                 <i class="bx bx-bar-chart-alt-2 post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="web-performance-core-vitals.html">Web performance: Core Web Vitals, lazy loading e bundle</a></h3>
-                <p>LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.</p>
+                <h3><a href="web-performance-core-vitals.html" data-en="Web performance: Core Web Vitals, lazy loading and bundle size">Web performance: Core Web Vitals, lazy loading e bundle</a></h3>
+                <p data-en="LCP, CLS, INP: the metrics Google measures and users feel. Code splitting, lazy loading and trimming the bundle to load fast.">LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 08 Jun, 2026</span>
-                <a href="web-performance-core-vitals.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 8, 2026">08 Jun, 2026</span></span>
+                <a href="web-performance-core-vitals.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -255,16 +263,16 @@
           <div class="col-lg-4 col-md-6 blog-item lvl-senior">
             <article class="post-card">
               <div class="post-card-top lvl-senior">
-                <span class="post-cat"><i class="bx bx-lock"></i> Sênior</span>
+                <span class="post-cat"><i class="bx bx-lock"></i> <span data-en="Senior">Sênior</span></span>
                 <i class="bx bx-lock post-bg-icon"></i>
               </div>
               <div class="post-card-body">
-                <h3><a href="seguranca-frontend.html">Segurança no front-end: XSS, CSRF e CORS sem mistério</a></h3>
-                <p>As três siglas que todo front-end sênior precisa explicar: o que é cada ataque, como o navegador se defende e o que é responsabilidade sua.</p>
+                <h3><a href="seguranca-frontend.html" data-en="Front-end security: XSS, CSRF and CORS demystified">Segurança no front-end: XSS, CSRF e CORS sem mistério</a></h3>
+                <p data-en="The three acronyms every senior front-end dev must explain: what each attack is, how the browser defends itself and what is your responsibility.">As três siglas que todo front-end sênior precisa explicar: o que é cada ataque, como o navegador se defende e o que é responsabilidade sua.</p>
               </div>
               <div class="post-card-foot">
-                <span><i class="bi bi-clock"></i> 06 Jun, 2026</span>
-                <a href="seguranca-frontend.html" class="post-read">Ler <i class="bx bx-right-arrow-alt"></i></a>
+                <span><i class="bi bi-clock"></i> <span data-en="Jun 6, 2026">06 Jun, 2026</span></span>
+                <a href="seguranca-frontend.html" class="post-read"><span data-en="Read">Ler</span> <i class="bx bx-right-arrow-alt"></i></a>
               </div>
             </article>
           </div>
@@ -283,6 +291,12 @@
           <div class="self-assess-grid"></div>
         </div>
 
+        <div class="track-quiz" data-track-quiz data-track="frontend" data-aos="fade-up">
+          <h3 class="track-quiz-title"><i class="bx bx-help-circle" aria-hidden="true"></i> <span data-en="Quiz: test what you learned">Quiz: teste o que aprendeu</span></h3>
+          <p class="track-quiz-intro" data-en="Four questions per level, with an explanation and the article that covers each topic. Ace a level and you can mark it in the self-assessment above.">Quatro perguntas por nível, com explicação e o artigo que cobre cada assunto. Gabaritou um nível? Dá para marcá-lo na autoavaliação acima.</p>
+          <div class="track-quiz-body"></div>
+        </div>
+
       </div>
     </section></main>
 
@@ -293,7 +307,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -304,6 +318,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

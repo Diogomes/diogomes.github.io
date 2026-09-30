@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="Test design techniques: covering more with fewer cases - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/blog/tecnicas-design-de-teste.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/blog/tecnicas-design-de-teste.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Técnicas de design de teste: cobrir mais com menos casos - Diogo Gomes</title>
   <meta content="Partição de equivalência, valor-limite, tabela de decisão e transição de estado: as técnicas que escolhem os casos certos em vez de testar tudo." name="description">
   <meta content="design de teste, partição de equivalência, valor limite, tabela de decisão, transição de estado, ISTQB, QA, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Técnicas de design de teste: cobrir mais com menos casos">
-  <meta property="og:description" content="Partição de equivalência, valor-limite, tabela de decisão e transição de estado: escolher os casos certos em vez de testar tudo.">
+  <meta property="og:title" content="Técnicas de design de teste: cobrir mais com menos casos" data-en-content="Test design techniques: covering more with fewer cases">
+  <meta property="og:description" content="Partição de equivalência, valor-limite, tabela de decisão e transição de estado: escolher os casos certos em vez de testar tudo." data-en-content="Equivalence partitioning, boundary values, decision tables, and state transitions: how to pick the right cases instead of trying to test everything.">
   <meta property="og:url" content="https://diogomes.github.io/blog/tecnicas-design-de-teste.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-tecnicas-design-de-teste.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-tecnicas-design-de-teste-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-tecnicas-design-de-teste.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-tecnicas-design-de-teste-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,20 +37,21 @@
 
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Técnicas de design de teste: cobrir mais com menos casos", "datePublished": "2026-06-23", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/tecnicas-design-de-teste.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Partição de equivalência, valor-limite, tabela de decisão e transição de estado: escolher os casos certos em vez de testar tudo.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Técnicas de design de teste: cobrir mais com menos casos", "datePublished": "2026-06-23", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/tecnicas-design-de-teste.html", "image": "https://diogomes.github.io/assets/img/og/blog-tecnicas-design-de-teste.png", "description": "Partição de equivalência, valor-limite, tabela de decisão e transição de estado: escolher os casos certos em vez de testar tudo.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +68,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="index.html" class="nav-link active"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +79,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>QA</h2>
+          <h2 data-en="QA">QA</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Blog</a></li>
-            <li>QA</li>
+            <li data-en="QA">QA</li>
           </ol>
         </div>
       </div>
@@ -84,12 +95,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-bulb"></i> QA</span>
-              <h1>Técnicas de design de teste: cobrir mais com menos casos</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 23 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 8 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span>
+              <h1 data-en="Test design techniques: covering more with fewer cases">Técnicas de design de teste: cobrir mais com menos casos</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 23, 2026">23 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="8 min read">8 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
               <p>Testar <em>todas</em> as entradas possíveis é impossível — um simples campo de número inteiro já tem bilhões de valores. A maturidade de um QA aparece justamente aqui: em escolher o <strong>menor conjunto de casos que encontra o maior número de defeitos</strong>. É para isso que existem as técnicas de design de teste de caixa-preta. Elas são clássicas (vêm do ISTQB) e são usadas o tempo todo, mesmo quando o QA nem percebe que está usando.</p>
 
               <h2>O mapa das técnicas</h2>
@@ -160,17 +172,89 @@
 
               <h2>Conclusão</h2>
               <p>Partição de equivalência e valor-limite atacam entradas; tabela de decisão ataca combinações; transição de estado ataca comportamento dependente do passado. Juntas, elas dão ao QA uma resposta sólida para a pergunta mais frequente de qualquer avaliação técnica — <em>"por que você escolheu esses casos e não outros?"</em> — e, mais importante, encontram defeitos que o teste improvisado nunca acharia.</p>
+</div>
+<div data-lang="en">
+<p>Testing <em>every</em> possible input is impossible — a simple integer field already has billions of values. A QA's maturity shows precisely here: in choosing the <strong>smallest set of cases that finds the largest number of defects</strong>. That is what black-box test design techniques are for. They are classics (straight from ISTQB) and are used all the time, even when the QA doesn't realize they're using them.</p>
 
-              <div class="post-tags"><span class="tag">Design de teste</span><span class="tag">Valor-limite</span><span class="tag">Tabela de decisão</span><span class="tag">ISTQB</span><span class="tag">Fundamentos</span></div>
+              <h2>The map of techniques</h2>
+              <pre><code>How do you derive test cases without testing everything?
+        │
+        ├── Inputs with ranges/groups
+        │      ├── Equivalence partitioning  → 1 value per group
+        │      └── Boundary value analysis   → the edges of the groups
+        │
+        ├── Combination of conditions
+        │      └── Decision table            → business rules "if A and B then..."
+        │
+        └── Behavior that depends on the past
+               └── State transition          → statuses, flows, state machines</code></pre>
+
+              <h2>1. Equivalence partitioning</h2>
+              <p>The idea: if a group of inputs is treated <strong>the same way</strong> by the system, testing one value from the group is equivalent to testing all of them. You split the domain into classes (valid and invalid) and pick one representative from each.</p>
+              <p>Example — an age field that accepts 18 to 65:</p>
+              <ul>
+                <li><strong>Invalid (below):</strong> any value &lt; 18 → e.g. <code>10</code></li>
+                <li><strong>Valid:</strong> 18 to 65 → e.g. <code>30</code></li>
+                <li><strong>Invalid (above):</strong> &gt; 65 → e.g. <code>80</code></li>
+              </ul>
+              <p>Three cases cover the behavior of the whole field. Testing <code>30</code>, <code>31</code> and <code>32</code> would be a waste — they all fall in the same partition.</p>
+
+              <h2>2. Boundary value analysis</h2>
+              <p>Bugs love <strong>edges</strong>. A <code>&gt;</code> that should have been <code>&gt;=</code>, the "off-by-one", the limit nobody tested. This technique complements partitioning by testing exactly the extremes of each range. For the age field (18–65), the values that matter are:</p>
+              <pre><code>     17   |   18   ...   65   |   66
+   invalid |  valid (18 to 65) |  invalid
+       ^        ^          ^         ^
+     edge     first       last      edge
+   rejects   accepts    accepts   rejects</code></pre>
+              <p>The cases: <code>17</code> (rejects), <code>18</code> (accepts), <code>65</code> (accepts), <code>66</code> (rejects). This is where most validation defects hide — and it's one of the first things a technical interviewer asks: <em>"how would you test this field?"</em>.</p>
+
+              <h2>3. Decision table</h2>
+              <p>When the rule depends on the <strong>combination</strong> of several conditions, listing everything in your head fails. The decision table maps each combination of conditions to the expected action — and exposes rules nobody had thought of.</p>
+              <p>Example — a discount that depends on being a VIP customer <em>and</em> the purchase exceeding R$ 100:</p>
+              <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Condition / Rule</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Is a VIP customer?</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+                  <tr><td>Purchase &gt; R$ 100?</td><td>Yes</td><td>No</td><td>Yes</td><td>No</td></tr>
+                  <tr><td><strong>Discount applied</strong></td><td>20%</td><td>10%</td><td>10%</td><td>0%</td></tr>
+                </tbody>
+              </table>
+              </div>
+              <p>Each column is a test case. The technique guarantees no combination is forgotten — including R4, the "nothing happens" case, which tends to be left out of happy-path tests.</p>
+
+              <h2>4. State transition</h2>
+              <p>Some behaviors depend on <strong>history</strong>, not just the current input. An order can go from <em>Created</em> → <em>Paid</em> → <em>Shipped</em>, but never from <em>Created</em> → <em>Shipped</em>. Here you model a state machine and test both the <strong>valid</strong> and the <strong>forbidden</strong> transitions:</p>
+              <pre><code>   [Created] ──pay──► [Paid] ──dispatch──► [Shipped] ──deliver──► [Delivered]
+       │
+       └──cancel──► [Cancelled]
+
+   Invalid transitions to test:
+     • Created ──dispatch──►  (must be blocked)
+     • Shipped ──pay──►       (must be blocked)
+     • Delivered ──cancel──►  (must be blocked)</code></pre>
+              <p>The payoff is in the <em>invalid</em> transitions: that's where the "I managed to cancel an order that was already delivered" bugs live. Testing only the happy path leaves that hole open.</p>
+
+              <h2>Combining is the rule, not picking one</h2>
+              <p>In practice these techniques add up. A single sign-up form might call for partitioning + boundary values on numeric fields, a decision table for the "who can sign up" rule, and state transition for the account activation flow. The right question is never "which technique should I use?", but "which conditions of this requirement does each technique help me cover?".</p>
+
+              <blockquote>Testing well isn't testing a lot — it's testing the right things. These techniques are the reasoning that turns "I clicked around and it looks fine" into defensible coverage.</blockquote>
+
+              <h2>Conclusion</h2>
+              <p>Equivalence partitioning and boundary values attack inputs; decision tables attack combinations; state transition attacks behavior that depends on the past. Together, they give the QA a solid answer to the most frequent question in any technical interview — <em>"why did you choose these cases and not others?"</em> — and, more importantly, they find defects that improvised testing never would.</p>
+</div>
+<div class="post-tags"><span class="tag" data-en="Test design">Design de teste</span><span class="tag" data-en="Boundary values">Valor-limite</span><span class="tag" data-en="Decision table">Tabela de decisão</span><span class="tag" data-en="ISTQB">ISTQB</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Pirâmide de testes e os quadrantes ágeis</span></a>
-                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> Testes</span><span class="rel-title">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
-                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">A arte do bug report</span></a>
+                <a class="rel-card" href="piramide-de-testes.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="The test pyramid and the agile quadrants">Pirâmide de testes e os quadrantes ágeis</span></a>
+                <a class="rel-card" href="bdd-atdd-tdd.html"><span class="rel-cat"><i class="bx bx-cube"></i> <span data-en="Tests">Testes</span></span><span class="rel-title" data-en="BDD, ATDD and TDD: what each acronym solves">BDD, ATDD e TDD: o que cada sigla resolve</span></a>
+                <a class="rel-card" href="bug-report.html"><span class="rel-cat"><i class="bx bx-bulb"></i> <span data-en="QA">QA</span></span><span class="rel-title" data-en="The art of the bug report">A arte do bug report</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar ao blog</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to the blog">Voltar ao blog</span></a>
             </div>
 
           </div>
@@ -187,7 +271,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -198,6 +282,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

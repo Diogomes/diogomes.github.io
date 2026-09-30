@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-title-en="CSS without fear: box model, flexbox and grid - Diogo Gomes">
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="https://diogomes.github.io/frontend/css-box-model-layout.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/frontend/css-box-model-layout.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/frontend/css-box-model-layout.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/frontend/css-box-model-layout.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>CSS sem medo: box model, flexbox e grid - Diogo Gomes</title>
   <meta content="Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos." name="description">
   <meta content="Front-end, Júnior, CSS, Layout, Fundamentos, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="CSS sem medo: box model, flexbox e grid">
-  <meta property="og:description" content="Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.">
+  <meta property="og:title" content="CSS sem medo: box model, flexbox e grid" data-en-content="CSS without fear: box model, flexbox and grid">
+  <meta property="og:description" content="Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos." data-en-content="Why elements have the size they have and how to position them. The box model and the two layout systems that solve 95% of cases.">
   <meta property="og:url" content="https://diogomes.github.io/frontend/css-box-model-layout.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/frontend-css-box-model-layout.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-css-box-model-layout-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/frontend-css-box-model-layout.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-css-box-model-layout-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -27,21 +36,23 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CSS sem medo: box model, flexbox e grid", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/css-box-model-layout.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CSS sem medo: box model, flexbox e grid", "datePublished": "2026-06-22", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/css-box-model-layout.html", "image": "https://diogomes.github.io/assets/img/og/frontend-css-box-model-layout.png", "description": "Por que os elementos têm o tamanho que têm e como posicioná-los. O box model e os dois sistemas de layout que resolvem 95% dos casos.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0" aria-label="Abrir/fechar menu" data-en-aria-label="Open/close menu"></i>
 
   <header id="header">
     <div class="d-flex flex-column">
       <div class="profile">
-        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" class="img-fluid rounded-circle">
+        <img src="../assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -58,6 +69,7 @@
           <li><a href="../projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="../search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -68,11 +80,11 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Front-end · Júnior</h2>
+          <h2 data-en="Front-end · Junior">Front-end · Júnior</h2>
           <ol>
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html">Front-end</a></li>
-            <li>Júnior</li>
+            <li data-en="Junior">Júnior</li>
           </ol>
         </div>
       </div>
@@ -84,12 +96,13 @@
           <div class="col-lg-9">
 
             <div class="post-hero">
-              <span class="post-cat"><i class="bx bx-paint"></i> Front-end · Júnior</span>
-              <h1>CSS sem medo: box model, flexbox e grid</h1>
-              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> 22 de Junho, 2026 &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> 3 min de leitura</div>
+              <span class="post-cat"><i class="bx bx-paint"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span>
+              <h1 data-en="CSS without fear: box model, flexbox and grid">CSS sem medo: box model, flexbox e grid</h1>
+              <div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes &nbsp;&middot;&nbsp; <i class="bi bi-clock"></i> <span data-en="Jun 22, 2026">22 de Junho, 2026</span> &nbsp;&middot;&nbsp; <i class="bi bi-hourglass-split"></i> <span data-en="3 min read">3 min de leitura</span></div>
             </div>
 
             <div class="post-body">
+<div data-lang="pt">
 <p>CSS assusta no começo porque parece imprevisível: você muda uma propriedade e a página inteira se mexe. A boa notícia é que quase toda essa "mágica" se resume a três ideias — o box model, o flexbox e o grid. Entendendo elas, o CSS deixa de ser tentativa e erro e vira algo que você controla.</p>
 
 <h2>Tudo é uma caixa: o box model</h2>
@@ -149,16 +162,78 @@
 
 <h2>Conclusão</h2>
 <p>O box model explica o tamanho das coisas, o flexbox organiza em uma dimensão e o grid em duas. Com <code>border-box</code> ligado e essas duas ferramentas no cinto, o CSS deixa de ser sorte. O próximo passo é dar vida à página com <a href="javascript-essencial.html">JavaScript</a>.</p>
-              <div class="post-tags"><span class="tag">CSS</span><span class="tag">Layout</span><span class="tag">Fundamentos</span></div>
+</div>
+<div data-lang="en">
+<p>CSS is scary at first because it seems unpredictable: you change one property and the whole page moves. The good news is that almost all of this "magic" boils down to three ideas — the box model, flexbox and grid. Once you understand them, CSS stops being trial and error and becomes something you control.</p>
+
+<h2>Everything is a box: the box model</h2>
+<p>Every element on screen is a rectangular box made of four layers, from the inside out: <strong>content</strong>, <strong>padding</strong> (inner space), <strong>border</strong> and <strong>margin</strong> (outer space). Think of a picture frame: the photo is the content, the mat is the padding, the frame is the border and the space up to the next picture on the wall is the margin.</p>
+
+<pre><code>.card {
+  width: 200px;
+  padding: 20px;
+  border: 2px solid;
+}
+/* Actual width = 200 + 20*2 + 2*2 = 244px (!) */</code></pre>
+
+<h2>box-sizing: border-box saves your sanity</h2>
+<p>By default, <code>width</code> counts only the content — padding and border add on top, and the box overflows. With <code>box-sizing: border-box</code>, the width includes padding and border. It's so essential that almost every project applies it globally.</p>
+
+<pre><code>* { box-sizing: border-box; }
+.card { width: 200px; padding: 20px; }
+/* Now the actual width IS 200px */</code></pre>
+
+<h2>display: how the box behaves</h2>
+<p><code>display</code> defines the flow: <strong>block</strong> takes the whole line (like a paragraph), <strong>inline</strong> stays on the same line (like a <code>&lt;span&gt;</code>) and ignores width/height, and <strong>flex</strong>/<strong>grid</strong> turn the element into a container that arranges its children.</p>
+
+<h2>Flexbox: one-dimensional layout</h2>
+<p>Flexbox arranges items along <em>one</em> axis at a time. You define the <strong>main axis</strong> with <code>flex-direction</code> (row or column) and the <strong>cross axis</strong> is the perpendicular one. <code>justify-content</code> aligns on the main axis; <code>align-items</code> aligns on the cross axis. Perfect for navigation bars, button lists, any row.</p>
+
+<pre><code>.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}</code></pre>
+
+<h2>Grid: two-dimensional layout</h2>
+<p>When you need rows <em>and</em> columns at the same time — a gallery, a dashboard, the whole page layout — Grid solves it quickly. You draw the grid and place the items in it.</p>
+
+<pre><code>.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}</code></pre>
+
+<h2>Flex or Grid? And how to center</h2>
+<p>The practical rule: <strong>one direction, use flex; two directions, use grid</strong>. It's not dogma — plenty of people build entire layouts with flex —, but it's the right starting point.</p>
+
+<div class="table-wrap"><table><thead><tr><th>Criterion</th><th>Flexbox</th><th>Grid</th></tr></thead><tbody><tr><td>Dimensions</td><td>1D (row OR column)</td><td>2D (rows AND columns)</td></tr><tr><td>Best for</td><td>Components, bars</td><td>Page layout, grids</td></tr><tr><td>Shape defined from</td><td>Content</td><td>Container</td></tr></tbody></table></div>
+
+<p>And the eternal "how do I center an element?". With flex, three lines:</p>
+
+<pre><code>.centro {
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+}</code></pre>
+
+<blockquote>Centering became trivial: the hard part is no longer "how", it's remembering that justify-content and align-items switch axes depending on flex-direction.</blockquote>
+
+<p>Interviews commonly ask you to explain the box model, the difference between <code>content-box</code> and <code>border-box</code>, or how to center vertically and horizontally. Day to day, it's what you use in <em>every</em> component you build.</p>
+
+<h2>Conclusion</h2>
+<p>The box model explains the size of things, flexbox arranges in one dimension and grid in two. With <code>border-box</code> turned on and these two tools in your belt, CSS stops being luck. The next step is bringing the page to life with <a href="javascript-essencial.html">JavaScript</a>.</p>
+</div>
+              <div class="post-tags"><span class="tag" data-en="CSS">CSS</span><span class="tag" data-en="Layout">Layout</span><span class="tag" data-en="Fundamentals">Fundamentos</span></div>
               <div class="post-related">
-                <h3>Leia também</h3>
+                <h3 data-en="Read also">Leia também</h3>
                 <div class="rel-grid">
-                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
-                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Júnior</span><span class="rel-title">JavaScript essencial: tipos, escopo e o DOM</span></a>
-                <a class="rel-card" href="event-loop.html"><span class="rel-cat"><i class="bx bx-layout"></i> Front-end · Pleno</span><span class="rel-title">O event loop: como o JavaScript faz async sem travar</span></a>
+                <a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Semantic HTML and accessibility: the foundation that separates amateurs from professionals">HTML semântico e acessibilidade: a base que separa amador de profissional</span></a>
+                <a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Junior">Front-end · Júnior</span></span><span class="rel-title" data-en="Essential JavaScript: types, scope and the DOM">JavaScript essencial: tipos, escopo e o DOM</span></a>
+                <a class="rel-card" href="event-loop.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span data-en="Front-end · Mid-level">Front-end · Pleno</span></span><span class="rel-title" data-en="The event loop: how JavaScript does async without freezing">O event loop: como o JavaScript faz async sem travar</span></a>
                 </div>
               </div>
-              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> Voltar à trilha</a>
+              <a href="index.html" class="post-back"><i class="bx bx-left-arrow-alt"></i> <span data-en="Back to track">Voltar à trilha</span></a>
             </div>
 
           </div>
@@ -175,7 +250,7 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo" data-en-aria-label="Back to top"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
@@ -186,6 +261,8 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
+  <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
