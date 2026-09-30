@@ -14,10 +14,14 @@
   <meta content="Front-end, Pleno, JavaScript, Event loop, Async, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="O event loop: como o JavaScript faz async sem travar">
-  <meta property="og:description" content="Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.">
+  <meta property="og:title" content="O event loop: como o JavaScript faz async sem travar" data-en-content="The event loop: how JavaScript does async without freezing">
+  <meta property="og:description" content="Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior." data-en-content="Single-threaded but non-blocking? Call stack, Web APIs, task queue and microtasks — the interview question that separates mid-level from junior.">
   <meta property="og:url" content="https://diogomes.github.io/frontend/event-loop.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/frontend-event-loop.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-event-loop-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/frontend-event-loop.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-event-loop-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O event loop: como o JavaScript faz async sem travar", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/event-loop.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O event loop: como o JavaScript faz async sem travar", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/event-loop.html", "image": "https://diogomes.github.io/assets/img/og/frontend-event-loop.png", "description": "Single-thread mas não-bloqueante? Call stack, Web APIs, task queue e microtasks — a pergunta de entrevista que separa pleno de júnior.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -235,6 +240,7 @@ console.log('4');
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

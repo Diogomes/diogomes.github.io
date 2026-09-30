@@ -14,10 +14,14 @@
   <meta content="Back-end, Sênior, CAP, Distribuídos, Arquitetura, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Teorema CAP e consistência eventual">
-  <meta property="og:description" content="Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos.">
+  <meta property="og:title" content="Teorema CAP e consistência eventual" data-en-content="CAP theorem and eventual consistency">
+  <meta property="og:description" content="Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos." data-en-content="Why distributed systems force you to choose between consistency and availability when the network fails — explained with examples.">
   <meta property="og:url" content="https://diogomes.github.io/backend/teorema-cap.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/backend-teorema-cap.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-teorema-cap-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/backend-teorema-cap.png" data-en-content="https://diogomes.github.io/assets/img/og/backend-teorema-cap-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Back-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Teorema CAP e consistência eventual", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/teorema-cap.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Teorema CAP e consistência eventual", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/backend/teorema-cap.html", "image": "https://diogomes.github.io/assets/img/og/backend-teorema-cap.png", "description": "Por que sistemas distribuídos obrigam a escolher entre consistência e disponibilidade quando a rede falha — explicado com exemplos.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -212,6 +217,7 @@ read("profile.name") on node 2 -&gt; "Ana"  (converged)</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

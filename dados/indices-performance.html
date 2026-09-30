@@ -14,10 +14,14 @@
   <meta content="Dados, Pleno, Índices, Performance, SQL, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Índices e performance: por que sua query está lenta">
-  <meta property="og:description" content="Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.">
+  <meta property="og:title" content="Índices e performance: por que sua query está lenta" data-en-content="Indexes and performance: why your query is slow">
+  <meta property="og:description" content="Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução." data-en-content="How an index works (the book index analogy), B-tree, when it helps, when it hurts and how to read an execution plan.">
   <meta property="og:url" content="https://diogomes.github.io/dados/indices-performance.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/dados-indices-performance.png" data-en-content="https://diogomes.github.io/assets/img/og/dados-indices-performance-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/dados-indices-performance.png" data-en-content="https://diogomes.github.io/assets/img/og/dados-indices-performance-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Dados — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Índices e performance: por que sua query está lenta", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/indices-performance.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Índices e performance: por que sua query está lenta", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/indices-performance.html", "image": "https://diogomes.github.io/assets/img/og/dados-indices-performance.png", "description": "Como o índice funciona (a analogia do índice do livro), B-tree, quando ele ajuda, quando atrapalha e como ler um plano de execução.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -239,6 +244,7 @@
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

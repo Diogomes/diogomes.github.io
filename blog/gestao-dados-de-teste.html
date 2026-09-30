@@ -14,10 +14,14 @@
   <meta content="Testes, Dados de teste, Test data, Fixtures, Factory, Seed, Isolamento, QA, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Gestão de dados de teste: o gargalo invisível da automação">
-  <meta property="og:description" content="A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável.">
+  <meta property="og:title" content="Gestão de dados de teste: o gargalo invisível da automação" data-en-content="Test data management: the invisible bottleneck of automation">
+  <meta property="og:description" content="A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável." data-en-content="Most flaky tests don't fail because of logic, but because of data. Fixtures, factories, isolation, and the rule that each test owns its own state.">
   <meta property="og:url" content="https://diogomes.github.io/blog/gestao-dados-de-teste.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gestão de dados de teste: o gargalo invisível da automação", "datePublished": "2026-06-30", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gestao-dados-de-teste.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Gestão de dados de teste: o gargalo invisível da automação", "datePublished": "2026-06-30", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/gestao-dados-de-teste.html", "image": "https://diogomes.github.io/assets/img/og/blog-gestao-dados-de-teste.png", "description": "A maioria dos testes instáveis não falha pela lógica, e sim pelos dados. Como criar, isolar e limpar dados de teste de forma confiável.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -217,6 +222,7 @@ afterEach:  deleteUser(user)   // leaves no trash behind</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

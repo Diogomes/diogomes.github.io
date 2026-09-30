@@ -14,10 +14,14 @@
   <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Page Object Model: uma suíte E2E que escala">
-  <meta property="og:description" content="O padrão que evita que sua automação vire uma teia de seletores duplicados. Regras práticas para manter a suíte legível.">
+  <meta property="og:title" content="Page Object Model: uma suíte E2E que escala" data-en-content="Page Object Model: an E2E suite that scales">
+  <meta property="og:description" content="O padrão que evita que sua automação vire uma teia de seletores duplicados. Regras práticas para manter a suíte legível." data-en-content="The pattern that keeps your automation from turning into a web of duplicated selectors. Practical rules to keep the suite readable and cheap.">
   <meta property="og:url" content="https://diogomes.github.io/blog/page-object-model.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-page-object-model.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-page-object-model-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-page-object-model.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-page-object-model-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,7 +38,8 @@
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
   <link href="../assets/css/i18n.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Page Object Model: uma suíte E2E que escala", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/page-object-model.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "O padrão que evita que sua automação vire uma teia de seletores duplicados. Regras práticas para manter a suíte legível.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Page Object Model: uma suíte E2E que escala", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/page-object-model.html", "image": "https://diogomes.github.io/assets/img/og/blog-page-object-model.png", "description": "O padrão que evita que sua automação vire uma teia de seletores duplicados. Regras práticas para manter a suíte legível.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -202,6 +207,7 @@ await expect(page.getByText('Welcome')).toBeVisible();</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

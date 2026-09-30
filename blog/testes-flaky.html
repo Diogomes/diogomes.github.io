@@ -14,10 +14,14 @@
   <meta content="QA, testes, automação, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Testes flaky: o veneno do seu pipeline">
-  <meta property="og:description" content="De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.">
+  <meta property="og:title" content="Testes flaky: o veneno do seu pipeline" data-en-content="Flaky tests: the poison in your pipeline">
+  <meta property="og:description" content="De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI." data-en-content="Where flakiness comes from and how to fight it before the team loses trust in a green CI.">
   <meta property="og:url" content="https://diogomes.github.io/blog/testes-flaky.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-testes-flaky.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-flaky-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-testes-flaky.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-flaky-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,7 +38,8 @@
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
   <link href="../assets/css/style.css" rel="stylesheet">
   <link href="../assets/css/i18n.css" rel="stylesheet">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes flaky: o veneno do seu pipeline", "datePublished": "2026-06-12", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-flaky.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.", "inLanguage": "pt-BR"}</script>
+  <link href="../assets/css/post.css" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes flaky: o veneno do seu pipeline", "datePublished": "2026-06-12", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-flaky.html", "image": "https://diogomes.github.io/assets/img/og/blog-testes-flaky.png", "description": "De onde vem a flakiness e como combatê-la antes que o time perca a confiança no verde do CI.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -188,6 +193,7 @@ npx playwright test suspeito.spec.ts --repeat-each=20</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

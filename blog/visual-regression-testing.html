@@ -14,10 +14,14 @@
   <meta content="Testes, Visual Regression, Snapshot, Screenshot, Percy, Playwright, QA, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Visual regression testing: quando o teste passa mas a tela está quebrada">
-  <meta property="og:description" content="Seus testes funcionais passam e mesmo assim o layout quebrou. Como o teste de regressão visual compara screenshots e lida com falsos positivos.">
+  <meta property="og:title" content="Visual regression testing: quando o teste passa mas a tela está quebrada" data-en-content="Visual regression testing: when the test passes but the screen is broken">
+  <meta property="og:description" content="Seus testes funcionais passam e mesmo assim o layout quebrou. Como o teste de regressão visual compara screenshots e lida com falsos positivos." data-en-content="The E2E run is green and yet the button vanished, the layout overflowed, or the text became invisible. How to compare screenshots, tame false positives, and fit it into the pipeline.">
   <meta property="og:url" content="https://diogomes.github.io/blog/visual-regression-testing.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-visual-regression-testing.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-visual-regression-testing-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-visual-regression-testing.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-visual-regression-testing-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Visual regression testing: quando o teste passa mas a tela está quebrada", "datePublished": "2026-06-29", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/visual-regression-testing.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "Seus testes funcionais passam e mesmo assim o layout quebrou. Como o teste de regressão visual compara screenshots e lida com falsos positivos.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Visual regression testing: quando o teste passa mas a tela está quebrada", "datePublished": "2026-06-29", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/visual-regression-testing.html", "image": "https://diogomes.github.io/assets/img/og/blog-visual-regression-testing.png", "description": "Seus testes funcionais passam e mesmo assim o layout quebrou. Como o teste de regressão visual compara screenshots e lida com falsos positivos.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -218,6 +223,7 @@ await expect(page).toHaveScreenshot('checkout.png', {
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

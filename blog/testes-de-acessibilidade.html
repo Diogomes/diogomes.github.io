@@ -14,10 +14,14 @@
   <meta content="Testes, Acessibilidade, a11y, WCAG, axe, Leitor de tela, QA, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar">
-  <meta property="og:description" content="axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade.">
+  <meta property="og:title" content="Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar" data-en-content="Accessibility testing: what automation catches and what it never will">
+  <meta property="og:description" content="axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade." data-en-content="axe finds about a third of the problems; the rest is keyboard, screen reader, and human judgment. WCAG, tools, and the layered process that combines both.">
   <meta property="og:url" content="https://diogomes.github.io/blog/testes-de-acessibilidade.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/blog-testes-de-acessibilidade.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-de-acessibilidade-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/blog-testes-de-acessibilidade.png" data-en-content="https://diogomes.github.io/assets/img/og/blog-testes-de-acessibilidade-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="../feed.xml" rel="alternate" type="application/rss+xml" title="Blog — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar", "datePublished": "2026-06-28", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-acessibilidade.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Testes de acessibilidade: o que a automação pega e o que ela nunca vai pegar", "datePublished": "2026-06-28", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/testes-de-acessibilidade.html", "image": "https://diogomes.github.io/assets/img/og/blog-testes-de-acessibilidade.png", "description": "axe acha cerca de um terço dos problemas; o resto é teclado, leitor de tela e julgamento humano. Como testar acessibilidade de verdade.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -216,6 +221,7 @@ expect(resultados.violations).toEqual([])   // fails the build on any violation<
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

@@ -14,10 +14,14 @@
   <meta content="Front-end, Sênior, Performance, Core Web Vitals, Sênior, Diogo Gomes" name="keywords">
   <meta content="Diogo Gomes" name="author">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Web performance: Core Web Vitals, lazy loading e bundle">
-  <meta property="og:description" content="LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.">
+  <meta property="og:title" content="Web performance: Core Web Vitals, lazy loading e bundle" data-en-content="Web performance: Core Web Vitals, lazy loading and bundle size">
+  <meta property="og:description" content="LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido." data-en-content="LCP, CLS, INP: the metrics Google measures and users feel. Code splitting, lazy loading and trimming the bundle to load fast.">
   <meta property="og:url" content="https://diogomes.github.io/frontend/web-performance-core-vitals.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals.png" data-en-content="https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals-en.png">
 
   <link href="../assets/img/icon.jpg" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,8 +38,9 @@
   <link href="../assets/css/style.css" rel="stylesheet">
 
   <link href="../assets/css/i18n.css" rel="stylesheet">
+  <link href="../assets/css/post.css" rel="stylesheet">
   <link href="feed.xml" rel="alternate" type="application/rss+xml" title="Front-end — Diogo Gomes">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Web performance: Core Web Vitals, lazy loading e bundle", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/web-performance-core-vitals.html", "image": "https://diogomes.github.io/assets/img/og-image.png", "description": "LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.", "inLanguage": "pt-BR"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Web performance: Core Web Vitals, lazy loading e bundle", "datePublished": "2026-06-08", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/web-performance-core-vitals.html", "image": "https://diogomes.github.io/assets/img/og/frontend-web-performance-core-vitals.png", "description": "LCP, CLS, INP: as métricas que o Google mede e o usuário sente. Code splitting, lazy loading e enxugar o bundle para carregar rápido.", "inLanguage": "pt-BR"}</script>
 </head>
 
 <body>
@@ -218,6 +223,7 @@ const Grafico = lazy(() =&gt; import('./Grafico'));</code></pre>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/js/post.js"></script>
   <script src="../assets/js/i18n.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
