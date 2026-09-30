@@ -2331,3 +2331,55 @@ section {
 .devlog .dl-item .dl-tag { color: #5cc6f5; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
 .devlog .dl-item h4 { color: #fff; font-size: 17px; margin: 2px 0 5px; }
 .devlog .dl-item p { color: #b9d4e8; font-size: 14px; line-height: 1.6; margin: 0; }
+
+/* Estudos de caso */
+/*--------------------------------------------------------------
+# Estudo de caso (Problema → Abordagem → Resultado) em .featured-game
+--------------------------------------------------------------*/
+.case-study { margin-top: 44px; }
+.case-study .cs-heading {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: #5cc6f5; margin-bottom: 16px;
+}
+.case-study .cs-heading i { font-size: 20px; }
+.case-study .cs-step {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 3px solid #5cc6f5;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.case-study .cs-step.cs-problem { border-top-color: #f59e0b; }
+.case-study .cs-step.cs-approach { border-top-color: #5cc6f5; }
+.case-study .cs-step.cs-outcome { border-top-color: #22c55e; }
+.case-study .cs-step-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.case-study .cs-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #0b1120; background: #5cc6f5;
+}
+.case-study .cs-problem .cs-num { background: #f59e0b; }
+.case-study .cs-outcome .cs-num { background: #22c55e; }
+.case-study .cs-step-head i { font-size: 20px; color: #cfe5f6; }
+.case-study .cs-label { font-size: 15px; font-weight: 700; color: #fff; }
+.case-study .cs-step p { font-size: 14px; line-height: 1.65; color: #b9d4e8; margin: 0; }
+.case-study .cs-step p strong { color: #fff; }
+.case-study .cs-step code { color: #9fe0ff; background: rgba(255, 255, 255, 0.06); padding: 1px 5px; border-radius: 4px; }
+.featured-game.course-theme .case-study .cs-heading { color: #6ee7a8; }
+.featured-game.course-theme .case-study .cs-step p { color: #cfe7d8; }
+.featured-game.course-theme .case-study .cs-approach { border-top-color: #6ee7a8; }
+.featured-game.course-theme .case-study .cs-approach .cs-num { background: #6ee7a8; }
+.featured-game.course-theme .case-study .cs-step code { color: #b7f0cd; }
+.dark-theme .case-study .cs-step { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.07); }
+@media (max-width: 767px) {
+  .case-study { margin-top: 32px; }
+  .case-study .cs-step { padding: 16px; }
+}
+
+/* Menu lateral: com 11 itens, reserva o espaço do rodapé fixo e compacta o espaçamento */
+@media (min-width: 1200px) {
+  #header { padding-bottom: 90px; }
+  .nav-menu a, .nav-menu a:focus { padding: 10px 15px; margin-bottom: 4px; }
+}
