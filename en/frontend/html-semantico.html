@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /frontend/html-semantico.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/frontend/html-semantico.html" rel="canonical"/>
+<link href="https://diogomes.github.io/frontend/html-semantico.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/frontend/html-semantico.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/frontend/html-semantico.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Semantic HTML and accessibility: the foundation that separates amateurs from professionals - Diogo Gomes</title>
+<meta content="Using the right tag isn't a detail: it's SEO, accessibility and maintainability. What semantic HTML is and why stacking divs for everything hurts you." name="description"/>
+<meta content="Front-end, Júnior, HTML, Acessibilidade, Fundamentos, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Semantic HTML and accessibility: the foundation that separates amateurs from professionals" property="og:title"/>
+<meta content="Using the right tag isn't a detail: it's SEO, accessibility and maintainability. What semantic HTML is and why stacking divs for everything hurts you." property="og:description"/>
+<meta content="https://diogomes.github.io/en/frontend/html-semantico.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/frontend-html-semantico-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/frontend-html-semantico-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../feed.xml" rel="alternate" title="Front-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "HTML semântico e acessibilidade: a base que separa amador de profissional", "datePublished": "2026-06-24", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/html-semantico.html", "image": "https://diogomes.github.io/assets/img/og/frontend-html-semantico.png", "description": "Usar a tag certa não é detalhe: é SEO, acessibilidade e manutenção. O que é HTML semântico e por que empilhar div para tudo te prejudica.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Front-end · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Front-end</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-window"></i> <span>Front-end · Junior</span></span>
+<h1>Semantic HTML and accessibility: the foundation that separates amateurs from professionals</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 24, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Before any framework, there is HTML. And the difference between HTML written by an amateur and by a professional is almost never in what shows up on screen: it's in the <em>structure</em> behind it. Using the right tag for each purpose is the first habit that separates those who just "make it work" from those who deliver something accessible, discoverable and easy to maintain.</p>
+<h2>The "div soup" problem</h2>
+<p>When we start out, it's tempting to solve everything with <code>&lt;div&gt;</code>. The result is what's called <strong>div soup</strong>: pages where everything is a <code>&lt;div&gt;</code> with a class describing what it <em>should</em> be. The browser renders it the same, but you've thrown away all the information about meaning.</p>
+<pre><code>&lt;!-- Div soup: works, but says nothing --&gt;
+&lt;div class="topo"&gt;
+  &lt;div class="menu"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="conteudo"&gt;
+  &lt;div class="post"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h2>The same HTML, now semantic</h2>
+<p>Semantic tags describe the role of each block. The screen reader, Google and the next dev who opens the file understand the page without guessing.</p>
+<pre><code>&lt;header&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+<h2>Think of tags as a building's signage</h2>
+<p>A <code>&lt;div&gt;</code> is a room with no sign: to know what's inside, you have to walk in. Semantic tags are the signs — "Entrance", "Main content", "Exit". Anyone navigating in a wheelchair (or with a screen reader) relies on those signs to avoid getting lost.</p>
+<h2>Landmarks and screen readers</h2>
+<p>Tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> and <code>&lt;footer&gt;</code> become accessibility <strong>landmarks</strong>. A screen reader user can jump straight to <code>&lt;main&gt;</code> without hearing the whole menu every time. That's real navigation, not an aesthetic detail.</p>
+<p>A classic case: use <code>&lt;button&gt;</code> for actions and <code>&lt;a&gt;</code> for navigation. A <code>&lt;div onclick&gt;</code> doesn't receive keyboard focus and isn't announced as a button — you'd have to manually rebuild behavior that comes for free.</p>
+<h2>SEO and maintenance</h2>
+<p>Search engines read the semantic structure to understand hierarchy and relevance. An <code>&lt;article&gt;</code> with a clear <code>&lt;h1&gt;</code> weighs more than a thousand nested divs. And in maintenance: reading <code>&lt;nav&gt;</code> is instant; reading <code>&lt;div class="nav-wrapper-2"&gt;</code> requires investigation.</p>
+<div class="table-wrap"><table><thead><tr><th>Approach</th><th>Accessibility</th><th>SEO</th><th>Maintenance</th></tr></thead><tbody><tr><td>Div soup</td><td>Poor (no landmarks)</td><td>Weak</td><td>Hard</td></tr><tr><td>Semantic HTML</td><td>Good (for free)</td><td>Strong</td><td>Clear</td></tr></tbody></table></div>
+<h2>ARIA: only when HTML isn't enough</h2>
+<p>ARIA is a set of attributes (like <code>role</code> and <code>aria-label</code>) that add meaning for assistive technologies. The first rule of ARIA is: <strong>don't use ARIA if a native tag solves it</strong>. A <code>&lt;button&gt;</code> is already a button; writing <code>&lt;div role="button"&gt;</code> is extra work to reproduce something that already existed.</p>
+<blockquote>The best accessibility is usually the kind you don't have to program: pick the right tag and the browser does the rest.</blockquote>
+<p>Interviews commonly ask you to explain the difference between <code>&lt;section&gt;</code> and <code>&lt;div&gt;</code>, or why <code>&lt;button&gt;</code> is better than <code>&lt;div onclick&gt;</code>. Day to day, it shows up whenever an accessibility test fails a component that "looked" right on screen.</p>
+<h2>Conclusion</h2>
+<p>Semantic HTML is not decoration: it's the foundation that delivers accessibility, SEO and readability at no extra cost. Start by choosing the tag for its <em>meaning</em>, reach for ARIA only when necessary, and you'll already be coding like a professional. The natural next step is mastering <a href="css-box-model-layout.html">CSS to position all of this</a>.</p>
+</div>
+<div class="post-tags"><span class="tag">HTML</span><span class="tag">Accessibility</span><span class="tag">Fundamentals</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">CSS without fear: box model, flexbox and grid</span></a>
+<a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">Essential JavaScript: types, scope and the DOM</span></a>
+<a class="rel-card" href="event-loop.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Mid-level</span></span><span class="rel-title">The event loop: how JavaScript does async without freezing</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

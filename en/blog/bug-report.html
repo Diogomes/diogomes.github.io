@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /blog/bug-report.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/blog/bug-report.html" rel="canonical"/>
+<link href="https://diogomes.github.io/blog/bug-report.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/blog/bug-report.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/blog/bug-report.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The art of the bug report: reports the dev will thank you for - Diogo Gomes</title>
+<meta content="The anatomy of a report that leads to a quick fix: steps, evidence, context, and the difference between severity and priority." name="description"/>
+<meta content="QA, testes, automação, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="The art of the bug report: reports the dev will thank you for" property="og:title"/>
+<meta content="The anatomy of a report that leads to a quick fix: steps, evidence, context, and the difference between severity and priority." property="og:description"/>
+<meta content="https://diogomes.github.io/en/blog/bug-report.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/blog-bug-report-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/blog-bug-report-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../feed.xml" rel="alternate" title="Blog — Diogo Gomes" type="application/rss+xml"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A arte do bug report", "datePublished": "2026-06-05", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/blog/bug-report.html", "image": "https://diogomes.github.io/assets/img/og/blog-bug-report.png", "description": "A anatomia de um relatório que leva à correção rápida: passos, evidências, contexto e severidade vs prioridade.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a class="nav-link active" href="index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>QA</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Blog</a></li>
+<li>QA</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-message-rounded-error"></i> QA</span>
+<h1>The art of the bug report: reports the dev will thank you for</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 5, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>1 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Finding the bug is half the job. The other half is <strong>communicating it in a way that leads to a quick fix</strong>. A good report saves hours of back and forth between QA and development.</p>
+<h2>The anatomy of a good bug report</h2>
+<ul>
+<li><strong>Objective title:</strong> what + where + when. "Checkout fails when applying an expired coupon" &gt; "cart error".</li>
+<li><strong>Steps to reproduce:</strong> numbered, from the initial state to the failure.</li>
+<li><strong>Expected vs. actual result:</strong> the difference is the bug.</li>
+<li><strong>Evidence:</strong> screenshot, video, logs, request/response, trace.</li>
+<li><strong>Environment:</strong> browser, version, build, user, data.</li>
+<li><strong>Severity vs. priority:</strong> business impact vs. urgency of the fix.</li>
+</ul>
+<h2>A lean example</h2>
+<pre><code>Title: Expired coupon is accepted at checkout (web, build 4.12.0)
+
+Steps:
+1. Add an item to the cart
+2. Apply the coupon "PROMO2023" (expired on 12/31/2023)
+3. Complete the purchase
+
+Expected: coupon rejected with the message "Coupon expired"
+Actual:   20% discount applied and order completed
+
+Evidence: video.mp4, POST /coupons response (200, valid=true)
+Environment: Chrome 124, production-staging, user qa01
+Severity: High (revenue loss) · Priority: High</code></pre>
+<blockquote>A bug report is an act of empathy: you write it so someone else can reproduce the problem without having to ask you anything.</blockquote>
+<h2>Conclusion</h2>
+<p>Clear reports speed up the fix, reduce friction, and raise QA's reputation as a partner of the team, not as a messenger of bad news. Reproduce, document, and add context: the rest follows.</p>
+</div>
+<div class="post-tags"><span class="tag">Bug report</span><span class="tag">QA</span><span class="tag">Communication</span><span class="tag">Jira</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="pensamentos-qa.html"><span class="rel-cat"><i class="bx bx-bulb"></i> QA</span><span class="rel-title">Thoughts on QA: quality belongs to everyone</span></a>
+<a class="rel-card" href="playwright-testes-e2e.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span>Automation</span></span><span class="rel-title">Playwright in practice: modern E2E testing</span></a>
+<a class="rel-card" href="page-object-model.html"><span class="rel-cat"><i class="bx bx-globe"></i> <span>Automation</span></span><span class="rel-title">Page Object Model: an E2E suite that scales</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the blog</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

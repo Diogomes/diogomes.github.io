@@ -1,5 +1,5 @@
 /* Service worker — Diogo Gomes portfólio (PWA) */
-const CACHE = 'dg-portfolio-v4';
+const CACHE = 'dg-portfolio-v5';
 const CORE = [
   '/index.html',
   '/projects.html',

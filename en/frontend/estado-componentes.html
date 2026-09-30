@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /frontend/estado-componentes.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/frontend/estado-componentes.html" rel="canonical"/>
+<link href="https://diogomes.github.io/frontend/estado-componentes.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/frontend/estado-componentes.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/frontend/estado-componentes.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>State in front-end: props, state and when to lift it up - Diogo Gomes</title>
+<meta content="What state is, the difference between props and state, unidirectional data flow and the famous 'lifting state up' without memorizing." name="description"/>
+<meta content="Front-end, Pleno, Estado, Componentes, React, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="State in front-end: props, state and when to lift it up" property="og:title"/>
+<meta content="What state is, the difference between props and state, unidirectional data flow and the famous 'lifting state up' without memorizing." property="og:description"/>
+<meta content="https://diogomes.github.io/en/frontend/estado-componentes.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/frontend-estado-componentes-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/frontend-estado-componentes-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../feed.xml" rel="alternate" title="Front-end — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Estado em front-end: props, state e quando subir o estado", "datePublished": "2026-06-15", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/frontend/estado-componentes.html", "image": "https://diogomes.github.io/assets/img/og/frontend-estado-componentes.png", "description": "O que é estado, a diferença entre props e state, fluxo de dados unidirecional e o famoso 'lifting state up' sem decoreba.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Front-end · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Front-end</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-layer"></i> <span>Front-end · Mid-level</span></span>
+<h1>State in front-end: props, state and when to lift it up</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 15, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Component frameworks (React, Vue, Svelte) revolve around one question: where does the data live and who can change it? Getting this right is the difference between a predictable UI and a tangle of bugs where nothing is in sync. State and props are the two sides of that coin.</p>
+<h2>Props: the immutable input</h2>
+<p><strong>Props</strong> are the data a component <em>receives</em> from whoever uses it. From the component's perspective, they are <strong>immutable</strong>: it reads them but doesn't change them. Think of a cake recipe — the ingredients come from outside, and the recipe can't rewrite the shopping list; it can only use what arrived.</p>
+<h2>State: the mutable internal data</h2>
+<p><strong>State</strong> is the data a component <em>owns</em> and can change over time: an input's text, whether a modal is open, a counter. When state changes, the framework re-renders the component to reflect the new value.</p>
+<pre><code>function Contador() {
+  const [n, setN] = useState(0);
+  return (
+    &lt;button onClick={() =&gt; setN(n + 1)}&gt;
+      Cliquei {n}x
+    &lt;/button&gt;
+  );
+}</code></pre>
+<div class="table-wrap"><table><thead><tr><th></th><th>Props</th><th>State</th></tr></thead><tbody><tr><td>Origin</td><td>Parent component</td><td>The component itself</td></tr><tr><td>Mutable?</td><td>No (read-only)</td><td>Yes (via setter)</td></tr><tr><td>Who controls it</td><td>Whoever renders it</td><td>The component</td></tr></tbody></table></div>
+<h2>Unidirectional data flow</h2>
+<p>Data flows down from parent to child via props; events flow up via callbacks. This <strong>unidirectional flow</strong> is what makes the UI predictable: to find out why something is on screen, you follow the data from top to bottom, in a single direction. It's like a waterfall — the water only goes down.</p>
+<h2>Lifting state up</h2>
+<p>And when two sibling components need the <em>same</em> data? You don't duplicate the state in each — that causes desynchronization. You <strong>lift the state up</strong> to the nearest common ancestor, which then passes the value down via props. The data lives in a single place: the "source of truth".</p>
+<pre><code>function Pai() {
+  const [texto, setTexto] = useState('');
+  return (
+    &lt;&gt;
+      &lt;Input valor={texto} aoMudar={setTexto} /&gt;
+      &lt;Preview valor={texto} /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+<h2>Derived state and controlled inputs</h2>
+<p>Beware of <strong>derived state</strong>: if a value can be <em>computed</em> from another piece of state, don't store it separately — compute it on the fly. Storing the list and also "how many items" creates two sources of truth that will diverge.</p>
+<p>A <strong>controlled input</strong> is one whose value comes from state: what appears on screen is always what's in state, and typing fires an event that updates the state. This gives you full control — validating, formatting, clearing — because React owns the value, not the DOM.</p>
+<blockquote>The rule that prevents 90% of state bugs: each piece of data has a single source of truth. If the same value exists in two places, they will drift apart.</blockquote>
+<h2>When to reach for global state</h2>
+<p>Lifting state works until you catch yourself passing the same prop through five levels ("prop drilling") just to reach the bottom. That's where <strong>global state</strong> comes in (Context, Redux, Zustand, signals): data that many distant parts of the tree consume — logged-in user, theme, cart. But don't start there: global state has a complexity cost. Use it when local state truly doesn't scale.</p>
+<p>Interviews commonly ask you to explain the difference between props and state, or to describe when you'd lift state up. Day to day, it shows up every time two components "should show the same number" and don't.</p>
+<h2>Conclusion</h2>
+<p>Props come in and don't change; state is internal and changes; data flows down and events flow up. Lift state when siblings share data, avoid duplicating what can be derived and only reach for global state when prop drilling hurts. With a predictable UI, the next focus is making it <a href="render-performance.html">render fast</a>.</p>
+</div>
+<div class="post-tags"><span class="tag">State</span><span class="tag">Components</span><span class="tag">React</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="html-semantico.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">Semantic HTML and accessibility: the foundation that separates amateurs from professionals</span></a>
+<a class="rel-card" href="css-box-model-layout.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">CSS without fear: box model, flexbox and grid</span></a>
+<a class="rel-card" href="javascript-essencial.html"><span class="rel-cat"><i class="bx bx-layout"></i> <span>Front-end · Junior</span></span><span class="rel-title">Essential JavaScript: types, scope and the DOM</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

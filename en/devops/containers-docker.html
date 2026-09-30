@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /devops/containers-docker.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/devops/containers-docker.html" rel="canonical"/>
+<link href="https://diogomes.github.io/devops/containers-docker.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/devops/containers-docker.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/devops/containers-docker.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Containers and Docker: why 'it works on my machine' is over - Diogo Gomes</title>
+<meta content="Image, container and how it differs from a VM. Dockerfile, layers and the concept that standardized the environment from dev to production." name="description"/>
+<meta content="DevOps, Pleno, Docker, Containers, Infra, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Containers and Docker: why 'it works on my machine' is over" property="og:title"/>
+<meta content="Image, container and how it differs from a VM. Dockerfile, layers and the concept that standardized the environment from dev to production." property="og:description"/>
+<meta content="https://diogomes.github.io/en/devops/containers-docker.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-containers-docker-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-containers-docker-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../feed.xml" rel="alternate" title="DevOps — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Containers e Docker: por que 'funciona na minha máquina' acabou", "datePublished": "2026-06-17", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/containers-docker.html", "image": "https://diogomes.github.io/assets/img/og/devops-containers-docker.png", "description": "Imagem, container e a diferença para uma VM. Dockerfile, camadas e o conceito que padronizou o ambiente do dev até a produção.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>DevOps · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">DevOps</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-package"></i> DevOps · Mid-level</span>
+<h1>Containers and Docker: why 'it works on my machine' is over</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 17, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>"It works on my machine" was for years the phrase that ended discussions without solving any problem. Containers put an end to it. By packaging the application together with everything it needs to run, the container guarantees the environment is the same on your machine, in CI and in production. Docker popularized this idea and it became required knowledge for any mid-level DevOps engineer.</p>
+<h2>Container vs virtual machine</h2>
+<p>The classic confusion is thinking a container is a lightweight VM. The difference is in what each one virtualizes. A VM emulates an entire computer, with its own full operating system. A container shares the host's <strong>kernel</strong> and isolates only what the application needs — which is why it's much lighter and faster.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>Container</th><th>Virtual machine</th></tr></thead><tbody><tr><td>Isolates</td><td>Process and dependencies</td><td>Full OS</td></tr><tr><td>Kernel</td><td>Shared with the host</td><td>Its own</td></tr><tr><td>Size</td><td>MBs</td><td>GBs</td></tr><tr><td>Start time</td><td>Seconds</td><td>Minutes</td></tr><tr><td>Density</td><td>Hundreds per host</td><td>A few dozen</td></tr></tbody></table></div>
+<h2>Image vs container</h2>
+<p>This distinction comes up in interviews all the time. The <strong>image</strong> is the immutable mold, the packaged and versioned template. The <strong>container</strong> is a running instance of that image. A useful analogy: the image is the class, the container is the object. From a single image you can start as many containers as you like.</p>
+<h2>The Dockerfile</h2>
+<p>The Dockerfile is the recipe that describes, step by step, how to build the image. Each instruction is declarative and the result is reproducible:</p>
+</div>
+<pre><code>FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]</code></pre>
+
+<div>
+<h2>Layers and build cache</h2>
+<p>Each Dockerfile instruction generates a <strong>layer</strong>, and Docker reuses the layers that haven't changed (cache). That's why, in the example above, we copy <code>package.json</code> and run <code>npm ci</code> <em>before</em> copying the rest of the code: as long as the dependencies don't change, that expensive layer stays cached and the build is much faster.</p>
+<blockquote>Order your Dockerfile from what changes least to what changes most. Stable things (dependencies) go on top, volatile code at the bottom — that way the cache works in your favor.</blockquote>
+<h2>Registry: where images live</h2>
+<p>Once built, the image is pushed to a <strong>registry</strong> — Docker Hub, GitHub Container Registry, ECR, etc. It's the equivalent of a Git repository, but for images. The <a href="ci-cd-basico.html">CI/CD pipeline</a> builds the image, pushes it to the registry and the environments pull it from there.</p>
+</div>
+<pre><code>docker build -t minha-app:1.2 .
+docker push registry.exemplo.com/minha-app:1.2
+docker run -p 3000:3000 minha-app:1.2</code></pre>
+
+<div>
+<h2>A reproducible environment from dev to production</h2>
+<p>The central gain: the same image you run on your laptop is the one that runs in production. Runtime versions, system libraries and configuration travel together. This eliminates the entire category of "it worked over there" bugs. And it's this portability that makes it possible to orchestrate containers at scale with <a href="kubernetes.html">Kubernetes</a>.</p>
+<h2>Conclusion</h2>
+<p>Containers solved the reproducibility problem by packaging application and environment together, lightweight and portable. Understanding the difference between image and container, how layer caching works and the role of the registry is the minimum package a mid-level DevOps engineer needs to master — and the foundation on which orchestrators like Kubernetes are built.</p>
+</div>
+<div class="post-tags"><span class="tag">Docker</span><span class="tag">Containers</span><span class="tag">Infra</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Linux and the terminal: the bare minimum every DevOps engineer masters</span></a>
+<a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Git beyond the commit: branches, merge, and workflows</span></a>
+<a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">CI/CD in practice: from commit to automatic deploy</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

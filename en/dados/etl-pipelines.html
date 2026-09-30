@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /dados/etl-pipelines.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/dados/etl-pipelines.html" rel="canonical"/>
+<link href="https://diogomes.github.io/dados/etl-pipelines.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/dados/etl-pipelines.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/dados/etl-pipelines.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ETL and data pipelines: from raw to analytics - Diogo Gomes</title>
+<meta content="Extract, transform and load — or ELT? How data travels from source to report, and why orchestration and idempotency matter." name="description"/>
+<meta content="Dados, Pleno, ETL, Pipelines, Engenharia de Dados, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="ETL and data pipelines: from raw to analytics" property="og:title"/>
+<meta content="Extract, transform and load — or ELT? How data travels from source to report, and why orchestration and idempotency matter." property="og:description"/>
+<meta content="https://diogomes.github.io/en/dados/etl-pipelines.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/dados-etl-pipelines-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/dados-etl-pipelines-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../feed.xml" rel="alternate" title="Dados — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ETL e pipelines de dados: do raw ao analítico", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/dados/etl-pipelines.html", "image": "https://diogomes.github.io/assets/img/og/dados-etl-pipelines.png", "description": "Extrair, transformar e carregar — ou ELT? Como os dados viajam da origem até o relatório, e por que orquestração e idempotência importam.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Data · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Data</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-transfer-alt"></i> Data · Mid-level</span>
+<h1>ETL and data pipelines: from raw to analytics</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 13, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>Data rarely comes ready for analysis. It arrives from APIs, transactional databases, spreadsheets and logs, each with its own format and its own mess. The work of taking this raw material to a clean, trustworthy table is what we call a data pipeline — and understanding ETL is central to the work of any mid-level professional.</p>
+<h2>ETL: Extract, Transform, Load</h2>
+<p>The classic pattern has three steps:</p>
+<ul>
+<li><strong>Extract</strong> — pull the data from the source systems.</li>
+<li><strong>Transform</strong> — clean, standardize, join, calculate. This is where most of the complexity lives.</li>
+<li><strong>Load</strong> — load the result into the destination (a data warehouse, for example).</li>
+</ul>
+<p>In traditional ETL, the transformation happens <em>before</em> loading, on an intermediate server.</p>
+<h2>ELT: the inversion the modern warehouse brought</h2>
+<p>In <strong>ELT</strong>, you flip the order: load the raw data first and transform it <em>inside</em> the data warehouse. Why did this take off? Because modern warehouses (BigQuery, Snowflake, Redshift) have massive, cheap processing power. Instead of maintaining a separate server to transform, you dump the raw data in and use SQL to transform it with the full power of the warehouse.</p>
+<div class="table-wrap"><table><thead><tr><th>Aspect</th><th>ETL</th><th>ELT</th></tr></thead><tbody>
+<tr><td>Order</td><td>Transforms before loading</td><td>Loads raw, transforms afterwards</td></tr>
+<tr><td>Where it transforms</td><td>Intermediate server</td><td>Inside the warehouse</td></tr>
+<tr><td>Raw data preserved?</td><td>Usually not</td><td>Yes</td></tr>
+<tr><td>When it shines</td><td>Limited destination resources</td><td>Modern, scalable warehouse</td></tr>
+</tbody></table></div>
+<h2>The stages and the raw → staging → analytics flow</h2>
+<p>A mature pipeline organizes data in layers, each with its own purpose:</p>
+<pre><code> Sources       raw            staging         analytics
++-------+    +-------+      +----------+    +-----------+
+| API   |───▶| raw   |─────▶| cleaned, |───▶| business  |
+| DB    |    | data  |      | standard.|    | models    |
+| CSV   |    | (exact|      | typed    |    | (fact/dim)|
++-------+    | copy) |      +----------+    +-----------+
+             +-------+</code></pre>
+<p>The <strong>raw</strong> layer keeps an exact copy of the source (useful for reprocessing); <strong>staging</strong> cleans and standardizes; <strong>analytics</strong> delivers tables ready for consumption, often in the <a href="modelagem-dimensional.html">dimensional</a> model.</p>
+<h2>Orchestration: who says what runs, and in what order</h2>
+<p>Pipelines have dependencies: you can't transform before extracting. An <strong>orchestrator</strong> coordinates this by modeling tasks as a <strong>DAG</strong> (directed acyclic graph) — a web of "this task only runs after that one". Airflow is the best-known tool for defining and scheduling these DAGs.</p>
+<h2>Idempotency and reprocessing</h2>
+<p>Pipelines fail — the network goes down, a source becomes unavailable. That's why a task should be <strong>idempotent</strong>: running it twice produces the same result as running it once, without duplicating data. Think of a light switch: pressing "on" three times still leaves the light on, not "three times on". In practice, this means overwriting a partition instead of just inserting — so you can safely reprocess a day.</p>
+<h2>Data quality: trust in what comes out</h2>
+<p>A pipeline that delivers wrong data is worse than none, because nobody notices. That's why we build in <strong>quality</strong> checks: does the key column have nulls? Did the row count suddenly drop? Are the values within the expected range? Failing the pipeline early is better than polluting the director's report.</p>
+<blockquote>A good pipeline isn't the one that runs when everything goes right — it's the one that fails safely, can be reprocessed without duplicating anything, and warns you when the data looks wrong.</blockquote>
+<p>In interviews it's common to be asked the difference between ETL and ELT and why ELT became the standard — and also what makes a task idempotent. Day to day, this shows up when a pipeline fails at 3 a.m. and you need to reprocess it in the morning without fear of messing up the data.</p>
+<h2>Conclusion</h2>
+<p>ETL and ELT describe how to move and transform data; the raw/staging/analytics layers organize that journey; DAG orchestration guarantees the order; and idempotency plus data quality guarantee the result is trustworthy and reprocessable. These principles hold for any tool — understanding them is what lets you build pipelines that don't break silently.</p>
+</div>
+<div class="post-tags"><span class="tag">ETL</span><span class="tag">Pipelines</span><span class="tag">Data Engineering</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="modelagem-relacional.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">Relational modeling: tables, keys and relationships</span></a>
+<a class="rel-card" href="consultas-sql.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">SQL beyond the basics: aggregations, GROUP BY and subqueries</span></a>
+<a class="rel-card" href="normalizacao.html"><span class="rel-cat"><i class="bx bx-data"></i> Data · Junior</span><span class="rel-title">Normalization: 1NF, 2NF and 3NF without memorizing</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

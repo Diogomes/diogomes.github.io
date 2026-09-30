@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /devops/observabilidade.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/devops/observabilidade.html" rel="canonical"/>
+<link href="https://diogomes.github.io/devops/observabilidade.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/devops/observabilidade.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/devops/observabilidade.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Observability: logs, metrics, and traces (the 3 pillars) - Diogo Gomes</title>
+<meta content="Monitoring tells you it broke; observability tells you why. Logs, metrics and traces — and the difference between the three in practice." name="description"/>
+<meta content="DevOps, Pleno, Observabilidade, Monitoramento, SRE, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Observability: logs, metrics, and traces (the 3 pillars)" property="og:title"/>
+<meta content="Monitoring tells you it broke; observability tells you why. Logs, metrics and traces — and the difference between the three in practice." property="og:description"/>
+<meta content="https://diogomes.github.io/en/devops/observabilidade.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-observabilidade-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/devops-observabilidade-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../feed.xml" rel="alternate" title="DevOps — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Observabilidade: logs, métricas e traces (os 3 pilares)", "datePublished": "2026-06-13", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/devops/observabilidade.html", "image": "https://diogomes.github.io/assets/img/og/devops-observabilidade.png", "description": "Monitorar é saber que quebrou; observar é descobrir por quê. Logs, métricas e traces — e a diferença entre os três na prática.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>DevOps · Mid-level</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">DevOps</a></li>
+<li>Mid-level</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-search-alt"></i> DevOps · Mid-level</span>
+<h1>Observability: logs, metrics, and traces (the 3 pillars)</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> Jun 13, 2026  ·  <i class="bi bi-hourglass-split"></i> 3 min read</div>
+</div>
+<div class="post-body">
+
+<div>
+<p>When a system gets slow at 3 a.m., the question isn't just "is it up?" but "why is it like this?". Monitoring answers the first; observability answers the second. In distributed systems, where a single request goes through dozens of services, knowing how to investigate the unknown is what separates firefighting from understanding the system.</p>
+<h2>Monitoring vs observability</h2>
+<p>The distinction is subtle and comes up a lot in interviews. <strong>Monitoring</strong> is watching for things you already know can go wrong: CPU above 90%, a full disk, a service that is down. You know <em>when</em> it broke. <strong>Observability</strong> is the ability to ask new questions about the system without having to redeploy it — to find out <em>why</em> it broke, even in failures you never anticipated.</p>
+<blockquote>Monitoring answers known questions; observability lets you answer questions you didn't know you'd ask. In complex systems, most problems are of the second kind.</blockquote>
+<h2>The three pillars</h2>
+<p>Observability rests on three types of data, each answering a different class of question:</p>
+<div class="table-wrap"><table><thead><tr><th>Pillar</th><th>What it is</th><th>Answers</th></tr></thead><tbody><tr><td>Logs</td><td>Discrete, detailed events</td><td>What exactly happened here?</td></tr><tr><td>Metrics</td><td>Numbers aggregated over time</td><td>How much? How often?</td></tr><tr><td>Traces</td><td>The path of a request across services</td><td>Where in the journey is the bottleneck?</td></tr></tbody></table></div>
+<h2>Structured logs</h2>
+<p>Logs are the detailed record of events. Modern best practice is to use <strong>structured logs</strong> (usually JSON), because machines can filter and aggregate fields instead of searching loose text.</p>
+</div>
+<pre><code>{"ts":"2026-06-25T03:14:00Z","level":"ERROR","service":"checkout",
+ "user_id":"u-991","msg":"pagamento recusado","latency_ms":820}</code></pre>
+
+<div>
+<h2>Metrics: aggregated numbers</h2>
+<p>Metrics are numbers measured over time — requests per second, latency, memory usage. Because they're aggregated, they're cheap to store and great for charts and alerts. Two frameworks help you choose what to measure:</p>
+<ul>
+<li><strong>RED</strong> (for services): <em>Rate</em> (requests/s), <em>Errors</em> (error rate), <em>Duration</em> (latency).</li>
+<li><strong>USE</strong> (for resources): <em>Utilization</em>, <em>Saturation</em>, <em>Errors</em>.</li>
+</ul>
+<h2>Traces: the request crossing services</h2>
+<p>In a microservices system, a user request may go through an API, authentication, a database and a cache. A <strong>trace</strong> stitches that whole journey together and shows how long each step took. It's the right tool when "the system is slow" and you need to find out <em>where</em>.</p>
+</div>
+<pre><code>requisição [#abc] 820ms
+ ├─ api-gateway        12ms
+ ├─ auth-service       40ms
+ └─ checkout-service  760ms  ← gargalo
+     └─ db-query       740ms</code></pre>
+
+<div>
+<h2>Alerts and SLOs</h2>
+<p>There's no point collecting data if nobody is notified when something matters. An <strong>alert</strong> fires when a metric crosses a threshold. To avoid alerting on every little thing, you define an <strong>SLO</strong> (Service Level Objective) — a target such as "99.9% of requests respond in under 300ms". You alert when you're about to blow the SLO, not at every hiccup. This data also feeds scaling decisions, such as <a href="kubernetes.html">autoscaling in Kubernetes</a>.</p>
+<h2>Conclusion</h2>
+<p>Observability is what lets you understand systems you can't fully predict. Logs tell you what happened, metrics tell you how much, traces tell you where — and together they turn a confusing incident into an objective investigation. Knowing which pillar to use in each situation is a sign of technical maturity in a mid-level DevOps engineer.</p>
+</div>
+<div class="post-tags"><span class="tag">Observability</span><span class="tag">Monitoring</span><span class="tag">SRE</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="linux-terminal.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Linux and the terminal: the bare minimum every DevOps engineer masters</span></a>
+<a class="rel-card" href="git-fluxos.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">Git beyond the commit: branches, merge, and workflows</span></a>
+<a class="rel-card" href="ci-cd-basico.html"><span class="rel-cat"><i class="bx bx-infinite"></i> DevOps · Junior</span><span class="rel-title">CI/CD in practice: from commit to automatic deploy</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> Back to track</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

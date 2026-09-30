@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /moderacao.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/moderacao.html" rel="canonical"/>
+<link href="https://diogomes.github.io/moderacao.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/moderacao.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/moderacao.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Moderation · private panel</title>
+<link href="../assets/img/icon.jpg" rel="icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:400,600,700,800|Poppins:500,600,700" rel="stylesheet"/>
+<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../assets/css/dashboard.css" rel="stylesheet"/>
+<link href="../assets/css/i18n.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="wrap">
+<div class="top">
+<h1><i class="bx bx-shield-quarter"></i> <span>Moderation</span></h1>
+<div class="actions">
+<button class="btn ghost" id="m-reload"><i class="bx bx-refresh"></i> <span>Reload</span></button>
+<a class="btn ghost" href="analytics.html"><i class="bx bx-line-chart"></i> Analytics</a>
+</div>
+</div>
+<p class="sub">Private panel (noindex, not in the menu). Here you decide what gets published on the projects page.</p>
+<!-- Cartões -->
+<div class="stats" style="grid-template-columns:repeat(2,1fr);">
+<div class="stat c2"><div class="ic"><i class="bx bx-check-circle"></i></div><div class="num" id="m-count">0</div><div class="lbl">Published comments</div></div>
+<div class="stat c1"><div class="ic"><i class="bx bx-envelope"></i></div><div class="num" style="font-size:18px;line-height:1.3;margin-top:6px;">in your inbox</div><div class="lbl">Pending comments arrive by email (FormSubmit)</div></div>
+</div>
+<div class="panel">
+<h2><i class="bx bx-info-circle"></i> <span>How it works</span></h2>
+<ol class="setup-steps">
+<li>A visitor submits a comment through the form → it lands in your <strong>email</strong> (via FormSubmit), after passing a captcha.</li>
+<li>To publish, fill in the comment below and click <strong>Add to list</strong>.</li>
+<li>Click <strong>Download comments.json</strong> (or Copy) and replace <code>assets/comments.json</code> in the repository.</li>
+<li>Commit/push. Only the comments in this list appear publicly.</li>
+</ol>
+</div>
+<div class="panel">
+<h2><i class="bx bx-plus-circle"></i> <span>Add approved comment</span></h2>
+<p class="desc">Copy from the email and paste here whatever you decide to publish.</p>
+<div class="form-grid">
+<div>
+<label for="m-name">Name</label>
+<input id="m-name" placeholder="Commenter's name" type="text"/>
+</div>
+<div>
+<label for="m-project">Project</label>
+<select id="m-project">
+<option>PokéWorld Online</option>
+<option>Gigaverse3D learnCode: Java</option>
+<option>Gigaverse3D learnCode: Python</option>
+<option>Gigaverse3D learnCode: Testes</option>
+<option>Comentário geral</option>
+</select>
+</div>
+<div class="full">
+<label for="m-message">Comment</label>
+<textarea id="m-message" placeholder="Comment text" rows="3"></textarea>
+</div>
+<div>
+<label for="m-date">Date</label>
+<input id="m-date" type="date"/>
+</div>
+</div>
+<div class="row-actions">
+<button class="btn green" id="m-add"><i class="bx bx-plus"></i> <span>Add to list</span></button>
+</div>
+</div>
+<div class="panel">
+<h2><i class="bx bx-list-ul"></i> <span>Published comments</span></h2>
+<ul class="list" id="m-list"></ul>
+</div>
+<div class="panel">
+<h2><i class="bx bx-code-block"></i> <span>File</span> <code>assets/comments.json</code></h2>
+<p class="desc">Copy or download it and replace the file in the repository.</p>
+<div class="row-actions">
+<button class="btn primary" id="m-download"><i class="bx bx-download"></i> <span>Download comments.json</span></button>
+<button class="btn ghost" id="m-copy"><i class="bx bx-copy"></i> <span>Copy JSON</span></button>
+</div>
+<textarea class="json-box" id="m-json" readonly=""></textarea>
+</div>
+</div>
+<script>
+    (function () {
+      var t = function (pt, en) { return document.documentElement.lang === 'en' ? en : pt; };
+      var data = [];
+      var listEl = document.getElementById('m-list');
+      var jsonEl = document.getElementById('m-json');
+      var countEl = document.getElementById('m-count');
+
+      function esc(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+      function sp(pt, en) { return '<span data-lang="pt">' + pt + '</span><span data-lang="en">' + en + '</span>'; }
+      function render() {
+        countEl.textContent = data.length;
+        if (!data.length) {
+          listEl.innerHTML = '<li style="border:none;color:#6f8298;">' + sp('Nenhum comentário na lista.', 'No comments in the list.') + '</li>';
+        } else {
+          listEl.innerHTML = data.map(function (c, i) {
+            return '<li><div class="mi-body"><strong>' + esc(c.name) + '</strong>'
+              + (c.project ? ' <span class="mi-proj">· ' + esc(c.project) + '</span>' : '')
+              + '<p>' + esc(c.message) + '</p>'
+              + (c.date ? '<p class="mi-date">' + esc(c.date) + '</p>' : '')
+              + '</div><button class="btn danger" data-i="' + i + '"><i class="bx bx-trash"></i> ' + sp('Remover', 'Remove') + '</button></li>';
+          }).join('');
+        }
+        jsonEl.value = JSON.stringify(data, null, 2);
+      }
+      function load() {
+        fetch('/assets/comments.json', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : []; })
+          .then(function (items) { data = Array.isArray(items) ? items : []; render(); })
+          .catch(function () { data = []; render(); });
+      }
+
+      var d = new Date();
+      document.getElementById('m-date').value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+
+      document.getElementById('m-add').addEventListener('click', function () {
+        var name = document.getElementById('m-name').value.trim();
+        var message = document.getElementById('m-message').value.trim();
+        if (!name || !message) { alert(t('Preencha pelo menos nome e comentário.', 'Fill in at least name and comment.')); return; }
+        data.unshift({
+          name: name,
+          project: document.getElementById('m-project').value,
+          message: message,
+          date: document.getElementById('m-date').value
+        });
+        document.getElementById('m-name').value = '';
+        document.getElementById('m-message').value = '';
+        render();
+      });
+
+      listEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-i]');
+        if (!btn) return;
+        if (confirm(t('Remover este comentário da lista?', 'Remove this comment from the list?'))) {
+          data.splice(parseInt(btn.getAttribute('data-i'), 10), 1);
+          render();
+        }
+      });
+
+      document.getElementById('m-reload').addEventListener('click', load);
+
+      document.getElementById('m-download').addEventListener('click', function () {
+        var blob = new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'comments.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      });
+
+      document.getElementById('m-copy').addEventListener('click', function () {
+        jsonEl.select();
+        navigator.clipboard.writeText(jsonEl.value).then(function () {
+          var b = document.getElementById('m-copy');
+          var t = b.innerHTML; b.innerHTML = '<i class="bx bx-check"></i> ' + sp('Copiado!', 'Copied!');
+          setTimeout(function () { b.innerHTML = t; }, 1500);
+        }).catch(function () { document.execCommand('copy'); });
+      });
+
+      load();
+    })();
+  </script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/build_en.py a partir de /mobile/layout-responsivo-mobile.html — não edite; edite a página em PT. -->
+
+<html data-static-lang="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="https://diogomes.github.io/en/mobile/layout-responsivo-mobile.html" rel="canonical"/>
+<link href="https://diogomes.github.io/mobile/layout-responsivo-mobile.html" hreflang="pt-BR" rel="alternate"/>
+<link href="https://diogomes.github.io/en/mobile/layout-responsivo-mobile.html" hreflang="en" rel="alternate"/>
+<link href="https://diogomes.github.io/mobile/layout-responsivo-mobile.html" hreflang="x-default" rel="alternate"/>
+<script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Layouts that adapt: density, safe areas and different screens - Diogo Gomes</title>
+<meta content="Pixels are not pixels. Screen density (dp/pt), safe areas (notch), and how to build a UI that works from small phones to tablets." name="description"/>
+<meta content="Mobile, Júnior, Layout, Responsivo, Mobile, Diogo Gomes" name="keywords"/>
+<meta content="Diogo Gomes" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="Layouts that adapt: density, safe areas and different screens" property="og:title"/>
+<meta content="Pixels are not pixels. Screen density (dp/pt), safe areas (notch), and how to build a UI that works from small phones to tablets." property="og:description"/>
+<meta content="https://diogomes.github.io/en/mobile/layout-responsivo-mobile.html" property="og:url"/>
+<meta content="https://diogomes.github.io/assets/img/og/mobile-layout-responsivo-mobile-en.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://diogomes.github.io/assets/img/og/mobile-layout-responsivo-mobile-en.png" name="twitter:image"/>
+<link href="../../assets/img/icon.jpg" rel="icon"/>
+<link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+<link href="../../assets/vendor/aos/aos.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+<link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<link href="../../assets/css/i18n.css" rel="stylesheet"/>
+<link href="../../assets/css/post.css" rel="stylesheet"/>
+<link href="../feed.xml" rel="alternate" title="Mobile — Diogo Gomes" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Layout que se adapta: densidade, safe areas e telas diferentes", "datePublished": "2026-06-20", "author": {"@type": "Person", "name": "Diogo Gomes"}, "publisher": {"@type": "Person", "name": "Diogo Gomes"}, "mainEntityOfPage": "https://diogomes.github.io/mobile/layout-responsivo-mobile.html", "image": "https://diogomes.github.io/assets/img/og/mobile-layout-responsivo-mobile.png", "description": "Pixels não são pixels. Densidade de tela (dp/pt), safe areas (notch), e como fazer uma UI que funciona do celular pequeno ao tablet.", "inLanguage": "en"}</script>
+</head>
+<body>
+<i aria-label="Open/close menu" class="bi bi-list mobile-nav-toggle d-xl-none" role="button" tabindex="0"></i>
+<header id="header">
+<div class="d-flex flex-column">
+<div class="profile">
+<img alt="Photo of Diogo Gomes" class="img-fluid rounded-circle" src="../../assets/img/DIo.jpeg"/>
+<h1 class="text-light"><a href="../index.html">Diogo Gomes</a></h1>
+<div class="social-links mt-3 text-center">
+<a aria-label="GitHub" class="github" href="https://github.com/Diogomes"><i aria-hidden="true" class="bx bxl-github"></i></a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/in/dio-gomes/"><i aria-hidden="true" class="bx bxl-linkedin"></i></a>
+</div>
+</div>
+<nav class="nav-menu navbar" id="navbar">
+<ul>
+<li><a class="nav-link scrollto" href="../index.html#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#skills"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#tracks"><i class="bx bx-compass"></i> <span>Tracks</span></a></li>
+<li><a class="nav-link scrollto" href="../index.html#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+<li><a href="../projects.html"><i class="bx bx-code-block"></i> <span>Projects</span></a></li>
+<li><a href="../pokeworld.html"><i class="bx bx-joystick"></i> <span>Game</span></a></li>
+<li><a href="../blog/index.html"><i class="bx bx-notepad"></i> <span>Blog</span></a></li>
+<li><a href="../search.html"><i class="bx bx-search"></i> <span>Search</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Mobile · Junior</h2>
+<ol>
+<li><a href="../index.html">Home</a></li>
+<li><a href="index.html">Mobile</a></li>
+<li>Junior</li>
+</ol>
+</div>
+</div>
+</section>
+<section class="post-article">
+<div class="container" data-aos="fade-up">
+<div class="row justify-content-center">
+<div class="col-lg-9">
+<div class="post-hero">
+<span class="post-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span>
+<h1>Layouts that adapt: density, safe areas and different screens</h1>
+<div class="post-meta"><i class="bi bi-person"></i> Diogo Gomes  ·  <i class="bi bi-clock"></i> <span>Jun 20, 2026</span>  ·  <i class="bi bi-hourglass-split"></i> <span>3 min read</span></div>
+</div>
+<div class="post-body">
+
+<div>
+<p>There are tiny phones, huge screens, notches, status bars and tablets — and your layout has to look good on all of them. The secret isn't designing in pixels, but thinking in logical units, respecting safe areas and letting the layout adapt on its own. It is one of the first topics where a junior stumbles and one of the first that interviewers ask about.</p>
+<h2>Physical pixel vs logical pixel</h2>
+<p>Two phones can have the same physical size but very different pixel counts: one has a "normal" screen, the other a "retina/high-density" one with twice the pixels in the same space. If you positioned everything in physical pixels, a 100px button would be gigantic on one screen and tiny on the other.</p>
+<p>That's why platforms use logical units: <strong>dp</strong> (density-independent pixels, Android) and <strong>pt</strong> (points, iOS). You say "I want 16 units of space" and the system multiplies by the screen density to arrive at the actual physical pixels.</p>
+<div class="table-wrap"><table><thead><tr><th>Density</th><th>Factor</th><th>16 dp/pt become</th></tr></thead><tbody>
+<tr><td>mdpi / @1x</td><td>1x</td><td>16 physical px</td></tr>
+<tr><td>xhdpi / @2x</td><td>2x</td><td>32 physical px</td></tr>
+<tr><td>xxhdpi / @3x</td><td>3x</td><td>48 physical px</td></tr>
+</tbody></table></div>
+<p>The analogy: dp/pt are like the "centimeters" of the mobile world — a measure that means the same apparent size on any screen. Physical pixels are like counting grains of sand, which vary from beach to beach.</p>
+<h2>Why measure in dp/pt</h2>
+<p>Measuring in dp, an 8 dp spacing looks the same on the intern's phone and on a flagship. The system handles the conversion. Interviewers often ask you to explain the difference between px and dp and why you should never hardcode physical pixels — the expected answer is exactly this density independence.</p>
+<h2>The hardcoded pixels trap</h2>
+<pre><code>// BAD: assumes a fixed width in pixels
+image.width = 320      // overflows on small screens
+
+// GOOD: relative to the available space
+image.width = "100%"   // or use constraints/flex
+image.height = aspect(16, 9)</code></pre>
+<p>Hardcoding a width of 320 breaks on a 4-inch device and wastes space on a tablet. Day to day, this bug shows up as clipped text, a button off the screen or a layout that "overflows" on certain models.</p>
+<h2>Safe areas: notch, status bar and home indicator</h2>
+<p>Not all of the rectangular screen is usable. At the top there's the status bar (clock, battery) and the notch/island; at the bottom, the gesture bar or home indicator. The <strong>safe area</strong> is the region where your content isn't hidden behind these elements.</p>
+<pre><code>+---------------------+
+| [status bar / notch]|  &lt;- don't put buttons here
+|                     |
+|   SAFE AREA         |
+|   (your content)    |
+|                     |
+| [home indicator]    |  &lt;- nor here
++---------------------+</code></pre>
+<p>Ignoring the safe area makes the title disappear behind the notch or the action button end up under the gesture bar, where the user can't tap it properly.</p>
+<h2>From small phones to tablets</h2>
+<p>Adapting isn't just stretching. Use <strong>constraints</strong> (iOS Auto Layout), <strong>flexbox</strong> (React Native) or flexible widgets (Flutter, ConstraintLayout on Android) so elements rearrange according to the available space. On tablets, it's common to change the layout itself: a list that becomes list + detail side by side (master-detail).</p>
+<ul>
+<li><strong>Proportions, not fixed sizes</strong>: "take up half the width" instead of "240 dp".</li>
+<li><strong>Breakpoints</strong>: switch from a single-column layout to two columns above a certain width.</li>
+<li><strong>Text that scales</strong>: respect the font size increased by the user (accessibility).</li>
+</ul>
+<blockquote>You don't design for a device; you design adaptation rules. Think "how does this behave when the space shrinks or doubles", not "how many pixels are here".</blockquote>
+<h2>Conclusion</h2>
+<p>Measuring in dp/pt, respecting safe areas and using constraints/flex instead of hardcoded pixels is the tripod of responsive mobile layout. Whoever internalizes the difference between physical and logical pixels avoids the most frequent visual bugs and delivers screens that work from the smallest phone to the largest tablet.</p>
+</div>
+<div class="post-tags"><span class="tag">Layout</span><span class="tag">Responsive</span><span class="tag">Mobile</span></div>
+<div class="post-related">
+<h3>Read also</h3>
+<div class="rel-grid">
+<a class="rel-card" href="ciclo-de-vida-app.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">App lifecycle: states, screens and the basics that change everything</span></a>
+<a class="rel-card" href="navegacao-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Junior</span></span><span class="rel-title">Navigation in apps: stack, tabs and deep links</span></a>
+<a class="rel-card" href="estado-dados-mobile.html"><span class="rel-cat"><i class="bx bx-mobile-alt"></i> Mobile · <span>Mid-level</span></span><span class="rel-title">State and data on mobile: from local to global management</span></a>
+</div>
+</div>
+<a class="post-back" href="index.html"><i class="bx bx-left-arrow-alt"></i> <span>Back to the track</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="container">
+<div class="copyright">© Copyright <strong><span>Diogo N Gomes</span></strong></div>
+<div class="credits">Designed by <a href="../index.html">Diogo Gomes</a></div>
+</div>
+</footer>
+<a aria-label="Back to top" class="back-to-top d-flex align-items-center justify-content-center" href="#"><i aria-hidden="true" class="bi bi-arrow-up-short"></i></a>
+<script src="../../assets/vendor/purecounter/purecounter.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/typed.js/typed.min.js"></script>
+<script src="../../assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/js/post.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
