@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #149ddd;
+  color: #0b76b3; /* 4.9:1 sobre branco (WCAG AA); o tema escuro volta ao #149ddd */
   text-decoration: none;
 }
 
@@ -490,7 +490,7 @@ section {
 }
 .portfolio #portfolio-flters li.filter-active {
   color: #fff;
-  background: #149ddd;
+  background: #0b76b3;
   box-shadow: 0 6px 16px rgba(20, 157, 221, 0.35);
 }
 .portfolio #portfolio-flters li:last-child {
@@ -1549,7 +1549,7 @@ section {
 .blog-filters li:hover { color: #149ddd; }
 .blog-filters li.filter-active {
   color: #fff;
-  background: #149ddd;
+  background: #0b76b3;
   box-shadow: 0 6px 16px rgba(20, 157, 221, 0.35);
 }
 
@@ -2082,7 +2082,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #149ddd;
+  background: #0b76b3;
   color: #fff;
   font-weight: 600;
   border: none;
@@ -2093,7 +2093,7 @@ section {
   transition: 0.3s;
 }
 .comment-form .btn-send:hover {
-  background: #37b3ed;
+  background: #095f90;
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(20, 157, 221, 0.35);
 }
@@ -2308,14 +2308,14 @@ section {
   align-items: center;
   gap: 8px;
   margin-top: 18px;
-  background: #149ddd;
+  background: #0b76b3;
   color: #fff;
   font-weight: 600;
   padding: 11px 22px;
   border-radius: 50px;
   transition: 0.3s;
 }
-.btn-cv:hover { background: #37b3ed; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(20,157,221,.35); }
+.btn-cv:hover { background: #095f90; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(20,157,221,.35); }
 .btn-cv i { font-size: 19px; }
 
 
@@ -2383,3 +2383,50 @@ section {
   #header { padding-bottom: 90px; }
   .nav-menu a, .nav-menu a:focus { padding: 10px 15px; margin-bottom: 4px; }
 }
+
+
+/* ---------- Projetos: "Este site é testado" ---------- */
+.site-quality { padding: 60px 0; }
+.sq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+.sq-item { background: #fff; border: 1px solid #e7eef7; border-radius: 14px; padding: 22px; box-shadow: 0 8px 24px rgba(23, 59, 108, 0.06); }
+.sq-item i { font-size: 30px; color: #149ddd; }
+.sq-item h3 { font-size: 18px; font-weight: 700; color: #173b6c; margin: 10px 0 8px; }
+.sq-item p { font-size: 15px; color: #45505b; margin: 0; }
+.sq-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 24px; margin-top: 26px; }
+.sq-badge img { display: block; height: 20px; width: auto; }
+.sq-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.sq-link i { font-size: 20px; }
+.dark-theme .sq-item { background: #131c30; border-color: rgba(255, 255, 255, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+.dark-theme .sq-item h3 { color: #eaf2fb; }
+.dark-theme .sq-item p { color: #b9c6d6; }
+
+
+/* ==========================================================================
+   Acessibilidade — contraste de texto (WCAG 2 AA: 4.5:1)
+   O azul da marca (#149ddd) tem 3.0:1 sobre branco: continua em ícones, bordas
+   e detalhes decorativos, mas texto usa #0b76b3 (4.9:1) no tema claro. Os cinzas
+   claros de texto secundário passam a #5f6b7a (5.4:1). O tema escuro já tem
+   suas próprias cores (azul original sobre fundo escuro: 5.6:1).
+   Verificado por tests/a11y.spec.ts (axe-core).
+   ========================================================================== */
+:where(.dark-theme) a { color: #149ddd; }
+html:not(.dark-theme) .post-card-foot .post-read,
+html:not(.dark-theme) .rss-link,
+html:not(.dark-theme) .rel-cat,
+html:not(.dark-theme) .comment-card .c-project,
+html:not(.dark-theme) .mod-list .mi-body .mi-proj,
+html:not(.dark-theme) .ss-sec { color: #0b76b3; }
+html:not(.dark-theme) .blog .blog-intro,
+html:not(.dark-theme) .post-card-body p,
+html:not(.dark-theme) .post-card-foot,
+html:not(.dark-theme) .portfolio .portfolio-card-body p,
+html:not(.dark-theme) .comment-form .form-hint,
+html:not(.dark-theme) .comment-form .captcha-note,
+html:not(.dark-theme) .comment-card .c-date,
+html:not(.dark-theme) .self-assess-intro,
+html:not(.dark-theme) .track-quiz-intro,
+html:not(.dark-theme) .ss-count,
+html:not(.dark-theme) .ss-url { color: #5f6b7a; }
+html:not(.dark-theme) .post-article .post-back { color: #0b76b3; }
+/* O rodapé é escuro nos dois temas: ali o azul claro original é o que tem contraste (6:1). */
+#footer .credits a { color: #149ddd; }

@@ -16,6 +16,7 @@ Uso:
   python3 scripts/build_en.py --check  # sai com 1 se algo estiver desatualizado (CI)
 """
 import json
+import posixpath
 import re
 import subprocess
 import sys
@@ -70,14 +71,22 @@ def descriptions():
     return out
 
 
-def rel_asset(url):
-    """Recursos relativos (não-HTML) ganham um '../' por estarem um nível abaixo, em /en/."""
+def rel_asset(url, src_dir=''):
+    """Recursos relativos (não-HTML) apontam de volta para o original em PT.
+
+    A página en/<dir>/x.html está um nível abaixo de <dir>/x.html; o recurso é
+    resolvido a partir de <dir>/ e reescrito relativo a en/<dir>/ (ex.: em
+    dados/, 'feed.xml' vira '../../dados/feed.xml', e '../assets/a.css' vira
+    '../../assets/a.css').
+    """
     if not url or ABSOLUTE.match(url):
         return url
     path = url.split('#')[0].split('?')[0]
     if path.endswith('.html') or path == '':
         return url
-    return '../' + url
+    rest = url[len(path):]
+    target = posixpath.normpath(posixpath.join(src_dir, path))
+    return posixpath.relpath(target, posixpath.join('en', src_dir) if src_dir else 'en') + rest
 
 
 def page_url(path):
@@ -141,17 +150,18 @@ def transform(src, en_dict, typed_en, en_desc):
         el.string = (el.string or '').replace('"inLanguage": "pt-BR"', '"inLanguage": "en"')
 
     # caminhos relativos de recursos
+    src_dir = posixpath.dirname(src)
     for el in soup.find_all(True):
         for attr in URL_ATTRS:
             if attr in el.attrs and isinstance(el[attr], str):
-                el[attr] = rel_asset(el[attr])
+                el[attr] = rel_asset(el[attr], src_dir)
         if 'srcset' in el.attrs:
             el['srcset'] = ', '.join(
-                ' '.join([rel_asset(part.split()[0])] + part.split()[1:])
+                ' '.join([rel_asset(part.split()[0], src_dir)] + part.split()[1:])
                 for part in el['srcset'].split(',') if part.strip())
         if 'style' in el.attrs and 'url(' in el['style']:
             el['style'] = re.sub(r"url\((['\"]?)([^)'\"]+)\1\)",
-                                 lambda m: f"url({m.group(1)}{rel_asset(m.group(2))}{m.group(1)})",
+                                 lambda m: f"url({m.group(1)}{rel_asset(m.group(2), src_dir)}{m.group(1)})",
                                  el['style'])
 
     out = str(soup)

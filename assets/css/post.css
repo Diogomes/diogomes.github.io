@@ -85,9 +85,9 @@
   transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 .post-toc-list .post-toc-h3 a { padding-left: 24px; font-size: 13px; }
-.post-toc-list a:hover { color: #149ddd; background: rgba(20, 157, 221, 0.06); }
+.post-toc-list a:hover { color: #0b76b3; background: rgba(20, 157, 221, 0.06); }
 .post-toc-list a[aria-current] {
-  color: #149ddd;
+  color: #0b76b3; /* texto: tom escuro do azul para 4.5:1 (a borda segue #149ddd) */
   font-weight: 600;
   border-left-color: #149ddd;
   background: rgba(20, 157, 221, 0.08);

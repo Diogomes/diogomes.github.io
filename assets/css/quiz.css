@@ -45,8 +45,8 @@
 .tq-btn:hover { background: #e9f2fb; }
 .tq-btn:focus-visible { outline: 2px solid #149ddd; outline-offset: 2px; }
 .tq-btn[disabled] { opacity: .6; cursor: default; }
-.tq-primary { background: #149ddd; border-color: #149ddd; color: #fff; }
-.tq-primary:hover { background: #0f86bf; border-color: #0f86bf; }
+.tq-primary { background: #0b76b3; border-color: #0b76b3; color: #fff; }
+.tq-primary:hover { background: #095f90; border-color: #095f90; }
 .tq-link { background: transparent; border-color: transparent; color: #6b7a90; }
 .tq-link:hover { background: transparent; text-decoration: underline; }
 .tq-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
@@ -120,8 +120,8 @@
 .dark-theme .tq-chip, .dark-theme .tq-btn { background: #16233f; border-color: #25344f; color: #cfe0f2; }
 .dark-theme .tq-chip:hover, .dark-theme .tq-btn:hover { background: #1c2d50; }
 .dark-theme .tq-chip:has(input:checked) { border-color: #37b3ed; background: #133350; }
-.dark-theme .tq-primary { background: #149ddd; border-color: #149ddd; color: #fff; }
-.dark-theme .tq-primary:hover { background: #0f86bf; }
+.dark-theme .tq-primary { background: #0b76b3; border-color: #0b76b3; color: #fff; }
+.dark-theme .tq-primary:hover { background: #095f90; }
 .dark-theme .tq-link { background: transparent; border-color: transparent; }
 .dark-theme .tq-badge { background: #25344f; color: #cfe0f2; }
 .dark-theme .tq-badge.is-full { background: #064e3b; color: #a7f3d0; }

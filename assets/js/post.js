@@ -88,6 +88,8 @@
     } else {
       p = (window.scrollY - start + window.innerHeight * 0.25) / total;
     }
+    // no fim do documento a leitura terminou, mesmo que o rodapé seja curto demais para a fórmula chegar a 1
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) p = 1;
     p = Math.max(0, Math.min(1, p));
     fill.style.transform = 'scaleX(' + p + ')';
     bar.setAttribute('aria-valuenow', String(Math.round(p * 100)));

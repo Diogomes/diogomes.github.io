@@ -46,13 +46,19 @@
     var btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Alternar tema claro/escuro');
-    btn.title = 'Alternar tema claro/escuro';
+    function setLabel() {
+      var label = document.documentElement.lang === 'en' ? 'Toggle light/dark theme' : 'Alternar tema claro/escuro';
+      btn.setAttribute('aria-label', label);
+      btn.title = label;
+    }
     function setIcon() {
       var dark = document.documentElement.classList.contains('dark-theme');
-      btn.innerHTML = dark ? '<i class="bx bx-sun"></i>' : '<i class="bx bx-moon"></i>';
+      btn.innerHTML = dark ? '<i class="bx bx-sun" aria-hidden="true"></i>' : '<i class="bx bx-moon" aria-hidden="true"></i>';
+      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
     }
+    setLabel();
     setIcon();
+    document.addEventListener('dg:lang', setLabel);
     btn.addEventListener('click', function () {
       var dark = document.documentElement.classList.toggle('dark-theme');
       try { localStorage.setItem('dg-theme', dark ? 'dark' : 'light'); } catch (e) {}
