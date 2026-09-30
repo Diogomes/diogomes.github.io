@@ -3,7 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
+  <link rel="canonical" href="https://diogomes.github.io/moderacao.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/moderacao.html">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/moderacao.html">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/moderacao.html">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="robots" content="noindex, nofollow">
   <title>Moderação · painel privado</title>
@@ -121,7 +125,7 @@
         jsonEl.value = JSON.stringify(data, null, 2);
       }
       function load() {
-        fetch('assets/comments.json', { cache: 'no-store' })
+        fetch('/assets/comments.json', { cache: 'no-store' })
           .then(function (r) { return r.ok ? r.json() : []; })
           .then(function (items) { data = Array.isArray(items) ? items : []; render(); })
           .catch(function () { data = []; render(); });

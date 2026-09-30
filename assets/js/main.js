@@ -553,7 +553,7 @@
       if (p.length === 3) return `${p[2]}/${p[1]}/${p[0]}`;
       return esc(d);
     };
-    fetch('assets/comments.json', { cache: 'no-store' })
+    fetch('/assets/comments.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : [])
       .then(items => {
         const empty = select('#comments-empty');

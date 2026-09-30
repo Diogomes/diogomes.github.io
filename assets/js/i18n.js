@@ -10,7 +10,7 @@
     'nav.portfolio': 'Portfolio', 'nav.contact': 'Contact', 'nav.projects': 'Projects',
     'nav.game': 'Game', 'nav.blog': 'Blog',
     'nav.backend': 'Back-end', 'nav.frontend': 'Front-end', 'nav.devops': 'DevOps',
-    'nav.dados': 'Data', 'nav.mobile': 'Mobile', 'nav.tracks': 'Tracks',
+    'nav.dados': 'Data', 'nav.mobile': 'Mobile', 'nav.tracks': 'Tracks', 'nav.search': 'Search',
     'hero.iam': "I'm",
     'about.h2': 'About',
     'about.intro': 'I like technology and how it can help us solve problems.',
@@ -82,8 +82,10 @@
     window.DG_LANG = en ? 'en' : 'pt';
     document.dispatchEvent(new CustomEvent('dg:lang', { detail: window.DG_LANG }));
   }
+  // Páginas geradas em /en/ já vêm traduzidas (html[data-static-lang]); o idioma é o da página
   var lang = 'pt';
   try { lang = localStorage.getItem('dg-lang') || 'pt'; } catch (e) {}
+  if (root.hasAttribute('data-static-lang')) lang = root.getAttribute('lang') === 'en' ? 'en' : 'pt';
   window.DG_LANG = lang;
   window.dgT = function (pt, en) { return window.DG_LANG === 'en' ? en : pt; };
   if (lang === 'en') apply('en');
@@ -101,6 +103,13 @@
   btn.addEventListener('click', function () {
     lang = (lang === 'en') ? 'pt' : 'en';
     try { localStorage.setItem('dg-lang', lang); } catch (e) {}
+    // Páginas com versão estática no outro idioma (/en/...): navega até ela
+    var alt = document.querySelector('link[rel="alternate"][hreflang="' + (lang === 'en' ? 'en' : 'pt-BR') + '"]');
+    if (alt) {
+      var u = new URL(alt.href);
+      location.href = u.pathname + location.search + location.hash;
+      return;
+    }
     apply(lang); setLabel();
   });
   document.body.appendChild(btn);

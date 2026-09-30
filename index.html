@@ -3,7 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <script>try{if(localStorage.getItem('dg-lang')==='en')document.documentElement.lang='en'}catch(e){}</script>
+  <link rel="canonical" href="https://diogomes.github.io/">
+  <link rel="alternate" hreflang="pt-BR" href="https://diogomes.github.io/">
+  <link rel="alternate" hreflang="en" href="https://diogomes.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://diogomes.github.io/">
+  <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Diogo Gomes — Quality Engineer, Desenvolvedor & Game Dev</title>
@@ -59,7 +63,6 @@
         <img src="assets/img/DIo.jpeg" alt="Foto de Diogo Gomes" data-en-alt="Photo of Diogo Gomes" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Diogo Gomes</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
           <a href="https://github.com/Diogomes" class="github" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
           <a href="https://www.linkedin.com/in/dio-gomes/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
         </div>
@@ -77,6 +80,7 @@
           <li><a href="projects.html"><i class="bx bx-code-block"></i> <span data-i18n="nav.projects">Projetos</span></a></li>
           <li><a href="pokeworld.html"><i class="bx bx-joystick"></i> <span data-i18n="nav.game">Jogo</span></a></li>
           <li><a href="blog/index.html"><i class="bx bx-notepad"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+          <li><a href="search.html"><i class="bx bx-search"></i> <span data-i18n="nav.search">Buscar</span></a></li>
         </ul>
       </nav>
     </div>
@@ -734,35 +738,42 @@
             </div>
           </div>
 
-          <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div> -->
+        </div>
 
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8">
+            <form class="comment-form" action="https://formsubmit.co/gomes.d.n05@gmail.com" method="POST" data-aos="fade-up">
+              <h3 data-en="Send a message">Envie uma mensagem</h3>
+              <p class="form-hint" data-en="Job opportunities, partnerships or questions about a project — I usually reply within a few days.">Oportunidades, parcerias ou dúvidas sobre algum projeto — costumo responder em poucos dias.</p>
+
+              <input type="hidden" name="_subject" value="Novo contato — diogomes.github.io">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="hidden" name="_next" value="https://diogomes.github.io/obrigado.html">
+              <input type="text" name="_honey" class="hp-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div class="row">
+                <div class="col-md-6 mb-field">
+                  <label for="ct-name" data-en="Name *">Nome *</label>
+                  <input type="text" id="ct-name" name="name" class="form-control" autocomplete="name" required>
+                </div>
+                <div class="col-md-6 mb-field">
+                  <label for="ct-email" data-en="Email *">E-mail *</label>
+                  <input type="email" id="ct-email" name="email" class="form-control" autocomplete="email" required>
+                </div>
+              </div>
+              <div class="mb-field">
+                <label for="ct-subject" data-en="Subject *">Assunto *</label>
+                <input type="text" id="ct-subject" name="assunto" class="form-control" required>
+              </div>
+              <div class="mb-field">
+                <label for="ct-message" data-en="Message *">Mensagem *</label>
+                <textarea id="ct-message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn-send"><i class="bx bx-send"></i> <span data-en="Send message">Enviar mensagem</span></button>
+              <p class="captcha-note"><i class="bx bx-shield-quarter"></i> <span data-en="Protected by free captcha (FormSubmit) and an anti-spam filter.">Protegido por captcha gratuito (FormSubmit) e filtro anti-spam.</span></p>
+            </form>
+          </div>
         </div>
 
       </div>
