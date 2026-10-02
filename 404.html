@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <script>try{var t=localStorage.getItem('dg-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
   <script>(function(){try{var d=document.documentElement,cur=d.lang==='en'?'en':'pt',p=localStorage.getItem('dg-lang');if(!p&&!/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent)){p=/^pt/i.test(navigator.language||'')?'pt':'en';localStorage.setItem('dg-lang',p)}if(p&&p!==cur){var a=document.querySelector('link[rel="alternate"][hreflang="'+(p==='en'?'en':'pt-BR')+'"]');if(a){var u=new URL(a.href);location.replace(u.pathname+location.search+location.hash);return}if(p==='en')d.lang='en'}}catch(e){}})();</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Página não encontrada — Diogo Gomes</title>
@@ -32,8 +33,8 @@
       display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
       padding: 13px 26px; border-radius: 50px; font-weight: 600; transition: .3s;
     }
-    a.primary { background: #149ddd; color: #fff; }
-    a.primary:hover { background: #37b3ed; transform: translateY(-2px); }
+    a.primary { background: #0b76b3; color: #fff; } /* 4.9:1 com texto branco */
+    a.primary:hover { background: #095f91; transform: translateY(-2px); }
     a.ghost { background: rgba(255,255,255,.08); color: #cfe0f0; border: 1px solid rgba(255,255,255,.25); }
     a.ghost:hover { background: rgba(255,255,255,.16); color: #fff; }
   </style>

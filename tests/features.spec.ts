@@ -226,6 +226,16 @@ test.describe('tema escuro', () => {
     await page.reload();
     await expect(html).not.toHaveClass(/dark-theme/);
   });
+
+  test('é aplicado no <head>, antes do primeiro paint (sem flash claro)', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('dg-theme', 'dark'));
+    // Sem o main.js (fim do <body>), só o script inline do <head> pode aplicar o tema.
+    await page.route('**/assets/js/main.js', (route) => route.abort());
+    for (const path of ['/index.html', '/blog/testes-flaky.html', '/en/backend/index.html']) {
+      await page.goto(path);
+      await expect(page.locator('html'), path).toHaveClass(/dark-theme/);
+    }
+  });
 });
 
 test.describe('formulário de contato (FormSubmit interceptado)', () => {

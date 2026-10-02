@@ -145,7 +145,7 @@
 }
 .post-copy i { font-size: 14px; }
 .post-copy:hover { background: #149ddd; border-color: #149ddd; color: #fff; }
-.post-copy.is-copied { background: #16a34a; border-color: #16a34a; color: #fff; }
+.post-copy.is-copied { background: #15803d; border-color: #15803d; color: #fff; }
 
 /* ---------- Tema escuro ---------- */
 .dark-theme .post-toc { background: #131c30; border-color: #25344f; }

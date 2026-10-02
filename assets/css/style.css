@@ -1814,6 +1814,11 @@ section {
   line-height: 1.6;
   margin: 20px 0;
 }
+.post-article .post-body a {
+  /* Links no meio do texto não podem depender só da cor (WCAG 1.4.1) */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .post-article .post-body code {
   font-family: "Courier New", monospace;
 }
@@ -2227,6 +2232,7 @@ section {
 /* Portfolio */
 .dark-theme .portfolio #portfolio-flters { background: #131c30; box-shadow: none; }
 .dark-theme .portfolio #portfolio-flters li { color: #9fb1c4; }
+.dark-theme .portfolio #portfolio-flters li.filter-active { color: #fff; }
 .dark-theme .portfolio .portfolio-card { background: #131c30; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
 .dark-theme .portfolio .portfolio-card-body h4 { color: #eaf2fb; }
 .dark-theme .portfolio .portfolio-card-body p { color: #8aa0b8; }
@@ -2235,6 +2241,7 @@ section {
 .dark-theme .blog .blog-intro { color: #8aa0b8; }
 .dark-theme .blog-filters { background: #131c30; box-shadow: none; }
 .dark-theme .blog-filters li { color: #9fb1c4; }
+.dark-theme .blog-filters li.filter-active { color: #fff; }
 .dark-theme .post-card { background: #131c30; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
 .dark-theme .post-card-body h3 a { color: #eaf2fb; }
 .dark-theme .post-card-body p { color: #8aa0b8; }
@@ -2248,6 +2255,7 @@ section {
 .dark-theme .post-article .post-body blockquote { background: #16233f; color: #dbe7f5; border-left-color: #37b3ed; }
 .dark-theme .post-article .post-tags .tag { background: #16233f; color: #9fd0f5; }
 .dark-theme .post-article .post-body pre { background: #060d1a; }
+.dark-theme .post-article .post-body :not(pre) > code { color: #f783ac; } /* o rosa do Bootstrap dá 4.2:1 no fundo escuro */
 .dark-theme .post-article .post-body th { background: #16233f; color: #eaf2fb; border-color: #25344f; }
 .dark-theme .post-article .post-body td { color: #b9c6d6; border-color: #25344f; }
 .dark-theme .post-article .post-body tbody tr:nth-child(even) td { background: #101c33; }
