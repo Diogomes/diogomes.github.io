@@ -241,6 +241,8 @@
   }
   [].forEach.call(body.querySelectorAll('pre'), function (pre) {
     if (pre.parentNode.classList.contains('post-code')) return;
+    // Blocos com rolagem horizontal precisam ser alcançáveis pelo teclado
+    if (!pre.hasAttribute('tabindex')) pre.setAttribute('tabindex', '0');
     var wrap = document.createElement('div');
     wrap.className = 'post-code';
     pre.parentNode.insertBefore(wrap, pre);

@@ -10,12 +10,25 @@ const PAGES = [
   '/backend/index.html',
   '/search.html?q=teste',
   '/cv.html',
+  '/backend/apis-rest.html',
+  '/blog/tecnicas-design-de-teste.html',
+  '/404.html',
+  '/obrigado.html',
+  '/analytics.html',
+  '/moderacao.html',
 ];
 
 const BLOCKING = new Set(['serious', 'critical']);
 
-for (const path of PAGES.flatMap((p) => [p, `/en${p}`])) {
-  test(`axe (WCAG 2 A/AA): ${path}`, async ({ page }, testInfo) => {
+const THEMES = ['light', 'dark'] as const;
+
+for (const theme of THEMES)
+for (const path of PAGES.flatMap((p) => (p === '/404.html' ? [p] : [p, `/en${p}`]))) {
+  test(`axe (WCAG 2 A/AA, ${theme}): ${path}`, async ({ page }, testInfo) => {
+    // O tema salvo em localStorage é aplicado pelo main.js antes do primeiro paint.
+    await page.addInitScript((t) => {
+      try { localStorage.setItem('dg-theme', t); } catch (e) {}
+    }, theme);
     // Mostra tudo que o AOS esconderia até o scroll: o axe precisa avaliar o estado final (contraste real).
     await page.addInitScript(() => {
       document.addEventListener('DOMContentLoaded', () => {

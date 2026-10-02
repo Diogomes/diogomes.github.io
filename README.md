@@ -24,8 +24,8 @@ Suíte em [`tests/`](tests/) com [Playwright](https://playwright.dev) e [axe-cor
 |---|---|
 | `smoke.spec.ts` | Todas as páginas (sitemap + fora dele, PT e EN) carregam sem erro de JS e sem 4xx/5xx do próprio site |
 | `i18n.spec.ts` | Sem português visível nas páginas EN (e vice-versa), botão de idioma, redirecionamento por preferência, detecção na 1ª visita, canonical/hreflang |
-| `features.spec.ts` | Filtros/busca do blog, busca global, autoavaliação, quiz, sumário/progresso/copiar código, tema escuro, formulário de contato (envio interceptado) |
-| `a11y.spec.ts` | axe (WCAG 2 A/AA) nas páginas principais; falha em violações *serious*/*critical* |
+| `features.spec.ts` | Filtros/busca do blog, busca global, autoavaliação, quiz, sumário/progresso/copiar código, tema escuro (inclusive sem flash no carregamento), formulário de contato (envio interceptado) |
+| `a11y.spec.ts` | axe (WCAG 2 A/AA) nas páginas principais, nos temas claro e escuro; falha em violações *serious*/*critical* |
 | `visual.spec.ts` | Regressão visual (`toHaveScreenshot`) de telas-chave |
 
 Terceiros (YouTube, Maps, GoatCounter, Google Fonts…) são bloqueados nos testes: a suíte é rápida e não depende da rede.
